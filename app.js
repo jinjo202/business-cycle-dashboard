@@ -131,47 +131,156 @@ const historicalPresets = {
 // 1B. DUAL-MARKET REGIONAL EXPORT DATA FROM KITA & CENSUS BUREAU
 const exportData = {
     "US": {
-        title: "Census Bureau (미국 인구조사국) 수출 및 무역 동향",
-        growthLabel: "총 수출 성장률 (YoY)",
-        growthVal: "+3.2%",
-        growthTrend: "▲ AI 서비스 및 에너지 견인",
-        balanceLabel: "미국 무역 수지 (월간)",
-        balanceVal: "-625억 달러 적자",
-        balanceTrend: "▼ 소비재 수입 지속 우위",
-        ebsiLabel: "수출경기 전망 지수 (Index)",
-        ebsiVal: "102.8",
-        ebsiTrend: "▲ 글로벌 테크 수요 안착",
-        itemsTitle: "미국 주요 수출 품목 및 글로벌 비중 (Census Bureau 대변)",
-        items: [
-            { name: "IT 서비스, IP 및 SW 로열티", pct: 32, change: "+8.5%", barClass: "summer" },
-            { name: "민간 항공기 및 방산 우주 장비", pct: 12, change: "+4.2%", barClass: "spring" },
-            { name: "셰일 오일 및 정제 액화 에너지 자원", pct: 10, change: "+6.0%", barClass: "autumn" },
-            { name: "대외 첨단 반도체 및 디바이스 하드웨어", pct: 6, change: "-1.5%", barClass: "winter" }
-        ]
+        "2026-05": {
+            growthVal: "+3.2%",
+            growthTrend: "▲ AI 서비스 및 에너지 견인",
+            balanceVal: "-625억 달러 적자",
+            balanceTrend: "▼ 소비재 수입 지속 우위",
+            ebsiVal: "102.8",
+            ebsiTrend: "▲ 글로벌 테크 수요 안착",
+            items: [
+                { name: "IT 서비스, IP 및 SW 로열티", pct: 32, change: "+8.5%", barClass: "summer" },
+                { name: "민간 항공기 및 방산 우주 장비", pct: 12, change: "+4.2%", barClass: "spring" },
+                { name: "셰일 오일 및 정제 액화 에너지 자원", pct: 10, change: "+6.0%", barClass: "autumn" },
+                { name: "대외 첨단 반도체 및 디바이스 하드웨어", pct: 6, change: "-1.5%", barClass: "winter" }
+            ]
+        },
+        "2026-04": {
+            growthVal: "+3.5%",
+            growthTrend: "▲ 봄철 테크 결제 대행 팽창",
+            balanceVal: "-612억 달러 적자",
+            balanceTrend: "▼ 적자 폭 일시 축소",
+            ebsiVal: "103.0",
+            ebsiTrend: "▲ 금리 안정 조짐 반등",
+            items: [
+                { name: "IT 서비스, IP 및 SW 로열티", pct: 31, change: "+9.0%", barClass: "summer" },
+                { name: "민간 항공기 및 방산 우주 장비", pct: 12, change: "+4.5%", barClass: "spring" },
+                { name: "셰일 오일 및 정제 액화 에너지 자원", pct: 10, change: "+5.8%", barClass: "autumn" },
+                { name: "대외 첨단 반도체 및 디바이스 하드웨어", pct: 6, change: "-1.2%", barClass: "winter" }
+            ]
+        },
+        "2026-03": {
+            growthVal: "+2.8%",
+            growthTrend: "▲ 제조업 심리 회복에 따른 선적 증가",
+            balanceVal: "-638억 달러 적자",
+            balanceTrend: "▼ 수입 원자재 대규모 유입",
+            ebsiVal: "102.0",
+            ebsiTrend: "─ 공급망 완화 추세 부합",
+            items: [
+                { name: "IT 서비스, IP 및 SW 로열티", pct: 32, change: "+8.0%", barClass: "summer" },
+                { name: "민간 항공기 및 방산 우주 장비", pct: 11, change: "+3.8%", barClass: "spring" },
+                { name: "셰일 오일 및 정제 액화 에너지 자원", pct: 9, change: "+5.2%", barClass: "autumn" },
+                { name: "대외 첨단 반도체 및 디바이스 하드웨어", pct: 5, change: "-2.0%", barClass: "winter" }
+            ]
+        },
+        "2025-04": {
+            growthVal: "+1.8%",
+            growthTrend: "▼ 글로벌 경기 둔화 우려 여파",
+            balanceVal: "-662억 달러 적자",
+            balanceTrend: "▼ 고금리 속 소비재 수입 고착",
+            ebsiVal: "99.5",
+            ebsiTrend: "▼ 100선 일시 하회",
+            items: [
+                { name: "IT 서비스, IP 및 SW 로열티", pct: 30, change: "+5.2%", barClass: "summer" },
+                { name: "민간 항공기 및 방산 우주 장비", pct: 12, change: "+2.8%", barClass: "spring" },
+                { name: "셰일 오일 및 정제 액화 에너지 자원", pct: 11, change: "+3.0%", barClass: "autumn" },
+                { name: "대외 첨단 반도체 및 디바이스 하드웨어", pct: 5, change: "-4.5%", barClass: "winter" }
+            ]
+        },
+        "2025-03": {
+            growthVal: "+1.2%",
+            growthTrend: "▼ 인플레이션 충격으로 인한 수요 정체",
+            balanceVal: "-675억 달러 적자",
+            balanceTrend: "▼ 무역 수지 지속 약화",
+            ebsiVal: "98.0",
+            ebsiTrend: "▼ 제조업 생산량 감소세",
+            items: [
+                { name: "IT 서비스, IP 및 SW 로열티", pct: 29, change: "+4.5%", barClass: "summer" },
+                { name: "민간 항공기 및 방산 우주 장비", pct: 12, change: "+2.2%", barClass: "spring" },
+                { name: "셰일 오일 및 정제 액화 에너지 자원", pct: 11, change: "+2.5%", barClass: "autumn" },
+                { name: "대외 첨단 반도체 및 디바이스 하드웨어", pct: 5, change: "-5.0%", barClass: "winter" }
+            ]
+        }
     },
     "KR": {
-        title: "KITA (한국무역협회) 통계 기반 수출 동향 분석",
-        growthLabel: "대한민국 총 수출 성장률 (YoY)",
-        growthVal: "+11.5%",
-        growthTrend: "▲ HBM/DRAM 반도체 대형 사이클 주도",
-        balanceLabel: "KITA 통계 누적 무역수지",
-        balanceVal: "+45억 달러 흑자",
-        balanceTrend: "▲ 반도체 호조로 흑자 폭 확대",
-        ebsiLabel: "KITA 수출경기전망지수 (EBSI)",
-        ebsiVal: "112.5",
-        ebsiTrend: "▲ 100 기준점 돌파 (수출 회복기)",
-        itemsTitle: "KITA 제공 한국 핵심 품목별 수출 비중 및 성장률 (stat.kita.net)",
-        items: [
-            { name: "반도체 (DRAM / HBM 메모리 포함)", pct: 18, change: "+42.5%", barClass: "summer" },
-            { name: "자동차, 친환경차 및 완성차 부품", pct: 13, change: "+12.2%", barClass: "spring" },
-            { name: "석유화학 제품 및 합성수지", pct: 8, change: "-2.4%", barClass: "winter" },
-            { name: "선박, LNG 고부가가치 운반선", pct: 6, change: "+18.0%", barClass: "autumn" }
-        ]
+        "2026-05": {
+            growthVal: "+11.5%",
+            growthTrend: "▲ HBM/DRAM 반도체 대형 사이클 주도",
+            balanceVal: "+45억 달러 흑자",
+            balanceTrend: "▲ 반도체 호조로 흑자 폭 확대",
+            ebsiVal: "112.5",
+            ebsiTrend: "▲ 100 기준점 돌파 (수출 회복기)",
+            items: [
+                { name: "반도체 (DRAM / HBM 메모리 포함)", pct: 18, change: "+42.5%", barClass: "summer" },
+                { name: "자동차, 친환경차 및 완성차 부품", pct: 13, change: "+12.2%", barClass: "spring" },
+                { name: "석유화학 제품 및 합성수지", pct: 8, change: "-2.4%", barClass: "winter" },
+                { name: "선박, LNG 고부가가치 운반선", pct: 6, change: "+18.0%", barClass: "autumn" }
+            ]
+        },
+        "2026-04": {
+            growthVal: "+13.8%",
+            growthTrend: "▲ 대미 친환경 자동차 및 신형 칩셋 선적 폭발",
+            balanceVal: "+51억 달러 흑자",
+            balanceTrend: "▲ 무역 수지 11개월 연속 흑자 기조",
+            ebsiVal: "110.0",
+            ebsiTrend: "▲ 주요 수출 업종 동반 성장 국면",
+            items: [
+                { name: "반도체 (DRAM / HBM 메모리 포함)", pct: 19, change: "+45.0%", barClass: "summer" },
+                { name: "자동차, 친환경차 및 완성차 부품", pct: 13, change: "+11.5%", barClass: "spring" },
+                { name: "석유화학 제품 및 합성수지", pct: 8, change: "-1.8%", barClass: "winter" },
+                { name: "선박, LNG 고부가가치 운반선", pct: 5, change: "+15.5%", barClass: "autumn" }
+            ]
+        },
+        "2026-03": {
+            growthVal: "+9.8%",
+            growthTrend: "▲ AI 서버용 고용량 모듈 수출 호조",
+            balanceVal: "+42억 달러 흑자",
+            balanceTrend: "▲ 에너지 수입액 감소에 따른 반사이익",
+            ebsiVal: "108.5",
+            ebsiTrend: "▲ 대외 제조업 심리 개선 동행",
+            items: [
+                { name: "반도체 (DRAM / HBM 메모리 포함)", pct: 17, change: "+38.0%", barClass: "summer" },
+                { name: "자동차, 친환경차 및 완성차 부품", pct: 13, change: "+9.8%", barClass: "spring" },
+                { name: "석유화학 제품 및 합성수지", pct: 8, change: "-3.0%", barClass: "winter" },
+                { name: "선박, LNG 고부가가치 운반선", pct: 6, change: "+12.4%", barClass: "autumn" }
+            ]
+        },
+        "2025-04": {
+            growthVal: "+4.5%",
+            growthTrend: "▲ IT 기기 기저효과 턴어라운드 진입",
+            balanceVal: "+22억 달러 흑자",
+            balanceTrend: "▲ 무역 수지 불황형 흑자 탈피 조짐",
+            ebsiVal: "98.0",
+            ebsiTrend: "▼ 글로벌 금리 제약 완화 관망",
+            items: [
+                { name: "반도체 (DRAM / HBM 메모리 포함)", pct: 15, change: "+12.5%", barClass: "summer" },
+                { name: "자동차, 친환경차 및 완성차 부품", pct: 14, change: "+8.2%", barClass: "spring" },
+                { name: "석유화학 제품 및 합성수지", pct: 9, change: "-6.5%", barClass: "winter" },
+                { name: "선박, LNG 고부가가치 운반선", pct: 5, change: "+8.0%", barClass: "autumn" }
+            ]
+        },
+        "2025-03": {
+            growthVal: "+3.1%",
+            growthTrend: "▼ 반도체 재고 조정 막바지 속도 조절",
+            balanceVal: "+18억 달러 흑자",
+            balanceTrend: "▲ 무역 수지 소폭 흑자 안착",
+            ebsiVal: "95.5",
+            ebsiTrend: "▼ 원유 도입가 불안 헤지",
+            items: [
+                { name: "반도체 (DRAM / HBM 메모리 포함)", pct: 14, change: "+9.0%", barClass: "summer" },
+                { name: "자동차, 친환경차 및 완성차 부품", pct: 14, change: "+6.8%", barClass: "spring" },
+                { name: "석유화학 제품 및 합성수지", pct: 9, change: "-8.2%", barClass: "winter" },
+                { name: "선박, LNG 고부가가치 운반선", pct: 5, change: "+5.5%", barClass: "autumn" }
+            ]
+        }
     }
 };
 
 function updateExportCard() {
-    const data = exportData[activeRegion];
+    const monthSelect = document.getElementById("export-month-select");
+    const activeMonth = monthSelect ? monthSelect.value : "2026-05";
+    
+    const data = exportData[activeRegion][activeMonth];
     if (!data) return;
     
     const cardIcon = document.getElementById("export-card-icon");
@@ -183,24 +292,32 @@ function updateExportCard() {
         }
     }
     
-    document.getElementById("export-card-title").textContent = data.title;
-    document.getElementById("export-growth-label").textContent = data.growthLabel;
+    // Set regional title
+    const regionTitle = activeRegion === "KR" 
+        ? "KITA (한국무역협회) 통계 기반 수출 동향 분석" 
+        : "Census Bureau (미국 인구조사국) 수출 및 무역 동향";
+    document.getElementById("export-card-title").textContent = regionTitle;
+    
+    // Set labels & values
+    const growthLabel = activeRegion === "KR" ? "대한민국 총 수출 성장률 (YoY)" : "총 수출 성장률 (YoY)";
+    document.getElementById("export-growth-label").textContent = growthLabel;
     document.getElementById("export-growth-val").textContent = data.growthVal;
     
     const growthValEl = document.getElementById("export-growth-val");
     if (growthValEl) {
-        if (activeRegion === "KR") {
+        if (activeRegion === "KR" || !data.growthVal.startsWith("-")) {
             growthValEl.className = "stat-value text-positive";
             growthValEl.style.color = "";
         } else {
             growthValEl.className = "stat-value";
-            growthValEl.style.color = "";
+            growthValEl.style.color = "#ef4444";
         }
     }
     
     document.getElementById("export-growth-trend").textContent = data.growthTrend;
     
-    document.getElementById("export-balance-label").textContent = data.balanceLabel;
+    const balanceLabel = activeRegion === "KR" ? "KITA 통계 누적 무역수지" : "미국 무역 수지 (월간)";
+    document.getElementById("export-balance-label").textContent = balanceLabel;
     document.getElementById("export-balance-val").textContent = data.balanceVal;
     
     const balanceValEl = document.getElementById("export-balance-val");
@@ -216,11 +333,15 @@ function updateExportCard() {
     
     document.getElementById("export-balance-trend").textContent = data.balanceTrend;
     
-    document.getElementById("export-ebsi-label").textContent = data.ebsiLabel;
+    const ebsiLabel = activeRegion === "KR" ? "KITA 수출경기전망지수 (EBSI)" : "수출경기 전망 지수 (Index)";
+    document.getElementById("export-ebsi-label").textContent = ebsiLabel;
     document.getElementById("export-ebsi-val").textContent = data.ebsiVal;
     document.getElementById("export-ebsi-trend").textContent = data.ebsiTrend;
     
-    document.getElementById("export-items-title").textContent = data.itemsTitle;
+    const itemsTitle = activeRegion === "KR" 
+        ? "KITA 제공 한국 핵심 품목별 수출 비중 및 성장률 (stat.kita.net)" 
+        : "미국 주요 수출 품목 및 글로벌 비중 (Census Bureau 대변)";
+    document.getElementById("export-items-title").textContent = itemsTitle;
     
     const itemsList = document.getElementById("export-items-list");
     if (itemsList) {
@@ -1184,6 +1305,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         applyThemeSettingsToCharts();
     });
+
+    // Month Selector change listener
+    const exportMonthSelect = document.getElementById("export-month-select");
+    if (exportMonthSelect) {
+        exportMonthSelect.addEventListener("change", () => {
+            updateExportCard();
+        });
+    }
 
     // F. Default Startup Initializations
     updateEpsSliderBounds();
