@@ -398,24 +398,10 @@
                             <p id="narrative-summary">OECD CLI 및 PMI가 기준선을 웃돌며 안정적인 경기 확장을 나타내고 있습니다. 장단기 금리차가 다소 축소되었으나 경제 기초체력이 양호해 완만한 확장세가 유지되고 있습니다. 금리 인상 후반부 국면에 접어들어 자산 다변화가 필요합니다.</p>
                         </div>
                         <div class="narrative-block">
-                            <h4 id="narrative-title-right">역사적 마켓 교훈</h4>
-                            <p id="narrative-lessons">경기 확장기에는 기업 수익 성장에 집중해야 하지만, 금리 수준이 높다면 후기 확장 국면(Late Cycle) 진입 신호일 수 있습니다. 과거 2004-2006년 연준의 연속 금리 인상기 동안, 초기에는 기술주와 원자재가 아웃퍼폼했으나 후반부에는 성장 둔화 우려로 우량주와 방어주 위주의 포트폴리오 조율이 주효했습니다.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Export & Trade Balance Analysis Card -->
-            <section class="card export-analysis-card">
-                <div class="card-header" style="flex-wrap: wrap; gap: 0.75rem;">
-                    <div class="card-title-group">
-                        <span class="card-icon" id="export-card-icon" style="color: #10b981;">
-                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-                        </span>
-                        <h3 id="export-card-title">KITA 무역협회 수출 데이터 분석 (Korea Export Analysis)</h3>
-                    </div>
-                    <!-- Month Selector Dropdown -->
-                    <div class="export-month-selector-wrapper">
+                                         <!-- Month Selector Dropdown -->
+                    <div class="export-month-selector-wrapper" style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+                        <a href="https://stat.kita.net/" target="_blank" id="export-card-source-link" class="source-link" style="font-weight: 700;">KITA 무역통계 바로가기 ↗</a>
+                        <span style="color: var(--border-color-active); font-size: 0.75rem;">|</span>
                         <label for="export-month-select" class="selector-label-inline">분석 기준월:</label>
                         <select id="export-month-select" class="export-select">
                             <option value="2026-05" selected>2026년 5월 (최신)</option>
@@ -474,6 +460,7 @@
                                     <th>중립 기준선</th>
                                     <th>현재 모멘텀</th>
                                     <th>평가 등급</th>
+                                    <th>출처 (링크)</th>
                                     <th>경기 순환 기여 시그널</th>
                                 </tr>
                             </thead>
@@ -484,6 +471,7 @@
                                     <td>100.0</td>
                                     <td id="table-cli-mom"><span class="trend-icon up">▲</span> 상승세</td>
                                     <td><span class="status-badge positive" id="table-cli-grade">확장 우세</span></td>
+                                    <td><a href="https://data.oecd.org/" target="_blank" class="source-link" onclick="event.stopPropagation();" id="source-link-cli">OECD Data ↗</a></td>
                                     <td>경기의 중장기 추세 대비 위치 및 전환 신호를 가장 민감하게 선행 제안</td>
                                 </tr>
                                 <tr class="clickable-row" data-indicator="pmi" title="클릭하여 역사적 트렌드 보기">
@@ -492,6 +480,7 @@
                                     <td>50.0</td>
                                     <td id="table-pmi-mom"><span class="trend-icon up">▲</span> 견조</td>
                                     <td><span class="status-badge positive" id="table-pmi-grade">경기 확장</span></td>
+                                    <td><a href="https://www.ismworld.org/" target="_blank" class="source-link" onclick="event.stopPropagation();" id="source-link-pmi">ISM (미국) ↗</a></td>
                                     <td>글로벌 제조업 및 주문 동향을 대변하는 실물 성장 선행 지표</td>
                                 </tr>
                                 <tr class="clickable-row" data-indicator="gdp" title="클릭하여 역사적 트렌드 보기">
@@ -500,6 +489,7 @@
                                     <td>2.0%</td>
                                     <td id="table-gdp-mom"><span class="trend-icon up">▲</span> 안정</td>
                                     <td><span class="status-badge neutral" id="table-gdp-grade">잠재 부합</span></td>
+                                    <td><a href="https://www.bea.gov/" target="_blank" class="source-link" onclick="event.stopPropagation();" id="source-link-gdp">BEA (미국) ↗</a></td>
                                     <td>경기의 동행적 체력을 최종 확정하는 분기별 성장 성적표</td>
                                 </tr>
                                 <tr class="clickable-row" data-indicator="eps" title="클릭하여 역사적 트렌드 보기">
@@ -508,6 +498,7 @@
                                     <td id="table-eps-ref">5.0%</td>
                                     <td id="table-eps-mom"><span class="trend-icon up">▲</span> 상승세</td>
                                     <td><span class="status-badge positive" id="table-eps-grade">실적 양호</span></td>
+                                    <td><a href="https://www.factset.com/" target="_blank" class="source-link" onclick="event.stopPropagation();" id="source-link-eps">FactSet ↗</a></td>
                                     <td>향후 12개월 기업 수익 전망의 성장성으로 주식시장 사계절의 핵심 판정 축</td>
                                 </tr>
                                 <tr class="clickable-row" data-indicator="m2" title="클릭하여 역사적 트렌드 보기">
@@ -516,7 +507,38 @@
                                     <td>6.0%</td>
                                     <td id="table-m2-mom"><span class="trend-icon stable">─</span> 보통</td>
                                     <td><span class="status-badge neutral" id="table-m2-grade">유동성 보통</span></td>
+                                    <td><a href="https://fred.stlouisfed.org/series/M2SL" target="_blank" class="source-link" onclick="event.stopPropagation();" id="source-link-m2">FRED M2 ↗</a></td>
                                     <td>시중의 총 통화 공급 속도를 나타내며 주식시장의 봄(금융장세)을 뒷받침하는 주요 유동성 땔감</td>
+                                </tr>
+                                <tr class="clickable-row" data-indicator="cpi" title="클릭하여 역사적 트렌드 보기">
+                                    <td class="font-semibold"><span class="chart-link-icon">📊</span> 인플레이션율 (CPI YoY)</td>
+                                    <td id="table-cpi-val">2.3%</td>
+                                    <td>2.0%</td>
+                                    <td id="table-cpi-mom"><span class="trend-icon stable">─</span> 안정화</td>
+                                    <td><span class="status-badge positive" id="table-cpi-grade">통제 범위</span></td>
+                                    <td><a href="https://www.bls.gov/cpi/" target="_blank" class="source-link" onclick="event.stopPropagation();" id="source-link-cpi">BLS CPI ↗</a></td>
+                                    <td>소비와 수요 견인력을 확인하는 지표로 늦게 움직이는 지행적 속성</td>
+                                </tr>
+                                <tr class="clickable-row" data-indicator="rate" title="클릭하여 역사적 트렌드 보기">
+                                    <td class="font-semibold"><span class="chart-link-icon">📊</span> 기준 금리</td>
+                                    <td id="table-rate-val">4.0%</td>
+                                    <td>3.0%</td>
+                                    <td id="table-rate-mom"><span class="trend-icon down">▼</span> 인하 기조</td>
+                                    <td><span class="status-badge caution" id="table-rate-grade">제약적 수준</span></td>
+                                    <td><a href="https://fred.stlouisfed.org/series/FEDFUNDS" target="_blank" class="source-link" onclick="event.stopPropagation();" id="source-link-rate">FRED FedFunds ↗</a></td>
+                                    <td>중앙은행의 통화 긴축 수준을 반영하며 자산 밸류에이션의 할인율 작용</td>
+                                </tr>
+                                <tr class="clickable-row" data-indicator="spread" title="클릭하여 역사적 트렌드 보기">
+                                    <td class="font-semibold"><span class="chart-link-icon">📊</span> 장단기 금리차 (10Y-2Y)</td>
+                                    <td id="table-spread-val">0.2%</td>
+                                    <td>0.0%</td>
+                                    <td id="table-spread-mom"><span class="trend-icon up">▲</span> 정상화 중</td>
+                                    <td><span class="status-badge neutral" id="table-spread-grade">정상 양평</span></td>
+                                    <td><a href="https://fred.stlouisfed.org/series/T10Y2Y" target="_blank" class="source-link" onclick="event.stopPropagation();" id="source-link-spread">FRED Spread ↗</a></td>
+                                    <td>금융 시스템 리스크 및 채권 마켓의 1년 뒤 불황 확률 선행 탐지기</td>
+                                </tr>
+                            </tbody>
+                        </table>��타내며 주식시장의 봄(금융장세)을 뒷받침하는 주요 유동성 땔감</td>
                                 </tr>
                                 <tr class="clickable-row" data-indicator="cpi" title="클릭하여 역사적 트렌드 보기">
                                     <td class="font-semibold"><span class="chart-link-icon">📊</span> 인플레이션율 (CPI YoY)</td>
