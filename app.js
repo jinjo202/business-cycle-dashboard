@@ -128,6 +128,126 @@ const historicalPresets = {
     }
 };
 
+// 1B. DUAL-MARKET REGIONAL EXPORT DATA FROM KITA & CENSUS BUREAU
+const exportData = {
+    "US": {
+        title: "Census Bureau (미국 인구조사국) 수출 및 무역 동향",
+        growthLabel: "총 수출 성장률 (YoY)",
+        growthVal: "+3.2%",
+        growthTrend: "▲ AI 서비스 및 에너지 견인",
+        balanceLabel: "미국 무역 수지 (월간)",
+        balanceVal: "-625억 달러 적자",
+        balanceTrend: "▼ 소비재 수입 지속 우위",
+        ebsiLabel: "수출경기 전망 지수 (Index)",
+        ebsiVal: "102.8",
+        ebsiTrend: "▲ 글로벌 테크 수요 안착",
+        itemsTitle: "미국 주요 수출 품목 및 글로벌 비중 (Census Bureau 대변)",
+        items: [
+            { name: "IT 서비스, IP 및 SW 로열티", pct: 32, change: "+8.5%", barClass: "summer" },
+            { name: "민간 항공기 및 방산 우주 장비", pct: 12, change: "+4.2%", barClass: "spring" },
+            { name: "셰일 오일 및 정제 액화 에너지 자원", pct: 10, change: "+6.0%", barClass: "autumn" },
+            { name: "대외 첨단 반도체 및 디바이스 하드웨어", pct: 6, change: "-1.5%", barClass: "winter" }
+        ]
+    },
+    "KR": {
+        title: "KITA (한국무역협회) 통계 기반 수출 동향 분석",
+        growthLabel: "대한민국 총 수출 성장률 (YoY)",
+        growthVal: "+11.5%",
+        growthTrend: "▲ HBM/DRAM 반도체 대형 사이클 주도",
+        balanceLabel: "KITA 통계 누적 무역수지",
+        balanceVal: "+45억 달러 흑자",
+        balanceTrend: "▲ 반도체 호조로 흑자 폭 확대",
+        ebsiLabel: "KITA 수출경기전망지수 (EBSI)",
+        ebsiVal: "112.5",
+        ebsiTrend: "▲ 100 기준점 돌파 (수출 회복기)",
+        itemsTitle: "KITA 제공 한국 핵심 품목별 수출 비중 및 성장률 (stat.kita.net)",
+        items: [
+            { name: "반도체 (DRAM / HBM 메모리 포함)", pct: 18, change: "+42.5%", barClass: "summer" },
+            { name: "자동차, 친환경차 및 완성차 부품", pct: 13, change: "+12.2%", barClass: "spring" },
+            { name: "석유화학 제품 및 합성수지", pct: 8, change: "-2.4%", barClass: "winter" },
+            { name: "선박, LNG 고부가가치 운반선", pct: 6, change: "+18.0%", barClass: "autumn" }
+        ]
+    }
+};
+
+function updateExportCard() {
+    const data = exportData[activeRegion];
+    if (!data) return;
+    
+    const cardIcon = document.getElementById("export-card-icon");
+    if (cardIcon) {
+        if (activeRegion === "KR") {
+            cardIcon.style.color = "#10b981";
+        } else {
+            cardIcon.style.color = "#3b82f6";
+        }
+    }
+    
+    document.getElementById("export-card-title").textContent = data.title;
+    document.getElementById("export-growth-label").textContent = data.growthLabel;
+    document.getElementById("export-growth-val").textContent = data.growthVal;
+    
+    const growthValEl = document.getElementById("export-growth-val");
+    if (growthValEl) {
+        if (activeRegion === "KR") {
+            growthValEl.className = "stat-value text-positive";
+            growthValEl.style.color = "";
+        } else {
+            growthValEl.className = "stat-value";
+            growthValEl.style.color = "";
+        }
+    }
+    
+    document.getElementById("export-growth-trend").textContent = data.growthTrend;
+    
+    document.getElementById("export-balance-label").textContent = data.balanceLabel;
+    document.getElementById("export-balance-val").textContent = data.balanceVal;
+    
+    const balanceValEl = document.getElementById("export-balance-val");
+    if (balanceValEl) {
+        if (activeRegion === "KR") {
+            balanceValEl.className = "stat-value text-positive";
+            balanceValEl.style.color = "";
+        } else {
+            balanceValEl.className = "stat-value";
+            balanceValEl.style.color = "#ef4444"; // Red for US trade deficit
+        }
+    }
+    
+    document.getElementById("export-balance-trend").textContent = data.balanceTrend;
+    
+    document.getElementById("export-ebsi-label").textContent = data.ebsiLabel;
+    document.getElementById("export-ebsi-val").textContent = data.ebsiVal;
+    document.getElementById("export-ebsi-trend").textContent = data.ebsiTrend;
+    
+    document.getElementById("export-items-title").textContent = data.itemsTitle;
+    
+    const itemsList = document.getElementById("export-items-list");
+    if (itemsList) {
+        itemsList.innerHTML = "";
+        data.items.forEach(item => {
+            const itemRow = document.createElement("div");
+            itemRow.className = "export-item-row";
+            
+            const changeColor = item.change.startsWith("-") ? "#ef4444" : "#10b981";
+            
+            itemRow.innerHTML = `
+                <div class="export-item-info">
+                    <span class="export-item-name">${item.name}</span>
+                    <span class="export-item-values">
+                        <span class="export-item-pct">비중: ${item.pct}%</span>
+                        <span class="export-item-change" style="color: ${changeColor}; font-weight: 700;">${item.change}</span>
+                    </span>
+                </div>
+                <div class="export-item-track">
+                    <div class="export-item-bar ${item.barClass}" style="width: ${item.pct * 2.5}%"></div>
+                </div>
+            `;
+            itemsList.appendChild(itemRow);
+        });
+    }
+}
+
 // 2. STATE VARIABLES
 let activeRegion = "US"; // "US" or "KR"
 let activeMode = "sim"; // "sim" or "hist"
@@ -590,7 +710,10 @@ function updateUI(macro, season, portfolio, cli, pmi, gdp, eps, m2, cpi, rate, s
         spreadGrade.textContent = "침체 위험";
     }
 
-    // 8. Update Graphs
+    // 8. Update Export statistics card
+    updateExportCard();
+
+    // 9. Update Graphs
     updateCharts(macro, portfolio);
 }
 
