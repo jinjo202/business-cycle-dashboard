@@ -119,7 +119,7 @@ const historicalPresets = {
         },
         "2026_current": {
             title: "2026년 반도체 HBM 부활 & 주주환원 성장기",
-            cli: 100.5, pmi: 52.0, gdp: 2.5, eps: 15.0, m2: 6.0, cpi: 2.1, rate: 3.25, spread: 0.4,
+            cli: 100.5, pmi: 52.0, gdp: 2.5, eps: 200.0, m2: 6.0, cpi: 2.1, rate: 3.25, spread: 0.4,
             phase: "expansion", season: "summer",
             summary: "AI 고대역폭메모리(HBM) 수출 호조와 기업 밸류업 프로그램 가동으로 선행 이익 성장이 두드러집니다. 통화량 공급도 정상 궤도(M2 6.0%)에 복귀한 안정적 실적장세(여름)입니다.",
             lessons: "실물 선행 지수가 안정적이고 이익 성장 모멘텀이 강한 확장 국면에서는 반도체, AI 장비주, 그리고 기업 밸류업 프로그램 수혜 우량 지주사/금융주 중심의 강한 포커싱 투자 전략이 최상의 성과를 제공합니다.",
@@ -476,7 +476,7 @@ function updateUI(macro, season, portfolio, cli, pmi, gdp, eps, m2, cpi, rate, s
     } else if (pmi >= 50) {
         pmiMom.innerHTML = '<span class="trend-icon stable">─</span> 추세선 안착';
         pmiGrade.className = "status-badge neutral";
-        gdpGrade.textContent = "완만 확장";
+        pmiGrade.textContent = "완만 확장";
     } else {
         pmiMom.innerHTML = '<span class="trend-icon down">▼</span> 수축 국면';
         pmiGrade.className = "status-badge danger";
@@ -1041,7 +1041,7 @@ document.addEventListener("DOMContentLoaded", () => {
             inputCli.value = 100.5;
             inputPmi.value = 52.0;
             inputGdp.value = 2.5;
-            inputEps.value = 15.0;
+            inputEps.value = 200.0;
             inputM2.value = 6.0;
             inputCpi.value = 2.1;
             inputRate.value = 3.25;
@@ -1146,7 +1146,7 @@ document.addEventListener("DOMContentLoaded", () => {
             cli: [100.5, 102.2, 98.2, 99.8, 100.5, 100.5],
             pmi: [54.0, 57.5, 46.0, 50.5, 52.0, 52.0],
             gdp: [2.0, 3.7, 1.5, 2.2, 2.5, 2.5],
-            eps: [12.0, 26.0, -18.0, 8.0, 15.0, 15.0],
+            eps: [12.0, 26.0, -18.0, 8.0, 200.0, 200.0],
             m2: [8.0, 9.8, 5.4, 6.0, 6.0, 6.0],
             cpi: [1.5, 4.0, 5.1, 2.8, 2.1, 2.1],
             rate: [0.5, 0.75, 3.25, 3.50, 3.25, 3.25],
