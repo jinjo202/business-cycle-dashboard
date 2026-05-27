@@ -497,21 +497,13 @@ input:checked + .slider-switch:before {
 .main-panel {
     flex: 1;
     padding: 2.25rem;
-    height: 100vh;
-    overflow-y: auto;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     gap: 1.75rem;
 }
 
-.main-panel::-webkit-scrollbar {
-    width: 6px;
-}
 
-.main-panel::-webkit-scrollbar-thumb {
-    background: var(--border-color);
-    border-radius: 3px;
-}
 
 /* Header style and Badges */
 .dashboard-header {
