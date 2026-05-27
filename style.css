@@ -1430,3 +1430,54 @@ body.light-theme .export-item-track {
 .export-item-bar.autumn { background: linear-gradient(90deg, #fbbf24, #d97706); }
 .export-item-bar.winter { background: linear-gradient(90deg, #38bdf8, #0284c7); }
 
+/* Month Selector Dropdown Premium Styling */
+.export-month-selector-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.selector-label-inline {
+    font-size: 0.725rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+.export-select {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 0.725rem;
+    font-weight: 600;
+    padding: 0.4rem 1.8rem 0.4rem 0.6rem;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24' width='12' height='12' xmlns='http://www.w3.org/2000/svg'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+}
+body.light-theme .export-select {
+    background: #ffffff;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24' width='12' height='12' xmlns='http://www.w3.org/2000/svg'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+}
+.export-select:hover {
+    border-color: var(--border-color-active);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+body.light-theme .export-select:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+.export-select option {
+    background-color: #0b111e;
+    color: #f1f5f9;
+}
+body.light-theme .export-select option {
+    background-color: #ffffff;
+    color: #0f172a;
+}
+
