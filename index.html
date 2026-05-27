@@ -405,6 +405,44 @@
                 </div>
             </section>
 
+            <!-- Export & Trade Balance Analysis Card -->
+            <section class="card export-analysis-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon" id="export-card-icon" style="color: #10b981;">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                        </span>
+                        <h3 id="export-card-title">KITA 무역협회 수출 데이터 분석 (Korea Export Analysis)</h3>
+                    </div>
+                </div>
+                <div class="card-body export-body">
+                    <div class="export-stat-summary">
+                        <div class="stat-box">
+                            <span class="stat-label" id="export-growth-label">총 수출 성장률 (YoY)</span>
+                            <span class="stat-value text-positive" id="export-growth-val">+11.5%</span>
+                            <span class="stat-trend" id="export-growth-trend">▲ 반도체 사이클 주도</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-label" id="export-balance-label">무역 수지 (달러)</span>
+                            <span class="stat-value text-positive" id="export-balance-val">+45억 달러 흑자</span>
+                            <span class="stat-trend" id="export-balance-trend">▲ 12개월 연속 흑자 기조</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-label" id="export-ebsi-label">KITA 수출경기전망 (EBSI)</span>
+                            <span class="stat-value" id="export-ebsi-val">112.5</span>
+                            <span class="stat-trend" id="export-ebsi-trend">▲ 100선 상회 (회복세)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="export-items-grid">
+                        <h4 class="export-items-title" id="export-items-title">주요 수출 품목별 성장률 및 비중 (KITA 통계 대변)</h4>
+                        <div class="export-items-list" id="export-items-list">
+                            <!-- Populated dynamically based on US/KR -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- Bottom Section: Scoreboard / Contributions -->
             <section class="card table-card">
                 <div class="card-header">
