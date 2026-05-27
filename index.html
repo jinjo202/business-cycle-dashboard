@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MacroCycle: 글로벌 경기 국면 & 주식시장 사계절 대시보드</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar: Control & Inputs -->
+        <aside class="sidebar">
+            <div class="brand">
+                <span class="brand-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+                </span>
+                <h2>MacroCycle</h2>
+            </div>
+            
+            <!-- Region Selector Switch -->
+            <div class="control-section">
+                <h3 class="section-title">분석 대상 국가</h3>
+                <div class="region-selector">
+                    <button class="region-btn active" id="region-us" data-region="US">
+                        <span class="flag">🇺🇸</span> 미국 (S&P 500)
+                    </button>
+                    <button class="region-btn" id="region-kr" data-region="KR">
+                        <span class="flag">🇰🇷</span> 한국 (KOSPI)
+                    </button>
+                </div>
+            </div>
+
+            <div class="control-section">
+                <h3 class="section-title">분석 모드 설정</h3>
+                <div class="mode-toggle-group">
+                    <button class="mode-btn active" id="mode-sim">시뮬레이션</button>
+                    <button class="mode-btn" id="mode-hist">역사적 국면 탐색</button>
+                </div>
+            </div>
+
+            <!-- Historical Presets Panel -->
+            <div class="control-section preset-section hidden" id="preset-container">
+                <h3 class="section-title">역사적 에포크 선택</h3>
+                <div class="preset-grid" id="preset-grid-items">
+                    <!-- Loaded dynamically via JS based on US/KR -->
+                </div>
+            </div>
+
+            <!-- Sliders for Indicators -->
+            <div class="control-section" id="sliders-container">
+                <div class="section-header-row">
+                    <h3 class="section-title">거시경제 지표 설정</h3>
+                    <button class="reset-btn-icon" id="btn-reset-sliders" title="초기화">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                    </button>
+                </div>
+                
+                <!-- OECD CLI Slider -->
+                <div class="slider-group">
+                    <div class="slider-label">
+                        <span class="label-text">OECD 경기선행지수 (CLI)</span>
+                        <span class="slider-value" id="val-cli">100.0</span>
+                    </div>
+                    <input type="range" id="input-cli" min="95" max="105" step="0.1" value="100.2">
+                    <div class="slider-meta">
+                        <span>95.0 (침체)</span>
+                        <span>100.0 (추세)</span>
+                        <span>105.0 (정점)</span>
+                    </div>
+                </div>
+
+                <!-- PMI Slider -->
+                <div class="slider-group">
+                    <div class="slider-label">
+                        <span class="label-text">구매관리자지수 (PMI)</span>
+                        <span class="slider-value" id="val-pmi">50.0</span>
+                    </div>
+                    <input type="range" id="input-pmi" min="35" max="65" step="0.5" value="51.5">
+                    <div class="slider-meta">
+                        <span>35.0 (위축)</span>
+                        <span>50.0 (임계선)</span>
+                        <span>65.0 (확장)</span>
+                    </div>
+                </div>
+
+                <!-- GDP Growth Slider -->
+                <div class="slider-group">
+                    <div class="slider-label">
+                        <span class="label-text">GDP 성장률 (YoY)</span>
+                        <span class="slider-value" id="val-gdp">2.0%</span>
+                    </div>
+                    <input type="range" id="input-gdp" min="-5" max="7" step="0.1" value="2.2">
+                    <div class="slider-meta">
+                        <span>-5.0%</span>
+                        <span>2.0% (잠재)</span>
+                        <span>7.0%</span>
+                    </div>
+                </div>
+
+                <!-- Forward EPS Growth Slider -->
+                <div class="slider-group">
+                    <div class="slider-label">
+                        <span class="label-text">12M Fwd EPS 성장률 (YoY)</span>
+                        <span class="slider-value" id="val-eps">10.0%</span>
+                    </div>
+                    <input type="range" id="input-eps" min="-25" max="35" step="0.5" value="10.0">
+                    <div class="slider-meta" id="eps-slider-meta">
+                        <span id="eps-meta-min">-25% (역성장)</span>
+                        <span id="eps-meta-mid">5.0% (평균)</span>
+                        <span id="eps-meta-max">35% (서프라이즈)</span>
+                    </div>
+                </div>
+
+                <!-- M2 Liquidity Growth Slider -->
+                <div class="slider-group">
+                    <div class="slider-label">
+                        <span class="label-text">M2 통화량 증가율 (YoY)</span>
+                        <span class="slider-value" id="val-m2">6.0%</span>
+                    </div>
+                    <input type="range" id="input-m2" min="-5" max="20" step="0.5" value="6.0">
+                    <div class="slider-meta">
+                        <span>-5.0% (유동성 긴축)</span>
+                        <span>6.0% (평균)</span>
+                        <span>20.0% (양적완화)</span>
+                    </div>
+                </div>
+
+                <!-- Inflation Slider -->
+                <div class="slider-group">
+                    <div class="slider-label">
+                        <span class="label-text">인플레이션율 (CPI YoY)</span>
+                        <span class="slider-value" id="val-cpi">2.5%</span>
+                    </div>
+                    <input type="range" id="input-cpi" min="-1" max="10" step="0.1" value="2.3">
+                    <div class="slider-meta">
+                        <span>-1.0% (디플레)</span>
+                        <span>2.0% (목표)</span>
+                        <span>10.0% (하이퍼)</span>
+                    </div>
+                </div>
+
+                <!-- Policy Rate Slider -->
+                <div class="slider-group">
+                    <div class="slider-label">
+                        <span class="label-text">기준 금리</span>
+                        <span class="slider-value" id="val-rate">3.0%</span>
+                    </div>
+                    <input type="range" id="input-rate" min="0" max="8" step="0.25" value="4.0">
+                    <div class="slider-meta">
+                        <span>0.0% (제로금리)</span>
+                        <span>3.0%</span>
+                        <span>8.0%</span>
+                    </div>
+                </div>
+
+                <!-- Yield Curve Spread Slider -->
+                <div class="slider-group">
+                    <div class="slider-label">
+                        <span class="label-text">장단기 금리차 (10Y-2Y)</span>
+                        <span class="slider-value" id="val-spread">1.0%</span>
+                    </div>
+                    <input type="range" id="input-spread" min="-2" max="3" step="0.1" value="0.2">
+                    <div class="slider-meta">
+                        <span>-2.0% (장단기 역전)</span>
+                        <span>0.0%</span>
+                        <span>3.0%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-footer">
+                <p>Created for <span class="highlight">jinjo202</span></p>
+                <div class="theme-toggle">
+                    <span class="theme-label">다크 모드</span>
+                    <label class="switch">
+                        <input type="checkbox" id="theme-checkbox" checked>
+                        <span class="slider-switch"></span>
+                    </label>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Dashboard Panel -->
+        <main class="main-panel">
+            <!-- Header Grid: Status summary -->
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <div class="breadcrumb" id="market-breadcrumb">UNITED STATES STOCK MARKET ANALYSIS</div>
+                    <h1 id="selected-epoch-title">실시간 경제 시뮬레이터</h1>
+                </div>
+                
+                <!-- Macro Cycle Phase Badge -->
+                <div class="header-badges">
+                    <div class="cycle-badge" id="current-phase-badge">
+                        <span class="badge-pulse"></span>
+                        <span class="badge-text" id="current-phase-text">확장기 (Expansion)</span>
+                    </div>
+                    <div class="season-badge" id="current-season-badge">
+                        <span class="season-dot"></span>
+                        <span class="season-text" id="current-season-text">실적장세 (여름)</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Grid: The Two Clocks -->
+            <div class="dashboard-grid-two-clocks">
+                <!-- Left Column: Business Cycle Clock (Scatter Plot) -->
+                <section class="card clock-card">
+                    <div class="card-header">
+                        <div class="card-title-group">
+                            <span class="card-icon">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                            </span>
+                            <h3>경기 순환 시계 (Business Cycle Clock)</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="cycleClockChart"></canvas>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Right Column: Stock Market Season Compass -->
+                <section class="card season-card">
+                    <div class="card-header">
+                        <div class="card-title-group">
+                            <span class="card-icon">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                            </span>
+                            <h3>주식시장 사계절 나침반 (우라가미 구니오)</h3>
+                        </div>
+                    </div>
+                    <div class="card-body compass-body">
+                        <div class="compass-wrapper">
+                            <div class="compass-dial">
+                                <div class="compass-quadrant spring"><span class="q-label">봄<br><span class="q-sub">금융장세</span></span></div>
+                                <div class="compass-quadrant summer"><span class="q-label">여름<br><span class="q-sub">실적장세</span></span></div>
+                                <div class="compass-quadrant autumn"><span class="q-label">가을<br><span class="q-sub">역금융장세</span></span></div>
+                                <div class="compass-quadrant winter"><span class="q-label">겨울<br><span class="q-sub">역실적장세</span></span></div>
+                                <div class="compass-needle" id="compass-needle">
+                                    <div class="needle-shadow"></div>
+                                    <div class="needle-north"></div>
+                                    <div class="needle-south"></div>
+                                </div>
+                                <div class="compass-center"></div>
+                            </div>
+                        </div>
+                        <div class="compass-narrative">
+                            <div class="compass-narrative-title" id="compass-season-title">실적장세 (여름)</div>
+                            <p class="compass-narrative-desc" id="compass-season-desc">금리가 다소 상승하는 추세이나 강한 경제 펀더멘탈과 기업 실적(Forward EPS) 상승이 주가 상승을 전면 견인하는 가장 활력 있는 강세장 국면입니다.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Dashboard Grid: Asset & Sector Allocations -->
+            <div class="dashboard-grid">
+                <!-- Portfolio Allocation Card -->
+                <section class="card portfolio-card">
+                    <div class="card-header">
+                        <div class="card-title-group">
+                            <span class="card-icon">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                            </span>
+                            <h3>자산 배분 포지션</h3>
+                        </div>
+                    </div>
+                    <div class="card-body portfolio-body">
+                        <div class="portfolio-chart-side">
+                            <canvas id="portfolioChart"></canvas>
+                            <div class="portfolio-center-label">
+                                <span class="alloc-title">자산 선호도</span>
+                                <span class="alloc-value" id="risk-score">중립</span>
+                            </div>
+                        </div>
+                        
+                        <div class="portfolio-details-side">
+                            <div class="progress-list">
+                                <!-- Equities -->
+                                <div class="progress-item">
+                                    <div class="progress-info">
+                                        <span class="progress-name"><span class="color-indicator equities"></span>주식 (Equities)</span>
+                                        <span class="progress-pct" id="pct-equities">55%</span>
+                                    </div>
+                                    <div class="progress-track">
+                                        <div class="progress-bar equities-bar" id="bar-equities" style="width: 55%"></div>
+                                    </div>
+                                </div>
+                                <!-- Bonds -->
+                                <div class="progress-item">
+                                    <div class="progress-info">
+                                        <span class="progress-name"><span class="color-indicator bonds"></span>채권 (Bonds)</span>
+                                        <span class="progress-pct" id="pct-bonds">25%</span>
+                                    </div>
+                                    <div class="progress-track">
+                                        <div class="progress-bar bonds-bar" id="bar-bonds" style="width: 25%"></div>
+                                    </div>
+                                </div>
+                                <!-- Commodities -->
+                                <div class="progress-item">
+                                    <div class="progress-info">
+                                        <span class="progress-name"><span class="color-indicator commodities"></span>대체/원자재 (Commodities)</span>
+                                        <span class="progress-pct" id="pct-commodities">15%</span>
+                                    </div>
+                                    <div class="progress-track">
+                                        <div class="progress-bar commodities-bar" id="bar-commodities" style="width: 15%"></div>
+                                    </div>
+                                </div>
+                                <!-- Cash -->
+                                <div class="progress-item">
+                                    <div class="progress-info">
+                                        <span class="progress-name"><span class="color-indicator cash"></span>현금 (Cash)</span>
+                                        <span class="progress-pct" id="pct-cash">5%</span>
+                                    </div>
+                                    <div class="progress-track">
+                                        <div class="progress-bar cash-bar" id="bar-cash" style="width: 5%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sectors / Rotation Card -->
+                <section class="card sector-card">
+                    <div class="card-header">
+                        <div class="card-title-group">
+                            <span class="card-icon">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                            </span>
+                            <h3>주식시장 주도 섹터 로테이션</h3>
+                        </div>
+                    </div>
+                    <div class="card-body sector-body">
+                        <div class="position-summary-box">
+                            <h4 class="pos-phase-title" id="pos-title">실적장세 주도 업종</h4>
+                            <p class="pos-desc" id="pos-description">기업의 이익 성장이 확인되는 구간입니다. 기술 성장주, 반도체 및 핵심 경기민감주(소재/산업재)가 시장을 전면 주도하며 실적 성장 가시성이 높은 종목군에 강한 매수세가 쏠립니다.</p>
+                        </div>
+                        
+                        <div class="sector-weights-container">
+                            <h4 class="pos-phase-title">섹터별 투자 등급 (추천 비중)</h4>
+                            <div class="sector-weights-grid">
+                                <div class="sector-weight-item">
+                                    <div class="sector-info">
+                                        <span class="sector-name">소비재/금융주 <span class="sector-sub">(봄 업종)</span></span>
+                                        <span class="sector-pct" id="pct-sec-spring">20%</span>
+                                    </div>
+                                    <div class="sector-track"><div class="sector-bar spring" id="bar-sec-spring" style="width: 20%"></div></div>
+                                </div>
+                                <div class="sector-weight-item">
+                                    <div class="sector-info">
+                                        <span class="sector-name">IT 기술주/경기민감주 <span class="sector-sub">(여름 업종)</span></span>
+                                        <span class="sector-pct" id="pct-sec-summer">50%</span>
+                                    </div>
+                                    <div class="sector-track"><div class="sector-bar summer" id="bar-sec-summer" style="width: 50%"></div></div>
+                                </div>
+                                <div class="sector-weight-item">
+                                    <div class="sector-info">
+                                        <span class="sector-name">에너지/소재/가치주 <span class="sector-sub">(가을 업종)</span></span>
+                                        <span class="sector-pct" id="pct-sec-autumn">18%</span>
+                                    </div>
+                                    <div class="sector-track"><div class="sector-bar autumn" id="bar-sec-autumn" style="width: 18%"></div></div>
+                                </div>
+                                <div class="sector-weight-item">
+                                    <div class="sector-info">
+                                        <span class="sector-name">유틸리티/헬스케어/방어주 <span class="sector-sub">(겨울 업종)</span></span>
+                                        <span class="sector-pct" id="pct-sec-winter">12%</span>
+                                    </div>
+                                    <div class="sector-track"><div class="sector-bar winter" id="bar-sec-winter" style="width: 12%"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Epoch Narrative / Explanatory Text Card -->
+            <section class="card narrative-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        </span>
+                        <h3>매크로 시나리오 브리핑</h3>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="narrative-grid">
+                        <div class="narrative-block">
+                            <h4 id="narrative-title-left">현재 경제 요약</h4>
+                            <p id="narrative-summary">OECD CLI 및 PMI가 기준선을 웃돌며 안정적인 경기 확장을 나타내고 있습니다. 장단기 금리차가 다소 축소되었으나 경제 기초체력이 양호해 완만한 확장세가 유지되고 있습니다. 금리 인상 후반부 국면에 접어들어 자산 다변화가 필요합니다.</p>
+                        </div>
+                        <div class="narrative-block">
+                            <h4 id="narrative-title-right">역사적 마켓 교훈</h4>
+                            <p id="narrative-lessons">경기 확장기에는 기업 수익 성장에 집중해야 하지만, 금리 수준이 높다면 후기 확장 국면(Late Cycle) 진입 신호일 수 있습니다. 과거 2004-2006년 연준의 연속 금리 인상기 동안, 초기에는 기술주와 원자재가 아웃퍼폼했으나 후반부에는 성장 둔화 우려로 우량주와 방어주 위주의 포트폴리오 조율이 주효했습니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bottom Section: Scoreboard / Contributions -->
+            <section class="card table-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
+                        </span>
+                        <h3>지표별 기여도 및 시그널 대시보드 <span style="font-size: 0.725rem; font-weight: 500; color: var(--text-muted); margin-left: 0.5rem; text-transform: none;">(💡 행을 클릭하면 역사적 트렌드 그래프가 팝업됩니다)</span></h3>
+                    </div>
+                </div>
+                <div class="card-body no-padding">
+                    <div class="table-container">
+                        <table class="status-table">
+                            <thead>
+                                <tr>
+                                    <th>거시경제 지표</th>
+                                    <th>설정값</th>
+                                    <th>중립 기준선</th>
+                                    <th>현재 모멘텀</th>
+                                    <th>평가 등급</th>
+                                    <th>경기 순환 기여 시그널</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="clickable-row" data-indicator="cli" title="클릭하여 역사적 트렌드 보기">
+                                    <td class="font-semibold"><span class="chart-link-icon">📊</span> OECD CLI (경기선행지수)</td>
+                                    <td id="table-cli-val">100.2</td>
+                                    <td>100.0</td>
+                                    <td id="table-cli-mom"><span class="trend-icon up">▲</span> 상승세</td>
+                                    <td><span class="status-badge positive" id="table-cli-grade">확장 우세</span></td>
+                                    <td>경기의 중장기 추세 대비 위치 및 전환 신호를 가장 민감하게 선행 제안</td>
+                                </tr>
+                                <tr class="clickable-row" data-indicator="pmi" title="클릭하여 역사적 트렌드 보기">
+                                    <td class="font-semibold"><span class="chart-link-icon">📊</span> 구매관리자지수 (PMI)</td>
+                                    <td id="table-pmi-val">51.5</td>
+                                    <td>50.0</td>
+                                    <td id="table-pmi-mom"><span class="trend-icon up">▲</span> 견조</td>
+                                    <td><span class="status-badge positive" id="table-pmi-grade">경기 확장</span></td>
+                                    <td>글로벌 제조업 및 주문 동향을 대변하는 실물 성장 선행 지표</td>
+                                </tr>
+                                <tr class="clickable-row" data-indicator="gdp" title="클릭하여 역사적 트렌드 보기">
+                                    <td class="font-semibold"><span class="chart-link-icon">📊</span> 실질 GDP 성장률</td>
+                                    <td id="table-gdp-val">2.2%</td>
+                                    <td>2.0%</td>
+                                    <td id="table-gdp-mom"><span class="trend-icon up">▲</span> 안정</td>
+                                    <td><span class="status-badge neutral" id="table-gdp-grade">잠재 부합</span></td>
+                                    <td>경기의 동행적 체력을 최종 확정하는 분기별 성장 성적표</td>
+                                </tr>
+                                <tr class="clickable-row" data-indicator="eps" title="클릭하여 역사적 트렌드 보기">
+                                    <td class="font-semibold"><span class="chart-link-icon">📊</span> 12M Forward EPS 성장률</td>
+                                    <td id="table-eps-val">10.0%</td>
+                                    <td id="table-eps-ref">5.0%</td>
+                                    <td id="table-eps-mom"><span class="trend-icon up">▲</span> 상승세</td>
+                                    <td><span class="status-badge positive" id="table-eps-grade">실적 양호</span></td>
+                                    <td>향후 12개월 기업 수익 전망의 성장성으로 주식시장 사계절의 핵심 판정 축</td>
+                                </tr>
+                                <tr class="clickable-row" data-indicator="m2" title="클릭하여 역사적 트렌드 보기">
+                                    <td class="font-semibold"><span class="chart-link-icon">📊</span> M2 통화량 증가율 (YoY)</td>
+                                    <td id="table-m2-val">6.0%</td>
+                                    <td>6.0%</td>
+                                    <td id="table-m2-mom"><span class="trend-icon stable">─</span> 보통</td>
+                                    <td><span class="status-badge neutral" id="table-m2-grade">유동성 보통</span></td>
+                                    <td>시중의 총 통화 공급 속도를 나타내며 주식시장의 봄(금융장세)을 뒷받침하는 주요 유동성 땔감</td>
+                                </tr>
+                                <tr class="clickable-row" data-indicator="cpi" title="클릭하여 역사적 트렌드 보기">
+                                    <td class="font-semibold"><span class="chart-link-icon">📊</span> 인플레이션율 (CPI YoY)</td>
+                                    <td id="table-cpi-val">2.3%</td>
+                                    <td>2.0%</td>
+                                    <td id="table-cpi-mom"><span class="trend-icon stable">─</span> 안정화</td>
+                                    <td><span class="status-badge positive" id="table-cpi-grade">통제 범위</span></td>
+                                    <td>소비와 수요 견인력을 확인하는 지표로 늦게 움직이는 지행적 속성</td>
+                                </tr>
+                                <tr class="clickable-row" data-indicator="rate" title="클릭하여 역사적 트렌드 보기">
+                                    <td class="font-semibold"><span class="chart-link-icon">📊</span> 기준 금리</td>
+                                    <td id="table-rate-val">4.0%</td>
+                                    <td>3.0%</td>
+                                    <td id="table-rate-mom"><span class="trend-icon down">▼</span> 인하 기조</td>
+                                    <td><span class="status-badge caution" id="table-rate-grade">제약적 수준</span></td>
+                                    <td>중앙은행의 통화 긴축 수준을 반영하며 자산 밸류에이션의 할인율 작용</td>
+                                </tr>
+                                <tr class="clickable-row" data-indicator="spread" title="클릭하여 역사적 트렌드 보기">
+                                    <td class="font-semibold"><span class="chart-link-icon">📊</span> 장단기 금리차 (10Y-2Y)</td>
+                                    <td id="table-spread-val">0.2%</td>
+                                    <td>0.0%</td>
+                                    <td id="table-spread-mom"><span class="trend-icon up">▲</span> 정상화 중</td>
+                                    <td><span class="status-badge neutral" id="table-spread-grade">정상 양평</span></td>
+                                    <td>금융 시스템 리스크 및 채권 마켓의 1년 뒤 불황 확률 선행 탐지기</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Premium Modal for Historical Chart -->
+    <div class="modal-overlay hidden" id="chart-modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <span class="modal-icon" style="color: #3b82f6; display: flex; align-items: center;">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                    </span>
+                    <h3 id="modal-indicator-title">지표 역사적 트렌드</h3>
+                </div>
+                <button class="modal-close-btn" id="btn-close-modal" title="닫기">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-desc" id="modal-indicator-desc">지표의 디테일 설명 정보가 출력됩니다.</div>
+                <div class="modal-chart-container">
+                    <canvas id="modalHistoryChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS Logic script -->
+    <script src="app.js"></script>
+</body>
+</html>
