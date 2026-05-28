@@ -848,7 +848,8 @@ input:checked + .slider-switch:before {
     grid-template-columns: 1.1fr 1.3fr;
     gap: 1.25rem;
     align-items: center;
-    height: 240px;
+    height: auto;
+    min-height: 240px;
 }
 
 .portfolio-chart-side {
@@ -893,7 +894,8 @@ input:checked + .slider-switch:before {
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
-    height: 240px;
+    height: auto;
+    min-height: 240px;
 }
 
 .position-summary-box {
