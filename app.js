@@ -383,12 +383,115 @@ function updateExportCard() {
 
 // 2. STATE VARIABLES
 let activeRegion = "US"; // "US" or "KR"
-let activeMode = "sim"; // "sim" or "hist"
+let activeMode = "sim"; // "sim" or "hist" or "time"
 let activePreset = "2026_current";
+let activeTimeIndex = 60; // month index from 0 (May 2021) to 60 (May 2026)
+const timeMachineMonths = [];
+const startYear = 2021;
+const startMonth = 5; // May
+for (let i = 0; i <= 60; i++) {
+    let curMonth = startMonth + i;
+    let curYear = startYear + Math.floor((curMonth - 1) / 12);
+    curMonth = ((curMonth - 1) % 12) + 1;
+    timeMachineMonths.push({
+        index: i,
+        year: curYear,
+        month: curMonth,
+        label: `${curYear}년 ${curMonth}월`,
+        value: `${curYear}-${curMonth.toString().padStart(2, '0')}`
+    });
+}
 let cycleClockChartInstance = null;
 let portfolioChartInstance = null;
 
 // 3. CORE ANALYTICAL MATHEMATICAL MODELS
+
+// Helper to interpolate indicator values for a specific month index (0 to 60)
+function getIndicatorsForMonth(region, monthIndex) {
+    const ms = fiveYearMilestones[region];
+    const indicators = {};
+    const keys = ["cli", "pmi", "gdp", "eps", "m2", "cpi", "rate", "spread"];
+    
+    const intervalIndex = Math.min(4, Math.floor(monthIndex / 12));
+    const fraction = (monthIndex % 12) / 12.0;
+
+    keys.forEach(k => {
+        const valStart = ms[k][intervalIndex];
+        const valEnd = ms[k][intervalIndex + 1];
+        let val = valStart + (valEnd - valStart) * fraction;
+
+        // Deterministic macro wobble using Math.sin with phase offsets
+        let noiseScale = 0.05;
+        if (k === "pmi") noiseScale = 0.35;
+        else if (k === "gdp" || k === "cpi" || k === "rate" || k === "spread") noiseScale = 0.08;
+        else if (k === "eps") noiseScale = 0.8;
+        else if (k === "m2") noiseScale = 0.2;
+
+        if (monthIndex !== 0 && monthIndex !== 60 && monthIndex % 12 !== 0) {
+            val += Math.sin(monthIndex * 1.5 + (k.charCodeAt(0) % 5)) * 0.5 * noiseScale;
+        }
+
+        // Clip rates and spreads to realistic values
+        if (k === "rate") val = Math.max(0.0, val);
+        
+        indicators[k] = parseFloat(val.toFixed(2));
+    });
+    return indicators;
+}
+
+// Convert Year-Month string (e.g., '2026-05') to timeline index (0 to 60)
+function getMonthIndex(yearMonthStr) {
+    const parts = yearMonthStr.split("-");
+    const year = parseInt(parts[0]);
+    const month = parseInt(parts[1]);
+    return (year - 2021) * 12 + (month - 5);
+}
+
+// Update MoM Transition Panel in the DOM
+function updateTransitionPanel(prevMacro, currMacro, prevSeason, currSeason, prevIndex) {
+    const prevDateLabel = timeMachineMonths[prevIndex].label;
+    
+    let currDateLabel = "현재 설정";
+    if (activeMode === "time") {
+        currDateLabel = timeMachineMonths[activeTimeIndex].label;
+    } else {
+        const monthSelectEl = document.getElementById("export-month-select");
+        const selectVal = monthSelectEl ? monthSelectEl.value : "2026-05";
+        const idx = getMonthIndex(selectVal);
+        if (idx >= 0 && idx < timeMachineMonths.length) {
+            currDateLabel = timeMachineMonths[idx].label;
+        }
+    }
+    
+    const transitionDateLabelEl = document.getElementById("transition-date-label");
+    if (transitionDateLabelEl) {
+        transitionDateLabelEl.textContent = `${prevDateLabel} ➔ ${currDateLabel} 기준`;
+    }
+    
+    // Update Macro Badges
+    const transMacroPrev = document.getElementById("trans-macro-prev");
+    const transMacroCurr = document.getElementById("trans-macro-curr");
+    
+    if (transMacroPrev && transMacroCurr) {
+        transMacroPrev.className = `cycle-badge-mini ${prevMacro.phase}`;
+        transMacroPrev.textContent = prevMacro.phaseKor.split(" (")[0];
+        
+        transMacroCurr.className = `cycle-badge-mini active ${currMacro.phase}`;
+        transMacroCurr.textContent = currMacro.phaseKor.split(" (")[0];
+    }
+    
+    // Update Season Badges
+    const transSeasonPrev = document.getElementById("trans-season-prev");
+    const transSeasonCurr = document.getElementById("trans-season-curr");
+    
+    if (transSeasonPrev && transSeasonCurr) {
+        transSeasonPrev.className = `season-badge-mini ${prevSeason.season}`;
+        transSeasonPrev.textContent = prevSeason.seasonKor.split(" (")[0];
+        
+        transSeasonCurr.className = `season-badge-mini active ${currSeason.season}`;
+        transSeasonCurr.textContent = currSeason.seasonKor.split(" (")[0];
+    }
+}
 
 // 3A. Business Cycle Model (Fidelity Framework - now with M2 Liquidity Impact)
 function calculateMacroMetrics(cli, pmi, gdp, m2, rate, spread) {
@@ -627,6 +730,11 @@ function updateUI(macro, season, portfolio, cli, pmi, gdp, eps, m2, cpi, rate, s
     const needle = document.getElementById("compass-needle");
     if (needle) {
         needle.style.transform = `rotate(${season.angle}deg)`;
+    }
+
+    const needlePrev = document.getElementById("compass-needle-prev");
+    if (needlePrev) {
+        needlePrev.style.transform = `rotate(${season.prevAngle !== undefined ? season.prevAngle : season.angle}deg)`;
     }
 
     // Compass Text Narrative
@@ -891,6 +999,13 @@ function initCharts(macro, portfolio) {
     let trailPoints = [];
     if (activeMode === "hist" && historicalPresets[activeRegion][activePreset]) {
         trailPoints = historicalPresets[activeRegion][activePreset].trail || [];
+    } else if (activeMode === "time") {
+        const startIdx = Math.max(0, activeTimeIndex - 5);
+        for (let i = startIdx; i <= activeTimeIndex; i++) {
+            const ind = getIndicatorsForMonth(activeRegion, i);
+            const macroM = calculateMacroMetrics(ind.cli, ind.pmi, ind.gdp, ind.m2, ind.rate, ind.spread);
+            trailPoints.push({ x: macroM.x, y: macroM.y });
+        }
     } else {
         const currentPt = { x: macro.x, y: macro.y };
         trailPoints = [
@@ -1044,6 +1159,13 @@ function updateCharts(macro, portfolio) {
     let trailPoints = [];
     if (activeMode === "hist" && historicalPresets[activeRegion][activePreset]) {
         trailPoints = historicalPresets[activeRegion][activePreset].trail || [];
+    } else if (activeMode === "time") {
+        const startIdx = Math.max(0, activeTimeIndex - 5);
+        for (let i = startIdx; i <= activeTimeIndex; i++) {
+            const ind = getIndicatorsForMonth(activeRegion, i);
+            const macroM = calculateMacroMetrics(ind.cli, ind.pmi, ind.gdp, ind.m2, ind.rate, ind.spread);
+            trailPoints.push({ x: macroM.x, y: macroM.y });
+        }
     } else {
         const currentPt = { x: macro.x, y: macro.y };
         trailPoints = [
@@ -1147,8 +1269,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // A. DOM Elements
     const modeSimBtn = document.getElementById("mode-sim");
     const modeHistBtn = document.getElementById("mode-hist");
+    const modeTimeBtn = document.getElementById("mode-time");
     const presetContainer = document.getElementById("preset-container");
     const slidersContainer = document.getElementById("sliders-container");
+    const timeMachineContainer = document.getElementById("time-machine-container");
+    const selectTimeMonth = document.getElementById("select-time-month");
+    const inputTimeSlider = document.getElementById("input-time-slider");
+    const valTimeMonth = document.getElementById("val-time-month");
     const pageTitle = document.getElementById("selected-epoch-title");
     const marketBreadcrumb = document.getElementById("market-breadcrumb");
     
@@ -1198,6 +1325,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Unified model trigger update
     window.triggerModelUpdate = function() {
+        if (activeMode === "time") {
+            // Get indicators for active time machine month
+            const monthData = getIndicatorsForMonth(activeRegion, activeTimeIndex);
+            
+            // Sync slider inputs physically
+            inputCli.value = monthData.cli;
+            inputPmi.value = monthData.pmi;
+            inputGdp.value = monthData.gdp;
+            inputEps.value = monthData.eps;
+            inputM2.value = monthData.m2;
+            inputCpi.value = monthData.cpi;
+            inputRate.value = monthData.rate;
+            inputSpread.value = monthData.spread;
+            
+            // Set page title
+            if (pageTitle) {
+                pageTitle.textContent = `${timeMachineMonths[activeTimeIndex].label} 경기 사이클 분석`;
+            }
+        }
+
         const cliVal = parseFloat(inputCli.value);
         const pmiVal = parseFloat(inputPmi.value);
         const gdpVal = parseFloat(inputGdp.value);
@@ -1231,6 +1378,26 @@ document.addEventListener("DOMContentLoaded", () => {
                 macroMetrics.y = finalPt.y;
             }
         }
+
+        // Calculate Previous Month State for MoM Transitions
+        let prevIndex = 60;
+        if (activeMode === "time") {
+            prevIndex = Math.max(0, activeTimeIndex - 1);
+        } else {
+            const monthSelectEl = document.getElementById("export-month-select");
+            const selectVal = monthSelectEl ? monthSelectEl.value : "2026-05";
+            prevIndex = Math.max(0, getMonthIndex(selectVal) - 1);
+        }
+        
+        const prevInd = getIndicatorsForMonth(activeRegion, prevIndex);
+        const prevMacro = calculateMacroMetrics(prevInd.cli, prevInd.pmi, prevInd.gdp, prevInd.m2, prevInd.rate, prevInd.spread);
+        const prevSeason = calculateStockSeasonMetrics(prevInd.eps, prevInd.m2, prevInd.rate, prevInd.spread);
+        
+        // Pass previous season angle to seasonMetrics for the ghost needle
+        seasonMetrics.prevAngle = prevSeason.angle;
+
+        // Update MoM Transition Panel
+        updateTransitionPanel(prevMacro, macroMetrics, prevSeason, seasonMetrics, prevIndex);
 
         // Sync UI
         updateUI(macroMetrics, seasonMetrics, portfolioMetrics, cliVal, pmiVal, gdpVal, epsVal, m2Val, cpiVal, rateVal, spreadVal);
@@ -1291,9 +1458,11 @@ document.addEventListener("DOMContentLoaded", () => {
         activeMode = "sim";
         modeSimBtn.classList.add("active");
         modeHistBtn.classList.remove("active");
+        if (modeTimeBtn) modeTimeBtn.classList.remove("active");
         
         presetContainer.classList.add("hidden");
         slidersContainer.classList.remove("hidden");
+        if (timeMachineContainer) timeMachineContainer.classList.add("hidden");
         pageTitle.textContent = "실시간 경제 시뮬레이터";
         
         document.querySelectorAll(".preset-btn").forEach(btn => btn.classList.remove("active"));
@@ -1304,13 +1473,34 @@ document.addEventListener("DOMContentLoaded", () => {
         activeMode = "hist";
         modeHistBtn.classList.add("active");
         modeSimBtn.classList.remove("active");
+        if (modeTimeBtn) modeTimeBtn.classList.remove("active");
         
         presetContainer.classList.remove("hidden");
         slidersContainer.classList.add("hidden");
+        if (timeMachineContainer) timeMachineContainer.classList.add("hidden");
         
         loadPresetContainerItems();
         loadPreset(activePreset);
     });
+
+    if (modeTimeBtn) {
+        modeTimeBtn.addEventListener("click", () => {
+            activeMode = "time";
+            modeTimeBtn.classList.add("active");
+            modeSimBtn.classList.remove("active");
+            modeHistBtn.classList.remove("active");
+            
+            presetContainer.classList.add("hidden");
+            slidersContainer.classList.add("hidden");
+            if (timeMachineContainer) timeMachineContainer.classList.remove("hidden");
+            
+            if (pageTitle) {
+                pageTitle.textContent = `${timeMachineMonths[activeTimeIndex].label} 경기 사이클 분석`;
+            }
+            
+            triggerModelUpdate();
+        });
+    }
 
     // Reset Sliders
     function resetSlidersToBaseline() {
@@ -1353,6 +1543,38 @@ document.addEventListener("DOMContentLoaded", () => {
     if (exportMonthSelect) {
         exportMonthSelect.addEventListener("change", () => {
             updateExportCard();
+            triggerModelUpdate(); // Sync MoM transition panel when reference month changes!
+        });
+    }
+
+    // Populate Time Machine Month Dropdown Select Options
+    if (selectTimeMonth) {
+        for (let i = 60; i >= 0; i--) {
+            const m = timeMachineMonths[i];
+            const opt = document.createElement("option");
+            opt.value = m.index;
+            opt.textContent = m.label;
+            if (m.index === activeTimeIndex) {
+                opt.selected = true;
+            }
+            selectTimeMonth.appendChild(opt);
+        }
+    }
+
+    // Timeline Slider & Dropdown Selection Event Binding
+    if (inputTimeSlider && selectTimeMonth && valTimeMonth) {
+        inputTimeSlider.addEventListener("input", (e) => {
+            activeTimeIndex = parseInt(e.target.value);
+            selectTimeMonth.value = activeTimeIndex;
+            valTimeMonth.textContent = timeMachineMonths[activeTimeIndex].label;
+            triggerModelUpdate();
+        });
+
+        selectTimeMonth.addEventListener("change", (e) => {
+            activeTimeIndex = parseInt(e.target.value);
+            inputTimeSlider.value = activeTimeIndex;
+            valTimeMonth.textContent = timeMachineMonths[activeTimeIndex].label;
+            triggerModelUpdate();
         });
     }
 
