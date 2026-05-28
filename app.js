@@ -701,7 +701,7 @@ function updateExportCard() {
                         <span>💡 클릭 시 세부품목별 YoY/MoM 변화율 펼치기 ▽</span>
                     </div>
                 </div>
-                ` + "${subItemsHtml}" + `
+                ${subItemsHtml}
             `;
             
             // Toggle accordion on click
@@ -821,18 +821,29 @@ function getMonthIndex(yearMonthStr) {
 
 // Update MoM Transition Panel in the DOM
 function updateTransitionPanel(prevMacro, currMacro, prevSeason, currSeason, prevIndex) {
-    const prevDateLabel = timeMachineMonths[prevIndex].label;
+    let prevDateLabel = "직전 상태";
+    if (activeMode === "time") {
+        prevDateLabel = timeMachineMonths[prevIndex].label;
+    } else if (activeMode === "sim") {
+        const monthSelectEl = document.getElementById("export-month-select");
+        const selectVal = monthSelectEl ? monthSelectEl.value : "2026-05";
+        const idx = getMonthIndex(selectVal);
+        const prevIdx = Math.max(0, idx - 1);
+        if (prevIdx >= 0 && prevIdx < timeMachineMonths.length) {
+            prevDateLabel = `직전월 (${timeMachineMonths[prevIdx].label})`;
+        }
+    } else if (activeMode === "hist") {
+        prevDateLabel = "에포크 진입기 (초기)";
+    }
     
     let currDateLabel = "현재 설정";
     if (activeMode === "time") {
         currDateLabel = timeMachineMonths[activeTimeIndex].label;
-    } else {
-        const monthSelectEl = document.getElementById("export-month-select");
-        const selectVal = monthSelectEl ? monthSelectEl.value : "2026-05";
-        const idx = getMonthIndex(selectVal);
-        if (idx >= 0 && idx < timeMachineMonths.length) {
-            currDateLabel = timeMachineMonths[idx].label;
-        }
+    } else if (activeMode === "sim") {
+        currDateLabel = "시뮬레이션 설정";
+    } else if (activeMode === "hist") {
+        const presetData = historicalPresets[activeRegion][activePreset];
+        currDateLabel = presetData ? presetData.title.split(" (")[0] : "역사적 국면";
     }
     
     const transitionDateLabelEl = document.getElementById("transition-date-label");
@@ -1781,19 +1792,51 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        // Calculate Previous Month State for MoM Transitions
+        // Calculate Previous State for MoM Transitions
         let prevIndex = 60;
+        let prevMacro, prevSeason;
+        
         if (activeMode === "time") {
             prevIndex = Math.max(0, activeTimeIndex - 1);
+            const prevInd = getIndicatorsForMonth(activeRegion, prevIndex);
+            prevMacro = calculateMacroMetrics(prevInd.cli, prevInd.pmi, prevInd.gdp, prevInd.m2, prevInd.rate, prevInd.spread);
+            prevSeason = calculateStockSeasonMetrics(prevInd.eps, prevInd.m2, prevInd.rate, prevInd.spread);
+        } else if (activeMode === "hist") {
+            // Historical Epoch Mode: Use the first point of the historical trail as previous state
+            const presetData = historicalPresets[activeRegion][activePreset];
+            if (presetData && presetData.trail && presetData.trail.length > 0) {
+                const prevPt = presetData.trail[0];
+                const prevPhase = (prevPt.x >= 0 && prevPt.y >= 0) ? "expansion" :
+                                  (prevPt.x >= 0 && prevPt.y < 0) ? "slowdown" :
+                                  (prevPt.x < 0 && prevPt.y < 0) ? "contraction" : "recovery";
+                const prevPhaseKor = prevPhase === "expansion" ? "확장기 (Expansion)" :
+                                     prevPhase === "slowdown" ? "둔화기 (Slowdown)" :
+                                     prevPhase === "contraction" ? "수축기 (Contraction)" : "회복기 (Recovery)";
+                
+                const prevSeasonStr = prevPhase === "expansion" ? "summer" :
+                                      prevPhase === "slowdown" ? "autumn" :
+                                      prevPhase === "contraction" ? "winter" : "spring";
+                const prevSeasonKor = prevSeasonStr === "summer" ? "실적장세 (여름)" :
+                                      prevSeasonStr === "autumn" ? "역금융장세 (가을)" :
+                                      prevSeasonStr === "winter" ? "역실적장세 (겨울)" : "금융장세 (봄)";
+                
+                prevMacro = { phase: prevPhase, phaseKor: prevPhaseKor };
+                prevSeason = { season: prevSeasonStr, seasonKor: prevSeasonKor, angle: prevSeasonStr === "summer" ? 90 : prevSeasonStr === "autumn" ? 180 : prevSeasonStr === "winter" ? 270 : 0 };
+            } else {
+                prevIndex = 59;
+                const prevInd = getIndicatorsForMonth(activeRegion, prevIndex);
+                prevMacro = calculateMacroMetrics(prevInd.cli, prevInd.pmi, prevInd.gdp, prevInd.m2, prevInd.rate, prevInd.spread);
+                prevSeason = calculateStockSeasonMetrics(prevInd.eps, prevInd.m2, prevInd.rate, prevInd.spread);
+            }
         } else {
+            // Simulation Mode: Compare against previous month of selected reference month
             const monthSelectEl = document.getElementById("export-month-select");
             const selectVal = monthSelectEl ? monthSelectEl.value : "2026-05";
             prevIndex = Math.max(0, getMonthIndex(selectVal) - 1);
+            const prevInd = getIndicatorsForMonth(activeRegion, prevIndex);
+            prevMacro = calculateMacroMetrics(prevInd.cli, prevInd.pmi, prevInd.gdp, prevInd.m2, prevInd.rate, prevInd.spread);
+            prevSeason = calculateStockSeasonMetrics(prevInd.eps, prevInd.m2, prevInd.rate, prevInd.spread);
         }
-        
-        const prevInd = getIndicatorsForMonth(activeRegion, prevIndex);
-        const prevMacro = calculateMacroMetrics(prevInd.cli, prevInd.pmi, prevInd.gdp, prevInd.m2, prevInd.rate, prevInd.spread);
-        const prevSeason = calculateStockSeasonMetrics(prevInd.eps, prevInd.m2, prevInd.rate, prevInd.spread);
         
         // Pass previous season angle to seasonMetrics for the ghost needle
         seasonMetrics.prevAngle = prevSeason.angle;
