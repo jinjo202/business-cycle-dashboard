@@ -584,6 +584,18 @@ function updateExportCard() {
         }
     }
 
+    // Update Export Card Source Link
+    const sourceLinkEl = document.getElementById("export-card-source-link");
+    if (sourceLinkEl) {
+        if (activeRegion === "KR") {
+            sourceLinkEl.href = "https://stat.kita.net/";
+            sourceLinkEl.textContent = "KITA 무역통계 바로가기 ↗";
+        } else {
+            sourceLinkEl.href = "https://www.census.gov/foreign-trade/index.html";
+            sourceLinkEl.textContent = "Census Bureau 바로가기 ↗";
+        }
+    }
+
     // Set regional title
     const regionTitle = activeRegion === "KR"
         ? "KITA (한국무역협회) 통계 기반 수출 동향 분석"
@@ -1309,6 +1321,36 @@ function updateUI(macro, season, portfolio, cli, pmi, gdp, eps, m2, cpi, rate, s
         spreadMom.innerHTML = '<span class="trend-icon down">▼</span> 장단기 역전';
         spreadGrade.className = "status-badge danger";
         spreadGrade.textContent = "침체 위험";
+    }
+
+    // 7B. Dynamic Table Source Links
+    const sourceCli = document.getElementById("source-link-cli");
+    const sourcePmi = document.getElementById("source-link-pmi");
+    const sourceGdp = document.getElementById("source-link-gdp");
+    const sourceEps = document.getElementById("source-link-eps");
+    const sourceM2 = document.getElementById("source-link-m2");
+    const sourceCpi = document.getElementById("source-link-cpi");
+    const sourceRate = document.getElementById("source-link-rate");
+    const sourceSpread = document.getElementById("source-link-spread");
+
+    if (activeRegion === "US") {
+        if (sourceCli) { sourceCli.href = "https://data.oecd.org/"; sourceCli.textContent = "OECD Data ↗"; }
+        if (sourcePmi) { sourcePmi.href = "https://www.ismworld.org/"; sourcePmi.textContent = "ISM (미국) ↗"; }
+        if (sourceGdp) { sourceGdp.href = "https://www.bea.gov/"; sourceGdp.textContent = "BEA (미국) ↗"; }
+        if (sourceEps) { sourceEps.href = "https://www.factset.com/"; sourceEps.textContent = "FactSet ↗"; }
+        if (sourceM2) { sourceM2.href = "https://fred.stlouisfed.org/series/M2SL"; sourceM2.textContent = "FRED M2 ↗"; }
+        if (sourceCpi) { sourceCpi.href = "https://www.bls.gov/cpi/"; sourceCpi.textContent = "BLS CPI ↗"; }
+        if (sourceRate) { sourceRate.href = "https://fred.stlouisfed.org/series/FEDFUNDS"; sourceRate.textContent = "FRED FedFunds ↗"; }
+        if (sourceSpread) { sourceSpread.href = "https://fred.stlouisfed.org/series/T10Y2Y"; sourceSpread.textContent = "FRED Spread ↗"; }
+    } else {
+        if (sourceCli) { sourceCli.href = "https://data.oecd.org/"; sourceCli.textContent = "OECD Data ↗"; }
+        if (sourcePmi) { sourcePmi.href = "https://www.spglobal.com/marketintelligence/en/mi/products/pmi.html"; sourcePmi.textContent = "S&P (한국) ↗"; }
+        if (sourceGdp) { sourceGdp.href = "https://ecos.bok.or.kr/"; sourceGdp.textContent = "한은 ECOS ↗"; }
+        if (sourceEps) { sourceEps.href = "https://www.fnguide.com/"; sourceEps.textContent = "FnGuide ↗"; }
+        if (sourceM2) { sourceM2.href = "https://ecos.bok.or.kr/"; sourceM2.textContent = "한은 ECOS M2 ↗"; }
+        if (sourceCpi) { sourceCpi.href = "https://kosis.kr/"; sourceCpi.textContent = "통계청 KOSIS ↗"; }
+        if (sourceRate) { sourceRate.href = "https://www.bok.or.kr/portal/singl/baseRate/list.do?menuNo=200489"; sourceRate.textContent = "한국은행 ↗"; }
+        if (sourceSpread) { sourceSpread.href = "https://ecos.bok.or.kr/"; sourceSpread.textContent = "한은 ECOS 국채 ↗"; }
     }
 
     // 7B. Dynamic Table Source Links
