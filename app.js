@@ -1454,6 +1454,59 @@ function calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2
         }
     }
 
+    // E. Dynamic Sector Period Returns (YTD, 1M, 3M)
+    // Cohesively derived based on growth coordinates (x) and momentum coordinates (y)
+    const sectorsDef = [
+        {
+            key: "spring",
+            name: "소비재/금융주 (봄 업종)",
+            color: "#3b82f6",
+            base1: 1.8, base3: 5.2, baseYtd: 12.4,
+            coefX: 0.6, coefY: 0.3
+        },
+        {
+            key: "summer",
+            name: "IT 기술주/경기민감주 (여름 업종)",
+            color: "#10b981",
+            base1: activeRegion === "US" ? 2.5 : 1.8,
+            base3: activeRegion === "US" ? 7.2 : 5.0,
+            baseYtd: activeRegion === "US" ? 19.8 : 12.5,
+            coefX: activeRegion === "US" ? 1.5 : 1.2,
+            coefY: activeRegion === "US" ? 0.8 : 0.6
+        },
+        {
+            key: "autumn",
+            name: "에너지/소재/가치주 (가을 업종)",
+            color: "#f59e0b",
+            base1: 1.5, base3: 4.5, baseYtd: 10.5,
+            coefX: 0.4, coefY: 0.1
+        },
+        {
+            key: "winter",
+            name: "유틸리티/헬스케어/방어주 (겨울 업종)",
+            color: "#ef4444",
+            base1: 1.0, base3: 3.0, baseYtd: 8.5,
+            coefX: -0.5, coefY: -0.2
+        }
+    ];
+
+    const sectorReturns = sectorsDef.map(sec => {
+        const r1 = sec.base1 + sec.coefX * x + sec.coefY * y;
+        const r3 = sec.base3 + 3.0 * sec.coefX * x + 3.0 * sec.coefY * y;
+        const rYtd = sec.baseYtd + 8.0 * sec.coefX * x + 8.0 * sec.coefY * y;
+
+        return {
+            name: sec.name,
+            color: sec.color,
+            m1: (r1 >= 0 ? "+" : "") + r1.toFixed(1) + "%",
+            m3: (r3 >= 0 ? "+" : "") + r3.toFixed(1) + "%",
+            ytd: (rYtd >= 0 ? "+" : "") + rYtd.toFixed(1) + "%",
+            m1Pos: r1 >= 0,
+            m3Pos: r3 >= 0,
+            ytdPos: rYtd >= 0
+        };
+    });
+
     return {
         per: per.toFixed(1),
         perGrade: perGrade,
@@ -1478,7 +1531,8 @@ function calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2
         retailWeight: retailWeight,
         highStocks: highStocks,
         lowStocks: lowStocks,
-        volumeStocks: volumeStocks
+        volumeStocks: volumeStocks,
+        sectorReturns: sectorReturns
     };
 }
 
@@ -1978,6 +2032,28 @@ function updateUI(macro, season, portfolio, cli, pmi, gdp, eps, m2, cpi, rate, s
                 </div>
             </div>
         `).join("");
+    }
+
+    // Render Sector Period Returns Table
+    const elSectorReturnsTbody = document.getElementById("sector-returns-tbody");
+    if (elSectorReturnsTbody && sec.sectorReturns) {
+        elSectorReturnsTbody.innerHTML = sec.sectorReturns.map(s => {
+            const m1Color = s.m1Pos ? "#10b981" : "#ef4444";
+            const m3Color = s.m3Pos ? "#10b981" : "#ef4444";
+            const ytdColor = s.ytdPos ? "#10b981" : "#ef4444";
+            
+            return `
+                <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04); transition: background-color 0.2s ease;">
+                    <td style="text-align: left; padding: 0.65rem 0.25rem; font-weight: 700; color: #ffffff; display: flex; align-items: center; gap: 0.4rem;">
+                        <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background-color: ${s.color}; flex-shrink: 0;"></span>
+                        <span>${s.name}</span>
+                    </td>
+                    <td style="color: ${m1Color}; font-weight: 700; padding: 0.65rem 0.25rem;">${s.m1}</td>
+                    <td style="color: ${m3Color}; font-weight: 700; padding: 0.65rem 0.25rem;">${s.m3}</td>
+                    <td style="color: ${ytdColor}; font-weight: 700; padding: 0.65rem 0.25rem;">${s.ytd}</td>
+                </tr>
+            `;
+        }).join("");
     }
 
     // 8. Update Export statistics card
