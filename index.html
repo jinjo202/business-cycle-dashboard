@@ -601,6 +601,28 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Sector Period Performance Tabular Section -->
+                        <div class="sector-returns-container" style="margin-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 1.2rem;">
+                            <h4 class="pos-phase-title" style="margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.3rem;">
+                                <span>📊</span> 섹터별 기간 수익률 (Sector Performance)
+                            </h4>
+                            <div style="width: 100%; overflow-x: auto;">
+                                <table style="width: 100%; border-collapse: collapse; font-size: 0.775rem; text-align: center;">
+                                    <thead>
+                                        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.08); color: var(--text-muted); font-weight: 600;">
+                                            <th style="text-align: left; padding: 0.5rem 0.25rem;">섹터군 (계절 업종)</th>
+                                            <th style="padding: 0.5rem 0.25rem; width: 22%;">1M</th>
+                                            <th style="padding: 0.5rem 0.25rem; width: 22%;">3M</th>
+                                            <th style="padding: 0.5rem 0.25rem; width: 22%;">YTD</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="sector-returns-tbody">
+                                        <!-- Dynamic returns will be injected here by app.js -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </section>
             </div>
