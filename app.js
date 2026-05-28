@@ -139,10 +139,38 @@ const exportData = {
             ebsiVal: "102.8",
             ebsiTrend: "▲ 글로벌 테크 수요 안착",
             items: [
-                { name: "IT 서비스, IP 및 SW 로열티", pct: 32, change: "+8.5%", barClass: "summer" },
-                { name: "민간 항공기 및 방산 우주 장비", pct: 12, change: "+4.2%", barClass: "spring" },
-                { name: "셰일 오일 및 정제 액화 에너지 자원", pct: 10, change: "+6.0%", barClass: "autumn" },
-                { name: "대외 첨단 반도체 및 디바이스 하드웨어", pct: 6, change: "-1.5%", barClass: "winter" }
+                {
+                    name: "IT 서비스, IP 및 SW 로열티", pct: 32, change: "+8.5%", barClass: "summer",
+                    subItems: [
+                        { name: "클라우드 인프라 (AWS/Azure)", yoy: "+12.4%", mom: "+1.8%" },
+                        { name: "AI 알고리즘 및 API 라이선싱", yoy: "+18.5%", mom: "+3.2%" },
+                        { name: "엔터프라이즈 SaaS 솔루션", yoy: "+6.2%", mom: "+0.8%" }
+                    ]
+                },
+                {
+                    name: "민간 항공기 및 방산 우주 장비", pct: 12, change: "+4.2%", barClass: "spring",
+                    subItems: [
+                        { name: "민간 여객기 및 제트 엔진 인도", yoy: "+3.0%", mom: "+0.5%" },
+                        { name: "첨단 정밀 유도 방산 무기 체계", yoy: "+8.2%", mom: "+1.4%" },
+                        { name: "인공위성 및 우주항공 통신 장비", yoy: "+2.8%", mom: "+0.2%" }
+                    ]
+                },
+                {
+                    name: "셰일 오일 및 정제 액화 에너지 자원", pct: 10, change: "+6.0%", barClass: "autumn",
+                    subItems: [
+                        { name: "셰일 원유 (WTI 선적)", yoy: "+4.5%", mom: "+0.9%" },
+                        { name: "액화천연가스 (LNG) 글로벌 수출", yoy: "+8.8%", mom: "+1.5%" },
+                        { name: "휘발유 및 항공유 등 석유 정제제품", yoy: "+5.2%", mom: "+0.7%" }
+                    ]
+                },
+                {
+                    name: "대외 첨단 반도체 및 디바이스 하드웨어", pct: 6, change: "-1.5%", barClass: "winter",
+                    subItems: [
+                        { name: "AI 가속기 및 고성능 GPU 설계", yoy: "+28.5%", mom: "+4.1%" },
+                        { name: "실리콘 웨이퍼 및 첨단 노광장비", yoy: "-5.2%", mom: "-0.8%" },
+                        { name: "디바이스 모뎀 및 네트워크 라우터", yoy: "-8.0%", mom: "-1.2%" }
+                    ]
+                }
             ]
         },
         "2026-04": {
@@ -153,10 +181,38 @@ const exportData = {
             ebsiVal: "103.0",
             ebsiTrend: "▲ 금리 안정 조짐 반등",
             items: [
-                { name: "IT 서비스, IP 및 SW 로열티", pct: 31, change: "+9.0%", barClass: "summer" },
-                { name: "민간 항공기 및 방산 우주 장비", pct: 12, change: "+4.5%", barClass: "spring" },
-                { name: "셰일 오일 및 정제 액화 에너지 자원", pct: 10, change: "+5.8%", barClass: "autumn" },
-                { name: "대외 첨단 반도체 및 디바이스 하드웨어", pct: 6, change: "-1.2%", barClass: "winter" }
+                {
+                    name: "IT 서비스, IP 및 SW 로열티", pct: 31, change: "+9.0%", barClass: "summer",
+                    subItems: [
+                        { name: "클라우드 인프라 (AWS/Azure)", yoy: "+13.0%", mom: "+2.0%" },
+                        { name: "AI 알고리즘 및 API 라이선싱", yoy: "+19.2%", mom: "+3.5%" },
+                        { name: "엔터프라이즈 SaaS 솔루션", yoy: "+6.5%", mom: "+1.0%" }
+                    ]
+                },
+                {
+                    name: "민간 항공기 및 방산 우주 장비", pct: 12, change: "+4.5%", barClass: "spring",
+                    subItems: [
+                        { name: "민간 여객기 및 제트 엔진 인도", yoy: "+3.2%", mom: "+0.6%" },
+                        { name: "첨단 정밀 유도 방산 무기 체계", yoy: "+8.5%", mom: "+1.5%" },
+                        { name: "인공위성 및 우주항공 통신 장비", yoy: "+3.0%", mom: "+0.3%" }
+                    ]
+                },
+                {
+                    name: "셰일 오일 및 정제 액화 에너지 자원", pct: 10, change: "+5.8%", barClass: "autumn",
+                    subItems: [
+                        { name: "셰일 원유 (WTI 선적)", yoy: "+4.2%", mom: "+0.8%" },
+                        { name: "액화천연가스 (LNG) 글로벌 수출", yoy: "+8.5%", mom: "+1.3%" },
+                        { name: "휘발유 및 항공유 등 석유 정제제품", yoy: "+5.0%", mom: "+0.6%" }
+                    ]
+                },
+                {
+                    name: "대외 첨단 반도체 및 디바이스 하드웨어", pct: 6, change: "-1.2%", barClass: "winter",
+                    subItems: [
+                        { name: "AI 가속기 및 고성능 GPU 설계", yoy: "+30.0%", mom: "+4.5%" },
+                        { name: "실리콘 웨이퍼 및 첨단 노광장비", yoy: "-4.8%", mom: "-0.6%" },
+                        { name: "디바이스 모뎀 및 네트워크 라우터", yoy: "-7.5%", mom: "-1.0%" }
+                    ]
+                }
             ]
         },
         "2026-03": {
@@ -167,10 +223,38 @@ const exportData = {
             ebsiVal: "102.0",
             ebsiTrend: "─ 공급망 완화 추세 부합",
             items: [
-                { name: "IT 서비스, IP 및 SW 로열티", pct: 32, change: "+8.0%", barClass: "summer" },
-                { name: "민간 항공기 및 방산 우주 장비", pct: 11, change: "+3.8%", barClass: "spring" },
-                { name: "셰일 오일 및 정제 액화 에너지 자원", pct: 9, change: "+5.2%", barClass: "autumn" },
-                { name: "대외 첨단 반도체 및 디바이스 하드웨어", pct: 5, change: "-2.0%", barClass: "winter" }
+                {
+                    name: "IT 서비스, IP 및 SW 로열티", pct: 32, change: "+8.0%", barClass: "summer",
+                    subItems: [
+                        { name: "클라우드 인프라 (AWS/Azure)", yoy: "+11.8%", mom: "+1.5%" },
+                        { name: "AI 알고리즘 및 API 라이선싱", yoy: "+17.8%", mom: "+2.8%" },
+                        { name: "엔터프라이즈 SaaS 솔루션", yoy: "+5.8%", mom: "+0.7%" }
+                    ]
+                },
+                {
+                    name: "민간 항공기 및 방산 우주 장비", pct: 11, change: "+3.8%", barClass: "spring",
+                    subItems: [
+                        { name: "민간 여객기 및 제트 엔진 인도", yoy: "+2.6%", mom: "+0.4%" },
+                        { name: "첨단 정밀 유도 방산 무기 체계", yoy: "+7.8%", mom: "+1.2%" },
+                        { name: "인공위성 및 우주항공 통신 장비", yoy: "+2.5%", mom: "+0.1%" }
+                    ]
+                },
+                {
+                    name: "셰일 오일 및 정제 액화 에너지 자원", pct: 9, change: "+5.2%", barClass: "autumn",
+                    subItems: [
+                        { name: "셰일 원유 (WTI 선적)", yoy: "+3.8%", mom: "+0.7%" },
+                        { name: "액화천연가스 (LNG) 글로벌 수출", yoy: "+7.8%", mom: "+1.1%" },
+                        { name: "휘발유 및 항공유 등 석유 정제제품", yoy: "+4.5%", mom: "+0.5%" }
+                    ]
+                },
+                {
+                    name: "대외 첨단 반도체 및 디바이스 하드웨어", pct: 5, change: "-2.0%", barClass: "winter",
+                    subItems: [
+                        { name: "AI 가속기 및 고성능 GPU 설계", yoy: "+25.5%", mom: "+3.8%" },
+                        { name: "실리콘 웨이퍼 및 첨단 노광장비", yoy: "-5.8%", mom: "-1.0%" },
+                        { name: "디바이스 모뎀 및 네트워크 라우터", yoy: "-8.5%", mom: "-1.5%" }
+                    ]
+                }
             ]
         },
         "2025-04": {
@@ -181,10 +265,38 @@ const exportData = {
             ebsiVal: "99.5",
             ebsiTrend: "▼ 100선 일시 하회",
             items: [
-                { name: "IT 서비스, IP 및 SW 로열티", pct: 30, change: "+5.2%", barClass: "summer" },
-                { name: "민간 항공기 및 방산 우주 장비", pct: 12, change: "+2.8%", barClass: "spring" },
-                { name: "셰일 오일 및 정제 액화 에너지 자원", pct: 11, change: "+3.0%", barClass: "autumn" },
-                { name: "대외 첨단 반도체 및 디바이스 하드웨어", pct: 5, change: "-4.5%", barClass: "winter" }
+                {
+                    name: "IT 서비스, IP 및 SW 로열티", pct: 30, change: "+5.2%", barClass: "summer",
+                    subItems: [
+                        { name: "클라우드 인프라 (AWS/Azure)", yoy: "+8.2%", mom: "+1.0%" },
+                        { name: "AI 알고리즘 및 API 라이선싱", yoy: "+12.4%", mom: "+1.8%" },
+                        { name: "엔터프라이즈 SaaS 솔루션", yoy: "+3.8%", mom: "+0.4%" }
+                    ]
+                },
+                {
+                    name: "민간 항공기 및 방산 우주 장비", pct: 12, change: "+2.8%", barClass: "spring",
+                    subItems: [
+                        { name: "민간 여객기 및 제트 엔진 인도", yoy: "+1.8%", mom: "+0.2%" },
+                        { name: "첨단 정밀 유도 방산 무기 체계", yoy: "+5.5%", mom: "+0.9%" },
+                        { name: "인공위성 및 우주항공 통신 장비", yoy: "+1.5%", mom: "+0.1%" }
+                    ]
+                },
+                {
+                    name: "셰일 오일 및 정제 액화 에너지 자원", pct: 11, change: "+3.0%", barClass: "autumn",
+                    subItems: [
+                        { name: "셰일 원유 (WTI 선적)", yoy: "+2.2%", mom: "+0.4%" },
+                        { name: "액화천연가스 (LNG) 글로벌 수출", yoy: "+4.5%", mom: "+0.7%" },
+                        { name: "휘발유 및 항공유 등 석유 정제제품", yoy: "+2.8%", mom: "+0.3%" }
+                    ]
+                },
+                {
+                    name: "대외 첨단 반도체 및 디바이스 하드웨어", pct: 5, change: "-4.5%", barClass: "winter",
+                    subItems: [
+                        { name: "AI 가속기 및 고성능 GPU 설계", yoy: "+15.0%", mom: "+2.2%" },
+                        { name: "실리콘 웨이퍼 및 첨단 노광장비", yoy: "-8.5%", mom: "-1.5%" },
+                        { name: "디바이스 모뎀 및 네트워크 라우터", yoy: "-11.2%", mom: "-2.0%" }
+                    ]
+                }
             ]
         },
         "2025-03": {
@@ -195,10 +307,38 @@ const exportData = {
             ebsiVal: "98.0",
             ebsiTrend: "▼ 제조업 생산량 감소세",
             items: [
-                { name: "IT 서비스, IP 및 SW 로열티", pct: 29, change: "+4.5%", barClass: "summer" },
-                { name: "민간 항공기 및 방산 우주 장비", pct: 12, change: "+2.2%", barClass: "spring" },
-                { name: "셰일 오일 및 정제 액화 에너지 자원", pct: 11, change: "+2.5%", barClass: "autumn" },
-                { name: "대외 첨단 반도체 및 디바이스 하드웨어", pct: 5, change: "-5.0%", barClass: "winter" }
+                {
+                    name: "IT 서비스, IP 및 SW 로열티", pct: 29, change: "+4.5%", barClass: "summer",
+                    subItems: [
+                        { name: "클라우드 인프라 (AWS/Azure)", yoy: "+7.5%", mom: "+0.8%" },
+                        { name: "AI 알고리즘 및 API 라이선싱", yoy: "+11.0%", mom: "+1.5%" },
+                        { name: "엔터프라이즈 SaaS 솔루션", yoy: "+3.2%", mom: "+0.3%" }
+                    ]
+                },
+                {
+                    name: "민간 항공기 및 방산 우주 장비", pct: 12, change: "+2.2%", barClass: "spring",
+                    subItems: [
+                        { name: "민간 여객기 및 제트 엔진 인도", yoy: "+1.5%", mom: "+0.1%" },
+                        { name: "첨단 정밀 유도 방산 무기 체계", yoy: "+4.8%", mom: "+0.7%" },
+                        { name: "인공위성 및 우주항공 통신 장비", yoy: "+1.2%", mom: "+0.1%" }
+                    ]
+                },
+                {
+                    name: "셰일 오일 및 정제 액화 에너지 자원", pct: 11, change: "+2.5%", barClass: "autumn",
+                    subItems: [
+                        { name: "셰일 원유 (WTI 선적)", yoy: "+1.8%", mom: "+0.3%" },
+                        { name: "액화천연가스 (LNG) 글로벌 수출", yoy: "+3.8%", mom: "+0.6%" },
+                        { name: "휘발유 및 항공유 등 석유 정제제품", yoy: "+2.2%", mom: "+0.2%" }
+                    ]
+                },
+                {
+                    name: "대외 첨단 반도체 및 디바이스 하드웨어", pct: 5, change: "-5.0%", barClass: "winter",
+                    subItems: [
+                        { name: "AI 가속기 및 고성능 GPU 설계", yoy: "+12.5%", mom: "+1.8%" },
+                        { name: "실리콘 웨이퍼 및 첨단 노광장비", yoy: "-9.2%", mom: "-1.8%" },
+                        { name: "디바이스 모뎀 및 네트워크 라우터", yoy: "-12.0%", mom: "-2.2%" }
+                    ]
+                }
             ]
         }
     },
@@ -211,10 +351,38 @@ const exportData = {
             ebsiVal: "112.5",
             ebsiTrend: "▲ 100 기준점 돌파 (수출 회복기)",
             items: [
-                { name: "반도체 (DRAM / HBM 메모리 포함)", pct: 18, change: "+42.5%", barClass: "summer" },
-                { name: "자동차, 친환경차 및 완성차 부품", pct: 13, change: "+12.2%", barClass: "spring" },
-                { name: "석유화학 제품 및 합성수지", pct: 8, change: "-2.4%", barClass: "winter" },
-                { name: "선박, LNG 고부가가치 운반선", pct: 6, change: "+18.0%", barClass: "autumn" }
+                {
+                    name: "반도체 (DRAM / HBM 메모리 포함)", pct: 18, change: "+42.5%", barClass: "summer",
+                    subItems: [
+                        { name: "HBM (고대역폭 메모리)", yoy: "+255.0%", mom: "+18.2%" },
+                        { name: "DRAM (고용량 서버 메모리)", yoy: "+48.5%", mom: "+4.5%" },
+                        { name: "차세대 SSD (Solid State Drive)", yoy: "+32.4%", mom: "+3.2%" }
+                    ]
+                },
+                {
+                    name: "자동차, 친환경차 및 완성차 부품", pct: 13, change: "+12.2%", barClass: "spring",
+                    subItems: [
+                        { name: "친환경 전기차 (EV 선적)", yoy: "+18.2%", mom: "+2.4%" },
+                        { name: "하이브리드 완성차 (HEV)", yoy: "+22.5%", mom: "+3.0%" },
+                        { name: "샤시 모듈 및 조향 부품 수출", yoy: "+5.8%", mom: "+0.8%" }
+                    ]
+                },
+                {
+                    name: "석유화학 제품 및 합성수지", pct: 8, change: "-2.4%", barClass: "winter",
+                    subItems: [
+                        { name: "합성수지 (플라스틱 성형원료)", yoy: "-1.5%", mom: "+0.2%" },
+                        { name: "에틸렌 및 기초 합성원료", yoy: "-4.2%", mom: "-0.8%" },
+                        { name: "폴리에스터 가공 기능성 소재", yoy: "-2.0%", mom: "-0.3%" }
+                    ]
+                },
+                {
+                    name: "선박, LNG 고부가가치 운반선", pct: 6, change: "+18.0%", barClass: "autumn",
+                    subItems: [
+                        { name: "고부가가치 LNG 가스 운반선", yoy: "+28.5%", mom: "+5.2%" },
+                        { name: "대형 컨테이너선 건조 인도", yoy: "+12.4%", mom: "+1.8%" },
+                        { name: "친환경 이중연료 추진 선박", yoy: "+15.0%", mom: "+2.0%" }
+                    ]
+                }
             ]
         },
         "2026-04": {
@@ -225,10 +393,38 @@ const exportData = {
             ebsiVal: "110.0",
             ebsiTrend: "▲ 주요 수출 업종 동반 성장 국면",
             items: [
-                { name: "반도체 (DRAM / HBM 메모리 포함)", pct: 19, change: "+45.0%", barClass: "summer" },
-                { name: "자동차, 친환경차 및 완성차 부품", pct: 13, change: "+11.5%", barClass: "spring" },
-                { name: "석유화학 제품 및 합성수지", pct: 8, change: "-1.8%", barClass: "winter" },
-                { name: "선박, LNG 고부가가치 운반선", pct: 5, change: "+15.5%", barClass: "autumn" }
+                {
+                    name: "반도체 (DRAM / HBM 메모리 포함)", pct: 19, change: "+45.0%", barClass: "summer",
+                    subItems: [
+                        { name: "HBM (고대역폭 메모리)", yoy: "+280.0%", mom: "+20.5%" },
+                        { name: "DRAM (고용량 서버 메모리)", yoy: "+52.0%", mom: "+5.0%" },
+                        { name: "차세대 SSD (Solid State Drive)", yoy: "+35.0%", mom: "+3.6%" }
+                    ]
+                },
+                {
+                    name: "자동차, 친환경차 및 완성차 부품", pct: 13, change: "+11.5%", barClass: "spring",
+                    subItems: [
+                        { name: "친환경 전기차 (EV 선적)", yoy: "+16.5%", mom: "+2.0%" },
+                        { name: "하이브리드 완성차 (HEV)", yoy: "+20.8%", mom: "+2.8%" },
+                        { name: "샤시 모듈 및 조향 부품 수출", yoy: "+5.2%", mom: "+0.7%" }
+                    ]
+                },
+                {
+                    name: "석유화학 제품 및 합성수지", pct: 8, change: "-1.8%", barClass: "winter",
+                    subItems: [
+                        { name: "합성수지 (플라스틱 성형원료)", yoy: "-1.0%", mom: "+0.3%" },
+                        { name: "에틸렌 및 기초 합성원료", yoy: "-3.5%", mom: "-0.5%" },
+                        { name: "폴리에스터 가공 기능성 소재", yoy: "-1.5%", mom: "-0.2%" }
+                    ]
+                },
+                {
+                    name: "선박, LNG 고부가가치 운반선", pct: 5, change: "+15.5%", barClass: "autumn",
+                    subItems: [
+                        { name: "고부가가치 LNG 가스 운반선", yoy: "+25.0%", mom: "+4.5%" },
+                        { name: "대형 컨테이너선 건조 인도", yoy: "+10.8%", mom: "+1.5%" },
+                        { name: "친환경 이중연료 추진 선박", yoy: "+12.8%", mom: "+1.6%" }
+                    ]
+                }
             ]
         },
         "2026-03": {
@@ -239,10 +435,38 @@ const exportData = {
             ebsiVal: "108.5",
             ebsiTrend: "▲ 대외 제조업 심리 개선 동행",
             items: [
-                { name: "반도체 (DRAM / HBM 메모리 포함)", pct: 17, change: "+38.0%", barClass: "summer" },
-                { name: "자동차, 친환경차 및 완성차 부품", pct: 13, change: "+9.8%", barClass: "spring" },
-                { name: "석유화학 제품 및 합성수지", pct: 8, change: "-3.0%", barClass: "winter" },
-                { name: "선박, LNG 고부가가치 운반선", pct: 6, change: "+12.4%", barClass: "autumn" }
+                {
+                    name: "반도체 (DRAM / HBM 메모리 포함)", pct: 17, change: "+38.0%", barClass: "summer",
+                    subItems: [
+                        { name: "HBM (고대역폭 메모리)", yoy: "+240.0%", mom: "+15.8%" },
+                        { name: "DRAM (고용량 서버 메모리)", yoy: "+44.0%", mom: "+3.8%" },
+                        { name: "차세대 SSD (Solid State Drive)", yoy: "+28.5%", mom: "+2.8%" }
+                    ]
+                },
+                {
+                    name: "자동차, 친환경차 및 완성차 부품", pct: 13, change: "+9.8%", barClass: "spring",
+                    subItems: [
+                        { name: "친환경 전기차 (EV 선적)", yoy: "+14.8%", mom: "+1.8%" },
+                        { name: "하이브리드 완성차 (HEV)", yoy: "+18.0%", mom: "+2.2%" },
+                        { name: "샤시 모듈 및 조향 부품 수출", yoy: "+4.5%", mom: "+0.5%" }
+                    ]
+                },
+                {
+                    name: "석유화학 제품 및 합성수지", pct: 8, change: "-3.0%", barClass: "winter",
+                    subItems: [
+                        { name: "합성수지 (플라스틱 성형원료)", yoy: "-2.2%", mom: "+0.1%" },
+                        { name: "에틸렌 및 기초 합성원료", yoy: "-5.0%", mom: "-1.0%" },
+                        { name: "폴리에스터 가공 기능성 소재", yoy: "-2.8%", mom: "-0.5%" }
+                    ]
+                },
+                {
+                    name: "선박, LNG 고부가가치 운반선", pct: 6, change: "+12.4%", barClass: "autumn",
+                    subItems: [
+                        { name: "고부가가치 LNG 가스 운반선", yoy: "+20.0%", mom: "+3.8%" },
+                        { name: "대형 컨테이너선 건조 인도", yoy: "+8.5%", mom: "+1.2%" },
+                        { name: "친환경 이중연료 추진 선박", yoy: "+10.0%", mom: "+1.2%" }
+                    ]
+                }
             ]
         },
         "2025-04": {
@@ -253,10 +477,38 @@ const exportData = {
             ebsiVal: "98.0",
             ebsiTrend: "▼ 글로벌 금리 제약 완화 관망",
             items: [
-                { name: "반도체 (DRAM / HBM 메모리 포함)", pct: 15, change: "+12.5%", barClass: "summer" },
-                { name: "자동차, 친환경차 및 완성차 부품", pct: 14, change: "+8.2%", barClass: "spring" },
-                { name: "석유화학 제품 및 합성수지", pct: 9, change: "-6.5%", barClass: "winter" },
-                { name: "선박, LNG 고부가가치 운반선", pct: 5, change: "+8.0%", barClass: "autumn" }
+                {
+                    name: "반도체 (DRAM / HBM 메모리 포함)", pct: 15, change: "+12.5%", barClass: "summer",
+                    subItems: [
+                        { name: "HBM (고대역폭 메모리)", yoy: "+85.0%", mom: "+5.2%" },
+                        { name: "DRAM (고용량 서버 메모리)", yoy: "+15.0%", mom: "+1.5%" },
+                        { name: "차세대 SSD (Solid State Drive)", yoy: "+8.8%", mom: "+0.8%" }
+                    ]
+                },
+                {
+                    name: "자동차, 친환경차 및 완성차 부품", pct: 14, change: "+8.2%", barClass: "spring",
+                    subItems: [
+                        { name: "친환경 전기차 (EV 선적)", yoy: "+10.5%", mom: "+1.0%" },
+                        { name: "하이브리드 완성차 (HEV)", yoy: "+14.0%", mom: "+1.5%" },
+                        { name: "샤시 모듈 및 조향 부품 수출", yoy: "+3.2%", mom: "+0.3%" }
+                    ]
+                },
+                {
+                    name: "석유화학 제품 및 합성수지", pct: 9, change: "-6.5%", barClass: "winter",
+                    subItems: [
+                        { name: "합성수지 (플라스틱 성형원료)", yoy: "-5.0%", mom: "-0.8%" },
+                        { name: "에틸렌 및 기초 합성원료", yoy: "-8.5%", mom: "-1.5%" },
+                        { name: "폴리에스터 가공 기능성 소재", yoy: "-5.8%", mom: "-1.0%" }
+                    ]
+                },
+                {
+                    name: "선박, LNG 고부가가치 운반선", pct: 5, change: "+8.0%", barClass: "autumn",
+                    subItems: [
+                        { name: "고부가가치 LNG 가스 운반선", yoy: "+12.0%", mom: "+2.0%" },
+                        { name: "대형 컨테이너선 건조 인도", yoy: "+5.8%", mom: "+0.6%" },
+                        { name: "친환경 이중연료 추진 선박", yoy: "+7.2%", mom: "+0.8%" }
+                    ]
+                }
             ]
         },
         "2025-03": {
@@ -267,22 +519,48 @@ const exportData = {
             ebsiVal: "95.5",
             ebsiTrend: "▼ 원유 도입가 불안 헤지",
             items: [
-                { name: "반도체 (DRAM / HBM 메모리 포함)", pct: 14, change: "+9.0%", barClass: "summer" },
-                { name: "자동차, 친환경차 및 완성차 부품", pct: 14, change: "+6.8%", barClass: "spring" },
-                { name: "석유화학 제품 및 합성수지", pct: 9, change: "-8.2%", barClass: "winter" },
-                { name: "선박, LNG 고부가가치 운반선", pct: 5, change: "+5.5%", barClass: "autumn" }
+                {
+                    name: "반도체 (DRAM / HBM 메모리 포함)", pct: 14, change: "+9.0%", barClass: "summer",
+                    subItems: [
+                        { name: "HBM (고대역폭 메모리)", yoy: "+72.0%", mom: "+4.1%" },
+                        { name: "DRAM (고용량 서버 메모리)", yoy: "+11.2%", mom: "+1.0%" },
+                        { name: "차세대 SSD (Solid State Drive)", yoy: "+6.5%", mom: "+0.5%" }
+                    ]
+                },
+                {
+                    name: "자동차, 친환경차 및 완성차 부품", pct: 14, change: "+6.8%", barClass: "spring",
+                    subItems: [
+                        { name: "친환경 전기차 (EV 선적)", yoy: "+8.8%", mom: "+0.8%" },
+                        { name: "하이브리드 완성차 (HEV)", yoy: "+11.5%", mom: "+1.2%" },
+                        { name: "샤시 모듈 및 조향 부품 수출", yoy: "+2.5%", mom: "+0.2%" }
+                    ]
+                },
+                {
+                    name: "석유화학 제품 및 합성수지", pct: 9, change: "-8.2%", barClass: "winter",
+                    subItems: [
+                        { name: "합성수지 (플라스틱 성형원료)", yoy: "-6.8%", mom: "-1.2%" },
+                        { name: "에틸렌 및 기초 합성원료", yoy: "-10.5%", mom: "-2.0%" },
+                        { name: "폴리에스터 가공 기능성 소재", yoy: "-7.8%", mom: "-1.4%" }
+                    ]
+                },
+                {
+                    name: "선박, LNG 고부가가치 운반선", pct: 5, change: "+5.5%", barClass: "autumn",
+                    subItems: [
+                        { name: "고부가가치 LNG 가스 운반선", yoy: "+8.2%", mom: "+1.1%" },
+                        { name: "대형 컨테이너선 건조 인도", yoy: "+3.5%", mom: "+0.4%" },
+                        { name: "친환경 이중연료 추진 선박", yoy: "+5.0%", mom: "+0.5%" }
+                    ]
+                }
             ]
         }
     }
-};
-
-function updateExportCard() {
+};\n\nfunction updateExportCard() {
     const monthSelect = document.getElementById("export-month-select");
     const activeMonth = monthSelect ? monthSelect.value : "2026-05";
-    
+
     const data = exportData[activeRegion][activeMonth];
     if (!data) return;
-    
+
     const cardIcon = document.getElementById("export-card-icon");
     if (cardIcon) {
         if (activeRegion === "KR") {
@@ -291,7 +569,7 @@ function updateExportCard() {
             cardIcon.style.color = "#3b82f6";
         }
     }
-    
+
     // Update Export Card Source Link
     const sourceLinkEl = document.getElementById("export-card-source-link");
     if (sourceLinkEl) {
@@ -305,16 +583,16 @@ function updateExportCard() {
     }
 
     // Set regional title
-    const regionTitle = activeRegion === "KR" 
-        ? "KITA (한국무역협회) 통계 기반 수출 동향 분석" 
+    const regionTitle = activeRegion === "KR"
+        ? "KITA (한국무역협회) 통계 기반 수출 동향 분석"
         : "Census Bureau (미국 인구조사국) 수출 및 무역 동향";
     document.getElementById("export-card-title").textContent = regionTitle;
-    
+
     // Set labels & values
     const growthLabel = activeRegion === "KR" ? "대한민국 총 수출 성장률 (YoY)" : "총 수출 성장률 (YoY)";
     document.getElementById("export-growth-label").textContent = growthLabel;
     document.getElementById("export-growth-val").textContent = data.growthVal;
-    
+
     const growthValEl = document.getElementById("export-growth-val");
     if (growthValEl) {
         if (activeRegion === "KR" || !data.growthVal.startsWith("-")) {
@@ -325,16 +603,16 @@ function updateExportCard() {
             growthValEl.style.color = "#ef4444";
         }
     }
-    
+
     document.getElementById("export-growth-trend").textContent = data.growthTrend;
-    
+
     const balanceLabel = activeRegion === "KR" ? "KITA 통계 누적 무역수지" : "미국 무역 수지 (월간)";
     document.getElementById("export-balance-label").textContent = balanceLabel;
     document.getElementById("export-balance-val").textContent = data.balanceVal;
-    
+
     const balanceValEl = document.getElementById("export-balance-val");
     if (balanceValEl) {
-        if (activeRegion === "KR") {
+        if (activeRegion === "KR" || !data.balanceVal.includes("적자")) {
             balanceValEl.className = "stat-value text-positive";
             balanceValEl.style.color = "";
         } else {
@@ -342,19 +620,19 @@ function updateExportCard() {
             balanceValEl.style.color = "#ef4444"; // Red for US trade deficit
         }
     }
-    
+
     document.getElementById("export-balance-trend").textContent = data.balanceTrend;
-    
+
     const ebsiLabel = activeRegion === "KR" ? "KITA 수출경기전망지수 (EBSI)" : "수출경기 전망 지수 (Index)";
     document.getElementById("export-ebsi-label").textContent = ebsiLabel;
     document.getElementById("export-ebsi-val").textContent = data.ebsiVal;
     document.getElementById("export-ebsi-trend").textContent = data.ebsiTrend;
-    
-    const itemsTitle = activeRegion === "KR" 
-        ? "KITA 제공 한국 핵심 품목별 수출 비중 및 성장률 (stat.kita.net)" 
+
+    const itemsTitle = activeRegion === "KR"
+        ? "KITA 제공 한국 핵심 품목별 수출 비중 및 성장률 (stat.kita.net)"
         : "미국 주요 수출 품목 및 글로벌 비중 (Census Bureau 대변)";
     document.getElementById("export-items-title").textContent = itemsTitle;
-    
+
     const itemsList = document.getElementById("export-items-list");
     if (itemsList) {
         itemsList.innerHTML = "";
@@ -364,24 +642,79 @@ function updateExportCard() {
             
             const changeColor = item.change.startsWith("-") ? "#ef4444" : "#10b981";
             
+            // Generate sub-items HTML if available
+            let subItemsHtml = "";
+            if (item.subItems && item.subItems.length > 0) {
+                subItemsHtml = `
+                    <div class="export-subitems-container">
+                        <div class="export-subitems-list">
+                `;
+                item.subItems.forEach(sub => {
+                    const yoyClass = sub.yoy.startsWith("-") ? "down" : "up";
+                    const momClass = sub.mom.startsWith("-") ? "down" : "up";
+                    const yoyIcon = sub.yoy.startsWith("-") ? "▼" : "▲";
+                    const momIcon = sub.mom.startsWith("-") ? "▼" : "▲";
+                    
+                    subItemsHtml += `
+                        <div class="export-subitem-row">
+                            <span class="export-subitem-name">• ${sub.name}</span>
+                            <div class="export-subitem-changes">
+                                <span class="sub-badge ${yoyClass}" title="전년동기대비 (YoY)">YoY ${yoyIcon} ${sub.yoy.replace("-", "")}</span>
+                                <span class="sub-badge ${momClass}" title="전월대비 (MoM)">MoM ${momIcon} ${sub.mom.replace("-", "")}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+                subItemsHtml += `
+                        </div>
+                    </div>
+                `;
+            }
+            
             itemRow.innerHTML = `
-                <div class="export-item-info">
-                    <span class="export-item-name">${item.name}</span>
-                    <span class="export-item-values">
-                        <span class="export-item-pct">비중: ${item.pct}%</span>
-                        <span class="export-item-change" style="color: ${changeColor}; font-weight: 700;">${item.change}</span>
-                    </span>
+                <div class="export-item-header-row">
+                    <div class="export-item-info" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                        <span class="export-item-name" style="font-size: 0.85rem; font-weight: 700; color: var(--text-color);">${item.name}</span>
+                        <span class="export-item-values" style="display: flex; gap: 0.75rem; align-items: center; font-size: 0.75rem;">
+                            <span class="export-item-pct" style="color: var(--text-muted);">비중: ${item.pct}%</span>
+                            <span class="export-item-change" style="color: ${changeColor}; font-weight: 700;">${item.change}</span>
+                        </span>
+                    </div>
+                    <div class="export-item-track" style="width: 100%; height: 6px; background: rgba(255, 255, 255, 0.05); border-radius: 3px; overflow: hidden; margin-top: 0.4rem; position: relative;">
+                        <div class="export-item-bar ${item.barClass}" style="width: ${item.pct * 2.5}%; height: 100%; border-radius: 3px;"></div>
+                    </div>
+                    <div class="export-item-click-tip">
+                        <span>💡 클릭 시 세부품목별 YoY/MoM 변화율 펼치기 ▽</span>
+                    </div>
                 </div>
-                <div class="export-item-track">
-                    <div class="export-item-bar ${item.barClass}" style="width: ${item.pct * 2.5}%"></div>
-                </div>
+                ` + "${subItemsHtml}" + `
             `;
+            
+            // Toggle accordion on click
+            itemRow.addEventListener("click", (e) => {
+                // Avoid triggering when clicking links or badges inside subitems
+                if (e.target.closest(".export-subitems-container")) return;
+                
+                const isExpanded = itemRow.classList.contains("expanded");
+                
+                // Collapse all others first for clean accordion UI
+                document.querySelectorAll(".export-item-row").forEach(row => {
+                    row.classList.remove("expanded");
+                    const tip = row.querySelector(".export-item-click-tip span");
+                    if (tip) tip.textContent = "💡 클릭 시 세부품목별 YoY/MoM 변화율 펼치기 ▽";
+                });
+                
+                if (!isExpanded) {
+                    itemRow.classList.add("expanded");
+                    const tip = itemRow.querySelector(".export-item-click-tip span");
+                    if (tip) tip.textContent = "💡 클릭 시 세부품목별 YoY/MoM 변화율 접기 △";
+                }
+            });
+            
             itemsList.appendChild(itemRow);
         });
     }
-}
-
-// 2. STATE VARIABLES
+}\n\n// 2. STATE VARIABLES
 let activeRegion = "US"; // "US" or "KR"
 let activeMode = "sim"; // "sim" or "hist" or "time"
 let activePreset = "2026_current";
