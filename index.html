@@ -314,6 +314,140 @@
                 </section>
             </div>
 
+            <!-- 주식시장 보조지표 & 모멘텀 분석 Card -->
+            <section class="card market-trends-card" style="margin-bottom: 1.5rem;">
+                <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; border-bottom: 1px solid var(--border-color); flex-wrap: wrap; gap: 0.75rem;">
+                    <div class="card-title-group" style="display: flex; align-items: center; gap: 0.5rem;">
+                        <span class="card-icon" style="color: var(--primary-color);">📈</span>
+                        <h3 style="margin: 0; font-size: 0.95rem; font-family: 'Outfit', sans-serif; font-weight: 700; color: var(--text-color);">시장 계량 지표 및 가격 동향 (Market Indicators)</h3>
+                    </div>
+                    <!-- Tab Buttons -->
+                    <div class="market-tab-group" style="display: flex; gap: 0.5rem; background: rgba(0, 0, 0, 0.15); padding: 0.2rem; border-radius: 6px;">
+                        <button class="market-tab-btn active" id="market-tab-val" onclick="switchMarketTab('val')">밸류에이션 & 52주 가격</button>
+                        <button class="market-tab-btn" id="market-tab-tech" onclick="switchMarketTab('tech')">기술적 분석 & 수급 동향</button>
+                    </div>
+                </div>
+                
+                <div class="card-body" style="padding: 1.5rem;">
+                    <!-- Tab 1: Valuation & 52-Week Range -->
+                    <div class="market-tab-content" id="market-content-val">
+                        <div class="market-trends-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
+                            <!-- Valuation Multiples -->
+                            <div class="market-metric-box">
+                                <h4 class="metric-group-title">수익성 & 밸류에이션 멀티플</h4>
+                                <div class="metric-row">
+                                    <span class="metric-label">주가수익비율 (PER)</span>
+                                    <div class="metric-value-wrapper">
+                                        <span class="metric-value" id="val-market-per">18.5배</span>
+                                        <span class="metric-grade" id="val-market-per-grade">적정</span>
+                                    </div>
+                                </div>
+                                <div class="metric-row">
+                                    <span class="metric-label">주가순자산비율 (PBR)</span>
+                                    <div class="metric-value-wrapper">
+                                        <span class="metric-value" id="val-market-pbr">3.2배</span>
+                                        <span class="metric-grade" id="val-market-pbr-grade">적정</span>
+                                    </div>
+                                </div>
+                                <div class="metric-row">
+                                    <span class="metric-label">기대 배당수익률 (DY)</span>
+                                    <div class="metric-value-wrapper">
+                                        <span class="metric-value" id="val-market-dy">1.8%</span>
+                                        <span class="metric-grade" id="val-market-dy-grade">안정</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 52-Week Price Range -->
+                            <div class="market-metric-box" style="grid-column: span 2;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                                    <h4 class="metric-group-title" style="margin: 0;">52주 최고가 & 최저가 분석 (52W Price Range)</h4>
+                                    <span class="status-badge" id="val-market-52w-badge" style="font-size: 0.65rem; padding: 0.15rem 0.4rem;">정상 궤도</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); font-weight: 600; margin-bottom: 0.4rem;">
+                                    <span id="val-market-52w-low">52주 최저: 3,500 pt</span>
+                                    <span id="val-market-52w-high">52주 최고: 5,200 pt</span>
+                                </div>
+                                <!-- 52W Spectrum Bar -->
+                                <div class="spectrum-container" style="position: relative; height: 16px; background: linear-gradient(to right, #ef4444, #e2e8f0 30%, #e2e8f0 70%, #10b981); border-radius: 8px; margin: 0.8rem 0;">
+                                    <div class="spectrum-pointer" id="val-market-52w-pointer" style="position: absolute; top: -4px; left: 80%; transform: translateX(-50%); transition: left 0.8s cubic-bezier(0.25, 0.8, 0.25, 1); display: flex; flex-direction: column; align-items: center;">
+                                        <span style="font-size: 0.75rem; line-height: 1; color: var(--text-color); font-weight: bold; cursor: default; text-shadow: 0 1px 3px rgba(0,0,0,0.5);">▲</span>
+                                    </div>
+                                </div>
+                                <div class="metric-row-inline" style="display: flex; justify-content: space-between; font-size: 0.75rem; margin-top: 0.6rem; flex-wrap: wrap; gap: 0.5rem;">
+                                    <span id="val-market-52w-mdd" style="color: #ef4444; font-weight: 700;">신고가 대비 괴리율: -4.2%</span>
+                                    <span id="val-market-52w-run" style="color: #10b981; font-weight: 700;">최저가 대비 상승률: +22.5%</span>
+                                    <span id="val-market-52w-pos" style="color: var(--text-muted); font-weight: 600;">현재 가격 위치: 80%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tab 2: Technical & Institutional Flow -->
+                    <div class="market-tab-content hidden" id="market-content-tech">
+                        <div class="market-trends-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
+                            <!-- Technical Indicators -->
+                            <div class="market-metric-box">
+                                <h4 class="metric-group-title">기술적 모멘텀 지표</h4>
+                                <div class="metric-row" style="margin-bottom: 0.75rem;">
+                                    <span class="metric-label">이동평균선 배열 (MA)</span>
+                                    <span class="status-badge" id="tech-market-ma" style="font-size: 0.65rem; padding: 0.15rem 0.4rem;">강력 정배열 (Bullish)</span>
+                                </div>
+                                <div class="metric-row">
+                                    <span class="metric-label">상대강도지수 (RSI 14)</span>
+                                    <div class="metric-value-wrapper">
+                                        <span class="metric-value" id="tech-market-rsi">62.5</span>
+                                        <span class="metric-grade" id="tech-market-rsi-grade">과열진입</span>
+                                    </div>
+                                </div>
+                                <div class="metric-row">
+                                    <span class="metric-label">MACD 시그널</span>
+                                    <div class="metric-value-wrapper">
+                                        <span class="metric-value" id="tech-market-macd">매수 시그널</span>
+                                        <span class="metric-grade" id="tech-market-macd-grade">Bullish</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Flow of Funds (Supply & Demand) -->
+                            <div class="market-metric-box" style="grid-column: span 2;">
+                                <h4 class="metric-group-title" style="margin-bottom: 0.75rem;">주요 주체별 수급 동향 (Flow of Funds)</h4>
+                                <!-- Foreigners Net Buying -->
+                                <div class="flow-item" style="margin-bottom: 0.65rem;">
+                                    <div style="display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 0.25rem;">
+                                        <span style="font-weight: 700; color: var(--text-color);">외국인 순매수세 (Net Foreign Flow)</span>
+                                        <span id="tech-market-foreign-val" style="font-weight: 700; color: #10b981;">+4,250 억 순매수</span>
+                                    </div>
+                                    <div class="flow-track" style="height: 6px; background: rgba(255, 255, 255, 0.05); border-radius: 3px; overflow: hidden; position: relative;">
+                                        <div class="flow-bar" id="tech-market-foreign-bar" style="width: 72%; height: 100%; border-radius: 3px; background: linear-gradient(90deg, #10b981, #34d399); transition: width 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);"></div>
+                                    </div>
+                                </div>
+                                <!-- Institutions Net Buying -->
+                                <div class="flow-item" style="margin-bottom: 0.65rem;">
+                                    <div style="display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 0.25rem;">
+                                        <span style="font-weight: 700; color: var(--text-color);">기관 순매수세 (Net Institutional Flow)</span>
+                                        <span id="tech-market-inst-val" style="font-weight: 700; color: #3b82f6;">+1,580 억 순매수</span>
+                                    </div>
+                                    <div class="flow-track" style="height: 6px; background: rgba(255, 255, 255, 0.05); border-radius: 3px; overflow: hidden; position: relative;">
+                                        <div class="flow-bar" id="tech-market-inst-bar" style="width: 58%; height: 100%; border-radius: 3px; background: linear-gradient(90deg, #3b82f6, #60a5fa); transition: width 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);"></div>
+                                    </div>
+                                </div>
+                                <!-- Retail Trading Weight -->
+                                <div class="flow-item">
+                                    <div style="display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 0.25rem;">
+                                        <span style="font-weight: 700; color: var(--text-color);">개인 거래 비중 (Retail Weight)</span>
+                                        <span id="tech-market-retail-val" style="font-weight: 700; color: var(--text-muted);">전체 거래의 58%</span>
+                                    </div>
+                                    <div class="flow-track" style="height: 6px; background: rgba(255, 255, 255, 0.05); border-radius: 3px; overflow: hidden; position: relative;">
+                                        <div class="flow-bar" id="tech-market-retail-bar" style="width: 58%; height: 100%; border-radius: 3px; background: #94a3b8; transition: width 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- Dashboard Grid: Asset & Sector Allocations -->
             <div class="dashboard-grid">
                 <!-- Portfolio Allocation Card -->
