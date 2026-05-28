@@ -584,17 +584,7 @@ function updateExportCard() {
         }
     }
 
-    // Update Export Card Source Link
-    const sourceLinkEl = document.getElementById("export-card-source-link");
-    if (sourceLinkEl) {
-        if (activeRegion === "KR") {
-            sourceLinkEl.href = "https://stat.kita.net/";
-            sourceLinkEl.textContent = "KITA 무역통계 바로가기 ↗";
-        } else {
-            sourceLinkEl.href = "https://www.census.gov/foreign-trade/index.html";
-            sourceLinkEl.textContent = "Census Bureau 바로가기 ↗";
-        }
-    }
+
 
     // Set regional title
     const regionTitle = activeRegion === "KR"
