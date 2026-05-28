@@ -554,7 +554,9 @@ const exportData = {
             ]
         }
     }
-};\n\nfunction updateExportCard() {
+};
+
+function updateExportCard() {
     const monthSelect = document.getElementById("export-month-select");
     const activeMonth = monthSelect ? monthSelect.value : "2026-05";
 
@@ -714,7 +716,9 @@ const exportData = {
             itemsList.appendChild(itemRow);
         });
     }
-}\n\n// 2. STATE VARIABLES
+}
+
+// 2. STATE VARIABLES
 let activeRegion = "US"; // "US" or "KR"
 let activeMode = "sim"; // "sim" or "hist" or "time"
 let activePreset = "2026_current";
