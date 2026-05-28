@@ -41,6 +41,7 @@
                 <div class="mode-toggle-group">
                     <button class="mode-btn active" id="mode-sim">시뮬레이션</button>
                     <button class="mode-btn" id="mode-hist">역사적 국면 탐색</button>
+                    <button class="mode-btn" id="mode-time">월별 타임머신</button>
                 </div>
             </div>
 
@@ -173,6 +174,26 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Time Machine Section -->
+            <div class="control-section hidden" id="time-machine-container">
+                <h3 class="section-title">월별 타임머신 설정</h3>
+                <div class="slider-group">
+                    <div class="slider-label">
+                        <span class="label-text">기준 시점 선택</span>
+                        <span class="slider-value font-semibold" id="val-time-month" style="color: var(--primary-color);">2026년 5월</span>
+                    </div>
+                    <!-- Dropdown for month selection -->
+                    <select id="select-time-month" class="export-select" style="width: 100%; margin-bottom: 1rem; border-radius: 6px; padding: 0.5rem; background: var(--bg-card); color: var(--text-color); border: 1px solid var(--border-color); font-size: 0.85rem; font-weight: 500;">
+                        <!-- Populated dynamically via JS -->
+                    </select>
+                    <input type="range" id="input-time-slider" min="0" max="60" step="1" value="60" style="width: 100%;">
+                    <div class="slider-meta" style="margin-top: 0.5rem;">
+                        <span>2021년 5월</span>
+                        <span>2026년 5월</span>
+                    </div>
+                </div>
+            </div>
             
             <div class="sidebar-footer">
                 <p>Created for <span class="highlight">jinjo202</span></p>
@@ -207,6 +228,35 @@
                     </div>
                 </div>
             </header>
+
+            <!-- MoM Cycle Transition Card -->
+            <div class="card transition-card" id="transition-card" style="margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; gap: 1rem; flex-wrap: wrap;">
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <span style="font-size: 1.5rem; display: inline-flex; align-items: center;">🔄</span>
+                    <div>
+                        <h4 style="margin: 0; font-size: 0.95rem; font-family: 'Outfit', sans-serif; font-weight: 700; letter-spacing: -0.01em;">전월 대비 사이클 변화 분석 (MoM Trajectory)</h4>
+                        <p style="margin: 2px 0 0 0; font-size: 0.75rem; color: var(--text-muted); font-weight: 500;" id="transition-date-label">2026년 5월 vs 2026년 4월 기준</p>
+                    </div>
+                </div>
+                <div class="transition-badges-container" style="display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap;">
+                    <!-- Business Cycle MoM -->
+                    <div class="trans-item" style="display: flex; align-items: center; gap: 0.5rem;">
+                        <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">경기 순환:</span>
+                        <span class="cycle-badge-mini" id="trans-macro-prev">직전월 국면</span>
+                        <span style="color: var(--text-muted); font-weight: bold; font-size: 0.8rem;">➔</span>
+                        <span class="cycle-badge-mini active" id="trans-macro-curr">현재 국면</span>
+                    </div>
+                    <!-- Divider line -->
+                    <div class="trans-divider" style="width: 1px; height: 18px; background: var(--border-color); display: inline-block;"></div>
+                    <!-- Stock Season MoM -->
+                    <div class="trans-item" style="display: flex; align-items: center; gap: 0.5rem;">
+                        <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">주식시장 사계절:</span>
+                        <span class="season-badge-mini" id="trans-season-prev">직전월 계절</span>
+                        <span style="color: var(--text-muted); font-weight: bold; font-size: 0.8rem;">➔</span>
+                        <span class="season-badge-mini active" id="trans-season-curr">현재 계절</span>
+                    </div>
+                </div>
+            </div>
 
             <!-- Dashboard Grid: The Two Clocks -->
             <div class="dashboard-grid-two-clocks">
@@ -244,6 +294,10 @@
                                 <div class="compass-quadrant summer"><span class="q-label">여름<br><span class="q-sub">실적장세</span></span></div>
                                 <div class="compass-quadrant autumn"><span class="q-label">가을<br><span class="q-sub">역금융장세</span></span></div>
                                 <div class="compass-quadrant winter"><span class="q-label">겨울<br><span class="q-sub">역실적장세</span></span></div>
+                                <div class="compass-needle prev-needle" id="compass-needle-prev" style="opacity: 0.25; filter: grayscale(1); transform: rotate(0deg); transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1); pointer-events: none;">
+                                    <div class="needle-north"></div>
+                                    <div class="needle-south"></div>
+                                </div>
                                 <div class="compass-needle" id="compass-needle">
                                     <div class="needle-shadow"></div>
                                     <div class="needle-north"></div>
@@ -535,33 +589,6 @@
                                     <td id="table-spread-mom"><span class="trend-icon up">▲</span> 정상화 중</td>
                                     <td><span class="status-badge neutral" id="table-spread-grade">정상 양평</span></td>
                                     <td><a href="https://fred.stlouisfed.org/series/T10Y2Y" target="_blank" class="source-link" onclick="event.stopPropagation();" id="source-link-spread">FRED Spread ↗</a></td>
-                                    <td>금융 시스템 리스크 및 채권 마켓의 1년 뒤 불황 확률 선행 탐지기</td>
-                                </tr>
-                            </tbody>
-                        </table>��타내며 주식시장의 봄(금융장세)을 뒷받침하는 주요 유동성 땔감</td>
-                                </tr>
-                                <tr class="clickable-row" data-indicator="cpi" title="클릭하여 역사적 트렌드 보기">
-                                    <td class="font-semibold"><span class="chart-link-icon">📊</span> 인플레이션율 (CPI YoY)</td>
-                                    <td id="table-cpi-val">2.3%</td>
-                                    <td>2.0%</td>
-                                    <td id="table-cpi-mom"><span class="trend-icon stable">─</span> 안정화</td>
-                                    <td><span class="status-badge positive" id="table-cpi-grade">통제 범위</span></td>
-                                    <td>소비와 수요 견인력을 확인하는 지표로 늦게 움직이는 지행적 속성</td>
-                                </tr>
-                                <tr class="clickable-row" data-indicator="rate" title="클릭하여 역사적 트렌드 보기">
-                                    <td class="font-semibold"><span class="chart-link-icon">📊</span> 기준 금리</td>
-                                    <td id="table-rate-val">4.0%</td>
-                                    <td>3.0%</td>
-                                    <td id="table-rate-mom"><span class="trend-icon down">▼</span> 인하 기조</td>
-                                    <td><span class="status-badge caution" id="table-rate-grade">제약적 수준</span></td>
-                                    <td>중앙은행의 통화 긴축 수준을 반영하며 자산 밸류에이션의 할인율 작용</td>
-                                </tr>
-                                <tr class="clickable-row" data-indicator="spread" title="클릭하여 역사적 트렌드 보기">
-                                    <td class="font-semibold"><span class="chart-link-icon">📊</span> 장단기 금리차 (10Y-2Y)</td>
-                                    <td id="table-spread-val">0.2%</td>
-                                    <td>0.0%</td>
-                                    <td id="table-spread-mom"><span class="trend-icon up">▲</span> 정상화 중</td>
-                                    <td><span class="status-badge neutral" id="table-spread-grade">정상 양평</span></td>
                                     <td>금융 시스템 리스크 및 채권 마켓의 1년 뒤 불황 확률 선행 탐지기</td>
                                 </tr>
                             </tbody>
