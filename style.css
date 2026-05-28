@@ -1811,3 +1811,142 @@ body.light-theme .compass-dial .compass-needle.prev-needle .needle-south {
     border-top-color: rgba(203, 213, 225, 0.35) !important;
 }
 
+
+
+/* ==========================================================================
+   EXPORT SUBITEMS ACCORDION & PREMIUM BADGES
+   ========================================================================== */
+.export-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.export-item-row {
+    cursor: pointer;
+    transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 10px;
+    padding: 0.85rem;
+    margin-bottom: 0px;
+    background: var(--bg-card-hover);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.export-item-row:hover {
+    border-color: var(--primary-color);
+    background: var(--border-color-active);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.export-item-row.expanded {
+    border-color: var(--primary-color);
+    background: var(--bg-card-hover);
+    box-shadow: var(--shadow-md);
+}
+
+.export-item-click-tip {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-top: 0.1rem;
+    font-weight: 500;
+    transition: color 0.25s ease;
+}
+
+.export-item-row:hover .export-item-click-tip {
+    color: var(--text-color);
+}
+
+.export-item-row.expanded .export-item-click-tip {
+    color: var(--primary-color);
+}
+
+.export-subitems-container {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), margin-top 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+    background: rgba(0, 0, 0, 0.12);
+    border-radius: 8px;
+    margin-top: 0;
+}
+
+.light-theme .export-subitems-container {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.export-item-row.expanded .export-subitems-container {
+    max-height: 350px;
+    margin-top: 0.5rem;
+    border-top: 1px dashed var(--border-color);
+}
+
+.export-subitems-list {
+    padding: 0.75rem 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.export-subitem-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.45rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.light-theme .export-subitem-row {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.export-subitem-row:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.export-subitem-name {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.export-subitem-changes {
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+}
+
+.sub-badge {
+    font-size: 0.675rem;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.15rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.sub-badge.up {
+    background: rgba(16, 185, 129, 0.12);
+    color: #10b981;
+}
+
+.sub-badge.down {
+    background: rgba(239, 68, 68, 0.12);
+    color: #ef4444;
+}
+
+.sub-badge.stable {
+    background: rgba(100, 116, 139, 0.12);
+    color: #94a3b8;
+}
