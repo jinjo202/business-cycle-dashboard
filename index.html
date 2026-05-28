@@ -325,6 +325,7 @@
                     <div class="market-tab-group" style="display: flex; gap: 0.5rem; background: rgba(0, 0, 0, 0.15); padding: 0.2rem; border-radius: 6px;">
                         <button class="market-tab-btn active" id="market-tab-val" onclick="switchMarketTab('val')">밸류에이션 & 52주 가격</button>
                         <button class="market-tab-btn" id="market-tab-tech" onclick="switchMarketTab('tech')">기술적 분석 & 수급 동향</button>
+                        <button class="market-tab-btn" id="market-tab-stocks" onclick="switchMarketTab('stocks')">특징주 & 거래량 급증</button>
                     </div>
                 </div>
                 
@@ -441,6 +442,41 @@
                                     <div class="flow-track" style="height: 6px; background: rgba(255, 255, 255, 0.05); border-radius: 3px; overflow: hidden; position: relative;">
                                         <div class="flow-bar" id="tech-market-retail-bar" style="width: 58%; height: 100%; border-radius: 3px; background: #94a3b8; transition: width 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);"></div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tab 3: Featured Stocks (52W High/Low, Volume Spikes) -->
+                    <div class="market-tab-content hidden" id="market-content-stocks">
+                        <div class="market-trends-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
+                            <!-- 52W High Stocks -->
+                            <div class="market-metric-box">
+                                <h4 class="metric-group-title" style="color: #10b981; display: flex; align-items: center; gap: 0.3rem; margin-bottom: 0.75rem;">
+                                    <span>🚀</span> 52주 신고가 경신 종목
+                                </h4>
+                                <div id="stocks-52w-high-list" style="display: flex; flex-direction: column; gap: 0.6rem;">
+                                    <!-- Dynamic stock rows will be injected here -->
+                                </div>
+                            </div>
+                            
+                            <!-- 52W Low Stocks -->
+                            <div class="market-metric-box">
+                                <h4 class="metric-group-title" style="color: #ef4444; display: flex; align-items: center; gap: 0.3rem; margin-bottom: 0.75rem;">
+                                    <span>⚠️</span> 52주 신저가 경신 종목
+                                </h4>
+                                <div id="stocks-52w-low-list" style="display: flex; flex-direction: column; gap: 0.6rem;">
+                                    <!-- Dynamic stock rows will be injected here -->
+                                </div>
+                            </div>
+                            
+                            <!-- Volume Spikes -->
+                            <div class="market-metric-box">
+                                <h4 class="metric-group-title" style="color: #3b82f6; display: flex; align-items: center; gap: 0.3rem; margin-bottom: 0.75rem;">
+                                    <span>🔥</span> 거래량 급증 특징주
+                                </h4>
+                                <div id="stocks-volume-spike-list" style="display: flex; flex-direction: column; gap: 0.6rem;">
+                                    <!-- Dynamic stock rows will be injected here -->
                                 </div>
                             </div>
                         </div>
