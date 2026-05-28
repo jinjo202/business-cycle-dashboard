@@ -1224,6 +1224,155 @@ function calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2
         };
     }
 
+    // D. Dynamic Stocks Lists (52W High, 52W Low, Volume Spikes)
+    let highStocks = [];
+    let lowStocks = [];
+    let volumeStocks = [];
+
+    if (activeRegion === "US") {
+        if (seasonType === "summer") {
+            highStocks = [
+                { name: "NVIDIA Corp.", ticker: "NVDA", price: "$1,150.50", change: "▲ +4.8%", isUp: true },
+                { name: "Microsoft Corp.", ticker: "MSFT", price: "$425.20", change: "▲ +1.9%", isUp: true },
+                { name: "Apple Inc.", ticker: "AAPL", price: "$195.40", change: "▲ +1.2%", isUp: true },
+                { name: "Amazon.com Inc.", ticker: "AMZN", price: "$188.80", change: "▲ +2.1%", isUp: true }
+            ];
+            lowStocks = [
+                { name: "Walgreens Boots Alliance", ticker: "WBA", price: "$15.40", change: "▼ -1.8%", isUp: false },
+                { name: "Paramount Global", ticker: "PARA", price: "$11.20", change: "▼ -2.5%", isUp: false },
+                { name: "Intel Corp.", ticker: "INTC", price: "$30.15", change: "▼ -0.5%", isUp: false }
+            ];
+            volumeStocks = [
+                { name: "Tesla Inc.", ticker: "TSLA", price: "4.2배 급증", changeText: "평균 대비 420%" },
+                { name: "Super Micro Computer", ticker: "SMCI", price: "3.5배 급증", changeText: "평균 대비 350%" },
+                { name: "Advanced Micro Devices", ticker: "AMD", price: "2.8배 급증", changeText: "평균 대비 280%" }
+            ];
+        } else if (seasonType === "autumn") {
+            highStocks = [
+                { name: "Costco Wholesale", ticker: "COST", price: "$810.30", change: "▲ +1.4%", isUp: true },
+                { name: "Coca-Cola Co.", ticker: "KO", price: "$62.50", change: "▲ +0.8%", isUp: true },
+                { name: "Procter & Gamble Co.", ticker: "PG", price: "$165.20", change: "▲ +0.5%", isUp: true },
+                { name: "McDonald's Corp.", ticker: "MCD", price: "$290.40", change: "▲ +1.1%", isUp: true }
+            ];
+            lowStocks = [
+                { name: "NVIDIA Corp.", ticker: "NVDA", price: "$850.20", change: "▼ -4.2%", isUp: false },
+                { name: "Super Micro Computer", ticker: "SMCI", price: "$680.00", change: "▼ -6.5%", isUp: false },
+                { name: "Advanced Micro Devices", ticker: "AMD", price: "$142.10", change: "▼ -3.8%", isUp: false }
+            ];
+            volumeStocks = [
+                { name: "SPDR Gold Shares", ticker: "GLD", price: "3.1배 급증", changeText: "평균 대비 310%" },
+                { name: "iShares 20+ Yr Treasury Bond", ticker: "TLT", price: "2.9배 급증", changeText: "평균 대비 290%" },
+                { name: "Walmart Inc.", ticker: "WMT", price: "2.2배 급증", changeText: "평균 대비 220%" }
+            ];
+        } else if (seasonType === "winter") {
+            highStocks = [
+                { name: "Lockheed Martin Corp.", ticker: "LMT", price: "$465.80", change: "▲ +2.1%", isUp: true },
+                { name: "SPDR Gold Shares", ticker: "GLD", price: "$225.40", change: "▲ +1.5%", isUp: true },
+                { name: "Procter & Gamble Co.", ticker: "PG", price: "$172.10", change: "▲ +0.9%", isUp: true },
+                { name: "Walmart Inc.", ticker: "WMT", price: "$65.80", change: "▲ +1.2%", isUp: true }
+            ];
+            lowStocks = [
+                { name: "Tesla Inc.", ticker: "TSLA", price: "$142.50", change: "▼ -5.8%", isUp: false },
+                { name: "NVIDIA Corp.", ticker: "NVDA", price: "$680.10", change: "▼ -7.4%", isUp: false },
+                { name: "Intel Corp.", ticker: "INTC", price: "$22.40", change: "▼ -4.1%", isUp: false },
+                { name: "Apple Inc.", ticker: "AAPL", price: "$165.20", change: "▼ -2.8%", isUp: false }
+            ];
+            volumeStocks = [
+                { name: "ProShares UltraPro Short QQQ", ticker: "SQQQ", price: "5.8배 폭증", changeText: "평균 대비 580%" },
+                { name: "iPath Volatility VIX ETN", ticker: "VIX", price: "4.6배 급증", changeText: "평균 대비 460%" },
+                { name: "Utilities Select Sector SPDR", ticker: "XLU", price: "2.5배 급증", changeText: "평균 대비 250%" }
+            ];
+        } else {
+            highStocks = [
+                { name: "JPMorgan Chase & Co.", ticker: "JPM", price: "$198.50", change: "▲ +2.8%", isUp: true },
+                { name: "Caterpillar Inc.", ticker: "CAT", price: "$355.20", change: "▲ +3.1%", isUp: true },
+                { name: "Exxon Mobil Corp.", ticker: "XOM", price: "$120.40", change: "▲ +1.8%", isUp: true },
+                { name: "General Electric Co.", ticker: "GE", price: "$158.20", change: "▲ +2.4%", isUp: true }
+            ];
+            lowStocks = [
+                { name: "PayPal Holdings Inc.", ticker: "PYPL", price: "$52.15", change: "▼ -1.5%", isUp: false },
+                { name: "Boeing Co.", ticker: "BA", price: "$162.40", change: "▼ -2.1%", isUp: false },
+                { name: "Pfizer Inc.", ticker: "PFE", price: "$26.80", change: "▼ -0.8%", isUp: false }
+            ];
+            volumeStocks = [
+                { name: "Bank of America Corp.", ticker: "BAC", price: "3.2배 급증", changeText: "평균 대비 320%" },
+                { name: "Freeport-McMoRan Inc.", ticker: "FCX", price: "3.0배 급증", changeText: "평균 대비 300%" },
+                { name: "JPMorgan Chase & Co.", ticker: "JPM", price: "2.4배 급증", changeText: "평균 대비 240%" }
+            ];
+        }
+    } else {
+        if (seasonType === "summer") {
+            highStocks = [
+                { name: "SK하이닉스", ticker: "000660", price: "188,500원", change: "▲ +5.2%", isUp: true },
+                { name: "한미반도체", ticker: "042700", price: "142,400원", change: "▲ +6.8%", isUp: true },
+                { name: "현대자동차", ticker: "005380", price: "258,000원", change: "▲ +2.3%", isUp: true },
+                { name: "기아", ticker: "000270", price: "118,500원", change: "▲ +1.9%", isUp: true }
+            ];
+            lowStocks = [
+                { name: "LG화학", ticker: "051910", price: "385,000원", change: "▼ -1.5%", isUp: false },
+                { name: "카카오페이", ticker: "377300", price: "28,400원", change: "▼ -2.8%", isUp: false },
+                { name: "롯데케미칼", ticker: "011170", price: "115,000원", change: "▼ -1.2%", isUp: false }
+            ];
+            volumeStocks = [
+                { name: "한화에어로스페이스", ticker: "012450", price: "3.8배 급증", changeText: "평균 대비 380%" },
+                { name: "SK하이닉스", ticker: "000660", price: "3.2배 급증", changeText: "평균 대비 320%" },
+                { name: "알테오젠", ticker: "196170", price: "2.9배 급증", changeText: "평균 대비 290%" }
+            ];
+        } else if (seasonType === "autumn") {
+            highStocks = [
+                { name: "삼성바이오로직스", ticker: "207940", price: "845,000원", change: "▲ +1.2%", isUp: true },
+                { name: "셀트리온", ticker: "068270", price: "185,200원", change: "▲ +0.8%", isUp: true },
+                { name: "메리츠금융지주", ticker: "138040", price: "82,400원", change: "▲ +2.1%", isUp: true },
+                { name: "KT&G", ticker: "033780", price: "95,400원", change: "▲ +0.5%", isUp: true }
+            ];
+            lowStocks = [
+                { name: "SK하이닉스", ticker: "000660", price: "152,000원", change: "▼ -3.8%", isUp: false },
+                { name: "LG화학", ticker: "051910", price: "342,000원", change: "▼ -2.4%", isUp: false },
+                { name: "대한항공", ticker: "003490", price: "20,100원", change: "▼ -1.8%", isUp: false }
+            ];
+            volumeStocks = [
+                { name: "KODEX 국고채3년", ticker: "114260", price: "2.8배 급증", changeText: "평균 대비 280%" },
+                { name: "삼성바이오로직스", ticker: "207940", price: "2.4배 급증", changeText: "평균 대비 240%" },
+                { name: "KT", ticker: "030200", price: "2.1배 급증", changeText: "평균 대비 210%" }
+            ];
+        } else if (seasonType === "winter") {
+            highStocks = [
+                { name: "한국전력공사", ticker: "015760", price: "22,400원", change: "▲ +1.8%", isUp: true },
+                { name: "KT&G", ticker: "033780", price: "98,500원", change: "▲ +1.2%", isUp: true },
+                { name: "KODEX 200선물인버스2X", ticker: "252670", price: "2,850원", change: "▲ +4.5%", isUp: true },
+                { name: "신한지주", ticker: "055550", price: "48,500원", change: "▲ +0.9%", isUp: true }
+            ];
+            lowStocks = [
+                { name: "삼성전자", ticker: "005930", price: "64,200원", change: "▼ -3.4%", isUp: false },
+                { name: "SK하이닉스", ticker: "000660", price: "115,000원", change: "▼ -6.2%", isUp: false },
+                { name: "LG에너지솔루션", ticker: "373220", price: "320,000원", change: "▼ -4.5%", isUp: false },
+                { name: "카카오", ticker: "035720", price: "38,500원", change: "▼ -2.9%", isUp: false }
+            ];
+            volumeStocks = [
+                { name: "KODEX 200선물인버스2X", ticker: "252670", price: "6.2배 폭증", changeText: "평균 대비 620%" },
+                { name: "KODEX 레버리지", ticker: "122630", price: "4.8배 폭증", changeText: "평균 대비 480%" },
+                { name: "한국전력공사", ticker: "015760", price: "2.5배 급증", changeText: "평균 대비 250%" }
+            ];
+        } else {
+            highStocks = [
+                { name: "KB금융지주", ticker: "105560", price: "76,500원", change: "▲ +3.2%", isUp: true },
+                { name: "POSCO홀딩스", ticker: "005490", price: "395,000원", change: "▲ +2.8%", isUp: true },
+                { name: "삼성물산", ticker: "028260", price: "158,000원", change: "▲ +1.9%", isUp: true },
+                { name: "두산에너빌리티", ticker: "034020", price: "19,850원", change: "▲ +2.4%", isUp: true }
+            ];
+            lowStocks = [
+                { name: "넷마블", ticker: "251270", price: "52,400원", change: "▼ -0.8%", isUp: false },
+                { name: "카카오페이", ticker: "377300", price: "30,100원", change: "▼ -1.5%", isUp: false },
+                { name: "에스엠", ticker: "041510", price: "72,400원", change: "▼ -2.1%", isUp: false }
+            ];
+            volumeStocks = [
+                { name: "삼성전자", ticker: "005930", price: "3.4배 급증", changeText: "평균 대비 340%" },
+                { name: "KB금융지주", ticker: "105560", price: "3.1배 급증", changeText: "평균 대비 310%" },
+                { name: "현대제철", ticker: "004020", price: "2.5배 급증", changeText: "평균 대비 250%" }
+            ];
+        }
+    }
+
     return {
         per: per.toFixed(1),
         perGrade: perGrade,
@@ -1245,7 +1394,10 @@ function calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2
         macdGrade: macdGrade,
         foreignFlow: foreignFlow,
         instFlow: instFlow,
-        retailWeight: retailWeight
+        retailWeight: retailWeight,
+        highStocks: highStocks,
+        lowStocks: lowStocks,
+        volumeStocks: volumeStocks
     };
 }
 
@@ -1696,6 +1848,57 @@ function updateUI(macro, season, portfolio, cli, pmi, gdp, eps, m2, cpi, rate, s
     if (elRetailVal) elRetailVal.textContent = sec.retailWeight.text;
     if (elRetailBar) elRetailBar.style.width = `${sec.retailWeight.percentage}%`;
 
+    // Render 52W High Stocks
+    const elHighList = document.getElementById("stocks-52w-high-list");
+    if (elHighList && sec.highStocks) {
+        elHighList.innerHTML = sec.highStocks.map(s => `
+            <div class="stock-item-row">
+                <div style="display: flex; flex-direction: column;">
+                    <span style="font-size: 0.8rem; font-weight: 700; color: #ffffff;">${s.name}</span>
+                    <span style="font-size: 0.65rem; color: var(--text-muted);">${s.ticker}</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: flex-end;">
+                    <span style="font-size: 0.8rem; font-weight: 700; color: #ffffff;">${s.price}</span>
+                    <span style="font-size: 0.65rem; color: #10b981; font-weight: 700;">${s.change}</span>
+                </div>
+            </div>
+        `).join("");
+    }
+
+    // Render 52W Low Stocks
+    const elLowList = document.getElementById("stocks-52w-low-list");
+    if (elLowList && sec.lowStocks) {
+        elLowList.innerHTML = sec.lowStocks.map(s => `
+            <div class="stock-item-row">
+                <div style="display: flex; flex-direction: column;">
+                    <span style="font-size: 0.8rem; font-weight: 700; color: #ffffff;">${s.name}</span>
+                    <span style="font-size: 0.65rem; color: var(--text-muted);">${s.ticker}</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: flex-end;">
+                    <span style="font-size: 0.8rem; font-weight: 700; color: #ffffff;">${s.price}</span>
+                    <span style="font-size: 0.65rem; color: #ef4444; font-weight: 700;">${s.change}</span>
+                </div>
+            </div>
+        `).join("");
+    }
+
+    // Render Volume Spikes Stocks
+    const elVolList = document.getElementById("stocks-volume-spike-list");
+    if (elVolList && sec.volumeStocks) {
+        elVolList.innerHTML = sec.volumeStocks.map(s => `
+            <div class="stock-item-row">
+                <div style="display: flex; flex-direction: column;">
+                    <span style="font-size: 0.8rem; font-weight: 700; color: #ffffff;">${s.name}</span>
+                    <span style="font-size: 0.65rem; color: var(--text-muted);">${s.ticker}</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: flex-end;">
+                    <span style="font-size: 0.8rem; font-weight: 700; color: #3b82f6;">${s.price}</span>
+                    <span style="font-size: 0.65rem; color: var(--text-muted); font-weight: 500;">${s.changeText}</span>
+                </div>
+            </div>
+        `).join("");
+    }
+
     // 8. Update Export statistics card
     updateExportCard();
 
@@ -1983,21 +2186,30 @@ function loadPreset(key) {
 function switchMarketTab(tabName) {
     const valBtn = document.getElementById("market-tab-val");
     const techBtn = document.getElementById("market-tab-tech");
+    const stocksBtn = document.getElementById("market-tab-stocks");
     const valContent = document.getElementById("market-content-val");
     const techContent = document.getElementById("market-content-tech");
+    const stocksContent = document.getElementById("market-content-stocks");
 
     if (!valBtn || !techBtn || !valContent || !techContent) return;
 
+    valBtn.classList.remove("active");
+    techBtn.classList.remove("active");
+    if (stocksBtn) stocksBtn.classList.remove("active");
+
+    valContent.classList.add("hidden");
+    techContent.classList.add("hidden");
+    if (stocksContent) stocksContent.classList.add("hidden");
+
     if (tabName === 'val') {
         valBtn.classList.add("active");
-        techBtn.classList.remove("active");
         valContent.classList.remove("hidden");
-        techContent.classList.add("hidden");
-    } else {
+    } else if (tabName === 'tech') {
         techBtn.classList.add("active");
-        valBtn.classList.remove("active");
         techContent.classList.remove("hidden");
-        valContent.classList.add("hidden");
+    } else if (tabName === 'stocks') {
+        if (stocksBtn) stocksBtn.classList.add("active");
+        if (stocksContent) stocksContent.classList.remove("hidden");
     }
 }
 
