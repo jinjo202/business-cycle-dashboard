@@ -2126,3 +2126,22 @@ body.light-theme .compass-dial .compass-needle.prev-needle .needle-south {
     filter: blur(1px);
     border-radius: 50%;
 }
+
+/* 특징주 리스트 스타일 */
+.stock-item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 8px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stock-item-row:hover {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    transform: translateX(3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
