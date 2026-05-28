@@ -406,6 +406,29 @@ let portfolioChartInstance = null;
 
 // 3. CORE ANALYTICAL MATHEMATICAL MODELS
 
+const fiveYearMilestones = {
+        "US": {
+            cli: [101.5, 102.5, 98.8, 99.8, 100.2, 100.2],
+            pmi: [60.0, 62.1, 47.2, 49.5, 51.5, 51.5],
+            gdp: [5.0, 5.7, 2.5, 2.4, 2.2, 2.2],
+            eps: [20.0, 29.5, 2.0, 7.5, 10.5, 10.5],
+            m2: [15.0, 18.5, -1.0, 3.8, 4.5, 4.5],
+            cpi: [2.5, 6.8, 4.1, 2.8, 2.3, 2.3],
+            rate: [0.25, 0.25, 5.25, 5.0, 4.0, 4.0],
+            spread: [1.5, 1.2, -0.8, -0.2, 0.2, 0.2]
+        },
+        "KR": {
+            cli: [100.5, 102.2, 98.2, 99.8, 100.5, 100.5],
+            pmi: [54.0, 57.5, 46.0, 50.5, 52.0, 52.0],
+            gdp: [2.0, 3.7, 1.5, 2.2, 2.5, 2.5],
+            eps: [12.0, 26.0, -18.0, 8.0, 200.0, 200.0],
+            m2: [8.0, 9.8, 5.4, 6.0, 6.0, 6.0],
+            cpi: [1.5, 4.0, 5.1, 2.8, 2.1, 2.1],
+            rate: [0.5, 0.75, 3.25, 3.50, 3.25, 3.25],
+            spread: [1.1, 1.0, -0.5, 0.0, 0.4, 0.4]
+        }
+    };
+
 // Helper to interpolate indicator values for a specific month index (0 to 60)
 function getIndicatorsForMonth(region, monthIndex) {
     const ms = fiveYearMilestones[region];
@@ -1646,29 +1669,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    // Bind Click events on table rows (5-Year High-Density Monthly Chart)
-    const fiveYearMilestones = {
-        "US": {
-            cli: [101.5, 102.5, 98.8, 99.8, 100.2, 100.2],
-            pmi: [60.0, 62.1, 47.2, 49.5, 51.5, 51.5],
-            gdp: [5.0, 5.7, 2.5, 2.4, 2.2, 2.2],
-            eps: [20.0, 29.5, 2.0, 7.5, 10.5, 10.5],
-            m2: [15.0, 18.5, -1.0, 3.8, 4.5, 4.5],
-            cpi: [2.5, 6.8, 4.1, 2.8, 2.3, 2.3],
-            rate: [0.25, 0.25, 5.25, 5.0, 4.0, 4.0],
-            spread: [1.5, 1.2, -0.8, -0.2, 0.2, 0.2]
-        },
-        "KR": {
-            cli: [100.5, 102.2, 98.2, 99.8, 100.5, 100.5],
-            pmi: [54.0, 57.5, 46.0, 50.5, 52.0, 52.0],
-            gdp: [2.0, 3.7, 1.5, 2.2, 2.5, 2.5],
-            eps: [12.0, 26.0, -18.0, 8.0, 200.0, 200.0],
-            m2: [8.0, 9.8, 5.4, 6.0, 6.0, 6.0],
-            cpi: [1.5, 4.0, 5.1, 2.8, 2.1, 2.1],
-            rate: [0.5, 0.75, 3.25, 3.50, 3.25, 3.25],
-            spread: [1.1, 1.0, -0.5, 0.0, 0.4, 0.4]
-        }
-    };
+    
 
     document.querySelectorAll(".clickable-row").forEach(row => {
         row.addEventListener("click", (e) => {
@@ -1677,11 +1678,25 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!meta) return;
 
             // 1. Show Modal overlay
-            modalOverlay.classList.remove("hidden");
+            if (modalOverlay) {
+                modalOverlay.classList.remove("hidden");
+            }
 
             // 2. Set title & description
-            modalTitle.textContent = `${meta.title.replace("역사적 트렌드", "")} 최근 5개년 월간 트렌드 (5-Year Monthly Trend)`;
-            modalDesc.textContent = `${meta.desc} [차트 최종 지점은 현재 대시보드에 설정된 실시간 시뮬레이션 값이 유기적으로 연결됩니다]`;
+            if (modalTitle) {
+                modalTitle.textContent = `${meta.title.replace("역사적 트렌드", "")} 최근 5개년 월간 트렌드 (5-Year Monthly Trend)`;
+            }
+            if (modalDesc) {
+                modalDesc.textContent = `${meta.desc} [차트 최종 지점은 현재 대시보드에 설정된 실시간 시뮬레이션 값이 유기적으로 연결됩니다]`;
+            }
+
+            // 2.5 Dynamic Source Link Injection inside Modal
+            const rowSourceLink = row.querySelector("td a.source-link");
+            const modalSourceLink = document.getElementById("modal-indicator-source-link");
+            if (rowSourceLink && modalSourceLink) {
+                modalSourceLink.href = rowSourceLink.href;
+                modalSourceLink.textContent = rowSourceLink.textContent;
+            }
 
             // 3. Generate 60-Month High-Density Chronological Series (May 2021 ~ May 2026)
             const ms = fiveYearMilestones[activeRegion][indicatorKey];
