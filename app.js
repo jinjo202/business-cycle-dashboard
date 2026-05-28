@@ -1002,6 +1002,253 @@ function calculateStockSeasonMetrics(fwdEPS, m2, rate, spread) {
     };
 }
 
+// 3B-2. Calculate Secondary Indicators (Valuation, 52W Range, Technicals, Funds Flow)
+function calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2) {
+    // macro is { x: growthScore, y: momentumScore, phase: phase, phaseKor: phaseKor }
+    // season is stock season object returned by calculateStockSeasonMetrics: { season: 'summer', seasonKor: '...', angle: ..., sectors: ... }
+    const x = macro.x; // -4.5 to 4.5
+    const y = macro.y; // -4.5 to 4.5
+    const seasonType = season.season; // 'spring', 'summer', 'autumn', 'winter'
+
+    let per, pbr, dy;
+    let perGrade, pbrGrade, dyGrade;
+    let indexLow, indexHigh, indexVal;
+    let indexMdd, indexRun, indexPos;
+    let indexBadge;
+    let maAlign, rsi, macd, macdGrade;
+    let foreignFlow, instFlow, retailWeight;
+
+    // A. Valuation Multiples & Grades
+    if (activeRegion === "US") {
+        // PER baseline 18.5x, range 13.5x to 24.5x
+        per = 18.5 + 0.8 * x + 0.5 * y + (eps - 5.0) * 0.1;
+        per = Math.max(13.5, Math.min(24.5, per));
+        
+        if (per > 20.5) {
+            perGrade = "고평가";
+        } else if (per < 16.5) {
+            perGrade = "저평가";
+        } else {
+            perGrade = "적정";
+        }
+
+        // PBR baseline 3.75x, range 3.0x to 4.5x
+        pbr = 3.75 + 0.12 * x + 0.05 * y;
+        pbr = Math.max(3.0, Math.min(4.5, pbr));
+
+        if (pbr > 4.15) {
+            pbrGrade = "고평가";
+        } else if (pbr < 3.35) {
+            pbrGrade = "저평가";
+        } else {
+            pbrGrade = "적정";
+        }
+
+        // DY baseline 1.8%, range 1.2% to 2.4%
+        dy = 1.8 - 0.1 * x - 0.05 * y + (rate - 3.5) * 0.08;
+        dy = Math.max(1.2, Math.min(2.4, dy));
+
+        if (dy > 2.1) {
+            dyGrade = "배당 매리트";
+        } else if (dy < 1.4) {
+            dyGrade = "낮은 매리트";
+        } else {
+            dyGrade = "안정";
+        }
+
+        // 52W range: S&P 500
+        indexLow = 3800;
+        indexHigh = 5600;
+        // Position on 52W scale (0% to 100%)
+        indexPos = 50 + (x * 8.5) + (y * 4.5);
+        indexPos = Math.max(2, Math.min(98, indexPos));
+        
+        indexVal = indexLow + (indexHigh - indexLow) * (indexPos / 100);
+        
+        // MDD & Run-up
+        indexMdd = ((indexVal - indexHigh) / indexHigh) * 100;
+        indexRun = ((indexVal - indexLow) / indexLow) * 100;
+
+    } else {
+        // KR KOSPI
+        // PER baseline 10.5x, range 7.8x to 13.5x
+        per = 10.5 + 0.45 * x + 0.25 * y + (eps - 3.0) * 0.05;
+        per = Math.max(7.8, Math.min(13.5, per));
+
+        if (per > 12.0) {
+            perGrade = "고평가";
+        } else if (per < 9.0) {
+            perGrade = "저평가";
+        } else {
+            perGrade = "적정";
+        }
+
+        // PBR baseline 0.95x, range 0.8x to 1.15x
+        pbr = 0.95 + 0.035 * x + 0.015 * y;
+        pbr = Math.max(0.8, Math.min(1.15, pbr));
+
+        if (pbr > 1.05) {
+            pbrGrade = "고평가";
+        } else if (pbr < 0.88) {
+            pbrGrade = "저평가";
+        } else {
+            pbrGrade = "적정";
+        }
+
+        // DY baseline 2.4%, range 1.6% to 3.5%
+        dy = 2.4 - 0.15 * x - 0.08 * y + (rate - 3.0) * 0.12;
+        dy = Math.max(1.6, Math.min(3.5, dy));
+
+        if (dy > 2.8) {
+            dyGrade = "배당 매리트";
+        } else if (dy < 1.9) {
+            dyGrade = "낮은 매리트";
+        } else {
+            dyGrade = "안정";
+        }
+
+        // 52W range: KOSPI
+        indexLow = 2200;
+        indexHigh = 3100;
+        indexPos = 50 + (x * 8.5) + (y * 4.5);
+        indexPos = Math.max(2, Math.min(98, indexPos));
+        
+        indexVal = indexLow + (indexHigh - indexLow) * (indexPos / 100);
+
+        // MDD & Run-up
+        indexMdd = ((indexVal - indexHigh) / indexHigh) * 100;
+        indexRun = ((indexVal - indexLow) / indexLow) * 100;
+    }
+
+    // 52W Badge
+    if (indexPos >= 90) {
+        indexBadge = "신고가 경신 중!";
+    } else if (indexPos <= 15) {
+        indexBadge = "신저가 붕괴 위험!";
+    } else {
+        indexBadge = "정상 궤도";
+    }
+
+    // B. Technical Indicators
+    // MA Alignment based on Uragami Season
+    if (seasonType === "summer") {
+        maAlign = "강력 정배열 (Bullish)";
+    } else if (seasonType === "autumn") {
+        maAlign = "정배열 붕괴 / 혼조세";
+    } else if (seasonType === "winter") {
+        maAlign = "강력 역배열 (Bearish)";
+    } else {
+        maAlign = "골든크로스 발생 (Transition)";
+    }
+
+    // RSI 14
+    rsi = 50 + 4.5 * x + 2.5 * y;
+    rsi = Math.max(18, Math.min(88, rsi));
+    let rsiGrade = "";
+    if (rsi >= 70) {
+        rsiGrade = "과매수 (Overbought)";
+    } else if (rsi <= 30) {
+        rsiGrade = "과매도 (Oversold)";
+    } else {
+        rsiGrade = "중립";
+    }
+
+    // MACD
+    if (y >= 1.5) {
+        macd = "강력 매수 신호 (Strong Buy)";
+        macdGrade = "Bullish Divergence";
+    } else if (y >= 0.5) {
+        macd = "매수 시그널 (Buy Signal)";
+        macdGrade = "Bullish";
+    } else if (y >= -0.5) {
+        macd = "시그널 교차 / 관망";
+        macdGrade = "Neutral";
+    } else if (y >= -1.5) {
+        macd = "매도 시그널 (Sell Signal)";
+        macdGrade = "Bearish";
+    } else {
+        macd = "강력 매도 신호 (Strong Sell)";
+        macdGrade = "Bearish Divergence";
+    }
+
+    // C. Supply & Demand (Flow of Funds)
+    if (activeRegion === "US") {
+        // Foreign Capital Inflow (Billion USD)
+        const netFor = 3.5 * (x + y) + 1.5; // range: -23.7B to +33.0B
+        foreignFlow = {
+            value: netFor,
+            text: netFor >= 0 ? `+$${netFor.toFixed(1)}B 순매입` : `-$${Math.abs(netFor).toFixed(1)}B 순매도`,
+            percentage: Math.max(5, Math.min(95, 50 + (netFor / 35) * 45)),
+            positive: netFor >= 0
+        };
+
+        // Institutional Net Inflow (Billion USD)
+        const netInst = 2.8 * (x + y) - 0.8;
+        instFlow = {
+            value: netInst,
+            text: netInst >= 0 ? `+$${netInst.toFixed(1)}B 순매입` : `-$${Math.abs(netInst).toFixed(1)}B 순매도`,
+            percentage: Math.max(5, Math.min(95, 50 + (netInst / 30) * 45)),
+            positive: netInst >= 0
+        };
+
+        // Retail Trading Weight (Percentage)
+        const retWeight = 42 + 2.5 * x + 1.5 * y;
+        retailWeight = {
+            value: retWeight,
+            text: `전체 거래의 ${retWeight.toFixed(0)}%`,
+            percentage: Math.max(10, Math.min(90, retWeight))
+        };
+    } else {
+        // KR KOSPI (100 Million KRW - 억 원)
+        const netFor = 2200 * (x + 0.4 * y) + 300; // range: -12900 억 to +14100 억
+        foreignFlow = {
+            value: netFor,
+            text: netFor >= 0 ? `+${netFor.toFixed(0)} 억 순매수` : `-${Math.abs(netFor).toFixed(0)} 억 순매도`,
+            percentage: Math.max(5, Math.min(95, 50 + (netFor / 15000) * 45)),
+            positive: netFor >= 0
+        };
+
+        const netInst = 1400 * (0.4 * x + y) - 100;
+        instFlow = {
+            value: netInst,
+            text: netInst >= 0 ? `+${netInst.toFixed(0)} 억 순매수` : `-${Math.abs(netInst).toFixed(0)} 억 순매도`,
+            percentage: Math.max(5, Math.min(95, 50 + (netInst / 12000) * 45)),
+            positive: netInst >= 0
+        };
+
+        const retWeight = 58 + 3.5 * x + 2.0 * y;
+        retailWeight = {
+            value: retWeight,
+            text: `전체 거래의 ${retWeight.toFixed(0)}%`,
+            percentage: Math.max(10, Math.min(90, retWeight))
+        };
+    }
+
+    return {
+        per: per.toFixed(1),
+        perGrade: perGrade,
+        pbr: pbr.toFixed(2),
+        pbrGrade: pbrGrade,
+        dy: dy.toFixed(2),
+        dyGrade: dyGrade,
+        indexLow: indexLow.toLocaleString(),
+        indexHigh: indexHigh.toLocaleString(),
+        indexVal: indexVal.toFixed(0),
+        indexMdd: indexMdd.toFixed(1),
+        indexRun: indexRun.toFixed(1),
+        indexPos: indexPos.toFixed(0),
+        indexBadge: indexBadge,
+        maAlign: maAlign,
+        rsi: rsi.toFixed(1),
+        rsiGrade: rsiGrade,
+        macd: macd,
+        macdGrade: macdGrade,
+        foreignFlow: foreignFlow,
+        instFlow: instFlow,
+        retailWeight: retailWeight
+    };
+}
+
 // 3C. Dynamic Portfolio Blending with M2 Feedback
 function calculateBlendedPortfolio(macroX, macroY, seasonAngle, m2) {
     const distToExpansion = Math.hypot(Math.max(0, 3 - macroX), Math.max(0, 3 - macroY));
@@ -1354,6 +1601,100 @@ function updateUI(macro, season, portfolio, cli, pmi, gdp, eps, m2, cpi, rate, s
         if (sourceSpread) { sourceSpread.href = "https://ecos.bok.or.kr/"; sourceSpread.textContent = "한은 ECOS 국채 ↗"; }
     }
 
+    // 7B. Update Secondary Stock Market Indicators
+    const sec = calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2);
+
+    const elPer = document.getElementById("val-market-per");
+    const elPerGrade = document.getElementById("val-market-per-grade");
+    const elPbr = document.getElementById("val-market-pbr");
+    const elPbrGrade = document.getElementById("val-market-pbr-grade");
+    const elDy = document.getElementById("val-market-dy");
+    const elDyGrade = document.getElementById("val-market-dy-grade");
+
+    if (elPer) elPer.textContent = `${sec.per}배`;
+    if (elPerGrade) {
+        elPerGrade.textContent = sec.perGrade;
+        elPerGrade.className = "metric-grade " + (sec.perGrade === "저평가" ? "bullish" : sec.perGrade === "고평가" ? "bearish" : "neutral");
+    }
+    if (elPbr) elPbr.textContent = `${sec.pbr}배`;
+    if (elPbrGrade) {
+        elPbrGrade.textContent = sec.pbrGrade;
+        elPbrGrade.className = "metric-grade " + (sec.pbrGrade === "저평가" ? "bullish" : sec.pbrGrade === "고평가" ? "bearish" : "neutral");
+    }
+    if (elDy) elDy.textContent = `${sec.dy}%`;
+    if (elDyGrade) {
+        elDyGrade.textContent = sec.dyGrade;
+        elDyGrade.className = "metric-grade " + (sec.dyGrade === "배당 매리트" ? "bullish" : sec.dyGrade === "낮은 매리트" ? "warn" : "neutral");
+    }
+
+    const el52wBadge = document.getElementById("val-market-52w-badge");
+    const el52wLow = document.getElementById("val-market-52w-low");
+    const el52wHigh = document.getElementById("val-market-52w-high");
+    const el52wMdd = document.getElementById("val-market-52w-mdd");
+    const el52wRun = document.getElementById("val-market-52w-run");
+    const el52wPos = document.getElementById("val-market-52w-pos");
+    const el52wPointer = document.getElementById("val-market-52w-pointer");
+
+    const regionUnit = activeRegion === "US" ? " pt" : " pt";
+    if (el52wBadge) {
+        el52wBadge.textContent = sec.indexBadge;
+        el52wBadge.className = "status-badge " + (sec.indexBadge === "신고가 경신 중!" ? "bullish" : sec.indexBadge === "신저가 붕괴 위험!" ? "bearish" : "neutral");
+    }
+    if (el52wLow) el52wLow.textContent = `52주 최저: ${sec.indexLow}${regionUnit}`;
+    if (el52wHigh) el52wHigh.textContent = `52주 최고: ${sec.indexHigh}${regionUnit}`;
+    if (el52wMdd) el52wMdd.textContent = `신고가 대비 괴리율: ${sec.indexMdd}%`;
+    if (el52wRun) el52wRun.textContent = `최저가 대비 상승률: +${sec.indexRun}%`;
+    if (el52wPos) el52wPos.textContent = `현재 가격 위치: ${sec.indexPos}% (${Number(sec.indexVal).toLocaleString()}${regionUnit})`;
+    if (el52wPointer) el52wPointer.style.left = `${sec.indexPos}%`;
+
+    const elMa = document.getElementById("tech-market-ma");
+    const elRsi = document.getElementById("tech-market-rsi");
+    const elRsiGrade = document.getElementById("tech-market-rsi-grade");
+    const elMacd = document.getElementById("tech-market-macd");
+    const elMacdGrade = document.getElementById("tech-market-macd-grade");
+
+    if (elMa) {
+        elMa.textContent = sec.maAlign;
+        elMa.className = "status-badge " + (sec.maAlign.includes("정배열") ? "bullish" : sec.maAlign.includes("역배열") ? "bearish" : "neutral");
+    }
+    if (elRsi) elRsi.textContent = sec.rsi;
+    if (elRsiGrade) {
+        elRsiGrade.textContent = sec.rsiGrade;
+        elRsiGrade.className = "metric-grade " + (sec.rsiGrade === "과매수 (Overbought)" ? "bearish" : sec.rsiGrade === "과매도 (Oversold)" ? "bullish" : "neutral");
+    }
+    if (elMacd) elMacd.textContent = sec.macd;
+    if (elMacdGrade) {
+        elMacdGrade.textContent = sec.macdGrade;
+        elMacdGrade.className = "metric-grade " + (sec.macdGrade.includes("Bullish") ? "bullish" : sec.macdGrade.includes("Bearish") ? "bearish" : "neutral");
+    }
+
+    const elForVal = document.getElementById("tech-market-foreign-val");
+    const elForBar = document.getElementById("tech-market-foreign-bar");
+    const elInstVal = document.getElementById("tech-market-inst-val");
+    const elInstBar = document.getElementById("tech-market-inst-bar");
+    const elRetailVal = document.getElementById("tech-market-retail-val");
+    const elRetailBar = document.getElementById("tech-market-retail-bar");
+
+    if (elForVal) {
+        elForVal.textContent = sec.foreignFlow.text;
+        elForVal.style.color = sec.foreignFlow.positive ? "#10b981" : "#ef4444";
+    }
+    if (elForBar) {
+        elForBar.style.width = `${sec.foreignFlow.percentage}%`;
+        elForBar.style.background = sec.foreignFlow.positive ? "linear-gradient(90deg, #10b981, #34d399)" : "linear-gradient(90deg, #ef4444, #f87171)";
+    }
+
+    if (elInstVal) {
+        elInstVal.textContent = sec.instFlow.text;
+        elInstVal.style.color = sec.instFlow.positive ? "#3b82f6" : "#ef4444";
+    }
+    if (elInstBar) {
+        elInstBar.style.width = `${sec.instFlow.percentage}%`;
+        elInstBar.style.background = sec.instFlow.positive ? "linear-gradient(90deg, #3b82f6, #60a5fa)" : "linear-gradient(90deg, #ef4444, #f87171)";
+    }
+
+    if (elRetailVal) elRetailVal.textContent = sec.retailWeight.text;
+    if (elRetailBar) elRetailBar.style.width = `${sec.retailWeight.percentage}%`;
 
     // 8. Update Export statistics card
     updateExportCard();
@@ -1636,6 +1977,28 @@ function loadPreset(key) {
     
     // Trigger update
     triggerModelUpdate();
+}
+
+// 6B. Switch Market Trends Tabs
+function switchMarketTab(tabName) {
+    const valBtn = document.getElementById("market-tab-val");
+    const techBtn = document.getElementById("market-tab-tech");
+    const valContent = document.getElementById("market-content-val");
+    const techContent = document.getElementById("market-content-tech");
+
+    if (!valBtn || !techBtn || !valContent || !techContent) return;
+
+    if (tabName === 'val') {
+        valBtn.classList.add("active");
+        techBtn.classList.remove("active");
+        valContent.classList.remove("hidden");
+        techContent.classList.add("hidden");
+    } else {
+        techBtn.classList.add("active");
+        valBtn.classList.remove("active");
+        techContent.classList.remove("hidden");
+        valContent.classList.add("hidden");
+    }
 }
 
 // 7. EVENT LISTENERS INITIALIZATION
