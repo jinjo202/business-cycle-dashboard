@@ -1747,7 +1747,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 let curYear = startYear + Math.floor((curMonth - 1) / 12);
                 curMonth = ((curMonth - 1) % 12) + 1;
                 
-                if (i % 12 === 0 || i === 60) {
+                if (i % 6 === 0 || i === 60) {
                     labels.push(`${curYear}년 ${curMonth}월`);
                 } else {
                     labels.push(""); 
@@ -1813,6 +1813,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             ticks: { 
                                 color: textColor, 
                                 maxRotation: 0,
+                                autoSkip: false,
                                 font: { family: 'Inter', size: 9 } 
                             }
                         },
