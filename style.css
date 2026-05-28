@@ -1692,106 +1692,115 @@ body.light-theme .source-link:hover {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.25rem 0.6rem;
+    padding: 0.25rem 0.65rem;
     border-radius: 12px;
-    font-weight: 700;
+    font-weight: 800;
     font-size: 0.725rem;
     border: 1px solid transparent;
     transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 0.5;
+    opacity: 0.6; /* Increased default opacity for better readability of the past month state */
 }
 
 .cycle-badge-mini.active, .season-badge-mini.active {
     opacity: 1;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    transform: scale(1.05); /* Slight enlargement to physically emphasize active state */
 }
 
 /* Light theme support */
 body.light-theme .cycle-badge-mini.active, 
 body.light-theme .season-badge-mini.active {
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 /* Macro Cycle Mini Badges */
 .cycle-badge-mini.expansion {
-    background: rgba(16, 185, 129, 0.06);
+    background: rgba(16, 185, 129, 0.08);
     color: var(--color-expansion);
-    border-color: rgba(16, 185, 129, 0.15);
+    border-color: rgba(16, 185, 129, 0.2);
 }
 .cycle-badge-mini.active.expansion {
-    background: rgba(16, 185, 129, 0.12);
-    border-color: rgba(16, 185, 129, 0.3);
+    background: rgba(16, 185, 129, 0.22);
+    border-color: rgba(16, 185, 129, 0.5);
+    color: #10b981;
 }
 
 .cycle-badge-mini.slowdown {
-    background: rgba(245, 158, 11, 0.06);
+    background: rgba(245, 158, 11, 0.08);
     color: var(--color-slowdown);
-    border-color: rgba(245, 158, 11, 0.15);
+    border-color: rgba(245, 158, 11, 0.2);
 }
 .cycle-badge-mini.active.slowdown {
-    background: rgba(245, 158, 11, 0.12);
-    border-color: rgba(245, 158, 11, 0.3);
+    background: rgba(245, 158, 11, 0.22);
+    border-color: rgba(245, 158, 11, 0.5);
+    color: #f59e0b;
 }
 
 .cycle-badge-mini.contraction {
-    background: rgba(239, 68, 68, 0.06);
+    background: rgba(239, 68, 68, 0.08);
     color: var(--color-contraction);
-    border-color: rgba(239, 68, 68, 0.15);
+    border-color: rgba(239, 68, 68, 0.2);
 }
 .cycle-badge-mini.active.contraction {
-    background: rgba(239, 68, 68, 0.12);
-    border-color: rgba(239, 68, 68, 0.3);
+    background: rgba(239, 68, 68, 0.22);
+    border-color: rgba(239, 68, 68, 0.5);
+    color: #ef4444;
 }
 
 .cycle-badge-mini.recovery {
-    background: rgba(59, 130, 246, 0.06);
+    background: rgba(59, 130, 246, 0.08);
     color: var(--color-recovery);
-    border-color: rgba(59, 130, 246, 0.15);
+    border-color: rgba(59, 130, 246, 0.2);
 }
 .cycle-badge-mini.active.recovery {
-    background: rgba(59, 130, 246, 0.12);
-    border-color: rgba(59, 130, 246, 0.3);
+    background: rgba(59, 130, 246, 0.22);
+    border-color: rgba(59, 130, 246, 0.5);
+    color: #3b82f6;
 }
 
 /* Stock Season Mini Badges */
 .season-badge-mini.spring {
-    background: rgba(251, 113, 133, 0.06);
+    background: rgba(251, 113, 133, 0.08);
     color: var(--color-spring);
-    border-color: rgba(251, 113, 133, 0.15);
+    border-color: rgba(251, 113, 133, 0.2);
 }
 .season-badge-mini.active.spring {
-    background: rgba(251, 113, 133, 0.12);
-    border-color: rgba(251, 113, 133, 0.3);
+    background: rgba(251, 113, 133, 0.22);
+    border-color: rgba(251, 113, 133, 0.5);
+    color: #fb7185;
 }
 
 .season-badge-mini.summer {
-    background: rgba(52, 211, 153, 0.06);
+    background: rgba(52, 211, 153, 0.08);
     color: var(--color-summer);
-    border-color: rgba(52, 211, 153, 0.15);
+    border-color: rgba(52, 211, 153, 0.2);
 }
 .season-badge-mini.active.summer {
-    background: rgba(52, 211, 153, 0.12);
-    border-color: rgba(52, 211, 153, 0.3);
+    background: rgba(52, 211, 153, 0.22);
+    border-color: rgba(52, 211, 153, 0.5);
+    color: #34d399;
 }
 
 .season-badge-mini.autumn {
-    background: rgba(251, 191, 36, 0.06);
+    background: rgba(251, 191, 36, 0.08);
     color: var(--color-autumn);
-    border-color: rgba(251, 191, 36, 0.15);
+    border-color: rgba(251, 191, 36, 0.2);
 }
 .season-badge-mini.active.autumn {
-    background: rgba(251, 191, 36, 0.12);
-    border-color: rgba(251, 191, 36, 0.3);
+    background: rgba(251, 191, 36, 0.22);
+    border-color: rgba(251, 191, 36, 0.5);
+    color: #fbbf24;
 }
 
 .season-badge-mini.winter {
-    background: rgba(129, 140, 248, 0.06);
+    background: rgba(129, 140, 248, 0.08);
     color: var(--color-winter);
-    border-color: rgba(129, 140, 248, 0.15);
+    border-color: rgba(129, 140, 248, 0.2);
 }
 .season-badge-mini.active.winter {
-    background: rgba(129, 140, 248, 0.12);
-    border-color: rgba(129, 140, 248, 0.3);
+    background: rgba(129, 140, 248, 0.22);
+    border-color: rgba(129, 140, 248, 0.5);
+    color: #818cf8;
 }
 
 /* Ghost Needle Style Override */
