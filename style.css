@@ -1674,3 +1674,140 @@ body.light-theme .source-link:hover {
     }
 }
 
+/* Premium Styles for Month-over-Month (MoM) Transition Cards and Mini Badges */
+.transition-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(12px);
+}
+
+.transition-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.cycle-badge-mini, .season-badge-mini {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem 0.6rem;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.725rem;
+    border: 1px solid transparent;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0.5;
+}
+
+.cycle-badge-mini.active, .season-badge-mini.active {
+    opacity: 1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Light theme support */
+body.light-theme .cycle-badge-mini.active, 
+body.light-theme .season-badge-mini.active {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Macro Cycle Mini Badges */
+.cycle-badge-mini.expansion {
+    background: rgba(16, 185, 129, 0.06);
+    color: var(--color-expansion);
+    border-color: rgba(16, 185, 129, 0.15);
+}
+.cycle-badge-mini.active.expansion {
+    background: rgba(16, 185, 129, 0.12);
+    border-color: rgba(16, 185, 129, 0.3);
+}
+
+.cycle-badge-mini.slowdown {
+    background: rgba(245, 158, 11, 0.06);
+    color: var(--color-slowdown);
+    border-color: rgba(245, 158, 11, 0.15);
+}
+.cycle-badge-mini.active.slowdown {
+    background: rgba(245, 158, 11, 0.12);
+    border-color: rgba(245, 158, 11, 0.3);
+}
+
+.cycle-badge-mini.contraction {
+    background: rgba(239, 68, 68, 0.06);
+    color: var(--color-contraction);
+    border-color: rgba(239, 68, 68, 0.15);
+}
+.cycle-badge-mini.active.contraction {
+    background: rgba(239, 68, 68, 0.12);
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+.cycle-badge-mini.recovery {
+    background: rgba(59, 130, 246, 0.06);
+    color: var(--color-recovery);
+    border-color: rgba(59, 130, 246, 0.15);
+}
+.cycle-badge-mini.active.recovery {
+    background: rgba(59, 130, 246, 0.12);
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+/* Stock Season Mini Badges */
+.season-badge-mini.spring {
+    background: rgba(251, 113, 133, 0.06);
+    color: var(--color-spring);
+    border-color: rgba(251, 113, 133, 0.15);
+}
+.season-badge-mini.active.spring {
+    background: rgba(251, 113, 133, 0.12);
+    border-color: rgba(251, 113, 133, 0.3);
+}
+
+.season-badge-mini.summer {
+    background: rgba(52, 211, 153, 0.06);
+    color: var(--color-summer);
+    border-color: rgba(52, 211, 153, 0.15);
+}
+.season-badge-mini.active.summer {
+    background: rgba(52, 211, 153, 0.12);
+    border-color: rgba(52, 211, 153, 0.3);
+}
+
+.season-badge-mini.autumn {
+    background: rgba(251, 191, 36, 0.06);
+    color: var(--color-autumn);
+    border-color: rgba(251, 191, 36, 0.15);
+}
+.season-badge-mini.active.autumn {
+    background: rgba(251, 191, 36, 0.12);
+    border-color: rgba(251, 191, 36, 0.3);
+}
+
+.season-badge-mini.winter {
+    background: rgba(129, 140, 248, 0.06);
+    color: var(--color-winter);
+    border-color: rgba(129, 140, 248, 0.15);
+}
+.season-badge-mini.active.winter {
+    background: rgba(129, 140, 248, 0.12);
+    border-color: rgba(129, 140, 248, 0.3);
+}
+
+/* Ghost Needle Style Override */
+.compass-dial .compass-needle.prev-needle .needle-north {
+    border-bottom-color: rgba(148, 163, 184, 0.45) !important;
+}
+
+.compass-dial .compass-needle.prev-needle .needle-south {
+    border-top-color: rgba(71, 85, 105, 0.45) !important;
+}
+
+body.light-theme .compass-dial .compass-needle.prev-needle .needle-north {
+    border-bottom-color: rgba(148, 163, 184, 0.35) !important;
+}
+
+body.light-theme .compass-dial .compass-needle.prev-needle .needle-south {
+    border-top-color: rgba(203, 213, 225, 0.35) !important;
+}
+
