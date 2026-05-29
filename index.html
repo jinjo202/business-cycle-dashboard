@@ -326,6 +326,7 @@
                         <button class="market-tab-btn active" id="market-tab-val" onclick="switchMarketTab('val')">밸류에이션 & 52주 가격</button>
                         <button class="market-tab-btn" id="market-tab-tech" onclick="switchMarketTab('tech')">기술적 분석 & 수급 동향</button>
                         <button class="market-tab-btn" id="market-tab-stocks" onclick="switchMarketTab('stocks')">특징주 & 거래량 급증</button>
+                        <button class="market-tab-btn" id="market-tab-mcap" onclick="switchMarketTab('mcap')">시가총액 & YTD</button>
                     </div>
                 </div>
                 
@@ -477,6 +478,72 @@
                                 </h4>
                                 <div id="stocks-volume-spike-list" style="display: flex; flex-direction: column; gap: 0.6rem;">
                                     <!-- Dynamic stock rows will be injected here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tab 4: Market Capitalization & YTD Performance -->
+                    <div class="market-tab-content hidden" id="market-content-mcap">
+                        <div class="market-trends-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+                            <!-- Column 1: S&P 500 Market Cap & Top 10 Companies -->
+                            <div class="market-metric-box" style="display: flex; flex-direction: column; gap: 0.8rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 0.6rem; margin-bottom: 0.4rem;">
+                                    <h4 class="metric-group-title" style="margin: 0; color: #3b82f6; display: flex; align-items: center; gap: 0.3rem; font-size: 0.775rem;">
+                                        <span>🇺🇸</span> S&P 500 시가총액 & 주요 10대 기업
+                                    </h4>
+                                    <div style="text-align: right;">
+                                        <span style="font-size: 0.625rem; color: var(--text-muted); font-weight: 500; display: block; line-height: 1.2;">S&P 500 합계 시총</span>
+                                        <span id="mcap-sp500-total" style="font-size: 0.85rem; font-weight: 700; color: #3b82f6; line-height: 1.2;">$44.80T</span>
+                                    </div>
+                                </div>
+                                <div style="width: 100%; overflow-x: auto;">
+                                    <table style="width: 100%; border-collapse: collapse; font-size: 0.7rem; text-align: center;">
+                                        <thead>
+                                            <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.06); color: var(--text-muted); font-weight: 600;">
+                                                <th style="text-align: left; padding: 0.4rem 0.2rem; width: 10%;">순위</th>
+                                                <th style="text-align: left; padding: 0.4rem 0.2rem;">기업명 (티커)</th>
+                                                <th style="text-align: right; padding: 0.4rem 0.2rem; width: 32%;">시가총액</th>
+                                                <th style="text-align: right; padding: 0.4rem 0.2rem; width: 28%;">YTD 수익률</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="mcap-sp500-tbody">
+                                            <!-- Dynamic rows injected by app.js -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- Column 2: KOSPI & KOSDAQ Market Cap & Top 10 Companies -->
+                            <div class="market-metric-box" style="display: flex; flex-direction: column; gap: 0.8rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 0.6rem; margin-bottom: 0.4rem; flex-wrap: wrap; gap: 0.5rem;">
+                                    <h4 class="metric-group-title" style="margin: 0; color: #10b981; display: flex; align-items: center; gap: 0.3rem; font-size: 0.775rem;">
+                                        <span>🇰🇷</span> 국내 시장 시가총액 & 주요 10대 기업
+                                    </h4>
+                                    <div style="display: flex; gap: 0.75rem; text-align: right;">
+                                        <div>
+                                            <span style="font-size: 0.625rem; color: var(--text-muted); font-weight: 500; display: block; line-height: 1.2;">코스피 합계 시총</span>
+                                            <span id="mcap-kospi-total" style="font-size: 0.85rem; font-weight: 700; color: #10b981; line-height: 1.2;">2,185조원</span>
+                                        </div>
+                                        <div style="border-left: 1px solid rgba(255, 255, 255, 0.08); padding-left: 0.75rem;">
+                                            <span style="font-size: 0.625rem; color: var(--text-muted); font-weight: 500; display: block; line-height: 1.2;">코스닥 합계 시총</span>
+                                            <span id="mcap-kosdaq-total" style="font-size: 0.85rem; font-weight: 700; color: #10b981; line-height: 1.2;">412조원</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="width: 100%; overflow-x: auto;">
+                                    <table style="width: 100%; border-collapse: collapse; font-size: 0.7rem; text-align: center;">
+                                        <thead>
+                                            <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.06); color: var(--text-muted); font-weight: 600;">
+                                                <th style="text-align: left; padding: 0.4rem 0.2rem; width: 10%;">순위</th>
+                                                <th style="text-align: left; padding: 0.4rem 0.2rem;">기업명 (티커)</th>
+                                                <th style="text-align: right; padding: 0.4rem 0.2rem; width: 32%;">시가총액</th>
+                                                <th style="text-align: right; padding: 0.4rem 0.2rem; width: 28%;">YTD 수익률</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="mcap-kospi-tbody">
+                                            <!-- Dynamic rows injected by app.js -->
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
