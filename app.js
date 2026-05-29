@@ -1507,6 +1507,71 @@ function calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2
         };
     });
 
+    // ----------------------------------------------------
+    // Dynamic Index and Company Market Cap & YTD returns
+    // ----------------------------------------------------
+    const ytdSp500 = 8.5 + 4.5 * x + 2.5 * y;
+    const ytdKospi = 5.2 + 6.0 * x + 3.0 * y;
+    const ytdKosdaq = 6.8 + 8.2 * x + 4.5 * y;
+
+    const mcapSp500Total = 44.80 * (1 + ytdSp500 / 100);
+    const mcapKospiTotal = 2185.0 * (1 + ytdKospi / 100);
+    const mcapKosdaqTotal = 412.0 * (1 + ytdKosdaq / 100);
+
+    // US S&P 500 Top 10 Companies
+    const usTop10Defs = [
+        { name: "Microsoft Corp.", ticker: "MSFT", baseMcap: 3.15, betaX: 4.0, betaY: 2.0, baseOffset: 10.0 },
+        { name: "Apple Inc.", ticker: "AAPL", baseMcap: 3.10, betaX: 3.5, betaY: 1.8, baseOffset: 9.0 },
+        { name: "NVIDIA Corp.", ticker: "NVDA", baseMcap: 2.95, betaX: 8.0, betaY: 6.0, baseOffset: 22.0 },
+        { name: "Alphabet Inc.", ticker: "GOOGL", baseMcap: 2.15, betaX: 3.8, betaY: 1.9, baseOffset: 8.0 },
+        { name: "Amazon.com Inc.", ticker: "AMZN", baseMcap: 1.90, betaX: 4.5, betaY: 2.2, baseOffset: 11.0 },
+        { name: "Meta Platforms", ticker: "META", baseMcap: 1.35, betaX: 5.2, betaY: 3.0, baseOffset: 12.0 },
+        { name: "Berkshire Hathaway", ticker: "BRK.B", baseMcap: 0.92, betaX: 1.5, betaY: 0.5, baseOffset: 6.0 },
+        { name: "Eli Lilly & Co.", ticker: "LLY", baseMcap: 0.85, betaX: 2.0, betaY: 1.0, baseOffset: 18.0 },
+        { name: "Broadcom Inc.", ticker: "AVGO", baseMcap: 0.78, betaX: 4.8, betaY: 2.5, baseOffset: 13.0 },
+        { name: "Tesla Inc.", ticker: "TSLA", baseMcap: 0.65, betaX: 7.0, betaY: 5.0, baseOffset: 15.0 }
+    ];
+
+    // KOSPI Top 10 Companies
+    const krTop10Defs = [
+        { name: "삼성전자", ticker: "005930", baseMcap: 415.0, betaX: 5.5, betaY: 3.0, baseOffset: 8.0 },
+        { name: "SK하이닉스", ticker: "000660", baseMcap: 165.0, betaX: 8.5, betaY: 5.0, baseOffset: 24.0 },
+        { name: "LG에너지솔루션", ticker: "373220", baseMcap: 75.0, betaX: 6.0, betaY: 3.5, baseOffset: 5.0 },
+        { name: "삼성바이오로직스", ticker: "207940", baseMcap: 62.0, betaX: 1.8, betaY: 0.8, baseOffset: 7.0 },
+        { name: "현대자동차", ticker: "005380", baseMcap: 56.0, betaX: 3.5, betaY: 1.5, baseOffset: 14.0 },
+        { name: "기아", ticker: "000270", baseMcap: 44.0, betaX: 3.8, betaY: 1.6, baseOffset: 15.0 },
+        { name: "셀트리온", ticker: "068270", baseMcap: 36.0, betaX: 2.0, betaY: 1.0, baseOffset: 9.0 },
+        { name: "KB금융", ticker: "105560", baseMcap: 31.0, betaX: 2.5, betaY: 1.2, baseOffset: 18.0 },
+        { name: "신한지주", ticker: "055550", baseMcap: 26.0, betaX: 2.2, betaY: 1.1, baseOffset: 14.0 },
+        { name: "POSCO홀딩스", ticker: "005490", baseMcap: 24.0, betaX: 5.0, betaY: 2.8, baseOffset: 6.0 }
+    ];
+
+    const usTop10 = usTop10Defs.map((item, idx) => {
+        const stockYtd = item.baseOffset + item.betaX * x + item.betaY * y;
+        const currentMcap = item.baseMcap * (1 + stockYtd / 100);
+        return {
+            rank: idx + 1,
+            name: item.name,
+            ticker: item.ticker,
+            mcapText: currentMcap >= 1.0 ? `$${currentMcap.toFixed(2)}T` : `$${(currentMcap * 1000).toFixed(0)}B`,
+            ytdText: (stockYtd >= 0 ? "+" : "") + stockYtd.toFixed(1) + "%",
+            ytdPos: stockYtd >= 0
+        };
+    });
+
+    const krTop10 = krTop10Defs.map((item, idx) => {
+        const stockYtd = item.baseOffset + item.betaX * x + item.betaY * y;
+        const currentMcap = item.baseMcap * (1 + stockYtd / 100);
+        return {
+            rank: idx + 1,
+            name: item.name,
+            ticker: item.ticker,
+            mcapText: `${Math.round(currentMcap).toLocaleString()}조원`,
+            ytdText: (stockYtd >= 0 ? "+" : "") + stockYtd.toFixed(1) + "%",
+            ytdPos: stockYtd >= 0
+        };
+    });
+
     return {
         per: per.toFixed(1),
         perGrade: perGrade,
@@ -1532,7 +1597,12 @@ function calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2
         highStocks: highStocks,
         lowStocks: lowStocks,
         volumeStocks: volumeStocks,
-        sectorReturns: sectorReturns
+        sectorReturns: sectorReturns,
+        mcapSp500Total: `$${mcapSp500Total.toFixed(2)}T`,
+        mcapKospiTotal: `${Math.round(mcapKospiTotal).toLocaleString()}조원`,
+        mcapKosdaqTotal: `${Math.round(mcapKosdaqTotal).toLocaleString()}조원`,
+        usTop10: usTop10,
+        krTop10: krTop10
     };
 }
 
@@ -2034,6 +2104,51 @@ function updateUI(macro, season, portfolio, cli, pmi, gdp, eps, m2, cpi, rate, s
         `).join("");
     }
 
+    // Render Market Cap totals
+    const elSp500McapTotal = document.getElementById("mcap-sp500-total");
+    const elKospiMcapTotal = document.getElementById("mcap-kospi-total");
+    const elKosdaqMcapTotal = document.getElementById("mcap-kosdaq-total");
+
+    if (elSp500McapTotal) elSp500McapTotal.textContent = sec.mcapSp500Total;
+    if (elKospiMcapTotal) elKospiMcapTotal.textContent = sec.mcapKospiTotal;
+    if (elKosdaqMcapTotal) elKosdaqMcapTotal.textContent = sec.mcapKosdaqTotal;
+
+    // Render S&P 500 Top 10 Table
+    const elSp500McapTbody = document.getElementById("mcap-sp500-tbody");
+    if (elSp500McapTbody && sec.usTop10) {
+        elSp500McapTbody.innerHTML = sec.usTop10.map(s => {
+            const ytdColor = s.ytdPos ? "#10b981" : "#ef4444";
+            return `
+                <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04); transition: background-color 0.2s ease;">
+                    <td style="text-align: left; padding: 0.5rem 0.2rem; color: var(--text-muted); font-weight: 600;">${s.rank}</td>
+                    <td style="text-align: left; padding: 0.5rem 0.2rem; font-weight: 700; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 110px;" title="${s.name} (${s.ticker})">
+                        ${s.name} <span style="font-size: 0.6rem; color: var(--text-muted); font-weight: 500;">${s.ticker}</span>
+                    </td>
+                    <td style="text-align: right; padding: 0.5rem 0.2rem; font-weight: 700; color: #ffffff;">${s.mcapText}</td>
+                    <td style="text-align: right; padding: 0.5rem 0.2rem; font-weight: 700; color: ${ytdColor};">${s.ytdText}</td>
+                </tr>
+            `;
+        }).join("");
+    }
+
+    // Render KOSPI Top 10 Table
+    const elKospiMcapTbody = document.getElementById("mcap-kospi-tbody");
+    if (elKospiMcapTbody && sec.krTop10) {
+        elKospiMcapTbody.innerHTML = sec.krTop10.map(s => {
+            const ytdColor = s.ytdPos ? "#10b981" : "#ef4444";
+            return `
+                <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04); transition: background-color 0.2s ease;">
+                    <td style="text-align: left; padding: 0.5rem 0.2rem; color: var(--text-muted); font-weight: 600;">${s.rank}</td>
+                    <td style="text-align: left; padding: 0.5rem 0.2rem; font-weight: 700; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 110px;" title="${s.name} (${s.ticker})">
+                        ${s.name} <span style="font-size: 0.6rem; color: var(--text-muted); font-weight: 500;">${s.ticker}</span>
+                    </td>
+                    <td style="text-align: right; padding: 0.5rem 0.2rem; font-weight: 700; color: #ffffff;">${s.mcapText}</td>
+                    <td style="text-align: right; padding: 0.5rem 0.2rem; font-weight: 700; color: ${ytdColor};">${s.ytdText}</td>
+                </tr>
+            `;
+        }).join("");
+    }
+
     // Render Sector Period Returns Table
     const elSectorReturnsTbody = document.getElementById("sector-returns-tbody");
     if (elSectorReturnsTbody && sec.sectorReturns) {
@@ -2344,19 +2459,23 @@ function switchMarketTab(tabName) {
     const valBtn = document.getElementById("market-tab-val");
     const techBtn = document.getElementById("market-tab-tech");
     const stocksBtn = document.getElementById("market-tab-stocks");
+    const mcapBtn = document.getElementById("market-tab-mcap");
     const valContent = document.getElementById("market-content-val");
     const techContent = document.getElementById("market-content-tech");
     const stocksContent = document.getElementById("market-content-stocks");
+    const mcapContent = document.getElementById("market-content-mcap");
 
     if (!valBtn || !techBtn || !valContent || !techContent) return;
 
     valBtn.classList.remove("active");
     techBtn.classList.remove("active");
     if (stocksBtn) stocksBtn.classList.remove("active");
+    if (mcapBtn) mcapBtn.classList.remove("active");
 
     valContent.classList.add("hidden");
     techContent.classList.add("hidden");
     if (stocksContent) stocksContent.classList.add("hidden");
+    if (mcapContent) mcapContent.classList.add("hidden");
 
     if (tabName === 'val') {
         valBtn.classList.add("active");
@@ -2367,6 +2486,9 @@ function switchMarketTab(tabName) {
     } else if (tabName === 'stocks') {
         if (stocksBtn) stocksBtn.classList.add("active");
         if (stocksContent) stocksContent.classList.remove("hidden");
+    } else if (tabName === 'mcap') {
+        if (mcapBtn) mcapBtn.classList.add("active");
+        if (mcapContent) mcapContent.classList.remove("hidden");
     }
 }
 
