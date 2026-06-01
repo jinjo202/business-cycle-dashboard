@@ -1,6 +1,7 @@
 // MACROECONOMIC ENGINE & STOCK SEASONS INTERACTION WITH M2 LIQUIDITY
 
-// 1. DUAL-MARKET REGIONAL HISTORICAL PRESETS (US vs KR) WITH M2
+// --- GLOBAL INTERACTIVE DATABASE CONFIGURATION ---
+
 const historicalPresets = {
     "US": {
         "2000_dotcom": {
@@ -128,7 +129,7 @@ const historicalPresets = {
     }
 };
 
-// 1B. DUAL-MARKET REGIONAL EXPORT DATA FROM KITA & CENSUS BUREAU
+
 const exportData = {
     "US": {
         "2026-05": {
@@ -344,27 +345,27 @@ const exportData = {
     },
     "KR": {
         "2026-05": {
-            growthVal: "+11.5%",
-            growthTrend: "▲ HBM/DRAM 반도체 대형 사이클 주도",
-            balanceVal: "+45억 달러 흑자",
-            balanceTrend: "▲ 반도체 호조로 흑자 폭 확대",
-            ebsiVal: "112.5",
-            ebsiTrend: "▲ 100 기준점 돌파 (수출 회복기)",
+            growthVal: "+11.7%",
+            growthTrend: "▲ HBM/DRAM 반도체 대형 사이클 주도 (잠정치)",
+            balanceVal: "+48.5억 달러 흑자",
+            balanceTrend: "▲ 반도체 호조로 12개월 연속 흑자 안착",
+            ebsiVal: "113.2",
+            ebsiTrend: "▲ 수출 경기 회복 지수 안정적 확장",
             items: [
                 {
-                    name: "반도체 (DRAM / HBM 메모리 포함)", pct: 18, change: "+42.5%", barClass: "summer",
+                    name: "반도체 (DRAM / HBM 메모리 포함)", pct: 18, change: "+43.8%", barClass: "summer",
                     subItems: [
-                        { name: "HBM (고대역폭 메모리)", yoy: "+255.0%", mom: "+18.2%" },
-                        { name: "DRAM (고용량 서버 메모리)", yoy: "+48.5%", mom: "+4.5%" },
-                        { name: "차세대 SSD (Solid State Drive)", yoy: "+32.4%", mom: "+3.2%" }
+                        { name: "HBM (고대역폭 메모리)", yoy: "+262.0%", mom: "+18.5%" },
+                        { name: "DRAM (고용량 서버 메모리)", yoy: "+51.2%", mom: "+4.8%" },
+                        { name: "차세대 SSD (Solid State Drive)", yoy: "+35.6%", mom: "+3.5%" }
                     ]
                 },
                 {
-                    name: "자동차, 친환경차 및 완성차 부품", pct: 13, change: "+12.2%", barClass: "spring",
+                    name: "자동차, 친환경차 및 완성차 부품", pct: 13, change: "+12.5%", barClass: "spring",
                     subItems: [
-                        { name: "친환경 전기차 (EV 선적)", yoy: "+18.2%", mom: "+2.4%" },
-                        { name: "하이브리드 완성차 (HEV)", yoy: "+22.5%", mom: "+3.0%" },
-                        { name: "샤시 모듈 및 조향 부품 수출", yoy: "+5.8%", mom: "+0.8%" }
+                        { name: "친환경 전기차 (EV 선적)", yoy: "+18.5%", mom: "+2.6%" },
+                        { name: "하이브리드 완성차 (HEV)", yoy: "+23.0%", mom: "+3.2%" },
+                        { name: "샤시 모듈 및 조향 부품 수출", yoy: "+6.0%", mom: "+1.0%" }
                     ]
                 },
                 {
@@ -376,11 +377,11 @@ const exportData = {
                     ]
                 },
                 {
-                    name: "선박, LNG 고부가가치 운반선", pct: 6, change: "+18.0%", barClass: "autumn",
+                    name: "선박, LNG 고부가가치 운반선", pct: 6, change: "+18.5%", barClass: "autumn",
                     subItems: [
-                        { name: "고부가가치 LNG 가스 운반선", yoy: "+28.5%", mom: "+5.2%" },
-                        { name: "대형 컨테이너선 건조 인도", yoy: "+12.4%", mom: "+1.8%" },
-                        { name: "친환경 이중연료 추진 선박", yoy: "+15.0%", mom: "+2.0%" }
+                        { name: "고부가가치 LNG 가스 운반선", yoy: "+29.0%", mom: "+5.5%" },
+                        { name: "대형 컨테이너선 건조 인도", yoy: "+13.0%", mom: "+2.0%" },
+                        { name: "친환경 이중연료 추진 선박", yoy: "+15.5%", mom: "+2.2%" }
                     ]
                 }
             ]
@@ -720,15 +721,109 @@ function updateExportCard() {
     }
 }
 
+
+    const baselinePrices = {
+        "US": {
+            "NVDA": { name: "NVIDIA Corp.", ticker: "NVDA", base: 212.73, format: (p) => `$${p.toFixed(2)}` },
+            "AAPL": { name: "Apple Inc.", ticker: "AAPL", base: 310.85, format: (p) => `$${p.toFixed(2)}` },
+            "MSFT": { name: "Microsoft Corp.", ticker: "MSFT", base: 412.67, format: (p) => `$${p.toFixed(2)}` },
+            "AMZN": { name: "Amazon.com Inc.", ticker: "AMZN", base: 271.85, format: (p) => `$${p.toFixed(2)}` },
+            "TSLA": { name: "Tesla Inc.", ticker: "TSLA", base: 440.00, format: (p) => `$${p.toFixed(2)}` },
+            "COST": { name: "Costco Wholesale", ticker: "COST", base: 810.30, format: (p) => `$${p.toFixed(2)}` },
+            "KO": { name: "Coca-Cola Co.", ticker: "KO", base: 62.50, format: (p) => `$${p.toFixed(2)}` },
+            "PG": { name: "Procter & Gamble Co.", ticker: "PG", base: 165.20, format: (p) => `$${p.toFixed(2)}` },
+            "MCD": { name: "McDonald's Corp.", ticker: "MCD", base: 290.40, format: (p) => `$${p.toFixed(2)}` },
+            "WBA": { name: "Walgreens Boots Alliance", ticker: "WBA", base: 15.40, format: (p) => `$${p.toFixed(2)}` },
+            "PARA": { name: "Paramount Global", ticker: "PARA", base: 11.20, format: (p) => `$${p.toFixed(2)}` },
+            "INTC": { name: "Intel Corp.", ticker: "INTC", base: 30.15, format: (p) => `$${p.toFixed(2)}` },
+            "LMT": { name: "Lockheed Martin Corp.", ticker: "LMT", base: 465.80, format: (p) => `$${p.toFixed(2)}` },
+            "GLD": { name: "SPDR Gold Shares", ticker: "GLD", base: 225.40, format: (p) => `$${p.toFixed(2)}` },
+            "WMT": { name: "Walmart Inc.", ticker: "WMT", base: 65.80, format: (p) => `$${p.toFixed(2)}` },
+            "JPM": { name: "JPMorgan Chase & Co.", ticker: "JPM", base: 198.50, format: (p) => `$${p.toFixed(2)}` },
+            "CAT": { name: "Caterpillar Inc.", ticker: "CAT", base: 355.20, format: (p) => `$${p.toFixed(2)}` },
+            "XOM": { name: "Exxon Mobil Corp.", ticker: "XOM", base: 120.40, format: (p) => `$${p.toFixed(2)}` },
+            "GE": { name: "General Electric Co.", ticker: "GE", base: 158.20, format: (p) => `$${p.toFixed(2)}` },
+            "PYPL": { name: "PayPal Holdings Inc.", ticker: "PYPL", base: 52.15, format: (p) => `$${p.toFixed(2)}` },
+            "BA": { name: "Boeing Co.", ticker: "BA", base: 162.40, format: (p) => `$${p.toFixed(2)}` },
+            "PFE": { name: "Pfizer Inc.", ticker: "PFE", base: 26.80, format: (p) => `$${p.toFixed(2)}` },
+            "SQQQ": { name: "ProShares UltraPro Short QQQ", ticker: "SQQQ", base: 10.40, format: (p) => `$${p.toFixed(2)}` },
+            "VIX": { name: "iPath Volatility VIX ETN", ticker: "VIX", base: 14.80, format: (p) => `$${p.toFixed(2)}` },
+            "XLU": { name: "Utilities Select Sector SPDR", ticker: "XLU", base: 68.20, format: (p) => `$${p.toFixed(2)}` },
+            "AMD": { name: "Advanced Micro Devices", ticker: "AMD", base: 164.50, format: (p) => `$${p.toFixed(2)}` },
+            "SMCI": { name: "Super Micro Computer", ticker: "SMCI", base: 785.40, format: (p) => `$${p.toFixed(2)}` },
+            "TLT": { name: "iShares 20+ Yr Treasury Bond", ticker: "TLT", base: 92.40, format: (p) => `$${p.toFixed(2)}` },
+            "BAC": { name: "Bank of America Corp.", ticker: "BAC", base: 38.50, format: (p) => `$${p.toFixed(2)}` },
+            "FCX": { name: "Freeport-McMoRan Inc.", ticker: "FCX", base: 51.20, format: (p) => `$${p.toFixed(2)}` }
+        },
+        "KR": {
+            "SK하이닉스": { name: "SK하이닉스", ticker: "000660", base: 2289000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "한미반도체": { name: "한미반도체", ticker: "042700", base: 309500, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "현대차": { name: "현대자동차", ticker: "005380", base: 680000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "기아": { name: "기아", ticker: "000270", base: 167800, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "삼성전자": { name: "삼성전자", ticker: "005930", base: 299500, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "LG화학": { name: "LG화학", ticker: "051910", base: 385000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "카카오페이": { name: "카카오페이", ticker: "377300", base: 28400, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "롯데케미칼": { name: "롯데케미칼", ticker: "011170", base: 115000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "삼성바이오로직스": { name: "삼성바이오로직스", ticker: "207940", base: 845000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "셀트리온": { name: "셀트리온", ticker: "068270", base: 185200, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "메리츠금융지주": { name: "메리츠금융지주", ticker: "138040", base: 82400, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "KT&G": { name: "KT&G", ticker: "033780", base: 95400, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "대한항공": { name: "대한항공", ticker: "003490", base: 20100, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "한국전력": { name: "한국전력공사", ticker: "015760", base: 22400, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "KODEX인버스": { name: "KODEX 200선물인버스2X", ticker: "252670", base: 2850, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "신한지주": { name: "신한지주", ticker: "055550", base: 48500, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "LG에너지솔루션": { name: "LG에너지솔루션", ticker: "373220", base: 320000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "카카오": { name: "카카오", ticker: "035720", base: 38500, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "KB금융": { name: "KB금융지주", ticker: "105560", base: 76500, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "POSCO홀딩스": { name: "POSCO홀딩스", ticker: "005490", base: 395000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "삼성물산": { name: "삼성물산", ticker: "028260", base: 158000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "두산에너빌리티": { name: "두산에너빌리티", ticker: "034020", base: 19850, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "넷마블": { name: "넷마블", ticker: "251270", base: 52400, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "에스엠": { name: "에스엠", ticker: "041510", base: 72400, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "현대제철": { name: "현대제철", ticker: "004020", base: 25000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "KODEX국고채": { name: "KODEX 국고채3년", ticker: "114260", base: 52400, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "KT": { name: "KT", ticker: "030200", base: 38500, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "KODEX레버리지": { name: "KODEX 레버리지", ticker: "122630", base: 16800, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "한화에어로스페이스": { name: "한화에어로스페이스", ticker: "012450", base: 320000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "알테오젠": { name: "알테오젠", ticker: "196170", base: 285000, format: (p) => `${Math.round(p).toLocaleString()}원` }
+        }
+    };
+
+
+const fiveYearMilestones = {
+        "US": {
+            cli: [101.5, 102.5, 98.8, 99.8, 100.2, 100.2, 105.0],
+            pmi: [60.0, 62.1, 47.2, 49.5, 51.5, 51.5, 63.5],
+            gdp: [5.0, 5.7, 2.5, 2.4, 2.2, 2.2, 5.8],
+            eps: [20.0, 29.5, 2.0, 7.5, 10.5, 10.5, 148.5],
+            m2: [15.0, 18.5, -1.0, 3.8, 4.5, 4.5, 23.7],
+            cpi: [2.5, 6.8, 4.1, 2.8, 2.3, 2.3, -1.3],
+            rate: [0.25, 0.25, 5.25, 5.0, 4.0, 4.0, -5.0],
+            spread: [1.5, 1.2, -0.8, -0.2, 0.2, 0.2, 2.6]
+        },
+        "KR": {
+            cli: [100.5, 102.2, 98.2, 99.8, 100.5, 100.5, 101.7],
+            pmi: [54.0, 57.5, 46.0, 50.5, 52.0, 52.0, 58.0],
+            gdp: [2.0, 3.7, 1.5, 2.2, 2.5, 2.5, 2.5],
+            eps: [12.0, 26.0, -18.0, 8.0, 200.0, 200.0, 440.0],
+            m2: [8.0, 9.8, 5.4, 6.0, 6.0, 6.0, 7.2],
+            cpi: [1.5, 4.0, 5.1, 2.8, 2.1, 2.1, 0.9],
+            rate: [0.5, 0.75, 3.25, 3.50, 3.25, 3.25, 3.25],
+            spread: [1.1, 1.0, -0.5, 0.0, 0.4, 0.4, 0.4]
+        }
+    };
+
+// 1. DUAL-MARKET REGIONAL HISTORICAL PRESETS (US vs KR) WITH M2
+// 1B. DUAL-MARKET REGIONAL EXPORT DATA FROM KITA & CENSUS BUREAU
 // 2. STATE VARIABLES
 let activeRegion = "US"; // "US" or "KR"
 let activeMode = "sim"; // "sim" or "hist" or "time"
 let activePreset = "2026_current";
-let activeTimeIndex = 60; // month index from 0 (May 2021) to 60 (May 2026)
+let activeTimeIndex = 61; // month index from 0 (May 2021) to 60 (May 2026)
 const timeMachineMonths = [];
 const startYear = 2021;
 const startMonth = 5; // May
-for (let i = 0; i <= 60; i++) {
+for (let i = 0; i <= 61; i++) {
     let curMonth = startMonth + i;
     let curYear = startYear + Math.floor((curMonth - 1) / 12);
     curMonth = ((curMonth - 1) % 12) + 1;
@@ -745,36 +840,13 @@ let portfolioChartInstance = null;
 
 // 3. CORE ANALYTICAL MATHEMATICAL MODELS
 
-const fiveYearMilestones = {
-        "US": {
-            cli: [101.5, 102.5, 98.8, 99.8, 100.2, 100.2],
-            pmi: [60.0, 62.1, 47.2, 49.5, 51.5, 51.5],
-            gdp: [5.0, 5.7, 2.5, 2.4, 2.2, 2.2],
-            eps: [20.0, 29.5, 2.0, 7.5, 10.5, 10.5],
-            m2: [15.0, 18.5, -1.0, 3.8, 4.5, 4.5],
-            cpi: [2.5, 6.8, 4.1, 2.8, 2.3, 2.3],
-            rate: [0.25, 0.25, 5.25, 5.0, 4.0, 4.0],
-            spread: [1.5, 1.2, -0.8, -0.2, 0.2, 0.2]
-        },
-        "KR": {
-            cli: [100.5, 102.2, 98.2, 99.8, 100.5, 100.5],
-            pmi: [54.0, 57.5, 46.0, 50.5, 52.0, 52.0],
-            gdp: [2.0, 3.7, 1.5, 2.2, 2.5, 2.5],
-            eps: [12.0, 26.0, -18.0, 8.0, 200.0, 200.0],
-            m2: [8.0, 9.8, 5.4, 6.0, 6.0, 6.0],
-            cpi: [1.5, 4.0, 5.1, 2.8, 2.1, 2.1],
-            rate: [0.5, 0.75, 3.25, 3.50, 3.25, 3.25],
-            spread: [1.1, 1.0, -0.5, 0.0, 0.4, 0.4]
-        }
-    };
-
 // Helper to interpolate indicator values for a specific month index (0 to 60)
 function getIndicatorsForMonth(region, monthIndex) {
     const ms = fiveYearMilestones[region];
     const indicators = {};
     const keys = ["cli", "pmi", "gdp", "eps", "m2", "cpi", "rate", "spread"];
     
-    const intervalIndex = Math.min(4, Math.floor(monthIndex / 12));
+    const intervalIndex = Math.min(5, Math.floor(monthIndex / 12));
     const fraction = (monthIndex % 12) / 12.0;
 
     keys.forEach(k => {
@@ -789,7 +861,7 @@ function getIndicatorsForMonth(region, monthIndex) {
         else if (k === "eps") noiseScale = 0.8;
         else if (k === "m2") noiseScale = 0.2;
 
-        if (monthIndex !== 0 && monthIndex !== 60 && monthIndex % 12 !== 0) {
+        if (monthIndex !== 0 && monthIndex !== 61 && monthIndex % 12 !== 0) {
             val += Math.sin(monthIndex * 1.5 + (k.charCodeAt(0) % 5)) * 0.5 * noiseScale;
         }
 
@@ -1011,73 +1083,6 @@ function calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2
     const seasonType = season.season; // 'spring', 'summer', 'autumn', 'winter'
 
     // Real-market baseline stock prices database for May 28, 2026!
-    const baselinePrices = {
-        "US": {
-            "NVDA": { name: "NVIDIA Corp.", ticker: "NVDA", base: 212.73, format: (p) => `$${p.toFixed(2)}` },
-            "AAPL": { name: "Apple Inc.", ticker: "AAPL", base: 310.85, format: (p) => `$${p.toFixed(2)}` },
-            "MSFT": { name: "Microsoft Corp.", ticker: "MSFT", base: 412.67, format: (p) => `$${p.toFixed(2)}` },
-            "AMZN": { name: "Amazon.com Inc.", ticker: "AMZN", base: 271.85, format: (p) => `$${p.toFixed(2)}` },
-            "TSLA": { name: "Tesla Inc.", ticker: "TSLA", base: 440.00, format: (p) => `$${p.toFixed(2)}` },
-            "COST": { name: "Costco Wholesale", ticker: "COST", base: 810.30, format: (p) => `$${p.toFixed(2)}` },
-            "KO": { name: "Coca-Cola Co.", ticker: "KO", base: 62.50, format: (p) => `$${p.toFixed(2)}` },
-            "PG": { name: "Procter & Gamble Co.", ticker: "PG", base: 165.20, format: (p) => `$${p.toFixed(2)}` },
-            "MCD": { name: "McDonald's Corp.", ticker: "MCD", base: 290.40, format: (p) => `$${p.toFixed(2)}` },
-            "WBA": { name: "Walgreens Boots Alliance", ticker: "WBA", base: 15.40, format: (p) => `$${p.toFixed(2)}` },
-            "PARA": { name: "Paramount Global", ticker: "PARA", base: 11.20, format: (p) => `$${p.toFixed(2)}` },
-            "INTC": { name: "Intel Corp.", ticker: "INTC", base: 30.15, format: (p) => `$${p.toFixed(2)}` },
-            "LMT": { name: "Lockheed Martin Corp.", ticker: "LMT", base: 465.80, format: (p) => `$${p.toFixed(2)}` },
-            "GLD": { name: "SPDR Gold Shares", ticker: "GLD", base: 225.40, format: (p) => `$${p.toFixed(2)}` },
-            "WMT": { name: "Walmart Inc.", ticker: "WMT", base: 65.80, format: (p) => `$${p.toFixed(2)}` },
-            "JPM": { name: "JPMorgan Chase & Co.", ticker: "JPM", base: 198.50, format: (p) => `$${p.toFixed(2)}` },
-            "CAT": { name: "Caterpillar Inc.", ticker: "CAT", base: 355.20, format: (p) => `$${p.toFixed(2)}` },
-            "XOM": { name: "Exxon Mobil Corp.", ticker: "XOM", base: 120.40, format: (p) => `$${p.toFixed(2)}` },
-            "GE": { name: "General Electric Co.", ticker: "GE", base: 158.20, format: (p) => `$${p.toFixed(2)}` },
-            "PYPL": { name: "PayPal Holdings Inc.", ticker: "PYPL", base: 52.15, format: (p) => `$${p.toFixed(2)}` },
-            "BA": { name: "Boeing Co.", ticker: "BA", base: 162.40, format: (p) => `$${p.toFixed(2)}` },
-            "PFE": { name: "Pfizer Inc.", ticker: "PFE", base: 26.80, format: (p) => `$${p.toFixed(2)}` },
-            "SQQQ": { name: "ProShares UltraPro Short QQQ", ticker: "SQQQ", base: 10.40, format: (p) => `$${p.toFixed(2)}` },
-            "VIX": { name: "iPath Volatility VIX ETN", ticker: "VIX", base: 14.80, format: (p) => `$${p.toFixed(2)}` },
-            "XLU": { name: "Utilities Select Sector SPDR", ticker: "XLU", base: 68.20, format: (p) => `$${p.toFixed(2)}` },
-            "AMD": { name: "Advanced Micro Devices", ticker: "AMD", base: 164.50, format: (p) => `$${p.toFixed(2)}` },
-            "SMCI": { name: "Super Micro Computer", ticker: "SMCI", base: 785.40, format: (p) => `$${p.toFixed(2)}` },
-            "TLT": { name: "iShares 20+ Yr Treasury Bond", ticker: "TLT", base: 92.40, format: (p) => `$${p.toFixed(2)}` },
-            "BAC": { name: "Bank of America Corp.", ticker: "BAC", base: 38.50, format: (p) => `$${p.toFixed(2)}` },
-            "FCX": { name: "Freeport-McMoRan Inc.", ticker: "FCX", base: 51.20, format: (p) => `$${p.toFixed(2)}` }
-        },
-        "KR": {
-            "SK하이닉스": { name: "SK하이닉스", ticker: "000660", base: 2289000, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "한미반도체": { name: "한미반도체", ticker: "042700", base: 309500, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "현대차": { name: "현대자동차", ticker: "005380", base: 680000, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "기아": { name: "기아", ticker: "000270", base: 167800, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "삼성전자": { name: "삼성전자", ticker: "005930", base: 299500, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "LG화학": { name: "LG화학", ticker: "051910", base: 385000, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "카카오페이": { name: "카카오페이", ticker: "377300", base: 28400, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "롯데케미칼": { name: "롯데케미칼", ticker: "011170", base: 115000, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "삼성바이오로직스": { name: "삼성바이오로직스", ticker: "207940", base: 845000, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "셀트리온": { name: "셀트리온", ticker: "068270", base: 185200, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "메리츠금융지주": { name: "메리츠금융지주", ticker: "138040", base: 82400, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "KT&G": { name: "KT&G", ticker: "033780", base: 95400, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "대한항공": { name: "대한항공", ticker: "003490", base: 20100, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "한국전력": { name: "한국전력공사", ticker: "015760", base: 22400, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "KODEX인버스": { name: "KODEX 200선물인버스2X", ticker: "252670", base: 2850, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "신한지주": { name: "신한지주", ticker: "055550", base: 48500, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "LG에너지솔루션": { name: "LG에너지솔루션", ticker: "373220", base: 320000, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "카카오": { name: "카카오", ticker: "035720", base: 38500, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "KB금융": { name: "KB금융지주", ticker: "105560", base: 76500, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "POSCO홀딩스": { name: "POSCO홀딩스", ticker: "005490", base: 395000, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "삼성물산": { name: "삼성물산", ticker: "028260", base: 158000, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "두산에너빌리티": { name: "두산에너빌리티", ticker: "034020", base: 19850, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "넷마블": { name: "넷마블", ticker: "251270", base: 52400, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "에스엠": { name: "에스엠", ticker: "041510", base: 72400, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "현대제철": { name: "현대제철", ticker: "004020", base: 25000, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "KODEX국고채": { name: "KODEX 국고채3년", ticker: "114260", base: 52400, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "KT": { name: "KT", ticker: "030200", base: 38500, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "KODEX레버리지": { name: "KODEX 레버리지", ticker: "122630", base: 16800, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "한화에어로스페이스": { name: "한화에어로스페이스", ticker: "012450", base: 320000, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "알테오젠": { name: "알테오젠", ticker: "196170", base: 285000, format: (p) => `${Math.round(p).toLocaleString()}원` }
-        }
-    };
-
     // Calculate dynamic scaled price based on current cycle coordinates
     // scale factor is around 0.85 to 1.15 based on coordinates x/y
     const stockScale = 1.0 + (x * 0.035) + (y * 0.015);
@@ -2608,7 +2613,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // Calculate Previous State for MoM Transitions
-        let prevIndex = 60;
+        let prevIndex = 61;
         let prevMacro, prevSeason;
         
         if (activeMode === "time") {
@@ -2809,7 +2814,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Populate Time Machine Month Dropdown Select Options
     if (selectTimeMonth) {
-        for (let i = 60; i >= 0; i--) {
+        for (let i = 61; i >= 0; i--) {
             const m = timeMachineMonths[i];
             const opt = document.createElement("option");
             opt.value = m.index;
@@ -2950,7 +2955,7 @@ document.addEventListener("DOMContentLoaded", () => {
             else if (indicatorKey === "spread") activeCurrentValue = parseFloat(document.getElementById("input-spread").value);
 
             const interpolatedMilestones = [...ms];
-            interpolatedMilestones[5] = activeCurrentValue; // Dynamic link!
+            interpolatedMilestones[6] = activeCurrentValue; // Dynamic link!
 
             const labels = [];
             const dataValues = [];
@@ -2958,14 +2963,17 @@ document.addEventListener("DOMContentLoaded", () => {
             const startYear = 2021;
             const startMonth = 5; // May
 
-            for (let i = 0; i <= 60; i++) {
-                const intervalIndex = Math.min(4, Math.floor(i / 12));
+            for (let i = 0; i <= 61; i++) {
+                const intervalIndex = Math.min(5, Math.floor(i / 12));
                 const fraction = (i % 12) / 12.0;
 
                 const valStart = interpolatedMilestones[intervalIndex];
                 const valEnd = interpolatedMilestones[intervalIndex + 1];
 
                 let val = valStart + (valEnd - valStart) * fraction;
+                if (i === 61) {
+                    val = activeCurrentValue; // Guarantee exact slider value at the final simulated point!
+                }
 
                 // Add realistic macro wobble
                 let noiseScale = 0.05;
@@ -2974,7 +2982,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 else if (indicatorKey === "eps") noiseScale = 0.8;
                 else if (indicatorKey === "m2") noiseScale = 0.2;
                 
-                if (i !== 0 && i !== 60 && i % 12 !== 0) {
+                if (i !== 0 && i !== 61 && i % 12 !== 0) {
                     val += (Math.sin(i * 1.5) * 0.5 + (Math.random() - 0.5) * 0.5) * noiseScale;
                 }
 
@@ -2984,7 +2992,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 let curYear = startYear + Math.floor((curMonth - 1) / 12);
                 curMonth = ((curMonth - 1) % 12) + 1;
                 
-                if (i % 6 === 0 || i === 60) {
+                if (i % 6 === 0 || i === 61) {
                     labels.push(`${curYear}년 ${curMonth}월`);
                 } else {
                     labels.push(""); 
@@ -3018,19 +3026,19 @@ document.addEventListener("DOMContentLoaded", () => {
                         pointBackgroundColor: function(context) {
                             // Highlights the last coordinate (currently simulated point) in bright white/gold glow!
                             const index = context.dataIndex;
-                            return index === 60 ? "#ffffff" : lineColor;
+                            return index === 61 ? "#ffffff" : lineColor;
                         },
                         pointBorderColor: function(context) {
                             const index = context.dataIndex;
-                            return index === 60 ? "#ef4444" : "#ffffff";
+                            return index === 61 ? "#ef4444" : "#ffffff";
                         },
                         pointBorderWidth: function(context) {
                             const index = context.dataIndex;
-                            return index === 60 ? 3 : 2;
+                            return index === 61 ? 3 : 2;
                         },
                         pointRadius: function(context) {
                             const index = context.dataIndex;
-                            return index === 60 ? 8 : 4;
+                            return index === 61 ? 8 : 4;
                         },
                         pointHoverRadius: 9,
                         fill: true,
