@@ -1942,6 +1942,8 @@ function updateUI(macro, season, portfolio, cli, pmi, gdp, eps, m2, cpi, rate, s
     const sourceCpi = document.getElementById("source-link-cpi");
     const sourceRate = document.getElementById("source-link-rate");
     const sourceSpread = document.getElementById("source-link-spread");
+    const sourceRealRate = document.getElementById("source-link-realrate");
+    const sourceErp = document.getElementById("source-link-erp");
 
     if (activeRegion === "US") {
         if (sourceCli) { sourceCli.href = "https://data.oecd.org/"; sourceCli.textContent = "OECD Data ↗"; }
@@ -1952,6 +1954,8 @@ function updateUI(macro, season, portfolio, cli, pmi, gdp, eps, m2, cpi, rate, s
         if (sourceCpi) { sourceCpi.href = "https://www.bls.gov/cpi/"; sourceCpi.textContent = "BLS CPI ↗"; }
         if (sourceRate) { sourceRate.href = "https://fred.stlouisfed.org/series/FEDFUNDS"; sourceRate.textContent = "FRED FedFunds ↗"; }
         if (sourceSpread) { sourceSpread.href = "https://fred.stlouisfed.org/series/T10Y2Y"; sourceSpread.textContent = "FRED Spread ↗"; }
+        if (sourceRealRate) { sourceRealRate.href = "https://fred.stlouisfed.org/series/DFII10"; sourceRealRate.textContent = "FRED Real ↗"; }
+        if (sourceErp) { sourceErp.href = "https://pages.stern.nyu.edu/~adamodar/New_Home_Page/data.html"; sourceErp.textContent = "Damodaran ↗"; }
     } else {
         if (sourceCli) { sourceCli.href = "https://data.oecd.org/"; sourceCli.textContent = "OECD Data ↗"; }
         if (sourcePmi) { sourcePmi.href = "https://www.spglobal.com/marketintelligence/en/mi/products/pmi.html"; sourcePmi.textContent = "S&P (한국) ↗"; }
@@ -1961,10 +1965,103 @@ function updateUI(macro, season, portfolio, cli, pmi, gdp, eps, m2, cpi, rate, s
         if (sourceCpi) { sourceCpi.href = "https://kosis.kr/"; sourceCpi.textContent = "통계청 KOSIS ↗"; }
         if (sourceRate) { sourceRate.href = "https://www.bok.or.kr/portal/singl/baseRate/list.do?menuNo=200489"; sourceRate.textContent = "한국은행 ↗"; }
         if (sourceSpread) { sourceSpread.href = "https://ecos.bok.or.kr/"; sourceSpread.textContent = "한은 ECOS 국채 ↗"; }
+        if (sourceRealRate) { sourceRealRate.href = "https://ecos.bok.or.kr/"; sourceRealRate.textContent = "한은 ECOS ↗"; }
+        if (sourceErp) { sourceErp.href = "https://www.fnguide.com/"; sourceErp.textContent = "FnGuide ERP ↗"; }
     }
 
     // 7B. Update Secondary Stock Market Indicators
     const sec = calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2);
+
+    // 7C. Real Interest Rate & Equity Risk Premium Rendering
+    const realRateVal = rate - cpi;
+    const elRealRateVal = document.getElementById("table-realrate-val");
+    if (elRealRateVal) elRealRateVal.textContent = `${realRateVal.toFixed(2)}%`;
+
+    // Compute previous month real rate and erp for MoM trends
+    let prevIdx = 60;
+    if (activeMode === "time") {
+        prevIdx = Math.max(0, activeTimeIndex - 1);
+    } else if (activeMode === "sim") {
+        const monthSelectEl = document.getElementById("export-month-select");
+        const selectVal = monthSelectEl ? monthSelectEl.value : "2026-05";
+        prevIdx = Math.max(0, getMonthIndex(selectVal) - 1);
+    } else {
+        prevIdx = 59;
+    }
+    const prevInd = getIndicatorsForMonth(activeRegion, prevIdx);
+    const prevRealRate = prevInd.rate - prevInd.cpi;
+
+    const elRealRateMom = document.getElementById("table-realrate-mom");
+    const elRealRateGrade = document.getElementById("table-realrate-grade");
+
+    if (elRealRateMom) {
+        if (realRateVal > prevRealRate + 0.05) {
+            elRealRateMom.innerHTML = '<span class="trend-icon up">▲</span> 긴축 강화';
+        } else if (realRateVal < prevRealRate - 0.05) {
+            elRealRateMom.innerHTML = '<span class="trend-icon down">▼</span> 실질 완화';
+        } else {
+            elRealRateMom.innerHTML = '<span class="trend-icon stable">─</span> 보통';
+        }
+    }
+
+    if (elRealRateGrade) {
+        if (realRateVal > 2.0) {
+            elRealRateGrade.className = "status-badge danger";
+            elRealRateGrade.textContent = "고금리 제약";
+        } else if (realRateVal >= 0.5) {
+            elRealRateGrade.className = "status-badge positive";
+            elRealRateGrade.textContent = "중립/안정";
+        } else {
+            elRealRateGrade.className = "status-badge neutral";
+            elRealRateGrade.textContent = "실질 완화";
+        }
+    }
+
+    // Equity Risk Premium (ERP)
+    const rfProxy = activeRegion === "US" ? (rate - 1.0) : (rate - 0.5);
+    const erpVal = (100 / sec.per) - rfProxy;
+
+    const elErpVal = document.getElementById("table-erp-val");
+    if (elErpVal) elErpVal.textContent = `${erpVal.toFixed(2)}%`;
+
+    const elErpRef = document.getElementById("table-erp-ref");
+    const erpRef = activeRegion === "US" ? 3.5 : 5.5;
+    if (elErpRef) elErpRef.textContent = `${erpRef.toFixed(1)}%`;
+
+    const prevMacro = calculateMacroMetrics(prevInd.cli, prevInd.pmi, prevInd.gdp, prevInd.m2, prevInd.rate, prevInd.spread);
+    const prevSeason = calculateStockSeasonMetrics(prevInd.eps, prevInd.m2, prevInd.rate, prevInd.spread);
+    const prevSec = calculateSecondaryIndicators(prevMacro, prevSeason, activeRegion, prevInd.rate, prevInd.eps, prevInd.m2);
+    const prevRfProxy = activeRegion === "US" ? (prevInd.rate - 1.0) : (prevInd.rate - 0.5);
+    const prevErp = (100 / prevSec.per) - prevRfProxy;
+
+    const elErpMom = document.getElementById("table-erp-mom");
+    const elErpGrade = document.getElementById("table-erp-grade");
+
+    if (elErpMom) {
+        if (erpVal > prevErp + 0.1) {
+            elErpMom.innerHTML = '<span class="trend-icon up">▲</span> 매력 상승';
+        } else if (erpVal < prevErp - 0.1) {
+            elErpMom.innerHTML = '<span class="trend-icon down">▼</span> 매력 하락';
+        } else {
+            elErpMom.innerHTML = '<span class="trend-icon stable">─</span> 보통';
+        }
+    }
+
+    if (elErpGrade) {
+        const attractivenessLimit = activeRegion === "US" ? 4.5 : 6.5;
+        const averageLimit = activeRegion === "US" ? 2.0 : 4.0;
+
+        if (erpVal > attractivenessLimit) {
+            elErpGrade.className = "status-badge positive";
+            elErpGrade.textContent = "저위험 고매력";
+        } else if (erpVal >= averageLimit) {
+            elErpGrade.className = "status-badge neutral";
+            elErpGrade.textContent = "상대 매력 보통";
+        } else {
+            elErpGrade.className = "status-badge danger";
+            elErpGrade.textContent = "고위험 저매력";
+        }
+    }
 
     const elPer = document.getElementById("val-market-per");
     const elPerGrade = document.getElementById("val-market-per-grade");
@@ -2908,6 +3005,14 @@ document.addEventListener("DOMContentLoaded", () => {
         spread: {
             title: "장단기 금리차 (10Y-2Y) 역사적 트렌드",
             desc: "10Y-2Y 국채 장단기 금리차는 장기 성장 전망과 단기 통화 정책 긴장도의 차이를 뜻합니다. 스프레드가 음의 영역으로 역전(Inversion)되는 현상은 역사적으로 1년 뒤 경기 침체(Contraction)가 도래함을 알려주는 가장 완벽한 조기 경보입니다."
+        },
+        realrate: {
+            title: "실질 금리 역사적 트렌드",
+            desc: "실질 금리(Real Interest Rate)는 기준 금리에서 인플레이션율(CPI)을 차감하여 도출하는 지표로, 시중 유동성이 실질적으로 긴축 상태에 있는지 완화 상태에 있는지를 대변하는 금융 물리학적 척도입니다. 실질금리가 (+) 영역에서 지나치게 올라갈 경우 밸류에이션 압력이 고조됩니다."
+        },
+        erp: {
+            title: "주식 위험 프리미엄 (ERP) 역사적 트렌드",
+            desc: "주식 위험 프리미엄(Equity Risk Premium)은 주식시장에 투자함으로써 기대할 수 있는 초과 기대수익률(Earnings Yield)과 무위험자산(국채 금리) 사이의 격차를 나타냅니다. ERP가 높을수록 주식 투자의 밸류에이션 매력도가 강함을 뜻하고, 낮을수록 국채 대비 주식의 상대적 매력도가 고갈되어 위험이 큼을 나타냅니다."
         }
     };
 
@@ -2953,9 +3058,30 @@ document.addEventListener("DOMContentLoaded", () => {
             else if (indicatorKey === "cpi") activeCurrentValue = parseFloat(document.getElementById("input-cpi").value);
             else if (indicatorKey === "rate") activeCurrentValue = parseFloat(document.getElementById("input-rate").value);
             else if (indicatorKey === "spread") activeCurrentValue = parseFloat(document.getElementById("input-spread").value);
+            else if (indicatorKey === "realrate") {
+                const rVal = parseFloat(document.getElementById("input-rate").value);
+                const cVal = parseFloat(document.getElementById("input-cpi").value);
+                activeCurrentValue = rVal - cVal;
+            } else if (indicatorKey === "erp") {
+                const rVal = parseFloat(document.getElementById("input-rate").value);
+                const eVal = parseFloat(document.getElementById("input-eps").value);
+                const mVal = parseFloat(document.getElementById("input-m2").value);
+                const cVal = parseFloat(document.getElementById("input-cli").value);
+                const pVal = parseFloat(document.getElementById("input-pmi").value);
+                const gVal = parseFloat(document.getElementById("input-gdp").value);
+                const sVal = parseFloat(document.getElementById("input-spread").value);
+                
+                const tempMacro = calculateMacroMetrics(cVal, pVal, gVal, mVal, rVal, sVal);
+                const tempSeason = calculateStockSeasonMetrics(eVal, mVal, rVal, sVal);
+                const tempSec = calculateSecondaryIndicators(tempMacro, tempSeason, activeRegion, rVal, eVal, mVal);
+                const rfProxy = activeRegion === "US" ? (rVal - 1.0) : (rVal - 0.5);
+                activeCurrentValue = (100 / tempSec.per) - rfProxy;
+            }
 
-            const interpolatedMilestones = [...ms];
-            interpolatedMilestones[6] = activeCurrentValue; // Dynamic link!
+            const interpolatedMilestones = ms ? [...ms] : [];
+            if (ms) {
+                interpolatedMilestones[6] = activeCurrentValue; // Dynamic link!
+            }
 
             const labels = [];
             const dataValues = [];
@@ -2964,26 +3090,43 @@ document.addEventListener("DOMContentLoaded", () => {
             const startMonth = 5; // May
 
             for (let i = 0; i <= 61; i++) {
-                const intervalIndex = Math.min(5, Math.floor(i / 12));
-                const fraction = (i % 12) / 12.0;
+                let val = 0;
+                
+                if (indicatorKey === "realrate") {
+                    const ind = getIndicatorsForMonth(activeRegion, i);
+                    val = ind.rate - ind.cpi;
+                } else if (indicatorKey === "erp") {
+                    const ind = getIndicatorsForMonth(activeRegion, i);
+                    const tempMacro = calculateMacroMetrics(ind.cli, ind.pmi, ind.gdp, ind.m2, ind.rate, ind.spread);
+                    const tempSeason = calculateStockSeasonMetrics(ind.eps, ind.m2, ind.rate, ind.spread);
+                    const tempSec = calculateSecondaryIndicators(tempMacro, tempSeason, activeRegion, ind.rate, ind.eps, ind.m2);
+                    const rfProxy = activeRegion === "US" ? (ind.rate - 1.0) : (ind.rate - 0.5);
+                    val = (100 / tempSec.per) - rfProxy;
+                } else {
+                    const intervalIndex = Math.min(5, Math.floor(i / 12));
+                    const fraction = (i % 12) / 12.0;
 
-                const valStart = interpolatedMilestones[intervalIndex];
-                const valEnd = interpolatedMilestones[intervalIndex + 1];
+                    const valStart = interpolatedMilestones[intervalIndex];
+                    const valEnd = interpolatedMilestones[intervalIndex + 1];
 
-                let val = valStart + (valEnd - valStart) * fraction;
+                    val = valStart + (valEnd - valStart) * fraction;
+                }
+                
                 if (i === 61) {
                     val = activeCurrentValue; // Guarantee exact slider value at the final simulated point!
                 }
 
                 // Add realistic macro wobble
-                let noiseScale = 0.05;
-                if (indicatorKey === "pmi") noiseScale = 0.35;
-                else if (indicatorKey === "gdp" || indicatorKey === "cpi" || indicatorKey === "rate" || indicatorKey === "spread") noiseScale = 0.08;
-                else if (indicatorKey === "eps") noiseScale = 0.8;
-                else if (indicatorKey === "m2") noiseScale = 0.2;
-                
-                if (i !== 0 && i !== 61 && i % 12 !== 0) {
-                    val += (Math.sin(i * 1.5) * 0.5 + (Math.random() - 0.5) * 0.5) * noiseScale;
+                if (indicatorKey !== "realrate" && indicatorKey !== "erp") {
+                    let noiseScale = 0.05;
+                    if (indicatorKey === "pmi") noiseScale = 0.35;
+                    else if (indicatorKey === "gdp" || indicatorKey === "cpi" || indicatorKey === "rate" || indicatorKey === "spread") noiseScale = 0.08;
+                    else if (indicatorKey === "eps") noiseScale = 0.8;
+                    else if (indicatorKey === "m2") noiseScale = 0.2;
+                    
+                    if (i !== 0 && i !== 61 && i % 12 !== 0) {
+                        val += (Math.sin(i * 1.5) * 0.5 + (Math.random() - 0.5) * 0.5) * noiseScale;
+                    }
                 }
 
                 dataValues.push(parseFloat(val.toFixed(2)));
