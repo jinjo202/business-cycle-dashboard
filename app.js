@@ -1520,8 +1520,8 @@ function calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2
     const ytdKosdaq = 6.8 + 8.2 * x + 4.5 * y;
 
     const mcapSp500Total = 44.80 * (1 + ytdSp500 / 100);
-    const mcapKospiTotal = 2185.0 * (1 + ytdKospi / 100);
-    const mcapKosdaqTotal = 412.0 * (1 + ytdKosdaq / 100);
+    const mcapKospiTotal = 4850.0 * (1 + ytdKospi / 100);
+    const mcapKosdaqTotal = 720.0 * (1 + ytdKosdaq / 100);
 
     // US S&P 500 Top 10 Companies
     const usTop10Defs = [
@@ -1539,16 +1539,16 @@ function calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2
 
     // KOSPI Top 10 Companies
     const krTop10Defs = [
-        { name: "삼성전자", ticker: "005930", baseMcap: 415.0, betaX: 5.5, betaY: 3.0, baseOffset: 8.0 },
-        { name: "SK하이닉스", ticker: "000660", baseMcap: 165.0, betaX: 8.5, betaY: 5.0, baseOffset: 24.0 },
+        { name: "삼성전자", ticker: "005930", baseMcap: 2033.0, betaX: 5.5, betaY: 3.0, baseOffset: 8.0 },
+        { name: "SK하이닉스", ticker: "000660", baseMcap: 1667.0, betaX: 8.5, betaY: 5.0, baseOffset: 24.0 },
+        { name: "현대자동차", ticker: "005380", baseMcap: 145.0, betaX: 3.5, betaY: 1.5, baseOffset: 14.0 },
         { name: "LG에너지솔루션", ticker: "373220", baseMcap: 75.0, betaX: 6.0, betaY: 3.5, baseOffset: 5.0 },
-        { name: "삼성바이오로직스", ticker: "207940", baseMcap: 62.0, betaX: 1.8, betaY: 0.8, baseOffset: 7.0 },
-        { name: "현대자동차", ticker: "005380", baseMcap: 56.0, betaX: 3.5, betaY: 1.5, baseOffset: 14.0 },
-        { name: "기아", ticker: "000270", baseMcap: 44.0, betaX: 3.8, betaY: 1.6, baseOffset: 15.0 },
-        { name: "셀트리온", ticker: "068270", baseMcap: 36.0, betaX: 2.0, betaY: 1.0, baseOffset: 9.0 },
+        { name: "기아", ticker: "000270", baseMcap: 68.0, betaX: 3.8, betaY: 1.6, baseOffset: 15.0 },
+        { name: "삼성바이오로직스", ticker: "207940", baseMcap: 60.0, betaX: 1.8, betaY: 0.8, baseOffset: 7.0 },
+        { name: "셀트리온", ticker: "068270", baseMcap: 40.0, betaX: 2.0, betaY: 1.0, baseOffset: 9.0 },
+        { name: "POSCO홀딩스", ticker: "005490", baseMcap: 33.0, betaX: 5.0, betaY: 2.8, baseOffset: 6.0 },
         { name: "KB금융", ticker: "105560", baseMcap: 31.0, betaX: 2.5, betaY: 1.2, baseOffset: 18.0 },
-        { name: "신한지주", ticker: "055550", baseMcap: 26.0, betaX: 2.2, betaY: 1.1, baseOffset: 14.0 },
-        { name: "POSCO홀딩스", ticker: "005490", baseMcap: 24.0, betaX: 5.0, betaY: 2.8, baseOffset: 6.0 }
+        { name: "신한지주", ticker: "055550", baseMcap: 25.0, betaX: 2.2, betaY: 1.1, baseOffset: 14.0 }
     ];
 
     const usTop10 = usTop10Defs.map((item, idx) => {
