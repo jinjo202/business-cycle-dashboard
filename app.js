@@ -726,7 +726,7 @@ function updateExportCard() {
         "US": {
             "NVDA": { name: "NVIDIA Corp.", ticker: "NVDA", base: 212.73, format: (p) => `$${p.toFixed(2)}` },
             "AAPL": { name: "Apple Inc.", ticker: "AAPL", base: 310.85, format: (p) => `$${p.toFixed(2)}` },
-            "MSFT": { name: "Microsoft Corp.", ticker: "MSFT", base: 412.67, format: (p) => `$${p.toFixed(2)}` },
+            "MSFT": { name: "Microsoft Corp.", ticker: "MSFT", base: 449.99, format: (p) => `$${p.toFixed(2)}` },
             "AMZN": { name: "Amazon.com Inc.", ticker: "AMZN", base: 271.85, format: (p) => `$${p.toFixed(2)}` },
             "TSLA": { name: "Tesla Inc.", ticker: "TSLA", base: 440.00, format: (p) => `$${p.toFixed(2)}` },
             "COST": { name: "Costco Wholesale", ticker: "COST", base: 810.30, format: (p) => `$${p.toFixed(2)}` },
@@ -1519,22 +1519,22 @@ function calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2
     const ytdKospi = 5.2 + 6.0 * x + 3.0 * y;
     const ytdKosdaq = 6.8 + 8.2 * x + 4.5 * y;
 
-    const mcapSp500Total = 44.80 * (1 + ytdSp500 / 100);
+    const mcapSp500Total = 58.50 * (1 + ytdSp500 / 100);
     const mcapKospiTotal = 4850.0 * (1 + ytdKospi / 100);
     const mcapKosdaqTotal = 720.0 * (1 + ytdKosdaq / 100);
 
     // US S&P 500 Top 10 Companies
     const usTop10Defs = [
-        { name: "Microsoft Corp.", ticker: "MSFT", baseMcap: 3.15, betaX: 4.0, betaY: 2.0, baseOffset: 10.0 },
-        { name: "Apple Inc.", ticker: "AAPL", baseMcap: 3.10, betaX: 3.5, betaY: 1.8, baseOffset: 9.0 },
-        { name: "NVIDIA Corp.", ticker: "NVDA", baseMcap: 2.95, betaX: 8.0, betaY: 6.0, baseOffset: 22.0 },
-        { name: "Alphabet Inc.", ticker: "GOOGL", baseMcap: 2.15, betaX: 3.8, betaY: 1.9, baseOffset: 8.0 },
-        { name: "Amazon.com Inc.", ticker: "AMZN", baseMcap: 1.90, betaX: 4.5, betaY: 2.2, baseOffset: 11.0 },
-        { name: "Meta Platforms", ticker: "META", baseMcap: 1.35, betaX: 5.2, betaY: 3.0, baseOffset: 12.0 },
-        { name: "Berkshire Hathaway", ticker: "BRK.B", baseMcap: 0.92, betaX: 1.5, betaY: 0.5, baseOffset: 6.0 },
-        { name: "Eli Lilly & Co.", ticker: "LLY", baseMcap: 0.85, betaX: 2.0, betaY: 1.0, baseOffset: 18.0 },
-        { name: "Broadcom Inc.", ticker: "AVGO", baseMcap: 0.78, betaX: 4.8, betaY: 2.5, baseOffset: 13.0 },
-        { name: "Tesla Inc.", ticker: "TSLA", baseMcap: 0.65, betaX: 7.0, betaY: 5.0, baseOffset: 15.0 }
+        { name: "NVIDIA Corp.", ticker: "NVDA", baseMcap: 5.15, betaX: 8.0, betaY: 6.0, baseOffset: 22.0 },
+        { name: "Apple Inc.", ticker: "AAPL", baseMcap: 4.58, betaX: 3.5, betaY: 1.8, baseOffset: 9.0 },
+        { name: "Microsoft Corp.", ticker: "MSFT", baseMcap: 3.34, betaX: 4.0, betaY: 2.0, baseOffset: 10.0 },
+        { name: "Amazon.com Inc.", ticker: "AMZN", baseMcap: 2.91, betaX: 4.5, betaY: 2.2, baseOffset: 11.0 },
+        { name: "Alphabet Inc.", ticker: "GOOGL", baseMcap: 2.60, betaX: 3.8, betaY: 1.9, baseOffset: 8.0 },
+        { name: "Meta Platforms", ticker: "META", baseMcap: 1.85, betaX: 5.2, betaY: 3.0, baseOffset: 12.0 },
+        { name: "Tesla Inc.", ticker: "TSLA", baseMcap: 1.45, betaX: 7.0, betaY: 5.0, baseOffset: 15.0 },
+        { name: "Berkshire Hathaway", ticker: "BRK.B", baseMcap: 1.15, betaX: 1.5, betaY: 0.5, baseOffset: 6.0 },
+        { name: "Broadcom Inc.", ticker: "AVGO", baseMcap: 1.10, betaX: 4.8, betaY: 2.5, baseOffset: 13.0 },
+        { name: "Eli Lilly & Co.", ticker: "LLY", baseMcap: 1.05, betaX: 2.0, betaY: 1.0, baseOffset: 18.0 }
     ];
 
     // KOSPI Top 10 Companies
