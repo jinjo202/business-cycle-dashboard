@@ -1554,11 +1554,12 @@ function calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2
     const usTop10 = usTop10Defs.map((item, idx) => {
         const stockYtd = item.baseOffset + item.betaX * x + item.betaY * y;
         const currentMcap = item.baseMcap * (1 + stockYtd / 100);
+        const krwMcapText = Math.round(currentMcap * 1380).toLocaleString();
         return {
             rank: idx + 1,
             name: item.name,
             ticker: item.ticker,
-            mcapText: currentMcap >= 1.0 ? `$${currentMcap.toFixed(2)}T` : `$${(currentMcap * 1000).toFixed(0)}B`,
+            mcapText: currentMcap >= 1.0 ? `$${currentMcap.toFixed(2)}T (약 ${krwMcapText}조원)` : `$${(currentMcap * 1000).toFixed(0)}B (약 ${krwMcapText}조원)`,
             ytdText: (stockYtd >= 0 ? "+" : "") + stockYtd.toFixed(1) + "%",
             ytdPos: stockYtd >= 0
         };
@@ -1603,7 +1604,7 @@ function calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2
         lowStocks: lowStocks,
         volumeStocks: volumeStocks,
         sectorReturns: sectorReturns,
-        mcapSp500Total: `$${mcapSp500Total.toFixed(2)}T`,
+        mcapSp500Total: `$${mcapSp500Total.toFixed(2)}T (약 ${Math.round(mcapSp500Total * 1380).toLocaleString()}조원)`,
         mcapKospiTotal: `${Math.round(mcapKospiTotal).toLocaleString()}조원`,
         mcapKosdaqTotal: `${Math.round(mcapKosdaqTotal).toLocaleString()}조원`,
         usTop10: usTop10,
