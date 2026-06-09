@@ -54,7 +54,7 @@ const historicalPresets = {
         },
         "2026_current": {
             title: "2026년 미국 연착륙 성공 & AI 확장기",
-            cli: 100.2, pmi: 51.5, gdp: 2.2, eps: 10.5, m2: 4.5, cpi: 2.3, rate: 4.0, spread: 0.2,
+            cli: 100.2, pmi: 51.5, gdp: 2.2, eps: 10.5, m2: 4.5, cpi: 3.8, rate: 3.62, spread: 0.2,
             phase: "expansion", season: "summer",
             summary: "안정적인 인플레이션 통제와 함께 중앙은행이 중립 금리 수준으로 질서 있게 인하하는 구간입니다. 시중 유동성이 정상 궤도를 회복(M2 증가율 4.5%)하며 AI 생산성 혁신이 실적(Forward EPS)을 주도하는 골디락스 실적장세(여름)입니다.",
             lessons: "실적이 지속 성장하고 물가와 금리가 하향 안정을 보이는 골디락스 단계에서는 AI 빅테크 및 우량 성장 기업 주식 중심의 공격적 포지션 배치가 가장 높은 자본 효율성을 안겨다 줍니다.",
@@ -120,7 +120,7 @@ const historicalPresets = {
         },
         "2026_current": {
             title: "2026년 반도체 HBM 부활 & 주주환원 성장기",
-            cli: 100.5, pmi: 52.0, gdp: 2.5, eps: 200.0, m2: 6.0, cpi: 2.1, rate: 3.25, spread: 0.4,
+            cli: 100.5, pmi: 52.0, gdp: 2.5, eps: 200.0, m2: 6.0, cpi: 3.1, rate: 2.50, spread: 0.4,
             phase: "expansion", season: "summer",
             summary: "AI 고대역폭메모리(HBM) 수출 호조와 기업 밸류업 프로그램 가동으로 선행 이익 성장이 두드러집니다. 통화량 공급도 정상 궤도(M2 6.0%)에 복귀한 안정적 실적장세(여름)입니다.",
             lessons: "실물 선행 지수가 안정적이고 이익 성장 모멘텀이 강한 확장 국면에서는 반도체, AI 장비주, 그리고 기업 밸류업 프로그램 수혜 우량 지주사/금융주 중심의 강한 포커싱 투자 전략이 최상의 성과를 제공합니다.",
@@ -724,11 +724,11 @@ function updateExportCard() {
 
     const baselinePrices = {
         "US": {
-            "NVDA": { name: "NVIDIA Corp.", ticker: "NVDA", base: 212.73, format: (p) => `$${p.toFixed(2)}` },
-            "AAPL": { name: "Apple Inc.", ticker: "AAPL", base: 310.85, format: (p) => `$${p.toFixed(2)}` },
-            "MSFT": { name: "Microsoft Corp.", ticker: "MSFT", base: 449.99, format: (p) => `$${p.toFixed(2)}` },
-            "AMZN": { name: "Amazon.com Inc.", ticker: "AMZN", base: 271.85, format: (p) => `$${p.toFixed(2)}` },
-            "TSLA": { name: "Tesla Inc.", ticker: "TSLA", base: 440.00, format: (p) => `$${p.toFixed(2)}` },
+            "NVDA": { name: "NVIDIA Corp.", ticker: "NVDA", base: 209.43, format: (p) => `$${p.toFixed(2)}` },
+            "AAPL": { name: "Apple Inc.", ticker: "AAPL", base: 313.20, format: (p) => `$${p.toFixed(2)}` },
+            "MSFT": { name: "Microsoft Corp.", ticker: "MSFT", base: 416.67, format: (p) => `$${p.toFixed(2)}` },
+            "AMZN": { name: "Amazon.com Inc.", ticker: "AMZN", base: 245.48, format: (p) => `$${p.toFixed(2)}` },
+            "TSLA": { name: "Tesla Inc.", ticker: "TSLA", base: 404.84, format: (p) => `$${p.toFixed(2)}` },
             "COST": { name: "Costco Wholesale", ticker: "COST", base: 810.30, format: (p) => `$${p.toFixed(2)}` },
             "KO": { name: "Coca-Cola Co.", ticker: "KO", base: 62.50, format: (p) => `$${p.toFixed(2)}` },
             "PG": { name: "Procter & Gamble Co.", ticker: "PG", base: 165.20, format: (p) => `$${p.toFixed(2)}` },
@@ -756,36 +756,36 @@ function updateExportCard() {
             "FCX": { name: "Freeport-McMoRan Inc.", ticker: "FCX", base: 51.20, format: (p) => `$${p.toFixed(2)}` }
         },
         "KR": {
-            "SK하이닉스": { name: "SK하이닉스", ticker: "000660", base: 2289000, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "한미반도체": { name: "한미반도체", ticker: "042700", base: 309500, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "현대차": { name: "현대자동차", ticker: "005380", base: 680000, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "기아": { name: "기아", ticker: "000270", base: 167800, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "삼성전자": { name: "삼성전자", ticker: "005930", base: 299500, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "LG화학": { name: "LG화학", ticker: "051910", base: 385000, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "카카오페이": { name: "카카오페이", ticker: "377300", base: 28400, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "롯데케미칼": { name: "롯데케미칼", ticker: "011170", base: 115000, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "삼성바이오로직스": { name: "삼성바이오로직스", ticker: "207940", base: 845000, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "셀트리온": { name: "셀트리온", ticker: "068270", base: 185200, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "메리츠금융지주": { name: "메리츠금융지주", ticker: "138040", base: 82400, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "KT&G": { name: "KT&G", ticker: "033780", base: 95400, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "대한항공": { name: "대한항공", ticker: "003490", base: 20100, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "한국전력": { name: "한국전력공사", ticker: "015760", base: 22400, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "SK하이닉스": { name: "SK하이닉스", ticker: "000660", base: 1911000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "한미반도체": { name: "한미반도체", ticker: "042700", base: 269000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "현대차": { name: "현대자동차", ticker: "005380", base: 634000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "기아": { name: "기아", ticker: "000270", base: 161100, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "삼성전자": { name: "삼성전자", ticker: "005930", base: 295500, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "LG화학": { name: "LG화학", ticker: "051910", base: 321000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "카카오페이": { name: "카카오페이", ticker: "377300", base: 42000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "롯데케미칼": { name: "롯데케미칼", ticker: "011170", base: 73500, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "삼성바이오로직스": { name: "삼성바이오로직스", ticker: "207940", base: 1286000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "셀트리온": { name: "셀트리온", ticker: "068270", base: 161000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "메리츠금융지주": { name: "메리츠금융지주", ticker: "138040", base: 102800, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "KT&G": { name: "KT&G", ticker: "033780", base: 174800, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "대한항공": { name: "대한항공", ticker: "003490", base: 23800, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "한국전력": { name: "한국전력공사", ticker: "015760", base: 36350, format: (p) => `${Math.round(p).toLocaleString()}원` },
             "KODEX인버스": { name: "KODEX 200선물인버스2X", ticker: "252670", base: 2850, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "신한지주": { name: "신한지주", ticker: "055550", base: 48500, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "LG에너지솔루션": { name: "LG에너지솔루션", ticker: "373220", base: 320000, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "카카오": { name: "카카오", ticker: "035720", base: 38500, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "KB금융": { name: "KB금융지주", ticker: "105560", base: 76500, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "POSCO홀딩스": { name: "POSCO홀딩스", ticker: "005490", base: 395000, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "삼성물산": { name: "삼성물산", ticker: "028260", base: 158000, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "두산에너빌리티": { name: "두산에너빌리티", ticker: "034020", base: 19850, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "넷마블": { name: "넷마블", ticker: "251270", base: 52400, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "에스엠": { name: "에스엠", ticker: "041510", base: 72400, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "현대제철": { name: "현대제철", ticker: "004020", base: 25000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "신한지주": { name: "신한지주", ticker: "055550", base: 97100, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "LG에너지솔루션": { name: "LG에너지솔루션", ticker: "373220", base: 388500, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "카카오": { name: "카카오", ticker: "035720", base: 38600, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "KB금융": { name: "KB금융지주", ticker: "105560", base: 151500, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "POSCO홀딩스": { name: "POSCO홀딩스", ticker: "005490", base: 359000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "삼성물산": { name: "삼성물산", ticker: "028260", base: 408500, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "두산에너빌리티": { name: "두산에너빌리티", ticker: "034020", base: 85800, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "넷마블": { name: "넷마블", ticker: "251270", base: 38600, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "에스엠": { name: "에스엠", ticker: "041510", base: 71100, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "현대제철": { name: "현대제철", ticker: "004020", base: 33300, format: (p) => `${Math.round(p).toLocaleString()}원` },
             "KODEX국고채": { name: "KODEX 국고채3년", ticker: "114260", base: 52400, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "KT": { name: "KT", ticker: "030200", base: 38500, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "KT": { name: "KT", ticker: "030200", base: 54700, format: (p) => `${Math.round(p).toLocaleString()}원` },
             "KODEX레버리지": { name: "KODEX 레버리지", ticker: "122630", base: 16800, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "한화에어로스페이스": { name: "한화에어로스페이스", ticker: "012450", base: 320000, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "알테오젠": { name: "알테오젠", ticker: "196170", base: 285000, format: (p) => `${Math.round(p).toLocaleString()}원` }
+            "한화에어로스페이스": { name: "한화에어로스페이스", ticker: "012450", base: 1006000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "알테오젠": { name: "알테오젠", ticker: "196170", base: 289500, format: (p) => `${Math.round(p).toLocaleString()}원` }
         }
     };
 
@@ -797,8 +797,8 @@ const fiveYearMilestones = {
             gdp: [5.0, 5.7, 2.5, 2.4, 2.2, 2.2, 5.8],
             eps: [20.0, 29.5, 2.0, 7.5, 10.5, 10.5, 148.5],
             m2: [15.0, 18.5, -1.0, 3.8, 4.5, 4.5, 23.7],
-            cpi: [2.5, 6.8, 4.1, 2.8, 2.3, 2.3, -1.3],
-            rate: [0.25, 0.25, 5.25, 5.0, 4.0, 4.0, -5.0],
+            cpi: [2.5, 6.8, 4.1, 2.8, 2.3, 3.8, -1.3],
+            rate: [0.25, 0.25, 5.25, 5.0, 4.0, 3.62, -5.0],
             spread: [1.5, 1.2, -0.8, -0.2, 0.2, 0.2, 2.6]
         },
         "KR": {
@@ -807,8 +807,8 @@ const fiveYearMilestones = {
             gdp: [2.0, 3.7, 1.5, 2.2, 2.5, 2.5, 2.5],
             eps: [12.0, 26.0, -18.0, 8.0, 200.0, 200.0, 440.0],
             m2: [8.0, 9.8, 5.4, 6.0, 6.0, 6.0, 7.2],
-            cpi: [1.5, 4.0, 5.1, 2.8, 2.1, 2.1, 0.9],
-            rate: [0.5, 0.75, 3.25, 3.50, 3.25, 3.25, 3.25],
+            cpi: [1.5, 4.0, 5.1, 2.8, 2.1, 3.1, 0.9],
+            rate: [0.5, 0.75, 3.25, 3.50, 3.25, 2.50, 3.25],
             spread: [1.1, 1.0, -0.5, 0.0, 0.4, 0.4, 0.4]
         }
     };
@@ -1519,42 +1519,42 @@ function calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2
     const ytdKospi = 5.2 + 6.0 * x + 3.0 * y;
     const ytdKosdaq = 6.8 + 8.2 * x + 4.5 * y;
 
-    const mcapSp500Total = 58.50 * (1 + ytdSp500 / 100);
-    const mcapKospiTotal = 4850.0 * (1 + ytdKospi / 100);
-    const mcapKosdaqTotal = 720.0 * (1 + ytdKosdaq / 100);
+    const mcapSp500Total = 65.80 * (1 + ytdSp500 / 100);
+    const mcapKospiTotal = 6131.0 * (1 + ytdKospi / 100);
+    const mcapKosdaqTotal = 560.0 * (1 + ytdKosdaq / 100);
 
     // US S&P 500 Top 10 Companies
     const usTop10Defs = [
-        { name: "NVIDIA Corp.", ticker: "NVDA", baseMcap: 5.15, betaX: 8.0, betaY: 6.0, baseOffset: 22.0 },
-        { name: "Apple Inc.", ticker: "AAPL", baseMcap: 4.58, betaX: 3.5, betaY: 1.8, baseOffset: 9.0 },
-        { name: "Microsoft Corp.", ticker: "MSFT", baseMcap: 3.34, betaX: 4.0, betaY: 2.0, baseOffset: 10.0 },
-        { name: "Amazon.com Inc.", ticker: "AMZN", baseMcap: 2.91, betaX: 4.5, betaY: 2.2, baseOffset: 11.0 },
-        { name: "Alphabet Inc.", ticker: "GOOGL", baseMcap: 2.60, betaX: 3.8, betaY: 1.9, baseOffset: 8.0 },
-        { name: "Meta Platforms", ticker: "META", baseMcap: 1.85, betaX: 5.2, betaY: 3.0, baseOffset: 12.0 },
-        { name: "Tesla Inc.", ticker: "TSLA", baseMcap: 1.45, betaX: 7.0, betaY: 5.0, baseOffset: 15.0 },
-        { name: "Berkshire Hathaway", ticker: "BRK.B", baseMcap: 1.15, betaX: 1.5, betaY: 0.5, baseOffset: 6.0 },
-        { name: "Broadcom Inc.", ticker: "AVGO", baseMcap: 1.10, betaX: 4.8, betaY: 2.5, baseOffset: 13.0 },
+        { name: "NVIDIA Corp.", ticker: "NVDA", baseMcap: 5.07, betaX: 8.0, betaY: 6.0, baseOffset: 22.0 },
+        { name: "Apple Inc.", ticker: "AAPL", baseMcap: 4.60, betaX: 3.5, betaY: 1.8, baseOffset: 9.0 },
+        { name: "Alphabet Inc.", ticker: "GOOGL", baseMcap: 4.46, betaX: 3.8, betaY: 1.9, baseOffset: 8.0 },
+        { name: "Microsoft Corp.", ticker: "MSFT", baseMcap: 3.10, betaX: 4.0, betaY: 2.0, baseOffset: 10.0 },
+        { name: "Amazon.com Inc.", ticker: "AMZN", baseMcap: 2.65, betaX: 4.5, betaY: 2.2, baseOffset: 11.0 },
+        { name: "Broadcom Inc.", ticker: "AVGO", baseMcap: 1.83, betaX: 4.8, betaY: 2.5, baseOffset: 13.0 },
+        { name: "Meta Platforms", ticker: "META", baseMcap: 1.51, betaX: 5.2, betaY: 3.0, baseOffset: 12.0 },
+        { name: "Tesla Inc.", ticker: "TSLA", baseMcap: 1.35, betaX: 7.0, betaY: 5.0, baseOffset: 15.0 },
+        { name: "Berkshire Hathaway", ticker: "BRK.B", baseMcap: 1.05, betaX: 1.5, betaY: 0.5, baseOffset: 6.0 },
         { name: "Eli Lilly & Co.", ticker: "LLY", baseMcap: 1.05, betaX: 2.0, betaY: 1.0, baseOffset: 18.0 }
     ];
 
     // KOSPI Top 10 Companies
     const krTop10Defs = [
-        { name: "삼성전자", ticker: "005930", baseMcap: 2033.0, betaX: 5.5, betaY: 3.0, baseOffset: 8.0 },
-        { name: "SK하이닉스", ticker: "000660", baseMcap: 1667.0, betaX: 8.5, betaY: 5.0, baseOffset: 24.0 },
-        { name: "현대자동차", ticker: "005380", baseMcap: 145.0, betaX: 3.5, betaY: 1.5, baseOffset: 14.0 },
-        { name: "LG에너지솔루션", ticker: "373220", baseMcap: 75.0, betaX: 6.0, betaY: 3.5, baseOffset: 5.0 },
-        { name: "기아", ticker: "000270", baseMcap: 68.0, betaX: 3.8, betaY: 1.6, baseOffset: 15.0 },
-        { name: "삼성바이오로직스", ticker: "207940", baseMcap: 60.0, betaX: 1.8, betaY: 0.8, baseOffset: 7.0 },
-        { name: "셀트리온", ticker: "068270", baseMcap: 40.0, betaX: 2.0, betaY: 1.0, baseOffset: 9.0 },
-        { name: "POSCO홀딩스", ticker: "005490", baseMcap: 33.0, betaX: 5.0, betaY: 2.8, baseOffset: 6.0 },
-        { name: "KB금융", ticker: "105560", baseMcap: 31.0, betaX: 2.5, betaY: 1.2, baseOffset: 18.0 },
-        { name: "신한지주", ticker: "055550", baseMcap: 25.0, betaX: 2.2, betaY: 1.1, baseOffset: 14.0 }
+        { name: "삼성전자", ticker: "005930", baseMcap: 1727.6, betaX: 5.5, betaY: 3.0, baseOffset: 8.0 },
+        { name: "SK하이닉스", ticker: "000660", baseMcap: 1362.0, betaX: 8.5, betaY: 5.0, baseOffset: 24.0 },
+        { name: "현대자동차", ticker: "005380", baseMcap: 153.6, betaX: 3.5, betaY: 1.5, baseOffset: 14.0 },
+        { name: "LG에너지솔루션", ticker: "373220", baseMcap: 90.9, betaX: 6.0, betaY: 3.5, baseOffset: 5.0 },
+        { name: "기아", ticker: "000270", baseMcap: 62.9, betaX: 3.8, betaY: 1.6, baseOffset: 15.0 },
+        { name: "삼성바이오로직스", ticker: "207940", baseMcap: 91.5, betaX: 1.8, betaY: 0.8, baseOffset: 7.0 },
+        { name: "셀트리온", ticker: "068270", baseMcap: 35.0, betaX: 2.0, betaY: 1.0, baseOffset: 9.0 },
+        { name: "POSCO홀딩스", ticker: "005490", baseMcap: 30.3, betaX: 5.0, betaY: 2.8, baseOffset: 6.0 },
+        { name: "KB금융", ticker: "105560", baseMcap: 61.5, betaX: 2.5, betaY: 1.2, baseOffset: 18.0 },
+        { name: "신한지주", ticker: "055550", baseMcap: 49.8, betaX: 2.2, betaY: 1.1, baseOffset: 14.0 }
     ];
 
     const usTop10 = usTop10Defs.map((item, idx) => {
         const stockYtd = item.baseOffset + item.betaX * x + item.betaY * y;
         const currentMcap = item.baseMcap * (1 + stockYtd / 100);
-        const krwMcapText = Math.round(currentMcap * 1380).toLocaleString();
+        const krwMcapText = Math.round(currentMcap * 1535).toLocaleString();
         return {
             rank: idx + 1,
             name: item.name,
@@ -1604,7 +1604,7 @@ function calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2
         lowStocks: lowStocks,
         volumeStocks: volumeStocks,
         sectorReturns: sectorReturns,
-        mcapSp500Total: `$${mcapSp500Total.toFixed(2)}T (약 ${Math.round(mcapSp500Total * 1380).toLocaleString()}조원)`,
+        mcapSp500Total: `$${mcapSp500Total.toFixed(2)}T (약 ${Math.round(mcapSp500Total * 1535).toLocaleString()}조원)`,
         mcapKospiTotal: `${Math.round(mcapKospiTotal).toLocaleString()}조원`,
         mcapKosdaqTotal: `${Math.round(mcapKosdaqTotal).toLocaleString()}조원`,
         usTop10: usTop10,
