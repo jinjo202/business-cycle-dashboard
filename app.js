@@ -62,6 +62,49 @@ const historicalPresets = {
         }
     },
     "KR": {
+        "2026-06": {
+            growthVal: "+12.4%",
+            growthTrend: "▲ HBM 및 메모리 반도체 슈퍼사이클 지속",
+            balanceVal: "+51.2억 달러 흑자",
+            balanceTrend: "▲ 13개월 연속 무역수지 흑자 행진",
+            ebsiVal: "114.5",
+            ebsiTrend: "▲ 글로벌 AI 수요 가속에 따른 업황 확장",
+            items: [
+                {
+                    name: "반도체 (DRAM / HBM 메모리 반도체)", pct: 18, change: "+45.2%", barClass: "summer",
+                    subItems: [
+                        { name: "HBM (고대역폭 메모리)", yoy: "+275.0%", mom: "+15.2%" },
+                        { name: "DRAM (대용량 메모리 반도체)", yoy: "+54.5%", mom: "+4.1%" },
+                        { name: "기업용 SSD (Solid State Drive)", yoy: "+38.2%", mom: "+3.0%" }
+                    ]
+                },
+                {
+                    name: "자동차, 친환경차 및 완성차 부품", pct: 13, change: "+13.1%", barClass: "spring",
+                    subItems: [
+                        { name: "친환경 완성차 (EV 포함)", yoy: "+19.2%", mom: "+2.2%" },
+                        { name: "하이브리드 완성차 (HEV)", yoy: "+24.5%", mom: "+2.8%" },
+                        { name: "완성차 기계식 전장 부품 및 제어", yoy: "+6.8%", mom: "+1.2%" }
+                    ]
+                },
+                {
+                    name: "석유화학 제품 및 합성수지", pct: 8, change: "-2.0%", barClass: "winter",
+                    subItems: [
+                        { name: "합성수지 (플라스틱 등)", yoy: "-1.0%", mom: "+0.5%" },
+                        { name: "기초 유기 석유화학 제품", yoy: "-3.8%", mom: "-0.5%" },
+                        { name: "윤활유 및 특수 아스팔트 제품", yoy: "-1.5%", mom: "-0.2%" }
+                    ]
+                },
+                {
+                    name: "선박, LNG 고부가가치 운반선", pct: 6, change: "+19.2%", barClass: "autumn",
+                    subItems: [
+                        { name: "고부가가치 LNG 운반선", yoy: "+31.5%", mom: "+4.8%" },
+                        { name: "초대형 유조선 및 컨테이너선", yoy: "+14.2%", mom: "+1.5%" },
+                        { name: "친환경 암모니아/메탄올 추진선", yoy: "+16.8%", mom: "+2.0%" }
+                    ]
+                }
+            ]
+        },
+
         "2000_dotcom": {
             title: "2000년 코스닥 닷컴 버블 붕괴",
             cli: 97.8, pmi: 42.0, gdp: -1.0, eps: -25.0, m2: 15.0, cpi: 2.8, rate: 5.25, spread: -0.2,
@@ -132,6 +175,49 @@ const historicalPresets = {
 
 const exportData = {
     "US": {
+        "2026-06": {
+            growthVal: "+3.4%",
+            growthTrend: "▲ AI 관련 기술 라이선스 호조",
+            balanceVal: "-618억 달러 적자",
+            balanceTrend: "▲ 셰일 오일 및 가스 수출 강세",
+            ebsiVal: "103.5",
+            ebsiTrend: "▲ 완만한 유동성 유입에 따른 심리 개선",
+            items: [
+                {
+                    name: "IT 기술, IP 및 SW 로열티", pct: 32, change: "+8.8%", barClass: "summer",
+                    subItems: [
+                        { name: "클라우드 서비스 (AWS/Azure)", yoy: "+13.1%", mom: "+1.5%" },
+                        { name: "AI 알고리즘 및 API 라이선싱", yoy: "+19.2%", mom: "+2.8%" },
+                        { name: "기업용 SaaS 솔루션", yoy: "+6.8%", mom: "+1.0%" }
+                    ]
+                },
+                {
+                    name: "민간 항공기 및 우주 장비", pct: 12, change: "+4.5%", barClass: "spring",
+                    subItems: [
+                        { name: "민간 여객기 완제품 인도", yoy: "+3.5%", mom: "+0.8%" },
+                        { name: "방산 항공 부품 및 정비", yoy: "+8.5%", mom: "+1.0%" },
+                        { name: "민간 통신 위성 및 발사체", yoy: "+3.0%", mom: "+0.4%" }
+                    ]
+                },
+                {
+                    name: "셰일 오일 및 LNG 에너지 자원", pct: 10, change: "+6.5%", barClass: "autumn",
+                    subItems: [
+                        { name: "원유 (WTI 기준 수출)", yoy: "+5.1%", mom: "+1.2%" },
+                        { name: "천연가스 (LNG) 글로벌 운송", yoy: "+9.2%", mom: "+1.8%" },
+                        { name: "정제 석유화학 완제품 및 윤활유", yoy: "+5.5%", mom: "+0.5%" }
+                    ]
+                },
+                {
+                    name: "비메모리 반도체 및 디바이스 하드웨어", pct: 6, change: "-1.0%", barClass: "winter",
+                    subItems: [
+                        { name: "AI 가속기 및 차량용 GPU 칩", yoy: "+30.1%", mom: "+3.8%" },
+                        { name: "모바일 AP 및 이미지센서 파운드리", yoy: "-4.8%", mom: "-0.5%" },
+                        { name: "통신 인프라 및 네트워크 하드웨어", yoy: "-7.5%", mom: "-1.0%" }
+                    ]
+                }
+            ]
+        },
+
         "2026-05": {
             growthVal: "+3.2%",
             growthTrend: "▲ AI 서비스 및 에너지 견인",
@@ -344,6 +430,49 @@ const exportData = {
         }
     },
     "KR": {
+        "2026-06": {
+            growthVal: "+12.4%",
+            growthTrend: "▲ HBM 및 메모리 반도체 슈퍼사이클 지속",
+            balanceVal: "+51.2억 달러 흑자",
+            balanceTrend: "▲ 13개월 연속 무역수지 흑자 행진",
+            ebsiVal: "114.5",
+            ebsiTrend: "▲ 글로벌 AI 수요 가속에 따른 업황 확장",
+            items: [
+                {
+                    name: "반도체 (DRAM / HBM 메모리 반도체)", pct: 18, change: "+45.2%", barClass: "summer",
+                    subItems: [
+                        { name: "HBM (고대역폭 메모리)", yoy: "+275.0%", mom: "+15.2%" },
+                        { name: "DRAM (대용량 메모리 반도체)", yoy: "+54.5%", mom: "+4.1%" },
+                        { name: "기업용 SSD (Solid State Drive)", yoy: "+38.2%", mom: "+3.0%" }
+                    ]
+                },
+                {
+                    name: "자동차, 친환경차 및 완성차 부품", pct: 13, change: "+13.1%", barClass: "spring",
+                    subItems: [
+                        { name: "친환경 완성차 (EV 포함)", yoy: "+19.2%", mom: "+2.2%" },
+                        { name: "하이브리드 완성차 (HEV)", yoy: "+24.5%", mom: "+2.8%" },
+                        { name: "완성차 기계식 전장 부품 및 제어", yoy: "+6.8%", mom: "+1.2%" }
+                    ]
+                },
+                {
+                    name: "석유화학 제품 및 합성수지", pct: 8, change: "-2.0%", barClass: "winter",
+                    subItems: [
+                        { name: "합성수지 (플라스틱 등)", yoy: "-1.0%", mom: "+0.5%" },
+                        { name: "기초 유기 석유화학 제품", yoy: "-3.8%", mom: "-0.5%" },
+                        { name: "윤활유 및 특수 아스팔트 제품", yoy: "-1.5%", mom: "-0.2%" }
+                    ]
+                },
+                {
+                    name: "선박, LNG 고부가가치 운반선", pct: 6, change: "+19.2%", barClass: "autumn",
+                    subItems: [
+                        { name: "고부가가치 LNG 운반선", yoy: "+31.5%", mom: "+4.8%" },
+                        { name: "초대형 유조선 및 컨테이너선", yoy: "+14.2%", mom: "+1.5%" },
+                        { name: "친환경 암모니아/메탄올 추진선", yoy: "+16.8%", mom: "+2.0%" }
+                    ]
+                }
+            ]
+        },
+
         "2026-05": {
             growthVal: "+11.7%",
             growthTrend: "▲ HBM/DRAM 반도체 대형 사이클 주도 (잠정치)",
@@ -559,7 +688,7 @@ const exportData = {
 
 function updateExportCard() {
     const monthSelect = document.getElementById("export-month-select");
-    const activeMonth = monthSelect ? monthSelect.value : "2026-05";
+    const activeMonth = monthSelect ? monthSelect.value : "2026-06";
 
     const data = exportData[activeRegion][activeMonth];
     if (!data) return;
@@ -756,6 +885,49 @@ function updateExportCard() {
             "FCX": { name: "Freeport-McMoRan Inc.", ticker: "FCX", base: 51.20, format: (p) => `$${p.toFixed(2)}` }
         },
         "KR": {
+        "2026-06": {
+            growthVal: "+12.4%",
+            growthTrend: "▲ HBM 및 메모리 반도체 슈퍼사이클 지속",
+            balanceVal: "+51.2억 달러 흑자",
+            balanceTrend: "▲ 13개월 연속 무역수지 흑자 행진",
+            ebsiVal: "114.5",
+            ebsiTrend: "▲ 글로벌 AI 수요 가속에 따른 업황 확장",
+            items: [
+                {
+                    name: "반도체 (DRAM / HBM 메모리 반도체)", pct: 18, change: "+45.2%", barClass: "summer",
+                    subItems: [
+                        { name: "HBM (고대역폭 메모리)", yoy: "+275.0%", mom: "+15.2%" },
+                        { name: "DRAM (대용량 메모리 반도체)", yoy: "+54.5%", mom: "+4.1%" },
+                        { name: "기업용 SSD (Solid State Drive)", yoy: "+38.2%", mom: "+3.0%" }
+                    ]
+                },
+                {
+                    name: "자동차, 친환경차 및 완성차 부품", pct: 13, change: "+13.1%", barClass: "spring",
+                    subItems: [
+                        { name: "친환경 완성차 (EV 포함)", yoy: "+19.2%", mom: "+2.2%" },
+                        { name: "하이브리드 완성차 (HEV)", yoy: "+24.5%", mom: "+2.8%" },
+                        { name: "완성차 기계식 전장 부품 및 제어", yoy: "+6.8%", mom: "+1.2%" }
+                    ]
+                },
+                {
+                    name: "석유화학 제품 및 합성수지", pct: 8, change: "-2.0%", barClass: "winter",
+                    subItems: [
+                        { name: "합성수지 (플라스틱 등)", yoy: "-1.0%", mom: "+0.5%" },
+                        { name: "기초 유기 석유화학 제품", yoy: "-3.8%", mom: "-0.5%" },
+                        { name: "윤활유 및 특수 아스팔트 제품", yoy: "-1.5%", mom: "-0.2%" }
+                    ]
+                },
+                {
+                    name: "선박, LNG 고부가가치 운반선", pct: 6, change: "+19.2%", barClass: "autumn",
+                    subItems: [
+                        { name: "고부가가치 LNG 운반선", yoy: "+31.5%", mom: "+4.8%" },
+                        { name: "초대형 유조선 및 컨테이너선", yoy: "+14.2%", mom: "+1.5%" },
+                        { name: "친환경 암모니아/메탄올 추진선", yoy: "+16.8%", mom: "+2.0%" }
+                    ]
+                }
+            ]
+        },
+
             "SK하이닉스": { name: "SK하이닉스", ticker: "000660", base: 1911000, format: (p) => `${Math.round(p).toLocaleString()}원` },
             "한미반도체": { name: "한미반도체", ticker: "042700", base: 269000, format: (p) => `${Math.round(p).toLocaleString()}원` },
             "현대차": { name: "현대자동차", ticker: "005380", base: 634000, format: (p) => `${Math.round(p).toLocaleString()}원` },
@@ -802,6 +974,49 @@ const fiveYearMilestones = {
             spread: [1.5, 1.2, -0.8, -0.2, 0.2, 0.2, 2.6]
         },
         "KR": {
+        "2026-06": {
+            growthVal: "+12.4%",
+            growthTrend: "▲ HBM 및 메모리 반도체 슈퍼사이클 지속",
+            balanceVal: "+51.2억 달러 흑자",
+            balanceTrend: "▲ 13개월 연속 무역수지 흑자 행진",
+            ebsiVal: "114.5",
+            ebsiTrend: "▲ 글로벌 AI 수요 가속에 따른 업황 확장",
+            items: [
+                {
+                    name: "반도체 (DRAM / HBM 메모리 반도체)", pct: 18, change: "+45.2%", barClass: "summer",
+                    subItems: [
+                        { name: "HBM (고대역폭 메모리)", yoy: "+275.0%", mom: "+15.2%" },
+                        { name: "DRAM (대용량 메모리 반도체)", yoy: "+54.5%", mom: "+4.1%" },
+                        { name: "기업용 SSD (Solid State Drive)", yoy: "+38.2%", mom: "+3.0%" }
+                    ]
+                },
+                {
+                    name: "자동차, 친환경차 및 완성차 부품", pct: 13, change: "+13.1%", barClass: "spring",
+                    subItems: [
+                        { name: "친환경 완성차 (EV 포함)", yoy: "+19.2%", mom: "+2.2%" },
+                        { name: "하이브리드 완성차 (HEV)", yoy: "+24.5%", mom: "+2.8%" },
+                        { name: "완성차 기계식 전장 부품 및 제어", yoy: "+6.8%", mom: "+1.2%" }
+                    ]
+                },
+                {
+                    name: "석유화학 제품 및 합성수지", pct: 8, change: "-2.0%", barClass: "winter",
+                    subItems: [
+                        { name: "합성수지 (플라스틱 등)", yoy: "-1.0%", mom: "+0.5%" },
+                        { name: "기초 유기 석유화학 제품", yoy: "-3.8%", mom: "-0.5%" },
+                        { name: "윤활유 및 특수 아스팔트 제품", yoy: "-1.5%", mom: "-0.2%" }
+                    ]
+                },
+                {
+                    name: "선박, LNG 고부가가치 운반선", pct: 6, change: "+19.2%", barClass: "autumn",
+                    subItems: [
+                        { name: "고부가가치 LNG 운반선", yoy: "+31.5%", mom: "+4.8%" },
+                        { name: "초대형 유조선 및 컨테이너선", yoy: "+14.2%", mom: "+1.5%" },
+                        { name: "친환경 암모니아/메탄올 추진선", yoy: "+16.8%", mom: "+2.0%" }
+                    ]
+                }
+            ]
+        },
+
             cli: [100.5, 102.2, 98.2, 99.8, 100.5, 100.5, 101.7],
             pmi: [54.0, 57.5, 46.0, 50.5, 52.0, 52.0, 58.0],
             gdp: [2.0, 3.7, 1.5, 2.2, 2.5, 2.5, 2.5],
@@ -888,7 +1103,7 @@ function updateTransitionPanel(prevMacro, currMacro, prevSeason, currSeason, pre
         prevDateLabel = timeMachineMonths[prevIndex].label;
     } else if (activeMode === "sim") {
         const monthSelectEl = document.getElementById("export-month-select");
-        const selectVal = monthSelectEl ? monthSelectEl.value : "2026-05";
+        const selectVal = monthSelectEl ? monthSelectEl.value : "2026-06";
         const idx = getMonthIndex(selectVal);
         const prevIdx = Math.max(0, idx - 1);
         if (prevIdx >= 0 && prevIdx < timeMachineMonths.length) {
@@ -1984,7 +2199,7 @@ function updateUI(macro, season, portfolio, cli, pmi, gdp, eps, m2, cpi, rate, s
         prevIdx = Math.max(0, activeTimeIndex - 1);
     } else if (activeMode === "sim") {
         const monthSelectEl = document.getElementById("export-month-select");
-        const selectVal = monthSelectEl ? monthSelectEl.value : "2026-05";
+        const selectVal = monthSelectEl ? monthSelectEl.value : "2026-06";
         prevIdx = Math.max(0, getMonthIndex(selectVal) - 1);
     } else {
         prevIdx = 59;
@@ -2749,7 +2964,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             // Simulation Mode: Compare against previous month of selected reference month
             const monthSelectEl = document.getElementById("export-month-select");
-            const selectVal = monthSelectEl ? monthSelectEl.value : "2026-05";
+            const selectVal = monthSelectEl ? monthSelectEl.value : "2026-06";
             prevIndex = Math.max(0, getMonthIndex(selectVal) - 1);
             const prevInd = getIndicatorsForMonth(activeRegion, prevIndex);
             prevMacro = calculateMacroMetrics(prevInd.cli, prevInd.pmi, prevInd.gdp, prevInd.m2, prevInd.rate, prevInd.spread);
