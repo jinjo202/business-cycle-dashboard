@@ -6,7 +6,7 @@ const historicalPresets = {
     "US": {
         "2000_dotcom": {
             title: "2000년 IT 버블 붕괴 및 침체기",
-            cli: 98.2, pmi: 43.5, gdp: 0.5, eps: -12.0, m2: 6.2, cpi: 3.4, rate: 6.5, spread: -0.4,
+            cli: 98.2, pmi: 43.5, gdp: 0.5, eps: -12.0, m2: 6.2, cpi: 3.4, rate: 6.5, spread: -0.4, citi: 20.0, gdpnow: 2.5,
             phase: "contraction", season: "winter",
             summary: "닷컴 버블 붕괴와 9/11 테러 여파로 실물 경제와 기업 이익이 급격히 위축되었습니다. 연준은 기준금리를 6.5%에서 인하하기 시작했으나 장단기 금리차가 역전된 후 주식시장 역실적장세(겨울)가 본격화되었습니다.",
             lessons: "버블 붕괴 국면에서는 고평가된 기술주를 피하고 장기 국채 및 현금 비중을 높이는 극단적인 방어 포지션이 유효했습니다. 연준의 급격한 금리 인하가 시작되더라도 실물 지표와 어닝 전망이 바닥을 잡기 전까지 주식 매수는 보수적으로 제한해야 합니다.",
@@ -14,7 +14,7 @@ const historicalPresets = {
         },
         "2004_expansion": {
             title: "2004년 글로벌 동반 성장기",
-            cli: 101.8, pmi: 58.5, gdp: 4.2, eps: 18.0, m2: 5.0, cpi: 2.7, rate: 1.5, spread: 1.8,
+            cli: 101.8, pmi: 58.5, gdp: 4.2, eps: 18.0, m2: 5.0, cpi: 2.7, rate: 1.5, spread: 1.8, citi: 20.0, gdpnow: 2.5,
             phase: "expansion", season: "summer",
             summary: "IT 버블을 완벽히 극복하고 저금리 기조 속에서 부동산 및 글로벌 제조업 활성화로 경제가 동반 확장(Expansion)에 진입, 전형적인 주식시장 실적장세(여름)를 보였습니다.",
             lessons: "금리 인상 초기 단계이자 강력한 실물 수요와 주당순이익(Fwd EPS) 성장이 확인되는 시기에는 주식과 경기민감 원자재 투자가 최고의 성과를 냅니다. 고배당보다 성장형 기술주와 산업재에 집중하는 적극적인 투자 배치가 승률을 높입니다.",
@@ -22,7 +22,7 @@ const historicalPresets = {
         },
         "2008_crisis": {
             title: "2008년 글로벌 금융위기 (리먼 사태)",
-            cli: 96.2, pmi: 34.0, gdp: -3.5, eps: -24.5, m2: 8.5, cpi: 1.1, rate: 1.5, spread: 0.8,
+            cli: 96.2, pmi: 34.0, gdp: -3.5, eps: -24.5, m2: 8.5, cpi: 1.1, rate: 1.5, spread: 0.8, citi: 20.0, gdpnow: 2.5,
             phase: "contraction", season: "winter",
             summary: "서브프라임 모기지 사태와 리먼 브라더스 파산으로 신용 자금줄이 마비되었습니다. 기업 실적 전망이 급격한 역성장으로 곤두박질치며 가혹한 역실적장세(겨울)가 몰아쳤습니다. 연준은 긴급 유동성 수혈을 시작하여 M2 증가율은 상승세였습니다.",
             lessons: "대공황 이래 최대 금융 마비로 모든 위험자산이 동반 낙하했으며, 포트폴리오 차원에서 주식 비중을 최소화하고 미국 국채와 달러 현금을 지키는 대피소형 전략만이 유일하게 성공적인 방어를 제공했습니다.",
@@ -30,7 +30,7 @@ const historicalPresets = {
         },
         "2010_recovery": {
             title: "2010년 위기 극복 및 조기 회복기",
-            cli: 100.8, pmi: 55.2, gdp: 2.8, eps: 15.0, m2: 3.5, cpi: 1.6, rate: 0.25, spread: 2.5,
+            cli: 100.8, pmi: 55.2, gdp: 2.8, eps: 15.0, m2: 3.5, cpi: 1.6, rate: 0.25, spread: 2.5, citi: 20.0, gdpnow: 2.5,
             phase: "recovery", season: "spring",
             summary: "미 연준의 역사적인 제로금리 및 양적완화(QE) 도입과 함께 실물 경기는 바닥이나 제조업 서베이가 먼저 반등하며 강한 유동성 효과에 기반한 금융장세(봄)를 촉진했습니다.",
             lessons: "불황의 끝자락에서 강력한 통화 완화와 함께 선행 지표가 살아날 때는 '돈의 힘'으로 실적 부진을 덮고 주가가 먼저 도약합니다. 금리 민감 금융주와 낙폭과대 대형주를 선제적으로 편입해야 하는 구간입니다.",
@@ -38,7 +38,7 @@ const historicalPresets = {
         },
         "2018_late": {
             title: "2018년 연준 긴축 & 미·중 무역 분쟁기",
-            cli: 99.5, pmi: 49.8, gdp: 1.9, eps: 5.0, m2: 3.8, cpi: 2.2, rate: 2.25, spread: 0.15,
+            cli: 99.5, pmi: 49.8, gdp: 1.9, eps: 5.0, m2: 3.8, cpi: 2.2, rate: 2.25, spread: 0.15, citi: 20.0, gdpnow: 2.5,
             phase: "slowdown", season: "autumn",
             summary: "누적된 연준의 금리 인상 및 대차대조표 축소(QT)와 무역전쟁 격화로 투자 심리가 급격히 냉각되었습니다. 실적 성장이 피크아웃하고 유동성이 극도로 축소되며 전형적인 역금융장세(가을) 성격을 보였습니다.",
             lessons: "장단기 금리차가 제로 부근에 도달하고 연준의 매파적 스탠스가 유지될 때는 위험 자산 비중을 정밀 조율하고 가치주, 필수재 및 고배당 현금 흐름 우량주 중심으로 포트폴리오를 다변화해야 이탈률을 방어할 수 있습니다.",
@@ -46,7 +46,7 @@ const historicalPresets = {
         },
         "2021_boom": {
             title: "2021년 초과 유동성 & 보복 소비 붐",
-            cli: 102.5, pmi: 62.1, gdp: 5.7, eps: 29.5, m2: 18.5, cpi: 6.8, rate: 0.25, spread: 1.2,
+            cli: 102.5, pmi: 62.1, gdp: 5.7, eps: 29.5, m2: 18.5, cpi: 6.8, rate: 0.25, spread: 1.2, citi: 20.0, gdpnow: 2.5,
             phase: "expansion", season: "summer",
             summary: "전 세계적인 유동성 살포(M2 증가율 역사상 최고 18.5%)와 보복 소비로 실물 성장과 기업의 Forward EPS가 폭발적으로 증가했습니다. 저금리 하에서 이익 탄력이 극대화된 최고조의 실적장세(여름)가 연출되었습니다.",
             lessons: "수요가 가파르고 실적 성장이 보장되는 구간에서는 고밸류 빅테크 성장주와 원자재 자산이 압도적 아웃퍼폼을 제공합니다. 다만 높은 인플레이션율(${cpi}%)이 후행적으로 중앙은행의 매파 전환 압력을 높이게 됨을 인지해야 합니다.",
@@ -54,7 +54,7 @@ const historicalPresets = {
         },
         "2026_current": {
             title: "2026년 미국 연착륙 성공 & AI 확장기",
-            cli: 100.2, pmi: 51.5, gdp: 2.2, eps: 10.5, m2: 4.5, cpi: 3.8, rate: 3.62, spread: 0.2,
+            cli: 100.2, pmi: 51.5, gdp: 2.2, eps: 10.5, m2: 4.5, cpi: 2.3, rate: 4.0, spread: 0.2, citi: 20.0, gdpnow: 2.5,
             phase: "expansion", season: "summer",
             summary: "안정적인 인플레이션 통제와 함께 중앙은행이 중립 금리 수준으로 질서 있게 인하하는 구간입니다. 시중 유동성이 정상 궤도를 회복(M2 증가율 4.5%)하며 AI 생산성 혁신이 실적(Forward EPS)을 주도하는 골디락스 실적장세(여름)입니다.",
             lessons: "실적이 지속 성장하고 물가와 금리가 하향 안정을 보이는 골디락스 단계에서는 AI 빅테크 및 우량 성장 기업 주식 중심의 공격적 포지션 배치가 가장 높은 자본 효율성을 안겨다 줍니다.",
@@ -62,52 +62,9 @@ const historicalPresets = {
         }
     },
     "KR": {
-        "2026-06": {
-            growthVal: "+12.4%",
-            growthTrend: "▲ HBM 및 메모리 반도체 슈퍼사이클 지속",
-            balanceVal: "+51.2억 달러 흑자",
-            balanceTrend: "▲ 13개월 연속 무역수지 흑자 행진",
-            ebsiVal: "114.5",
-            ebsiTrend: "▲ 글로벌 AI 수요 가속에 따른 업황 확장",
-            items: [
-                {
-                    name: "반도체 (DRAM / HBM 메모리 반도체)", pct: 18, change: "+45.2%", barClass: "summer",
-                    subItems: [
-                        { name: "HBM (고대역폭 메모리)", yoy: "+275.0%", mom: "+15.2%" },
-                        { name: "DRAM (대용량 메모리 반도체)", yoy: "+54.5%", mom: "+4.1%" },
-                        { name: "기업용 SSD (Solid State Drive)", yoy: "+38.2%", mom: "+3.0%" }
-                    ]
-                },
-                {
-                    name: "자동차, 친환경차 및 완성차 부품", pct: 13, change: "+13.1%", barClass: "spring",
-                    subItems: [
-                        { name: "친환경 완성차 (EV 포함)", yoy: "+19.2%", mom: "+2.2%" },
-                        { name: "하이브리드 완성차 (HEV)", yoy: "+24.5%", mom: "+2.8%" },
-                        { name: "완성차 기계식 전장 부품 및 제어", yoy: "+6.8%", mom: "+1.2%" }
-                    ]
-                },
-                {
-                    name: "석유화학 제품 및 합성수지", pct: 8, change: "-2.0%", barClass: "winter",
-                    subItems: [
-                        { name: "합성수지 (플라스틱 등)", yoy: "-1.0%", mom: "+0.5%" },
-                        { name: "기초 유기 석유화학 제품", yoy: "-3.8%", mom: "-0.5%" },
-                        { name: "윤활유 및 특수 아스팔트 제품", yoy: "-1.5%", mom: "-0.2%" }
-                    ]
-                },
-                {
-                    name: "선박, LNG 고부가가치 운반선", pct: 6, change: "+19.2%", barClass: "autumn",
-                    subItems: [
-                        { name: "고부가가치 LNG 운반선", yoy: "+31.5%", mom: "+4.8%" },
-                        { name: "초대형 유조선 및 컨테이너선", yoy: "+14.2%", mom: "+1.5%" },
-                        { name: "친환경 암모니아/메탄올 추진선", yoy: "+16.8%", mom: "+2.0%" }
-                    ]
-                }
-            ]
-        },
-
         "2000_dotcom": {
             title: "2000년 코스닥 닷컴 버블 붕괴",
-            cli: 97.8, pmi: 42.0, gdp: -1.0, eps: -25.0, m2: 15.0, cpi: 2.8, rate: 5.25, spread: -0.2,
+            cli: 97.8, pmi: 42.0, gdp: -1.0, eps: -25.0, m2: 15.0, cpi: 2.8, rate: 5.25, spread: -0.2, citi: 20.0, gdpnow: 2.5,
             phase: "contraction", season: "winter",
             summary: "코스닥 중심의 극단적 투기 붐 붕괴와 대기업 구조조정이 겹쳤습니다. 외환위기 복구 유동성 살포(M2: 15%)에도 불구하고 이익 전망이 참혹하게 무너지며 지수가 수직 급락하는 혹독한 역실적장세(겨울)를 보였습니다.",
             lessons: "한국 시장은 대외 변동성에 심해, 닷컴 붕괴기에는 현금 확보 및 신용 위험이 적은 초우량 대형 국채로 피신하는 정밀한 방어 체계 구축만이 살길이었습니다.",
@@ -115,7 +72,7 @@ const historicalPresets = {
         },
         "2004_expansion": {
             title: "2004년 중국 특수 & 코스피 대도약기",
-            cli: 101.5, pmi: 56.0, gdp: 4.0, eps: 22.0, m2: 6.5, cpi: 3.6, rate: 3.75, spread: 1.2,
+            cli: 101.5, pmi: 56.0, gdp: 4.0, eps: 22.0, m2: 6.5, cpi: 3.6, rate: 3.75, spread: 1.2, citi: 20.0, gdpnow: 2.5,
             phase: "expansion", season: "summer",
             summary: "중국의 고속 성장에 따른 원자재/조선/해운 특수(브릭스 붐)로 한국 수출 기업들의 Forward EPS가 폭발하며 코스피가 역사적 상승세를 탄 실적장세(여름)입니다. 시중 유동성 공급도 안정적이었습니다.",
             lessons: "한국의 제조업 기반 순환 특성상, 중국 및 글로벌 성장 사이클과 맞물리는 실적장세에는 무조건 중화학공업, 철강, 소재, 해운 등 경기민감 대형주에 레버리지를 실어 초과이익을 도모해야 합니다.",
@@ -123,7 +80,7 @@ const historicalPresets = {
         },
         "2008_crisis": {
             title: "2008년 금융위기 & 고환율·신용 경색",
-            cli: 95.5, pmi: 32.5, gdp: -4.5, eps: -35.0, m2: 12.0, cpi: 4.7, rate: 3.0, spread: 0.4,
+            cli: 95.5, pmi: 32.5, gdp: -4.5, eps: -35.0, m2: 12.0, cpi: 4.7, rate: 3.0, spread: 0.4, citi: 20.0, gdpnow: 2.5,
             phase: "contraction", season: "winter",
             summary: "글로벌 불황과 원·달러 환율 폭등, 자본 이탈이 겹쳐 코스피가 900선 이하로 밀렸습니다. 한은의 긴급 금융 수혈로 M2 유동성은 12% 늘었으나, 실물 제조업 가동률이 붕괴된 최악의 역실적장세(겨울)였습니다.",
             lessons: "대외 의존도가 높은 KOSPI는 글로벌 위기 시 외국인 자금 이탈로 지수가 반토막 납니다. 환율 방어가 되는 외화 현금 자산과 우량 장기 국채 중심의 초보수 포지션 전환이 강제되는 구간입니다.",
@@ -131,7 +88,7 @@ const historicalPresets = {
         },
         "2011_chawajung": {
             title: "2011년 코스피 '차·화·정' 주도 강세장",
-            cli: 102.2, pmi: 57.5, gdp: 3.7, eps: 26.0, m2: 7.5, cpi: 4.0, rate: 3.25, spread: 1.0,
+            cli: 102.2, pmi: 57.5, gdp: 3.7, eps: 26.0, m2: 7.5, cpi: 4.0, rate: 3.25, spread: 1.0, citi: 20.0, gdpnow: 2.5,
             phase: "expansion", season: "summer",
             summary: "위기 후 글로벌 경기 회복 속에 자동차, 화학, 정유(차화정) 업종의 실적이 압도적으로 아웃퍼폼하며 코스피 지수를 사상 최초로 2,200선 위로 견인했던 실적장세(여름)입니다. 시중 유동성도 양호했습니다.",
             lessons: "KOSPI의 전형적인 압축 주도주 장세였습니다. 이 시기에는 지수 분산보다 실적(Forward EPS) 가속도가 독보적으로 높은 주도 섹터(차·화·정)에 포트폴리오를 과감하게 집중 편입시키는 압축 전략이 정답이었습니다.",
@@ -139,7 +96,7 @@ const historicalPresets = {
         },
         "2018_semicon": {
             title: "2018년 반도체 슈퍼사이클 & 미·중 무역 쇼크",
-            cli: 99.0, pmi: 48.5, gdp: 2.4, eps: 12.0, m2: 6.2, cpi: 1.5, rate: 1.75, spread: 0.3,
+            cli: 99.0, pmi: 48.5, gdp: 2.4, eps: 12.0, m2: 6.2, cpi: 1.5, rate: 1.75, spread: 0.3, citi: 20.0, gdpnow: 2.5,
             phase: "slowdown", season: "autumn",
             summary: "삼성전자/하이닉스의 사상 최대 이익에도 불구하고 글로벌 유동성 축소(M2 둔화)와 미중 무역 갈등으로 코스피 주가는 선행하여 하락한 역금융장세(가을) 국면입니다.",
             lessons: "KOSPI는 이익이 최고치일 때가 종종 매도 정점이 됩니다. 선행 주당순이익 성장률이 고점을 찍고 둔화 조짐을 보이며 거시 유동성 공급 속도가 하락할 때는 적극적인 리스크 관리가 필요합니다.",
@@ -147,7 +104,7 @@ const historicalPresets = {
         },
         "2020_donghak": {
             title: "2020년 팬데믹 급락 후 '동학개미' 유동성 붐",
-            cli: 100.8, pmi: 54.0, gdp: -1.0, eps: 8.0, m2: 9.8, cpi: 0.5, rate: 0.50, spread: 1.1,
+            cli: 100.8, pmi: 54.0, gdp: -1.0, eps: 8.0, m2: 9.8, cpi: 0.5, rate: 0.50, spread: 1.1, citi: 20.0, gdpnow: 2.5,
             phase: "recovery", season: "spring",
             summary: "코로나 충격 후 사상 초유의 기준금리 인하(0.5%)와 개인 투자자들의 유동성 유입(M2 증가율 9.8%)이 맞물리며 코스피가 폭발적으로 선행 반등했던 금융장세(봄)입니다.",
             lessons: "실물 지표(GDP 성장률 마이너스)는 최악이었으나, 개인 중심의 압도적 머니무브와 초저금리가 시너지를 내며 IT 대형주가 폭등했습니다. 지표 부진의 공포를 이겨내고 레버리지를 늘려 주식 비중을 채웠어야 하는 국면입니다.",
@@ -155,7 +112,7 @@ const historicalPresets = {
         },
         "2022_winter": {
             title: "2022년 금리 급상승 & 메모리 반도체 빙하기",
-            cli: 98.2, pmi: 46.0, gdp: 1.5, eps: -18.0, m2: 5.4, cpi: 5.1, rate: 3.25, spread: -0.5,
+            cli: 98.2, pmi: 46.0, gdp: 1.5, eps: -18.0, m2: 5.4, cpi: 5.1, rate: 3.25, spread: -0.5, citi: 20.0, gdpnow: 2.5,
             phase: "contraction", season: "winter",
             summary: "글로벌 긴축 속 반도체 재고 과잉으로 삼성전자 등 수출 대기업들의 실적 전망이 처참히 박살났습니다. 시중 통화량(M2) 증가세가 5.4%로 위축된 가운데 역실적장세(겨울)가 찾아왔습니다.",
             lessons: "반도체 다운사이클과 긴축 폭풍이 정통으로 만나는 역실적장세에는 무조건 안전자산(예금, 달러 채권) 비중을 60% 이상으로 유지하고 반도체 적자 폭이 극에 달할 때까지 대형주 신규 매수를 극단적으로 아껴야 합니다.",
@@ -163,7 +120,7 @@ const historicalPresets = {
         },
         "2026_current": {
             title: "2026년 반도체 HBM 부활 & 주주환원 성장기",
-            cli: 100.5, pmi: 52.0, gdp: 2.5, eps: 200.0, m2: 6.0, cpi: 3.1, rate: 2.50, spread: 0.4,
+            cli: 100.5, pmi: 52.0, gdp: 2.5, eps: 200.0, m2: 6.0, cpi: 2.1, rate: 3.25, spread: 0.4, citi: 20.0, gdpnow: 2.5,
             phase: "expansion", season: "summer",
             summary: "AI 고대역폭메모리(HBM) 수출 호조와 기업 밸류업 프로그램 가동으로 선행 이익 성장이 두드러집니다. 통화량 공급도 정상 궤도(M2 6.0%)에 복귀한 안정적 실적장세(여름)입니다.",
             lessons: "실물 선행 지수가 안정적이고 이익 성장 모멘텀이 강한 확장 국면에서는 반도체, AI 장비주, 그리고 기업 밸류업 프로그램 수혜 우량 지주사/금융주 중심의 강한 포커싱 투자 전략이 최상의 성과를 제공합니다.",
@@ -217,7 +174,6 @@ const exportData = {
                 }
             ]
         },
-
         "2026-05": {
             growthVal: "+3.2%",
             growthTrend: "▲ AI 서비스 및 에너지 견인",
@@ -472,7 +428,6 @@ const exportData = {
                 }
             ]
         },
-
         "2026-05": {
             growthVal: "+11.7%",
             growthTrend: "▲ HBM/DRAM 반도체 대형 사이클 주도 (잠정치)",
@@ -688,7 +643,7 @@ const exportData = {
 
 function updateExportCard() {
     const monthSelect = document.getElementById("export-month-select");
-    const activeMonth = monthSelect ? monthSelect.value : "2026-06";
+    const activeMonth = monthSelect ? monthSelect.value : "2026-05";
 
     const data = exportData[activeRegion][activeMonth];
     if (!data) return;
@@ -702,6 +657,10 @@ function updateExportCard() {
         }
     }
 
+
+
+
+
     // Update Export Card Source Link
     const sourceLinkEl = document.getElementById("export-card-source-link");
     if (sourceLinkEl) {
@@ -713,8 +672,6 @@ function updateExportCard() {
             sourceLinkEl.textContent = "Census Bureau 바로가기 ↗";
         }
     }
-
-
 
     // Set regional title
     const regionTitle = activeRegion === "KR"
@@ -853,11 +810,11 @@ function updateExportCard() {
 
     const baselinePrices = {
         "US": {
-            "NVDA": { name: "NVIDIA Corp.", ticker: "NVDA", base: 209.43, format: (p) => `$${p.toFixed(2)}` },
-            "AAPL": { name: "Apple Inc.", ticker: "AAPL", base: 313.20, format: (p) => `$${p.toFixed(2)}` },
-            "MSFT": { name: "Microsoft Corp.", ticker: "MSFT", base: 416.67, format: (p) => `$${p.toFixed(2)}` },
-            "AMZN": { name: "Amazon.com Inc.", ticker: "AMZN", base: 245.48, format: (p) => `$${p.toFixed(2)}` },
-            "TSLA": { name: "Tesla Inc.", ticker: "TSLA", base: 404.84, format: (p) => `$${p.toFixed(2)}` },
+            "NVDA": { name: "NVIDIA Corp.", ticker: "NVDA", base: 212.73, format: (p) => `$${p.toFixed(2)}` },
+            "AAPL": { name: "Apple Inc.", ticker: "AAPL", base: 310.85, format: (p) => `$${p.toFixed(2)}` },
+            "MSFT": { name: "Microsoft Corp.", ticker: "MSFT", base: 412.67, format: (p) => `$${p.toFixed(2)}` },
+            "AMZN": { name: "Amazon.com Inc.", ticker: "AMZN", base: 271.85, format: (p) => `$${p.toFixed(2)}` },
+            "TSLA": { name: "Tesla Inc.", ticker: "TSLA", base: 440.00, format: (p) => `$${p.toFixed(2)}` },
             "COST": { name: "Costco Wholesale", ticker: "COST", base: 810.30, format: (p) => `$${p.toFixed(2)}` },
             "KO": { name: "Coca-Cola Co.", ticker: "KO", base: 62.50, format: (p) => `$${p.toFixed(2)}` },
             "PG": { name: "Procter & Gamble Co.", ticker: "PG", base: 165.20, format: (p) => `$${p.toFixed(2)}` },
@@ -885,79 +842,36 @@ function updateExportCard() {
             "FCX": { name: "Freeport-McMoRan Inc.", ticker: "FCX", base: 51.20, format: (p) => `$${p.toFixed(2)}` }
         },
         "KR": {
-        "2026-06": {
-            growthVal: "+12.4%",
-            growthTrend: "▲ HBM 및 메모리 반도체 슈퍼사이클 지속",
-            balanceVal: "+51.2억 달러 흑자",
-            balanceTrend: "▲ 13개월 연속 무역수지 흑자 행진",
-            ebsiVal: "114.5",
-            ebsiTrend: "▲ 글로벌 AI 수요 가속에 따른 업황 확장",
-            items: [
-                {
-                    name: "반도체 (DRAM / HBM 메모리 반도체)", pct: 18, change: "+45.2%", barClass: "summer",
-                    subItems: [
-                        { name: "HBM (고대역폭 메모리)", yoy: "+275.0%", mom: "+15.2%" },
-                        { name: "DRAM (대용량 메모리 반도체)", yoy: "+54.5%", mom: "+4.1%" },
-                        { name: "기업용 SSD (Solid State Drive)", yoy: "+38.2%", mom: "+3.0%" }
-                    ]
-                },
-                {
-                    name: "자동차, 친환경차 및 완성차 부품", pct: 13, change: "+13.1%", barClass: "spring",
-                    subItems: [
-                        { name: "친환경 완성차 (EV 포함)", yoy: "+19.2%", mom: "+2.2%" },
-                        { name: "하이브리드 완성차 (HEV)", yoy: "+24.5%", mom: "+2.8%" },
-                        { name: "완성차 기계식 전장 부품 및 제어", yoy: "+6.8%", mom: "+1.2%" }
-                    ]
-                },
-                {
-                    name: "석유화학 제품 및 합성수지", pct: 8, change: "-2.0%", barClass: "winter",
-                    subItems: [
-                        { name: "합성수지 (플라스틱 등)", yoy: "-1.0%", mom: "+0.5%" },
-                        { name: "기초 유기 석유화학 제품", yoy: "-3.8%", mom: "-0.5%" },
-                        { name: "윤활유 및 특수 아스팔트 제품", yoy: "-1.5%", mom: "-0.2%" }
-                    ]
-                },
-                {
-                    name: "선박, LNG 고부가가치 운반선", pct: 6, change: "+19.2%", barClass: "autumn",
-                    subItems: [
-                        { name: "고부가가치 LNG 운반선", yoy: "+31.5%", mom: "+4.8%" },
-                        { name: "초대형 유조선 및 컨테이너선", yoy: "+14.2%", mom: "+1.5%" },
-                        { name: "친환경 암모니아/메탄올 추진선", yoy: "+16.8%", mom: "+2.0%" }
-                    ]
-                }
-            ]
-        },
-
-            "SK하이닉스": { name: "SK하이닉스", ticker: "000660", base: 1911000, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "한미반도체": { name: "한미반도체", ticker: "042700", base: 269000, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "현대차": { name: "현대자동차", ticker: "005380", base: 634000, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "기아": { name: "기아", ticker: "000270", base: 161100, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "삼성전자": { name: "삼성전자", ticker: "005930", base: 295500, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "LG화학": { name: "LG화학", ticker: "051910", base: 321000, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "카카오페이": { name: "카카오페이", ticker: "377300", base: 42000, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "롯데케미칼": { name: "롯데케미칼", ticker: "011170", base: 73500, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "삼성바이오로직스": { name: "삼성바이오로직스", ticker: "207940", base: 1286000, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "셀트리온": { name: "셀트리온", ticker: "068270", base: 161000, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "메리츠금융지주": { name: "메리츠금융지주", ticker: "138040", base: 102800, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "KT&G": { name: "KT&G", ticker: "033780", base: 174800, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "대한항공": { name: "대한항공", ticker: "003490", base: 23800, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "한국전력": { name: "한국전력공사", ticker: "015760", base: 36350, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "SK하이닉스": { name: "SK하이닉스", ticker: "000660", base: 2289000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "한미반도체": { name: "한미반도체", ticker: "042700", base: 309500, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "현대차": { name: "현대자동차", ticker: "005380", base: 680000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "기아": { name: "기아", ticker: "000270", base: 167800, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "삼성전자": { name: "삼성전자", ticker: "005930", base: 299500, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "LG화학": { name: "LG화학", ticker: "051910", base: 385000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "카카오페이": { name: "카카오페이", ticker: "377300", base: 28400, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "롯데케미칼": { name: "롯데케미칼", ticker: "011170", base: 115000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "삼성바이오로직스": { name: "삼성바이오로직스", ticker: "207940", base: 845000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "셀트리온": { name: "셀트리온", ticker: "068270", base: 185200, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "메리츠금융지주": { name: "메리츠금융지주", ticker: "138040", base: 82400, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "KT&G": { name: "KT&G", ticker: "033780", base: 95400, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "대한항공": { name: "대한항공", ticker: "003490", base: 20100, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "한국전력": { name: "한국전력공사", ticker: "015760", base: 22400, format: (p) => `${Math.round(p).toLocaleString()}원` },
             "KODEX인버스": { name: "KODEX 200선물인버스2X", ticker: "252670", base: 2850, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "신한지주": { name: "신한지주", ticker: "055550", base: 97100, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "LG에너지솔루션": { name: "LG에너지솔루션", ticker: "373220", base: 388500, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "카카오": { name: "카카오", ticker: "035720", base: 38600, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "KB금융": { name: "KB금융지주", ticker: "105560", base: 151500, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "POSCO홀딩스": { name: "POSCO홀딩스", ticker: "005490", base: 359000, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "삼성물산": { name: "삼성물산", ticker: "028260", base: 408500, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "두산에너빌리티": { name: "두산에너빌리티", ticker: "034020", base: 85800, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "넷마블": { name: "넷마블", ticker: "251270", base: 38600, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "에스엠": { name: "에스엠", ticker: "041510", base: 71100, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "현대제철": { name: "현대제철", ticker: "004020", base: 33300, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "신한지주": { name: "신한지주", ticker: "055550", base: 48500, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "LG에너지솔루션": { name: "LG에너지솔루션", ticker: "373220", base: 320000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "카카오": { name: "카카오", ticker: "035720", base: 38500, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "KB금융": { name: "KB금융지주", ticker: "105560", base: 76500, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "POSCO홀딩스": { name: "POSCO홀딩스", ticker: "005490", base: 395000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "삼성물산": { name: "삼성물산", ticker: "028260", base: 158000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "두산에너빌리티": { name: "두산에너빌리티", ticker: "034020", base: 19850, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "넷마블": { name: "넷마블", ticker: "251270", base: 52400, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "에스엠": { name: "에스엠", ticker: "041510", base: 72400, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "현대제철": { name: "현대제철", ticker: "004020", base: 25000, format: (p) => `${Math.round(p).toLocaleString()}원` },
             "KODEX국고채": { name: "KODEX 국고채3년", ticker: "114260", base: 52400, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "KT": { name: "KT", ticker: "030200", base: 54700, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "KT": { name: "KT", ticker: "030200", base: 38500, format: (p) => `${Math.round(p).toLocaleString()}원` },
             "KODEX레버리지": { name: "KODEX 레버리지", ticker: "122630", base: 16800, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "한화에어로스페이스": { name: "한화에어로스페이스", ticker: "012450", base: 1006000, format: (p) => `${Math.round(p).toLocaleString()}원` },
-            "알테오젠": { name: "알테오젠", ticker: "196170", base: 289500, format: (p) => `${Math.round(p).toLocaleString()}원` }
+            "한화에어로스페이스": { name: "한화에어로스페이스", ticker: "012450", base: 320000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "알테오젠": { name: "알테오젠", ticker: "196170", base: 285000, format: (p) => `${Math.round(p).toLocaleString()}원` }
         }
     };
 
@@ -969,62 +883,23 @@ const fiveYearMilestones = {
             gdp: [5.0, 5.7, 2.5, 2.4, 2.2, 2.2, 5.8],
             eps: [20.0, 29.5, 2.0, 7.5, 10.5, 10.5, 148.5],
             m2: [15.0, 18.5, -1.0, 3.8, 4.5, 4.5, 23.7],
-            cpi: [2.5, 6.8, 4.1, 2.8, 2.3, 3.8, -1.3],
-            rate: [0.25, 0.25, 5.25, 5.0, 4.0, 3.62, -5.0],
-            spread: [1.5, 1.2, -0.8, -0.2, 0.2, 0.2, 2.6]
+            cpi: [2.5, 6.8, 4.1, 2.8, 2.3, 2.3, -1.3],
+            rate: [0.25, 0.25, 5.25, 5.0, 4.0, 4.0, -5.0],
+            spread: [1.5, 1.2, -0.8, -0.2, 0.2, 0.2, 2.6],
+              citi: [50.0, -10.0, 15.0, -5.0, 20.0, 25.0, 29.2],
+              gdpnow: [6.5, 2.1, 1.8, 2.5, 3.2, 2.8, 3.1]
         },
         "KR": {
-        "2026-06": {
-            growthVal: "+12.4%",
-            growthTrend: "▲ HBM 및 메모리 반도체 슈퍼사이클 지속",
-            balanceVal: "+51.2억 달러 흑자",
-            balanceTrend: "▲ 13개월 연속 무역수지 흑자 행진",
-            ebsiVal: "114.5",
-            ebsiTrend: "▲ 글로벌 AI 수요 가속에 따른 업황 확장",
-            items: [
-                {
-                    name: "반도체 (DRAM / HBM 메모리 반도체)", pct: 18, change: "+45.2%", barClass: "summer",
-                    subItems: [
-                        { name: "HBM (고대역폭 메모리)", yoy: "+275.0%", mom: "+15.2%" },
-                        { name: "DRAM (대용량 메모리 반도체)", yoy: "+54.5%", mom: "+4.1%" },
-                        { name: "기업용 SSD (Solid State Drive)", yoy: "+38.2%", mom: "+3.0%" }
-                    ]
-                },
-                {
-                    name: "자동차, 친환경차 및 완성차 부품", pct: 13, change: "+13.1%", barClass: "spring",
-                    subItems: [
-                        { name: "친환경 완성차 (EV 포함)", yoy: "+19.2%", mom: "+2.2%" },
-                        { name: "하이브리드 완성차 (HEV)", yoy: "+24.5%", mom: "+2.8%" },
-                        { name: "완성차 기계식 전장 부품 및 제어", yoy: "+6.8%", mom: "+1.2%" }
-                    ]
-                },
-                {
-                    name: "석유화학 제품 및 합성수지", pct: 8, change: "-2.0%", barClass: "winter",
-                    subItems: [
-                        { name: "합성수지 (플라스틱 등)", yoy: "-1.0%", mom: "+0.5%" },
-                        { name: "기초 유기 석유화학 제품", yoy: "-3.8%", mom: "-0.5%" },
-                        { name: "윤활유 및 특수 아스팔트 제품", yoy: "-1.5%", mom: "-0.2%" }
-                    ]
-                },
-                {
-                    name: "선박, LNG 고부가가치 운반선", pct: 6, change: "+19.2%", barClass: "autumn",
-                    subItems: [
-                        { name: "고부가가치 LNG 운반선", yoy: "+31.5%", mom: "+4.8%" },
-                        { name: "초대형 유조선 및 컨테이너선", yoy: "+14.2%", mom: "+1.5%" },
-                        { name: "친환경 암모니아/메탄올 추진선", yoy: "+16.8%", mom: "+2.0%" }
-                    ]
-                }
-            ]
-        },
-
             cli: [100.5, 102.2, 98.2, 99.8, 100.5, 100.5, 101.7],
             pmi: [54.0, 57.5, 46.0, 50.5, 52.0, 52.0, 58.0],
             gdp: [2.0, 3.7, 1.5, 2.2, 2.5, 2.5, 2.5],
             eps: [12.0, 26.0, -18.0, 8.0, 200.0, 200.0, 440.0],
             m2: [8.0, 9.8, 5.4, 6.0, 6.0, 6.0, 7.2],
-            cpi: [1.5, 4.0, 5.1, 2.8, 2.1, 3.1, 0.9],
-            rate: [0.5, 0.75, 3.25, 3.50, 3.25, 2.50, 3.25],
-            spread: [1.1, 1.0, -0.5, 0.0, 0.4, 0.4, 0.4]
+            cpi: [1.5, 4.0, 5.1, 2.8, 2.1, 2.1, 0.9],
+            rate: [0.5, 0.75, 3.25, 3.50, 3.25, 3.25, 3.25],
+            spread: [1.1, 1.0, -0.5, 0.0, 0.4, 0.4, 0.4],
+              citi: [45.0, -15.0, 10.0, -2.0, 15.0, 20.0, 25.4],
+              gdpnow: [4.0, 2.5, 1.4, 2.1, 2.4, 2.2, 2.3]
         }
     };
 
@@ -1059,7 +934,7 @@ let portfolioChartInstance = null;
 function getIndicatorsForMonth(region, monthIndex) {
     const ms = fiveYearMilestones[region];
     const indicators = {};
-    const keys = ["cli", "pmi", "gdp", "eps", "m2", "cpi", "rate", "spread"];
+    const keys = ["cli", "pmi", "gdp", "eps", "m2", "cpi", "rate", "spread", "citi", "gdpnow"];
     
     const intervalIndex = Math.min(5, Math.floor(monthIndex / 12));
     const fraction = (monthIndex % 12) / 12.0;
@@ -1075,6 +950,8 @@ function getIndicatorsForMonth(region, monthIndex) {
         else if (k === "gdp" || k === "cpi" || k === "rate" || k === "spread") noiseScale = 0.08;
         else if (k === "eps") noiseScale = 0.8;
         else if (k === "m2") noiseScale = 0.2;
+        else if (k === "citi") noiseScale = 2.5;
+        else if (k === "gdpnow") noiseScale = 0.15;
 
         if (monthIndex !== 0 && monthIndex !== 61 && monthIndex % 12 !== 0) {
             val += Math.sin(monthIndex * 1.5 + (k.charCodeAt(0) % 5)) * 0.5 * noiseScale;
@@ -1103,7 +980,7 @@ function updateTransitionPanel(prevMacro, currMacro, prevSeason, currSeason, pre
         prevDateLabel = timeMachineMonths[prevIndex].label;
     } else if (activeMode === "sim") {
         const monthSelectEl = document.getElementById("export-month-select");
-        const selectVal = monthSelectEl ? monthSelectEl.value : "2026-06";
+        const selectVal = monthSelectEl ? monthSelectEl.value : "2026-05";
         const idx = getMonthIndex(selectVal);
         const prevIdx = Math.max(0, idx - 1);
         if (prevIdx >= 0 && prevIdx < timeMachineMonths.length) {
@@ -1734,47 +1611,46 @@ function calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2
     const ytdKospi = 5.2 + 6.0 * x + 3.0 * y;
     const ytdKosdaq = 6.8 + 8.2 * x + 4.5 * y;
 
-    const mcapSp500Total = 65.80 * (1 + ytdSp500 / 100);
-    const mcapKospiTotal = 6131.0 * (1 + ytdKospi / 100);
-    const mcapKosdaqTotal = 560.0 * (1 + ytdKosdaq / 100);
+    const mcapSp500Total = 44.80 * (1 + ytdSp500 / 100);
+    const mcapKospiTotal = 2185.0 * (1 + ytdKospi / 100);
+    const mcapKosdaqTotal = 412.0 * (1 + ytdKosdaq / 100);
 
     // US S&P 500 Top 10 Companies
     const usTop10Defs = [
-        { name: "NVIDIA Corp.", ticker: "NVDA", baseMcap: 5.07, betaX: 8.0, betaY: 6.0, baseOffset: 22.0 },
-        { name: "Apple Inc.", ticker: "AAPL", baseMcap: 4.60, betaX: 3.5, betaY: 1.8, baseOffset: 9.0 },
-        { name: "Alphabet Inc.", ticker: "GOOGL", baseMcap: 4.46, betaX: 3.8, betaY: 1.9, baseOffset: 8.0 },
-        { name: "Microsoft Corp.", ticker: "MSFT", baseMcap: 3.10, betaX: 4.0, betaY: 2.0, baseOffset: 10.0 },
-        { name: "Amazon.com Inc.", ticker: "AMZN", baseMcap: 2.65, betaX: 4.5, betaY: 2.2, baseOffset: 11.0 },
-        { name: "Broadcom Inc.", ticker: "AVGO", baseMcap: 1.83, betaX: 4.8, betaY: 2.5, baseOffset: 13.0 },
-        { name: "Meta Platforms", ticker: "META", baseMcap: 1.51, betaX: 5.2, betaY: 3.0, baseOffset: 12.0 },
-        { name: "Tesla Inc.", ticker: "TSLA", baseMcap: 1.35, betaX: 7.0, betaY: 5.0, baseOffset: 15.0 },
-        { name: "Berkshire Hathaway", ticker: "BRK.B", baseMcap: 1.05, betaX: 1.5, betaY: 0.5, baseOffset: 6.0 },
-        { name: "Eli Lilly & Co.", ticker: "LLY", baseMcap: 1.05, betaX: 2.0, betaY: 1.0, baseOffset: 18.0 }
+        { name: "Microsoft Corp.", ticker: "MSFT", baseMcap: 3.15, betaX: 4.0, betaY: 2.0, baseOffset: 10.0 },
+        { name: "Apple Inc.", ticker: "AAPL", baseMcap: 3.10, betaX: 3.5, betaY: 1.8, baseOffset: 9.0 },
+        { name: "NVIDIA Corp.", ticker: "NVDA", baseMcap: 2.95, betaX: 8.0, betaY: 6.0, baseOffset: 22.0 },
+        { name: "Alphabet Inc.", ticker: "GOOGL", baseMcap: 2.15, betaX: 3.8, betaY: 1.9, baseOffset: 8.0 },
+        { name: "Amazon.com Inc.", ticker: "AMZN", baseMcap: 1.90, betaX: 4.5, betaY: 2.2, baseOffset: 11.0 },
+        { name: "Meta Platforms", ticker: "META", baseMcap: 1.35, betaX: 5.2, betaY: 3.0, baseOffset: 12.0 },
+        { name: "Berkshire Hathaway", ticker: "BRK.B", baseMcap: 0.92, betaX: 1.5, betaY: 0.5, baseOffset: 6.0 },
+        { name: "Eli Lilly & Co.", ticker: "LLY", baseMcap: 0.85, betaX: 2.0, betaY: 1.0, baseOffset: 18.0 },
+        { name: "Broadcom Inc.", ticker: "AVGO", baseMcap: 0.78, betaX: 4.8, betaY: 2.5, baseOffset: 13.0 },
+        { name: "Tesla Inc.", ticker: "TSLA", baseMcap: 0.65, betaX: 7.0, betaY: 5.0, baseOffset: 15.0 }
     ];
 
     // KOSPI Top 10 Companies
     const krTop10Defs = [
-        { name: "삼성전자", ticker: "005930", baseMcap: 1727.6, betaX: 5.5, betaY: 3.0, baseOffset: 8.0 },
-        { name: "SK하이닉스", ticker: "000660", baseMcap: 1362.0, betaX: 8.5, betaY: 5.0, baseOffset: 24.0 },
-        { name: "현대자동차", ticker: "005380", baseMcap: 153.6, betaX: 3.5, betaY: 1.5, baseOffset: 14.0 },
-        { name: "LG에너지솔루션", ticker: "373220", baseMcap: 90.9, betaX: 6.0, betaY: 3.5, baseOffset: 5.0 },
-        { name: "기아", ticker: "000270", baseMcap: 62.9, betaX: 3.8, betaY: 1.6, baseOffset: 15.0 },
-        { name: "삼성바이오로직스", ticker: "207940", baseMcap: 91.5, betaX: 1.8, betaY: 0.8, baseOffset: 7.0 },
-        { name: "셀트리온", ticker: "068270", baseMcap: 35.0, betaX: 2.0, betaY: 1.0, baseOffset: 9.0 },
-        { name: "POSCO홀딩스", ticker: "005490", baseMcap: 30.3, betaX: 5.0, betaY: 2.8, baseOffset: 6.0 },
-        { name: "KB금융", ticker: "105560", baseMcap: 61.5, betaX: 2.5, betaY: 1.2, baseOffset: 18.0 },
-        { name: "신한지주", ticker: "055550", baseMcap: 49.8, betaX: 2.2, betaY: 1.1, baseOffset: 14.0 }
+        { name: "삼성전자", ticker: "005930", baseMcap: 415.0, betaX: 5.5, betaY: 3.0, baseOffset: 8.0 },
+        { name: "SK하이닉스", ticker: "000660", baseMcap: 165.0, betaX: 8.5, betaY: 5.0, baseOffset: 24.0 },
+        { name: "LG에너지솔루션", ticker: "373220", baseMcap: 75.0, betaX: 6.0, betaY: 3.5, baseOffset: 5.0 },
+        { name: "삼성바이오로직스", ticker: "207940", baseMcap: 62.0, betaX: 1.8, betaY: 0.8, baseOffset: 7.0 },
+        { name: "현대자동차", ticker: "005380", baseMcap: 56.0, betaX: 3.5, betaY: 1.5, baseOffset: 14.0 },
+        { name: "기아", ticker: "000270", baseMcap: 44.0, betaX: 3.8, betaY: 1.6, baseOffset: 15.0 },
+        { name: "셀트리온", ticker: "068270", baseMcap: 36.0, betaX: 2.0, betaY: 1.0, baseOffset: 9.0 },
+        { name: "KB금융", ticker: "105560", baseMcap: 31.0, betaX: 2.5, betaY: 1.2, baseOffset: 18.0 },
+        { name: "신한지주", ticker: "055550", baseMcap: 26.0, betaX: 2.2, betaY: 1.1, baseOffset: 14.0 },
+        { name: "POSCO홀딩스", ticker: "005490", baseMcap: 24.0, betaX: 5.0, betaY: 2.8, baseOffset: 6.0 }
     ];
 
     const usTop10 = usTop10Defs.map((item, idx) => {
         const stockYtd = item.baseOffset + item.betaX * x + item.betaY * y;
         const currentMcap = item.baseMcap * (1 + stockYtd / 100);
-        const krwMcapText = Math.round(currentMcap * 1535).toLocaleString();
         return {
             rank: idx + 1,
             name: item.name,
             ticker: item.ticker,
-            mcapText: currentMcap >= 1.0 ? `$${currentMcap.toFixed(2)}T (약 ${krwMcapText}조원)` : `$${(currentMcap * 1000).toFixed(0)}B (약 ${krwMcapText}조원)`,
+            mcapText: currentMcap >= 1.0 ? `$${currentMcap.toFixed(2)}T` : `$${(currentMcap * 1000).toFixed(0)}B`,
             ytdText: (stockYtd >= 0 ? "+" : "") + stockYtd.toFixed(1) + "%",
             ytdPos: stockYtd >= 0
         };
@@ -1819,7 +1695,7 @@ function calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2
         lowStocks: lowStocks,
         volumeStocks: volumeStocks,
         sectorReturns: sectorReturns,
-        mcapSp500Total: `$${mcapSp500Total.toFixed(2)}T (약 ${Math.round(mcapSp500Total * 1535).toLocaleString()}조원)`,
+        mcapSp500Total: `$${mcapSp500Total.toFixed(2)}T`,
         mcapKospiTotal: `${Math.round(mcapKospiTotal).toLocaleString()}조원`,
         mcapKosdaqTotal: `${Math.round(mcapKosdaqTotal).toLocaleString()}조원`,
         usTop10: usTop10,
@@ -1892,7 +1768,7 @@ function calculateBlendedPortfolio(macroX, macroY, seasonAngle, m2) {
 }
 
 // 4. SYNCHRONIZE DATA TO UI
-function updateUI(macro, season, portfolio, cli, pmi, gdp, eps, m2, cpi, rate, spread) {
+function updateUI(macro, season, portfolio, cli, pmi, gdp, eps, m2, cpi, rate, spread, citi, gdpnow) {
     // 1. Badge States
     const cycleBadge = document.getElementById("current-phase-badge");
     const cycleText = document.getElementById("current-phase-text");
@@ -2149,135 +2025,10 @@ function updateUI(macro, season, portfolio, cli, pmi, gdp, eps, m2, cpi, rate, s
         spreadGrade.textContent = "침체 위험";
     }
 
-    // 7B. Dynamic Table Source Links
-    const sourceCli = document.getElementById("source-link-cli");
-    const sourcePmi = document.getElementById("source-link-pmi");
-    const sourceGdp = document.getElementById("source-link-gdp");
-    const sourceEps = document.getElementById("source-link-eps");
-    const sourceM2 = document.getElementById("source-link-m2");
-    const sourceCpi = document.getElementById("source-link-cpi");
-    const sourceRate = document.getElementById("source-link-rate");
-    const sourceSpread = document.getElementById("source-link-spread");
-    const sourceRealRate = document.getElementById("source-link-realrate");
-    const sourceErp = document.getElementById("source-link-erp");
 
-    if (activeRegion === "US") {
-        if (sourceCli) { sourceCli.href = "https://data.oecd.org/"; sourceCli.textContent = "OECD Data ↗"; }
-        if (sourcePmi) { sourcePmi.href = "https://www.ismworld.org/"; sourcePmi.textContent = "ISM (미국) ↗"; }
-        if (sourceGdp) { sourceGdp.href = "https://www.bea.gov/"; sourceGdp.textContent = "BEA (미국) ↗"; }
-        if (sourceEps) { sourceEps.href = "https://www.factset.com/"; sourceEps.textContent = "FactSet ↗"; }
-        if (sourceM2) { sourceM2.href = "https://fred.stlouisfed.org/series/M2SL"; sourceM2.textContent = "FRED M2 ↗"; }
-        if (sourceCpi) { sourceCpi.href = "https://www.bls.gov/cpi/"; sourceCpi.textContent = "BLS CPI ↗"; }
-        if (sourceRate) { sourceRate.href = "https://fred.stlouisfed.org/series/FEDFUNDS"; sourceRate.textContent = "FRED FedFunds ↗"; }
-        if (sourceSpread) { sourceSpread.href = "https://fred.stlouisfed.org/series/T10Y2Y"; sourceSpread.textContent = "FRED Spread ↗"; }
-        if (sourceRealRate) { sourceRealRate.href = "https://fred.stlouisfed.org/series/DFII10"; sourceRealRate.textContent = "FRED Real ↗"; }
-        if (sourceErp) { sourceErp.href = "https://pages.stern.nyu.edu/~adamodar/New_Home_Page/data.html"; sourceErp.textContent = "Damodaran ↗"; }
-    } else {
-        if (sourceCli) { sourceCli.href = "https://data.oecd.org/"; sourceCli.textContent = "OECD Data ↗"; }
-        if (sourcePmi) { sourcePmi.href = "https://www.spglobal.com/marketintelligence/en/mi/products/pmi.html"; sourcePmi.textContent = "S&P (한국) ↗"; }
-        if (sourceGdp) { sourceGdp.href = "https://ecos.bok.or.kr/"; sourceGdp.textContent = "한은 ECOS ↗"; }
-        if (sourceEps) { sourceEps.href = "https://www.fnguide.com/"; sourceEps.textContent = "FnGuide ↗"; }
-        if (sourceM2) { sourceM2.href = "https://ecos.bok.or.kr/"; sourceM2.textContent = "한은 ECOS M2 ↗"; }
-        if (sourceCpi) { sourceCpi.href = "https://kosis.kr/"; sourceCpi.textContent = "통계청 KOSIS ↗"; }
-        if (sourceRate) { sourceRate.href = "https://www.bok.or.kr/portal/singl/baseRate/list.do?menuNo=200489"; sourceRate.textContent = "한국은행 ↗"; }
-        if (sourceSpread) { sourceSpread.href = "https://ecos.bok.or.kr/"; sourceSpread.textContent = "한은 ECOS 국채 ↗"; }
-        if (sourceRealRate) { sourceRealRate.href = "https://ecos.bok.or.kr/"; sourceRealRate.textContent = "한은 ECOS ↗"; }
-        if (sourceErp) { sourceErp.href = "https://www.fnguide.com/"; sourceErp.textContent = "FnGuide ERP ↗"; }
-    }
 
     // 7B. Update Secondary Stock Market Indicators
     const sec = calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2);
-
-    // 7C. Real Interest Rate & Equity Risk Premium Rendering
-    const realRateVal = rate - cpi;
-    const elRealRateVal = document.getElementById("table-realrate-val");
-    if (elRealRateVal) elRealRateVal.textContent = `${realRateVal.toFixed(2)}%`;
-
-    // Compute previous month real rate and erp for MoM trends
-    let prevIdx = 60;
-    if (activeMode === "time") {
-        prevIdx = Math.max(0, activeTimeIndex - 1);
-    } else if (activeMode === "sim") {
-        const monthSelectEl = document.getElementById("export-month-select");
-        const selectVal = monthSelectEl ? monthSelectEl.value : "2026-06";
-        prevIdx = Math.max(0, getMonthIndex(selectVal) - 1);
-    } else {
-        prevIdx = 59;
-    }
-    const prevInd = getIndicatorsForMonth(activeRegion, prevIdx);
-    const prevRealRate = prevInd.rate - prevInd.cpi;
-
-    const elRealRateMom = document.getElementById("table-realrate-mom");
-    const elRealRateGrade = document.getElementById("table-realrate-grade");
-
-    if (elRealRateMom) {
-        if (realRateVal > prevRealRate + 0.05) {
-            elRealRateMom.innerHTML = '<span class="trend-icon up">▲</span> 긴축 강화';
-        } else if (realRateVal < prevRealRate - 0.05) {
-            elRealRateMom.innerHTML = '<span class="trend-icon down">▼</span> 실질 완화';
-        } else {
-            elRealRateMom.innerHTML = '<span class="trend-icon stable">─</span> 보통';
-        }
-    }
-
-    if (elRealRateGrade) {
-        if (realRateVal > 2.0) {
-            elRealRateGrade.className = "status-badge danger";
-            elRealRateGrade.textContent = "고금리 제약";
-        } else if (realRateVal >= 0.5) {
-            elRealRateGrade.className = "status-badge positive";
-            elRealRateGrade.textContent = "중립/안정";
-        } else {
-            elRealRateGrade.className = "status-badge neutral";
-            elRealRateGrade.textContent = "실질 완화";
-        }
-    }
-
-    // Equity Risk Premium (ERP)
-    const rfProxy = activeRegion === "US" ? (rate - 1.0) : (rate - 0.5);
-    const erpVal = (100 / sec.per) - rfProxy;
-
-    const elErpVal = document.getElementById("table-erp-val");
-    if (elErpVal) elErpVal.textContent = `${erpVal.toFixed(2)}%`;
-
-    const elErpRef = document.getElementById("table-erp-ref");
-    const erpRef = activeRegion === "US" ? 3.5 : 5.5;
-    if (elErpRef) elErpRef.textContent = `${erpRef.toFixed(1)}%`;
-
-    const prevMacro = calculateMacroMetrics(prevInd.cli, prevInd.pmi, prevInd.gdp, prevInd.m2, prevInd.rate, prevInd.spread);
-    const prevSeason = calculateStockSeasonMetrics(prevInd.eps, prevInd.m2, prevInd.rate, prevInd.spread);
-    const prevSec = calculateSecondaryIndicators(prevMacro, prevSeason, activeRegion, prevInd.rate, prevInd.eps, prevInd.m2);
-    const prevRfProxy = activeRegion === "US" ? (prevInd.rate - 1.0) : (prevInd.rate - 0.5);
-    const prevErp = (100 / prevSec.per) - prevRfProxy;
-
-    const elErpMom = document.getElementById("table-erp-mom");
-    const elErpGrade = document.getElementById("table-erp-grade");
-
-    if (elErpMom) {
-        if (erpVal > prevErp + 0.1) {
-            elErpMom.innerHTML = '<span class="trend-icon up">▲</span> 매력 상승';
-        } else if (erpVal < prevErp - 0.1) {
-            elErpMom.innerHTML = '<span class="trend-icon down">▼</span> 매력 하락';
-        } else {
-            elErpMom.innerHTML = '<span class="trend-icon stable">─</span> 보통';
-        }
-    }
-
-    if (elErpGrade) {
-        const attractivenessLimit = activeRegion === "US" ? 4.5 : 6.5;
-        const averageLimit = activeRegion === "US" ? 2.0 : 4.0;
-
-        if (erpVal > attractivenessLimit) {
-            elErpGrade.className = "status-badge positive";
-            elErpGrade.textContent = "저위험 고매력";
-        } else if (erpVal >= averageLimit) {
-            elErpGrade.className = "status-badge neutral";
-            elErpGrade.textContent = "상대 매력 보통";
-        } else {
-            elErpGrade.className = "status-badge danger";
-            elErpGrade.textContent = "고위험 저매력";
-        }
-    }
 
     const elPer = document.getElementById("val-market-per");
     const elPerGrade = document.getElementById("val-market-per-grade");
@@ -2487,6 +2238,36 @@ function updateUI(macro, season, portfolio, cli, pmi, gdp, eps, m2, cpi, rate, s
                 </tr>
             `;
         }).join("");
+    }
+
+    // 7B. Dynamic Table Source Links
+    const sourceCli = document.getElementById("source-link-cli");
+    const sourcePmi = document.getElementById("source-link-pmi");
+    const sourceGdp = document.getElementById("source-link-gdp");
+    const sourceEps = document.getElementById("source-link-eps");
+    const sourceM2 = document.getElementById("source-link-m2");
+    const sourceCpi = document.getElementById("source-link-cpi");
+    const sourceRate = document.getElementById("source-link-rate");
+    const sourceSpread = document.getElementById("source-link-spread");
+
+    if (activeRegion === "US") {
+        if (sourceCli) { sourceCli.href = "https://data.oecd.org/"; sourceCli.textContent = "OECD Data ↗"; }
+        if (sourcePmi) { sourcePmi.href = "https://www.ismworld.org/"; sourcePmi.textContent = "ISM (미국) ↗"; }
+        if (sourceGdp) { sourceGdp.href = "https://www.bea.gov/"; sourceGdp.textContent = "BEA (미국) ↗"; }
+        if (sourceEps) { sourceEps.href = "https://www.factset.com/"; sourceEps.textContent = "FactSet ↗"; }
+        if (sourceM2) { sourceM2.href = "https://fred.stlouisfed.org/series/M2SL"; sourceM2.textContent = "FRED M2 ↗"; }
+        if (sourceCpi) { sourceCpi.href = "https://www.bls.gov/cpi/"; sourceCpi.textContent = "BLS CPI ↗"; }
+        if (sourceRate) { sourceRate.href = "https://fred.stlouisfed.org/series/FEDFUNDS"; sourceRate.textContent = "FRED FedFunds ↗"; }
+        if (sourceSpread) { sourceSpread.href = "https://fred.stlouisfed.org/series/T10Y2Y"; sourceSpread.textContent = "FRED Spread ↗"; }
+    } else {
+        if (sourceCli) { sourceCli.href = "https://data.oecd.org/"; sourceCli.textContent = "OECD Data ↗"; }
+        if (sourcePmi) { sourcePmi.href = "https://www.spglobal.com/marketintelligence/en/mi/products/pmi.html"; sourcePmi.textContent = "S&P (한국) ↗"; }
+        if (sourceGdp) { sourceGdp.href = "https://ecos.bok.or.kr/"; sourceGdp.textContent = "한은 ECOS ↗"; }
+        if (sourceEps) { sourceEps.href = "https://www.fnguide.com/"; sourceEps.textContent = "FnGuide ↗"; }
+        if (sourceM2) { sourceM2.href = "https://ecos.bok.or.kr/"; sourceM2.textContent = "한은 ECOS M2 ↗"; }
+        if (sourceCpi) { sourceCpi.href = "https://kosis.kr/"; sourceCpi.textContent = "통계청 KOSIS ↗"; }
+        if (sourceRate) { sourceRate.href = "https://www.bok.or.kr/portal/singl/baseRate/list.do?menuNo=200489"; sourceRate.textContent = "한국은행 ↗"; }
+        if (sourceSpread) { sourceSpread.href = "https://ecos.bok.or.kr/"; sourceSpread.textContent = "한은 ECOS 국채 ↗"; }
     }
 
     // 8. Update Export statistics card
@@ -2899,6 +2680,22 @@ document.addEventListener("DOMContentLoaded", () => {
         const cpiVal = parseFloat(inputCpi.value);
         const rateVal = parseFloat(inputRate.value);
         const spreadVal = parseFloat(inputSpread.value);
+        let citiVal, gdpnowVal;
+        if (activeMode === "hist") {
+            const preset = historicalPresets[activeRegion][activePreset];
+            citiVal = preset.citi !== undefined ? preset.citi : 0;
+            gdpnowVal = preset.gdpnow !== undefined ? preset.gdpnow : 2.0;
+        } else if (activeMode === "time") {
+            const ind = getIndicatorsForMonth(activeRegion, activeTimeIndex);
+            citiVal = ind.citi;
+            gdpnowVal = ind.gdpnow;
+        } else {
+            const selectVal = document.getElementById("export-month-select") ? document.getElementById("export-month-select").value : "2026-06";
+            const mIndex = getMonthIndex(selectVal);
+            const ind = getIndicatorsForMonth(activeRegion, mIndex);
+            citiVal = ind.citi;
+            gdpnowVal = ind.gdpnow;
+        }
         
         // Sync sliding text labels
         valCli.textContent = cliVal.toFixed(1);
@@ -2964,7 +2761,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             // Simulation Mode: Compare against previous month of selected reference month
             const monthSelectEl = document.getElementById("export-month-select");
-            const selectVal = monthSelectEl ? monthSelectEl.value : "2026-06";
+            const selectVal = monthSelectEl ? monthSelectEl.value : "2026-05";
             prevIndex = Math.max(0, getMonthIndex(selectVal) - 1);
             const prevInd = getIndicatorsForMonth(activeRegion, prevIndex);
             prevMacro = calculateMacroMetrics(prevInd.cli, prevInd.pmi, prevInd.gdp, prevInd.m2, prevInd.rate, prevInd.spread);
@@ -2978,7 +2775,7 @@ document.addEventListener("DOMContentLoaded", () => {
         updateTransitionPanel(prevMacro, macroMetrics, prevSeason, seasonMetrics, prevIndex);
 
         // Sync UI
-        updateUI(macroMetrics, seasonMetrics, portfolioMetrics, cliVal, pmiVal, gdpVal, epsVal, m2Val, cpiVal, rateVal, spreadVal);
+        updateUI(macroMetrics, seasonMetrics, portfolioMetrics, cliVal, pmiVal, gdpVal, epsVal, m2Val, cpiVal, rateVal, spreadVal, citiVal, gdpnowVal);
     };
 
     // B. Slider listeners
@@ -3060,6 +2857,25 @@ document.addEventListener("DOMContentLoaded", () => {
         loadPresetContainerItems();
         loadPreset(activePreset);
     });
+
+    if (modeTimeBtn) {
+        modeTimeBtn.addEventListener("click", () => {
+            activeMode = "time";
+            modeTimeBtn.classList.add("active");
+            modeSimBtn.classList.remove("active");
+            modeHistBtn.classList.remove("active");
+            
+            presetContainer.classList.add("hidden");
+            slidersContainer.classList.add("hidden");
+            if (timeMachineContainer) timeMachineContainer.classList.remove("hidden");
+            
+            if (pageTitle) {
+                pageTitle.textContent = `${timeMachineMonths[activeTimeIndex].label} 경기 사이클 분석`;
+            }
+            
+            triggerModelUpdate();
+        });
+    }
 
     if (modeTimeBtn) {
         modeTimeBtn.addEventListener("click", () => {
@@ -3178,7 +2994,8 @@ document.addEventListener("DOMContentLoaded", () => {
     initCharts(initMacro, initPortfolio);
     
     // First render update
-    updateUI(initMacro, initSeason, initPortfolio, startCli, startPmi, startGdp, startEps, startM2, startCpi, startRate, startSpread);
+    const initData = getIndicatorsForMonth(activeRegion, activeTimeIndex);
+    updateUI(initMacro, initSeason, initPortfolio, startCli, startPmi, startGdp, startEps, startM2, startCpi, startRate, startSpread, initData.citi, initData.gdpnow);
 
     // ==========================================
     // PREMIUM MODAL HISTORICAL POPUP LOGIC
@@ -3221,14 +3038,6 @@ document.addEventListener("DOMContentLoaded", () => {
         spread: {
             title: "장단기 금리차 (10Y-2Y) 역사적 트렌드",
             desc: "10Y-2Y 국채 장단기 금리차는 장기 성장 전망과 단기 통화 정책 긴장도의 차이를 뜻합니다. 스프레드가 음의 영역으로 역전(Inversion)되는 현상은 역사적으로 1년 뒤 경기 침체(Contraction)가 도래함을 알려주는 가장 완벽한 조기 경보입니다."
-        },
-        realrate: {
-            title: "실질 금리 역사적 트렌드",
-            desc: "실질 금리(Real Interest Rate)는 기준 금리에서 인플레이션율(CPI)을 차감하여 도출하는 지표로, 시중 유동성이 실질적으로 긴축 상태에 있는지 완화 상태에 있는지를 대변하는 금융 물리학적 척도입니다. 실질금리가 (+) 영역에서 지나치게 올라갈 경우 밸류에이션 압력이 고조됩니다."
-        },
-        erp: {
-            title: "주식 위험 프리미엄 (ERP) 역사적 트렌드",
-            desc: "주식 위험 프리미엄(Equity Risk Premium)은 주식시장에 투자함으로써 기대할 수 있는 초과 기대수익률(Earnings Yield)과 무위험자산(국채 금리) 사이의 격차를 나타냅니다. ERP가 높을수록 주식 투자의 밸류에이션 매력도가 강함을 뜻하고, 낮을수록 국채 대비 주식의 상대적 매력도가 고갈되어 위험이 큼을 나타냅니다."
         }
     };
 
@@ -3274,30 +3083,9 @@ document.addEventListener("DOMContentLoaded", () => {
             else if (indicatorKey === "cpi") activeCurrentValue = parseFloat(document.getElementById("input-cpi").value);
             else if (indicatorKey === "rate") activeCurrentValue = parseFloat(document.getElementById("input-rate").value);
             else if (indicatorKey === "spread") activeCurrentValue = parseFloat(document.getElementById("input-spread").value);
-            else if (indicatorKey === "realrate") {
-                const rVal = parseFloat(document.getElementById("input-rate").value);
-                const cVal = parseFloat(document.getElementById("input-cpi").value);
-                activeCurrentValue = rVal - cVal;
-            } else if (indicatorKey === "erp") {
-                const rVal = parseFloat(document.getElementById("input-rate").value);
-                const eVal = parseFloat(document.getElementById("input-eps").value);
-                const mVal = parseFloat(document.getElementById("input-m2").value);
-                const cVal = parseFloat(document.getElementById("input-cli").value);
-                const pVal = parseFloat(document.getElementById("input-pmi").value);
-                const gVal = parseFloat(document.getElementById("input-gdp").value);
-                const sVal = parseFloat(document.getElementById("input-spread").value);
-                
-                const tempMacro = calculateMacroMetrics(cVal, pVal, gVal, mVal, rVal, sVal);
-                const tempSeason = calculateStockSeasonMetrics(eVal, mVal, rVal, sVal);
-                const tempSec = calculateSecondaryIndicators(tempMacro, tempSeason, activeRegion, rVal, eVal, mVal);
-                const rfProxy = activeRegion === "US" ? (rVal - 1.0) : (rVal - 0.5);
-                activeCurrentValue = (100 / tempSec.per) - rfProxy;
-            }
 
-            const interpolatedMilestones = ms ? [...ms] : [];
-            if (ms) {
-                interpolatedMilestones[6] = activeCurrentValue; // Dynamic link!
-            }
+            const interpolatedMilestones = [...ms];
+            interpolatedMilestones[6] = activeCurrentValue; // Dynamic link!
 
             const labels = [];
             const dataValues = [];
@@ -3306,43 +3094,26 @@ document.addEventListener("DOMContentLoaded", () => {
             const startMonth = 5; // May
 
             for (let i = 0; i <= 61; i++) {
-                let val = 0;
-                
-                if (indicatorKey === "realrate") {
-                    const ind = getIndicatorsForMonth(activeRegion, i);
-                    val = ind.rate - ind.cpi;
-                } else if (indicatorKey === "erp") {
-                    const ind = getIndicatorsForMonth(activeRegion, i);
-                    const tempMacro = calculateMacroMetrics(ind.cli, ind.pmi, ind.gdp, ind.m2, ind.rate, ind.spread);
-                    const tempSeason = calculateStockSeasonMetrics(ind.eps, ind.m2, ind.rate, ind.spread);
-                    const tempSec = calculateSecondaryIndicators(tempMacro, tempSeason, activeRegion, ind.rate, ind.eps, ind.m2);
-                    const rfProxy = activeRegion === "US" ? (ind.rate - 1.0) : (ind.rate - 0.5);
-                    val = (100 / tempSec.per) - rfProxy;
-                } else {
-                    const intervalIndex = Math.min(5, Math.floor(i / 12));
-                    const fraction = (i % 12) / 12.0;
+                const intervalIndex = Math.min(5, Math.floor(i / 12));
+                const fraction = (i % 12) / 12.0;
 
-                    const valStart = interpolatedMilestones[intervalIndex];
-                    const valEnd = interpolatedMilestones[intervalIndex + 1];
+                const valStart = interpolatedMilestones[intervalIndex];
+                const valEnd = interpolatedMilestones[intervalIndex + 1];
 
-                    val = valStart + (valEnd - valStart) * fraction;
-                }
-                
+                let val = valStart + (valEnd - valStart) * fraction;
                 if (i === 61) {
                     val = activeCurrentValue; // Guarantee exact slider value at the final simulated point!
                 }
 
                 // Add realistic macro wobble
-                if (indicatorKey !== "realrate" && indicatorKey !== "erp") {
-                    let noiseScale = 0.05;
-                    if (indicatorKey === "pmi") noiseScale = 0.35;
-                    else if (indicatorKey === "gdp" || indicatorKey === "cpi" || indicatorKey === "rate" || indicatorKey === "spread") noiseScale = 0.08;
-                    else if (indicatorKey === "eps") noiseScale = 0.8;
-                    else if (indicatorKey === "m2") noiseScale = 0.2;
-                    
-                    if (i !== 0 && i !== 61 && i % 12 !== 0) {
-                        val += (Math.sin(i * 1.5) * 0.5 + (Math.random() - 0.5) * 0.5) * noiseScale;
-                    }
+                let noiseScale = 0.05;
+                if (indicatorKey === "pmi") noiseScale = 0.35;
+                else if (indicatorKey === "gdp" || indicatorKey === "cpi" || indicatorKey === "rate" || indicatorKey === "spread") noiseScale = 0.08;
+                else if (indicatorKey === "eps") noiseScale = 0.8;
+                else if (indicatorKey === "m2") noiseScale = 0.2;
+                
+                if (i !== 0 && i !== 61 && i % 12 !== 0) {
+                    val += (Math.sin(i * 1.5) * 0.5 + (Math.random() - 0.5) * 0.5) * noiseScale;
                 }
 
                 dataValues.push(parseFloat(val.toFixed(2)));
