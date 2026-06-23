@@ -1618,16 +1618,16 @@ function calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2
 
     // US S&P 500 Top 10 Companies
     const usTop10Defs = [
-        { name: "Microsoft Corp.", ticker: "MSFT", baseMcap: 2.79, betaX: 4.0, betaY: 2.0, baseOffset: 10.0, price: 375.73, fwdPE: 19.42, fwdEps: 19.35 },
-        { name: "Apple Inc.", ticker: "AAPL", baseMcap: 4.41, betaX: 3.5, betaY: 1.8, baseOffset: 9.0, price: 300.17, fwdPE: 31.27, fwdEps: 9.6 },
-        { name: "NVIDIA Corp.", ticker: "NVDA", baseMcap: 4.92, betaX: 8.0, betaY: 6.0, baseOffset: 22.0, price: 203.0, fwdPE: 15.95, fwdEps: 12.73 },
-        { name: "Alphabet Inc.", ticker: "GOOGL", baseMcap: 4.25, betaX: 3.8, betaY: 1.9, baseOffset: 8.0, price: 347.94, fwdPE: 23.91, fwdEps: 14.55 },
-        { name: "Amazon.com Inc.", ticker: "AMZN", baseMcap: 2.55, betaX: 4.5, betaY: 2.2, baseOffset: 11.0, price: 236.65, fwdPE: 23.95, fwdEps: 9.88 },
-        { name: "Meta Platforms", ticker: "META", baseMcap: 1.44, betaX: 5.2, betaY: 3.0, baseOffset: 12.0, price: 567.93, fwdPE: 15.67, fwdEps: 36.25 },
-        { name: "Berkshire Hathaway", ticker: "BRK.B", baseMcap: 1.06, betaX: 1.5, betaY: 0.5, baseOffset: 6.0, price: 493.43, fwdPE: 22.98, fwdEps: 21.47 },
-        { name: "Eli Lilly & Co.", ticker: "LLY", baseMcap: 0.99, betaX: 2.0, betaY: 1.0, baseOffset: 18.0, price: 1107.08, fwdPE: 24.9, fwdEps: 44.46 },
-        { name: "Broadcom Inc.", ticker: "AVGO", baseMcap: 1.85, betaX: 4.8, betaY: 2.5, baseOffset: 13.0, price: 388.03, fwdPE: 20.02, fwdEps: 19.39 },
-        { name: "Tesla Inc.", ticker: "TSLA", baseMcap: 1.45, betaX: 7.0, betaY: 5.0, baseOffset: 15.0, price: 387.09, fwdPE: 154.86, fwdEps: 2.5 }
+        { name: "Microsoft Corp.", ticker: "MSFT", baseMcap: 2.79, betaX: 4.0, betaY: 2.0, baseOffset: 10.0, price: 375.54, fwdPE: 19.41, fwdEps: 19.35 },
+        { name: "Apple Inc.", ticker: "AAPL", baseMcap: 4.41, betaX: 3.5, betaY: 1.8, baseOffset: 9.0, price: 300.06, fwdPE: 31.25, fwdEps: 9.6 },
+        { name: "NVIDIA Corp.", ticker: "NVDA", baseMcap: 4.91, betaX: 8.0, betaY: 6.0, baseOffset: 22.0, price: 202.86, fwdPE: 15.94, fwdEps: 12.73 },
+        { name: "Alphabet Inc.", ticker: "GOOGL", baseMcap: 4.25, betaX: 3.8, betaY: 1.9, baseOffset: 8.0, price: 348.16, fwdPE: 23.92, fwdEps: 14.55 },
+        { name: "Amazon.com Inc.", ticker: "AMZN", baseMcap: 2.54, betaX: 4.5, betaY: 2.2, baseOffset: 11.0, price: 235.93, fwdPE: 23.88, fwdEps: 9.88 },
+        { name: "Meta Platforms", ticker: "META", baseMcap: 1.44, betaX: 5.2, betaY: 3.0, baseOffset: 12.0, price: 567.38, fwdPE: 15.65, fwdEps: 36.25 },
+        { name: "Berkshire Hathaway", ticker: "BRK.B", baseMcap: 1.06, betaX: 1.5, betaY: 0.5, baseOffset: 6.0, price: 493.69, fwdPE: 22.99, fwdEps: 21.47 },
+        { name: "Eli Lilly & Co.", ticker: "LLY", baseMcap: 0.99, betaX: 2.0, betaY: 1.0, baseOffset: 18.0, price: 1107.76, fwdPE: 24.92, fwdEps: 44.46 },
+        { name: "Broadcom Inc.", ticker: "AVGO", baseMcap: 1.84, betaX: 4.8, betaY: 2.5, baseOffset: 13.0, price: 385.85, fwdPE: 19.9, fwdEps: 19.39 },
+        { name: "Tesla Inc.", ticker: "TSLA", baseMcap: 1.46, betaX: 7.0, betaY: 5.0, baseOffset: 15.0, price: 387.66, fwdPE: 155.07, fwdEps: 2.5 }
     ];
 
     // KOSPI Top 10 Companies
