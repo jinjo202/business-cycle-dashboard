@@ -1618,30 +1618,30 @@ function calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2
 
     // US S&P 500 Top 10 Companies
     const usTop10Defs = [
-        { name: "Microsoft Corp.", ticker: "MSFT", baseMcap: 2.76, betaX: 4.0, betaY: 2.0, baseOffset: 10.0 },
-        { name: "Apple Inc.", ticker: "AAPL", baseMcap: 4.36, betaX: 3.5, betaY: 1.8, baseOffset: 9.0 },
-        { name: "NVIDIA Corp.", ticker: "NVDA", baseMcap: 4.86, betaX: 8.0, betaY: 6.0, baseOffset: 22.0 },
-        { name: "Alphabet Inc.", ticker: "GOOGL", baseMcap: 4.19, betaX: 3.8, betaY: 1.9, baseOffset: 8.0 },
-        { name: "Amazon.com Inc.", ticker: "AMZN", baseMcap: 2.51, betaX: 4.5, betaY: 2.2, baseOffset: 11.0 },
-        { name: "Meta Platforms", ticker: "META", baseMcap: 1.44, betaX: 5.2, betaY: 3.0, baseOffset: 12.0 },
-        { name: "Berkshire Hathaway", ticker: "BRK.B", baseMcap: 1.06, betaX: 1.5, betaY: 0.5, baseOffset: 6.0 },
-        { name: "Eli Lilly & Co.", ticker: "LLY", baseMcap: 0.99, betaX: 2.0, betaY: 1.0, baseOffset: 18.0 },
-        { name: "Broadcom Inc.", ticker: "AVGO", baseMcap: 1.81, betaX: 4.8, betaY: 2.5, baseOffset: 13.0 },
-        { name: "Tesla Inc.", ticker: "TSLA", baseMcap: 1.47, betaX: 7.0, betaY: 5.0, baseOffset: 15.0 }
+        { name: "Microsoft Corp.", ticker: "MSFT", baseMcap: 2.79, betaX: 4.0, betaY: 2.0, baseOffset: 10.0, price: 375.73, fwdPE: 19.42, fwdEps: 19.35 },
+        { name: "Apple Inc.", ticker: "AAPL", baseMcap: 4.41, betaX: 3.5, betaY: 1.8, baseOffset: 9.0, price: 300.17, fwdPE: 31.27, fwdEps: 9.6 },
+        { name: "NVIDIA Corp.", ticker: "NVDA", baseMcap: 4.92, betaX: 8.0, betaY: 6.0, baseOffset: 22.0, price: 203.0, fwdPE: 15.95, fwdEps: 12.73 },
+        { name: "Alphabet Inc.", ticker: "GOOGL", baseMcap: 4.25, betaX: 3.8, betaY: 1.9, baseOffset: 8.0, price: 347.94, fwdPE: 23.91, fwdEps: 14.55 },
+        { name: "Amazon.com Inc.", ticker: "AMZN", baseMcap: 2.55, betaX: 4.5, betaY: 2.2, baseOffset: 11.0, price: 236.65, fwdPE: 23.95, fwdEps: 9.88 },
+        { name: "Meta Platforms", ticker: "META", baseMcap: 1.44, betaX: 5.2, betaY: 3.0, baseOffset: 12.0, price: 567.93, fwdPE: 15.67, fwdEps: 36.25 },
+        { name: "Berkshire Hathaway", ticker: "BRK.B", baseMcap: 1.06, betaX: 1.5, betaY: 0.5, baseOffset: 6.0, price: 493.43, fwdPE: 22.98, fwdEps: 21.47 },
+        { name: "Eli Lilly & Co.", ticker: "LLY", baseMcap: 0.99, betaX: 2.0, betaY: 1.0, baseOffset: 18.0, price: 1107.08, fwdPE: 24.9, fwdEps: 44.46 },
+        { name: "Broadcom Inc.", ticker: "AVGO", baseMcap: 1.85, betaX: 4.8, betaY: 2.5, baseOffset: 13.0, price: 388.03, fwdPE: 20.02, fwdEps: 19.39 },
+        { name: "Tesla Inc.", ticker: "TSLA", baseMcap: 1.45, betaX: 7.0, betaY: 5.0, baseOffset: 15.0, price: 387.09, fwdPE: 154.86, fwdEps: 2.5 }
     ];
 
     // KOSPI Top 10 Companies
     const krTop10Defs = [
-        { name: "삼성전자", ticker: "005930", baseMcap: 2035.63, betaX: 5.5, betaY: 3.0, baseOffset: 8.0 },
-        { name: "SK하이닉스", ticker: "000660", baseMcap: 1813.68, betaX: 8.5, betaY: 5.0, baseOffset: 24.0 },
-        { name: "LG에너지솔루션", ticker: "373220", baseMcap: 84.71, betaX: 6.0, betaY: 3.5, baseOffset: 5.0 },
-        { name: "삼성바이오로직스", ticker: "207940", baseMcap: 58.93, betaX: 1.8, betaY: 0.8, baseOffset: 7.0 },
-        { name: "현대자동차", ticker: "005380", baseMcap: 133.8, betaX: 3.5, betaY: 1.5, baseOffset: 14.0 },
-        { name: "기아", ticker: "000270", baseMcap: 53.4, betaX: 3.8, betaY: 1.6, baseOffset: 15.0 },
-        { name: "셀트리온", ticker: "068270", baseMcap: 36.81, betaX: 2.0, betaY: 1.0, baseOffset: 9.0 },
-        { name: "KB금융", ticker: "105560", baseMcap: 54.52, betaX: 2.5, betaY: 1.2, baseOffset: 18.0 },
-        { name: "신한지주", ticker: "055550", baseMcap: 46.0, betaX: 2.2, betaY: 1.1, baseOffset: 14.0 },
-        { name: "POSCO홀딩스", ticker: "005490", baseMcap: 24.35, betaX: 5.0, betaY: 2.8, baseOffset: 6.0 }
+        { name: "삼성전자", ticker: "005930", baseMcap: 2035.63, betaX: 5.5, betaY: 3.0, baseOffset: 8.0, price: 310000.0, fwdPE: 5.34, fwdEps: 58035.61 },
+        { name: "SK하이닉스", ticker: "000660", baseMcap: 1813.68, betaX: 8.5, betaY: 5.0, baseOffset: 24.0, price: 2555000.0, fwdPE: 6.18, fwdEps: 413579.39 },
+        { name: "LG에너지솔루션", ticker: "373220", baseMcap: 84.71, betaX: 6.0, betaY: 3.5, baseOffset: 5.0, price: 362000.0, fwdPE: 42.11, fwdEps: 8596.31 },
+        { name: "삼성바이오로직스", ticker: "207940", baseMcap: 58.93, betaX: 1.8, betaY: 0.8, baseOffset: 7.0, price: 1273000.0, fwdPE: 26.41, fwdEps: 48198.96 },
+        { name: "현대자동차", ticker: "005380", baseMcap: 133.8, betaX: 3.5, betaY: 1.5, baseOffset: 14.0, price: 511000.0, fwdPE: 10.36, fwdEps: 49327.39 },
+        { name: "기아", ticker: "000270", baseMcap: 53.4, betaX: 3.8, betaY: 1.6, baseOffset: 15.0, price: 137400.0, fwdPE: 5.82, fwdEps: 23614.46 },
+        { name: "셀트리온", ticker: "068270", baseMcap: 36.81, betaX: 2.0, betaY: 1.0, baseOffset: 9.0, price: 160500.0, fwdPE: 22.22, fwdEps: 7221.93 },
+        { name: "KB금융", ticker: "105560", baseMcap: 54.52, betaX: 2.5, betaY: 1.2, baseOffset: 18.0, price: 153700.0, fwdPE: 8.13, fwdEps: 18906.17 },
+        { name: "신한지주", ticker: "055550", baseMcap: 46.0, betaX: 2.2, betaY: 1.1, baseOffset: 14.0, price: 97700.0, fwdPE: 7.58, fwdEps: 12897.58 },
+        { name: "POSCO홀딩스", ticker: "005490", baseMcap: 24.35, betaX: 5.0, betaY: 2.8, baseOffset: 6.0, price: 322000.0, fwdPE: 10.65, fwdEps: 30238.37 }
     ];
 
     const usTop10 = usTop10Defs.map((item, idx) => {
@@ -1653,7 +1653,13 @@ function calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2
             ticker: item.ticker,
             mcapText: currentMcap >= 1.0 ? `$${currentMcap.toFixed(2)}T` : `$${(currentMcap * 1000).toFixed(0)}B`,
             ytdText: (stockYtd >= 0 ? "+" : "") + stockYtd.toFixed(1) + "%",
-            ytdPos: stockYtd >= 0
+            ytdPos: stockYtd >= 0,
+            rawMcap: currentMcap,
+            rawYtd: stockYtd,
+            price: item.price || 0,
+            fwdPE: item.fwdPE || 15.0,
+            fwdEps: item.fwdEps || 0,
+            currency: 'USD'
         };
     });
 
@@ -1668,7 +1674,11 @@ function calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2
             ytdText: (stockYtd >= 0 ? "+" : "") + stockYtd.toFixed(1) + "%",
             ytdPos: stockYtd >= 0,
             rawMcap: currentMcap,
-            rawYtd: stockYtd
+            rawYtd: stockYtd,
+            price: item.price || 0,
+            fwdPE: item.fwdPE || 15.0,
+            fwdEps: item.fwdEps || 0,
+            currency: 'KRW'
         };
     });
 
@@ -2191,7 +2201,7 @@ function updateUI(macro, season, portfolio, cli, pmi, gdp, eps, m2, cpi, rate, s
         elSp500McapTbody.innerHTML = sec.usTop10.map(s => {
             const ytdColor = s.ytdPos ? "#10b981" : "#ef4444";
             return `
-                <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04); transition: background-color 0.2s ease;">
+                <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04); transition: background-color 0.2s ease; cursor: pointer;" onclick="openStockModel('${s.ticker}', '${s.name}', ${s.rawMcap}, ${s.rawYtd}, ${s.rank}, '${s.currency}', ${s.price}, ${s.fwdPE}, ${s.fwdEps})" onmouseover="this.style.backgroundColor='rgba(255,255,255,0.05)'" onmouseout="this.style.backgroundColor='transparent'">
                     <td style="text-align: left; padding: 0.5rem 0.2rem; color: var(--text-muted); font-weight: 600;">${s.rank}</td>
                     <td style="text-align: left; padding: 0.5rem 0.2rem; font-weight: 700; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 110px;" title="${s.name} (${s.ticker})">
                         ${s.name} <span style="font-size: 0.6rem; color: var(--text-muted); font-weight: 500;">${s.ticker}</span>
@@ -2209,7 +2219,7 @@ function updateUI(macro, season, portfolio, cli, pmi, gdp, eps, m2, cpi, rate, s
         elKospiMcapTbody.innerHTML = sec.krTop10.map(s => {
             const ytdColor = s.ytdPos ? "#10b981" : "#ef4444";
             return `
-                <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04); transition: background-color 0.2s ease; cursor: pointer;" onclick="openStockModel('${s.ticker}', '${s.name}', ${s.rawMcap}, ${s.rawYtd}, ${s.rank})" onmouseover="this.style.backgroundColor='rgba(255,255,255,0.05)'" onmouseout="this.style.backgroundColor='transparent'">
+                <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04); transition: background-color 0.2s ease; cursor: pointer;" onclick="openStockModel('${s.ticker}', '${s.name}', ${s.rawMcap}, ${s.rawYtd}, ${s.rank}, '${s.currency}', ${s.price}, ${s.fwdPE}, ${s.fwdEps})" onmouseover="this.style.backgroundColor='rgba(255,255,255,0.05)'" onmouseout="this.style.backgroundColor='transparent'">
                     <td style="text-align: left; padding: 0.5rem 0.2rem; color: var(--text-muted); font-weight: 600;">${s.rank}</td>
                     <td style="text-align: left; padding: 0.5rem 0.2rem; font-weight: 700; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 110px;" title="${s.name} (${s.ticker})">
                         ${s.name} <span style="font-size: 0.6rem; color: var(--text-muted); font-weight: 500;">${s.ticker}</span>
@@ -3225,39 +3235,48 @@ document.addEventListener("DOMContentLoaded", () => {
     const stockModal = document.getElementById("stock-model-modal");
     const btnCloseStockModal = document.getElementById("btn-close-stock-modal");
 
-    window.openStockModel = function(ticker, name, mcap, ytd, rank) {
+    window.openStockModel = function(ticker, name, mcap, ytd, rank, currency, price, fwdPE, fwdEps) {
         document.getElementById("modal-stock-title").innerText = `${name} (${ticker}) - 이익/목표주가 모델`;
 
-        let peBase = 12 + (10 - rank) * 0.5;
-        if (ytd > 10) peBase += 2;
-        else if (ytd < -10) peBase -= 2;
+        // Adjust Forward P/E based on Macro environment
+        // Base P/E from actual analyst consensus
+        const basePE = parseFloat(fwdPE) || 15.0;
+        let peAdjustment = 0;
+        if (ytd > 10) peAdjustment = 2.0;
+        else if (ytd > 0) peAdjustment = 1.0;
+        else if (ytd < -10) peAdjustment = -2.0;
+        else peAdjustment = -1.0;
 
-        const targetPE = Math.max(5, peBase).toFixed(1);
-        const netIncome = mcap / targetPE; 
-        const operatingProfit = netIncome * 1.3;
-        const revenue = operatingProfit * 6.5;
-
-        const assumedShares = 500000000;
-        const forwardEps = (netIncome * 1000000000000) / assumedShares;
+        const targetPE = Math.max(5.0, basePE + peAdjustment).toFixed(1);
+        const actualFwdEps = parseFloat(fwdEps) || 0;
+        const currentPrice = parseFloat(price) || 0;
         
-        const currentPrice = (mcap * 1000000000000) / assumedShares;
-        const upsidePct = (ytd > 0 ? (Math.random() * 15 + 5) : (Math.random() * 10 - 5));
-        const targetPrice = currentPrice * (1 + upsidePct/100);
+        let targetPrice = actualFwdEps * targetPE;
+        
+        // If eps is invalid or negative, fallback to simple momentum assumption
+        if (actualFwdEps <= 0 || currentPrice <= 0) {
+            const upsidePctFallback = (ytd > 0 ? (Math.random() * 15 + 5) : (Math.random() * 10 - 5));
+            targetPrice = currentPrice * (1 + upsidePctFallback/100);
+        }
 
-        const formatWon = (val) => Math.round(val).toLocaleString() + '조원';
-        const formatPrice = (val) => Math.round(val).toLocaleString() + '원';
+        const upsidePct = currentPrice > 0 ? ((targetPrice / currentPrice) - 1) * 100 : 0;
 
+        const formatCurrency = (val) => {
+            if (currency === 'USD') return '$' + val.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            else return '₩' + Math.round(val).toLocaleString();
+        };
+
+        const yearLabel = new Date().getFullYear() + 1; // E.g. Next Year (12M Forward)
+        
         document.getElementById("stock-earnings-tbody").innerHTML = `
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 0.5rem 0; color: var(--text-muted);">예상 매출액</td><td style="padding: 0.5rem 0; text-align: right; font-weight: 600;">${formatWon(revenue)}</td></tr>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 0.5rem 0; color: var(--text-muted);">예상 영업이익</td><td style="padding: 0.5rem 0; text-align: right; font-weight: 600;">${formatWon(operatingProfit)}</td></tr>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 0.5rem 0; color: var(--text-muted);">예상 지배주주순이익</td><td style="padding: 0.5rem 0; text-align: right; font-weight: 600;">${formatWon(netIncome)}</td></tr>
-            <tr><td style="padding: 0.5rem 0; color: var(--text-muted);">Forward EPS</td><td style="padding: 0.5rem 0; text-align: right; font-weight: 600;">${formatPrice(forwardEps)}</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 0.5rem 0; color: var(--text-muted);">${yearLabel}(E) 12M Fwd EPS 추정치</td><td style="padding: 0.5rem 0; text-align: right; font-weight: 600;">${formatCurrency(actualFwdEps)}</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 0.5rem 0; color: var(--text-muted);">${yearLabel}(E) 증권사 컨센서스 Fwd P/E</td><td style="padding: 0.5rem 0; text-align: right; font-weight: 600;">${basePE.toFixed(1)}x</td></tr>
         `;
 
         document.getElementById("stock-target-tbody").innerHTML = `
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 0.5rem 0; color: var(--text-muted);">Target P/E (목표 배수)</td><td style="padding: 0.5rem 0; text-align: right; font-weight: 600;">${targetPE}x</td></tr>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 0.5rem 0; color: var(--text-muted);">현재가 (추정)</td><td style="padding: 0.5rem 0; text-align: right; font-weight: 600;">${formatPrice(currentPrice)}</td></tr>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 0.5rem 0; color: var(--text-muted);">적정 목표주가</td><td style="padding: 0.5rem 0; text-align: right; font-weight: 600; color: #3b82f6;">${formatPrice(targetPrice)}</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 0.5rem 0; color: var(--text-muted);">매크로 반영 Target P/E</td><td style="padding: 0.5rem 0; text-align: right; font-weight: 600;">${targetPE}x</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 0.5rem 0; color: var(--text-muted);">현재가</td><td style="padding: 0.5rem 0; text-align: right; font-weight: 600;">${formatCurrency(currentPrice)}</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 0.5rem 0; color: var(--text-muted);">적정 목표주가</td><td style="padding: 0.5rem 0; text-align: right; font-weight: 600; color: #3b82f6;">${formatCurrency(targetPrice)}</td></tr>
             <tr><td style="padding: 0.5rem 0; color: var(--text-muted);">상승/하락 여력</td><td style="padding: 0.5rem 0; text-align: right; font-weight: 700; color: ${upsidePct >= 0 ? '#10b981' : '#ef4444'};">${upsidePct >= 0 ? '+' : ''}${upsidePct.toFixed(1)}%</td></tr>
         `;
 
