@@ -75,6 +75,7 @@ def fetch_top_10(ticker_list, divisor, is_kr=False):
             if eps_1y == 0 and info.get('forwardEps'):
                 eps_1y = info.get('forwardEps')
                 
+            import math
             ret_1d, ret_1w, ret_1m = 0.0, 0.0, 0.0
             last_updated = datetime.datetime.now().strftime('%Y-%m-%d %H:%M')
             try:
@@ -110,9 +111,9 @@ def fetch_top_10(ticker_list, divisor, is_kr=False):
                 "eps_1q": round(eps_1q, 2),
                 "eps_0y": round(eps_0y, 2),
                 "eps_1y": round(eps_1y, 2),
-                "ret_1d": round(ret_1d, 2),
-                "ret_1w": round(ret_1w, 2),
-                "ret_1m": round(ret_1m, 2),
+                "ret_1d": round(ret_1d, 2) if not math.isnan(ret_1d) else 0.0,
+                "ret_1w": round(ret_1w, 2) if not math.isnan(ret_1w) else 0.0,
+                "ret_1m": round(ret_1m, 2) if not math.isnan(ret_1m) else 0.0,
                 "last_updated": last_updated
             })
             print(f"{app_ticker}: Mcap {mcap_trillions:.2f}T, Price {price}, PE {fwd_pe:.1f}, EPS_1Y {eps_1y:.2f}")
