@@ -77,3 +77,18 @@ with open(app_js_path, 'w', encoding='utf-8') as f:
     f.write(content)
 
 print(f"Market data updated successfully. ({updated_count}/20 tickers updated)")
+
+# Update date in index.html
+import datetime
+index_html_path = 'index.html'
+if os.path.exists(index_html_path):
+    with open(index_html_path, 'r', encoding='utf-8') as f:
+        html_content = f.read()
+    
+    today_str = datetime.datetime.now().strftime("%Y년 %m월 %d일 기준")
+    # Replace (YYYY년 M월 D일 기준) with current date
+    html_content = re.sub(r'\([0-9]{4}년\s*[0-9]{1,2}월\s*[0-9]{1,2}일\s*기준\)', f'({today_str})', html_content)
+    
+    with open(index_html_path, 'w', encoding='utf-8') as f:
+        f.write(html_content)
+    print("Updated date in index.html")
