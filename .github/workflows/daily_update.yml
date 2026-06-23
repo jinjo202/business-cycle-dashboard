@@ -1,0 +1,46 @@
+name: Daily Dashboard Update
+
+on:
+  schedule:
+    # Runs daily at 09:30 UTC (18:30 KST)
+    - cron: '30 9 * * *'
+  workflow_dispatch: # Allows manual trigger
+
+permissions:
+  contents: write # Crucial for pushing changes back to repository
+
+jobs:
+  update-dashboard:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install yfinance requests selenium
+
+      - name: Run daily update script
+        env:
+          GITHUB_ACTIONS: "true"
+        run: |
+          python daily_update.py
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add app.js index.html
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Auto-update macro dashboard data [skip ci]"
+            git push
+          fi
