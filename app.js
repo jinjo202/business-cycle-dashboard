@@ -1,5 +1,6 @@
 // MACROECONOMIC ENGINE & STOCK SEASONS INTERACTION WITH M2 LIQUIDITY
 
+const EXCHANGE_RATE = 1537.59;
 // --- GLOBAL INTERACTIVE DATABASE CONFIGURATION ---
 
 const historicalPresets = {
@@ -120,7 +121,7 @@ const historicalPresets = {
         },
         "2026_current": {
             title: "2026년 반도체 HBM 부활 & 주주환원 성장기",
-            cli: 100.5, pmi: 52.0, gdp: 2.5, eps: 200.0, m2: 6.0, cpi: 2.1, rate: 3.25, spread: 0.4, citi: 20.0, gdpnow: 2.5,
+            cli: 100.5, pmi: 52.0, gdp: 6.78, eps: 200.0, m2: 6.0, cpi: 3.10, rate: 0.00, spread: 0.4, citi: 20.0, gdpnow: 2.5,
             phase: "expansion", season: "summer",
             summary: "AI 고대역폭메모리(HBM) 수출 호조와 기업 밸류업 프로그램 가동으로 선행 이익 성장이 두드러집니다. 통화량 공급도 정상 궤도(M2 6.0%)에 복귀한 안정적 실적장세(여름)입니다.",
             lessons: "실물 선행 지수가 안정적이고 이익 성장 모멘텀이 강한 확장 국면에서는 반도체, AI 장비주, 그리고 기업 밸류업 프로그램 수혜 우량 지주사/금융주 중심의 강한 포커싱 투자 전략이 최상의 성과를 제공합니다.",
@@ -387,23 +388,23 @@ const exportData = {
     },
     "KR": {
         "2026-06": {
-            growthVal: "+12.4%",
+            growthVal: "+60.4%",
             growthTrend: "▲ HBM 및 메모리 반도체 슈퍼사이클 지속",
-            balanceVal: "+51.2억 달러 흑자",
-            balanceTrend: "▲ 13개월 연속 무역수지 흑자 행진",
+            balanceVal: "+175.0억 달러 흑자 (1~20일 잠정)",
+            balanceTrend: "▲ 1~20일 반도체·선박 수출 급증에 따른 흑자",
             ebsiVal: "114.5",
             ebsiTrend: "▲ 글로벌 AI 수요 가속에 따른 업황 확장",
             items: [
                 {
-                    name: "반도체 (DRAM / HBM 메모리 반도체)", pct: 18, change: "+45.2%", barClass: "summer",
+                    name: "반도체 (DRAM / HBM 메모리 반도체)", pct: 18, change: "+190.0%", barClass: "summer",
                     subItems: [
-                        { name: "HBM (고대역폭 메모리)", yoy: "+275.0%", mom: "+15.2%" },
+                        { name: "HBM (고대역폭 메모리)", yoy: "+290.0%", mom: "+15.2%" },
                         { name: "DRAM (대용량 메모리 반도체)", yoy: "+54.5%", mom: "+4.1%" },
-                        { name: "기업용 SSD (Solid State Drive)", yoy: "+38.2%", mom: "+3.0%" }
+                        { name: "기업용 SSD (Solid State Drive)", yoy: "+293.3%", mom: "+3.0%" }
                     ]
                 },
                 {
-                    name: "자동차, 친환경차 및 완성차 부품", pct: 13, change: "+13.1%", barClass: "spring",
+                    name: "자동차, 친환경차 및 완성차 부품", pct: 13, change: "+2.3%", barClass: "spring",
                     subItems: [
                         { name: "친환경 완성차 (EV 포함)", yoy: "+19.2%", mom: "+2.2%" },
                         { name: "하이브리드 완성차 (HEV)", yoy: "+24.5%", mom: "+2.8%" },
@@ -411,7 +412,7 @@ const exportData = {
                     ]
                 },
                 {
-                    name: "석유화학 제품 및 합성수지", pct: 8, change: "-2.0%", barClass: "winter",
+                    name: "석유제품 및 석유화학 제품", pct: 8, change: "+39.0%", barClass: "summer",
                     subItems: [
                         { name: "합성수지 (플라스틱 등)", yoy: "-1.0%", mom: "+0.5%" },
                         { name: "기초 유기 석유화학 제품", yoy: "-3.8%", mom: "-0.5%" },
@@ -810,39 +811,39 @@ function updateExportCard() {
 
     const baselinePrices = {
         "US": {
-            "NVDA": { name: "NVIDIA Corp.", ticker: "NVDA", base: 212.73, format: (p) => `$${p.toFixed(2)}` },
-            "AAPL": { name: "Apple Inc.", ticker: "AAPL", base: 310.85, format: (p) => `$${p.toFixed(2)}` },
-            "MSFT": { name: "Microsoft Corp.", ticker: "MSFT", base: 412.67, format: (p) => `$${p.toFixed(2)}` },
-            "AMZN": { name: "Amazon.com Inc.", ticker: "AMZN", base: 271.85, format: (p) => `$${p.toFixed(2)}` },
-            "TSLA": { name: "Tesla Inc.", ticker: "TSLA", base: 440.00, format: (p) => `$${p.toFixed(2)}` },
-            "COST": { name: "Costco Wholesale", ticker: "COST", base: 810.30, format: (p) => `$${p.toFixed(2)}` },
-            "KO": { name: "Coca-Cola Co.", ticker: "KO", base: 62.50, format: (p) => `$${p.toFixed(2)}` },
-            "PG": { name: "Procter & Gamble Co.", ticker: "PG", base: 165.20, format: (p) => `$${p.toFixed(2)}` },
-            "MCD": { name: "McDonald's Corp.", ticker: "MCD", base: 290.40, format: (p) => `$${p.toFixed(2)}` },
+            "NVDA": { name: "NVIDIA Corp.", ticker: "NVDA", base: 208.65, format: (p) => `$${p.toFixed(2)}` },
+            "AAPL": { name: "Apple Inc.", ticker: "AAPL", base: 297.01, format: (p) => `$${p.toFixed(2)}` },
+            "MSFT": { name: "Microsoft Corp.", ticker: "MSFT", base: 367.34, format: (p) => `$${p.toFixed(2)}` },
+            "AMZN": { name: "Amazon.com Inc.", ticker: "AMZN", base: 232.79, format: (p) => `$${p.toFixed(2)}` },
+            "TSLA": { name: "Tesla Inc.", ticker: "TSLA", base: 405.05, format: (p) => `$${p.toFixed(2)}` },
+            "COST": { name: "Costco Wholesale", ticker: "COST", base: 951.35, format: (p) => `$${p.toFixed(2)}` },
+            "KO": { name: "Coca-Cola Co.", ticker: "KO", base: 79.53, format: (p) => `$${p.toFixed(2)}` },
+            "PG": { name: "Procter & Gamble Co.", ticker: "PG", base: 147.68, format: (p) => `$${p.toFixed(2)}` },
+            "MCD": { name: "McDonald's Corp.", ticker: "MCD", base: 270.10, format: (p) => `$${p.toFixed(2)}` },
             "WBA": { name: "Walgreens Boots Alliance", ticker: "WBA", base: 15.40, format: (p) => `$${p.toFixed(2)}` },
             "PARA": { name: "Paramount Global", ticker: "PARA", base: 11.20, format: (p) => `$${p.toFixed(2)}` },
-            "INTC": { name: "Intel Corp.", ticker: "INTC", base: 30.15, format: (p) => `$${p.toFixed(2)}` },
-            "LMT": { name: "Lockheed Martin Corp.", ticker: "LMT", base: 465.80, format: (p) => `$${p.toFixed(2)}` },
-            "GLD": { name: "SPDR Gold Shares", ticker: "GLD", base: 225.40, format: (p) => `$${p.toFixed(2)}` },
-            "WMT": { name: "Walmart Inc.", ticker: "WMT", base: 65.80, format: (p) => `$${p.toFixed(2)}` },
-            "JPM": { name: "JPMorgan Chase & Co.", ticker: "JPM", base: 198.50, format: (p) => `$${p.toFixed(2)}` },
-            "CAT": { name: "Caterpillar Inc.", ticker: "CAT", base: 355.20, format: (p) => `$${p.toFixed(2)}` },
-            "XOM": { name: "Exxon Mobil Corp.", ticker: "XOM", base: 120.40, format: (p) => `$${p.toFixed(2)}` },
-            "GE": { name: "General Electric Co.", ticker: "GE", base: 158.20, format: (p) => `$${p.toFixed(2)}` },
-            "PYPL": { name: "PayPal Holdings Inc.", ticker: "PYPL", base: 52.15, format: (p) => `$${p.toFixed(2)}` },
-            "BA": { name: "Boeing Co.", ticker: "BA", base: 162.40, format: (p) => `$${p.toFixed(2)}` },
-            "PFE": { name: "Pfizer Inc.", ticker: "PFE", base: 26.80, format: (p) => `$${p.toFixed(2)}` },
-            "SQQQ": { name: "ProShares UltraPro Short QQQ", ticker: "SQQQ", base: 10.40, format: (p) => `$${p.toFixed(2)}` },
-            "VIX": { name: "iPath Volatility VIX ETN", ticker: "VIX", base: 14.80, format: (p) => `$${p.toFixed(2)}` },
-            "XLU": { name: "Utilities Select Sector SPDR", ticker: "XLU", base: 68.20, format: (p) => `$${p.toFixed(2)}` },
-            "AMD": { name: "Advanced Micro Devices", ticker: "AMD", base: 164.50, format: (p) => `$${p.toFixed(2)}` },
-            "SMCI": { name: "Super Micro Computer", ticker: "SMCI", base: 785.40, format: (p) => `$${p.toFixed(2)}` },
-            "TLT": { name: "iShares 20+ Yr Treasury Bond", ticker: "TLT", base: 92.40, format: (p) => `$${p.toFixed(2)}` },
-            "BAC": { name: "Bank of America Corp.", ticker: "BAC", base: 38.50, format: (p) => `$${p.toFixed(2)}` },
-            "FCX": { name: "Freeport-McMoRan Inc.", ticker: "FCX", base: 51.20, format: (p) => `$${p.toFixed(2)}` }
+            "INTC": { name: "Intel Corp.", ticker: "INTC", base: 140.94, format: (p) => `$${p.toFixed(2)}` },
+            "LMT": { name: "Lockheed Martin Corp.", ticker: "LMT", base: 493.60, format: (p) => `$${p.toFixed(2)}` },
+            "GLD": { name: "SPDR Gold Shares", ticker: "GLD", base: 384.59, format: (p) => `$${p.toFixed(2)}` },
+            "WMT": { name: "Walmart Inc.", ticker: "WMT", base: 117.18, format: (p) => `$${p.toFixed(2)}` },
+            "JPM": { name: "JPMorgan Chase & Co.", ticker: "JPM", base: 331.48, format: (p) => `$${p.toFixed(2)}` },
+            "CAT": { name: "Caterpillar Inc.", ticker: "CAT", base: 1022.28, format: (p) => `$${p.toFixed(2)}` },
+            "XOM": { name: "Exxon Mobil Corp.", ticker: "XOM", base: 138.47, format: (p) => `$${p.toFixed(2)}` },
+            "GE": { name: "General Electric Co.", ticker: "GE", base: 355.12, format: (p) => `$${p.toFixed(2)}` },
+            "PYPL": { name: "PayPal Holdings Inc.", ticker: "PYPL", base: 42.34, format: (p) => `$${p.toFixed(2)}` },
+            "BA": { name: "Boeing Co.", ticker: "BA", base: 220.83, format: (p) => `$${p.toFixed(2)}` },
+            "PFE": { name: "Pfizer Inc.", ticker: "PFE", base: 25.08, format: (p) => `$${p.toFixed(2)}` },
+            "SQQQ": { name: "ProShares UltraPro Short QQQ", ticker: "SQQQ", base: 36.93, format: (p) => `$${p.toFixed(2)}` },
+            "VIX": { name: "iPath Volatility VIX ETN", ticker: "VIX", base: 20.15, format: (p) => `$${p.toFixed(2)}` },
+            "XLU": { name: "Utilities Select Sector SPDR", ticker: "XLU", base: 44.72, format: (p) => `$${p.toFixed(2)}` },
+            "AMD": { name: "Advanced Micro Devices", ticker: "AMD", base: 551.63, format: (p) => `$${p.toFixed(2)}` },
+            "SMCI": { name: "Super Micro Computer", ticker: "SMCI", base: 35.46, format: (p) => `$${p.toFixed(2)}` },
+            "TLT": { name: "iShares 20+ Yr Treasury Bond", ticker: "TLT", base: 86.09, format: (p) => `$${p.toFixed(2)}` },
+            "BAC": { name: "Bank of America Corp.", ticker: "BAC", base: 57.37, format: (p) => `$${p.toFixed(2)}` },
+            "FCX": { name: "Freeport-McMoRan Inc.", ticker: "FCX", base: 69.21, format: (p) => `$${p.toFixed(2)}` }
         },
         "KR": {
-            "SK하이닉스": { name: "SK하이닉스", ticker: "000660", base: 2289000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "SK하이닉스": { name: "SK하이닉스", ticker: "000660", base: 2555000, format: (p) => `${Math.round(p).toLocaleString()}원` },
             "한미반도체": { name: "한미반도체", ticker: "042700", base: 309500, format: (p) => `${Math.round(p).toLocaleString()}원` },
             "현대차": { name: "현대자동차", ticker: "005380", base: 680000, format: (p) => `${Math.round(p).toLocaleString()}원` },
             "기아": { name: "기아", ticker: "000270", base: 167800, format: (p) => `${Math.round(p).toLocaleString()}원` },
@@ -1611,36 +1612,36 @@ function calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2
     const ytdKospi = 5.2 + 6.0 * x + 3.0 * y;
     const ytdKosdaq = 6.8 + 8.2 * x + 4.5 * y;
 
-    const mcapSp500Total = 44.80 * (1 + ytdSp500 / 100);
-    const mcapKospiTotal = 2185.0 * (1 + ytdKospi / 100);
-    const mcapKosdaqTotal = 412.0 * (1 + ytdKosdaq / 100);
+    const mcapSp500Total = 79.48 * (1 + ytdSp500 / 100);
+    const mcapKospiTotal = 6709.64 * (1 + ytdKospi / 100);
+    const mcapKosdaqTotal = 587.35 * (1 + ytdKosdaq / 100);
 
     // US S&P 500 Top 10 Companies
     const usTop10Defs = [
-        { name: "Microsoft Corp.", ticker: "MSFT", baseMcap: 3.15, betaX: 4.0, betaY: 2.0, baseOffset: 10.0 },
-        { name: "Apple Inc.", ticker: "AAPL", baseMcap: 3.10, betaX: 3.5, betaY: 1.8, baseOffset: 9.0 },
-        { name: "NVIDIA Corp.", ticker: "NVDA", baseMcap: 2.95, betaX: 8.0, betaY: 6.0, baseOffset: 22.0 },
-        { name: "Alphabet Inc.", ticker: "GOOGL", baseMcap: 2.15, betaX: 3.8, betaY: 1.9, baseOffset: 8.0 },
-        { name: "Amazon.com Inc.", ticker: "AMZN", baseMcap: 1.90, betaX: 4.5, betaY: 2.2, baseOffset: 11.0 },
-        { name: "Meta Platforms", ticker: "META", baseMcap: 1.35, betaX: 5.2, betaY: 3.0, baseOffset: 12.0 },
-        { name: "Berkshire Hathaway", ticker: "BRK.B", baseMcap: 0.92, betaX: 1.5, betaY: 0.5, baseOffset: 6.0 },
-        { name: "Eli Lilly & Co.", ticker: "LLY", baseMcap: 0.85, betaX: 2.0, betaY: 1.0, baseOffset: 18.0 },
-        { name: "Broadcom Inc.", ticker: "AVGO", baseMcap: 0.78, betaX: 4.8, betaY: 2.5, baseOffset: 13.0 },
-        { name: "Tesla Inc.", ticker: "TSLA", baseMcap: 0.65, betaX: 7.0, betaY: 5.0, baseOffset: 15.0 }
+        { name: "Microsoft Corp.", ticker: "MSFT", baseMcap: 2.73, betaX: 4.0, betaY: 2.0, baseOffset: 10.0 },
+        { name: "Apple Inc.", ticker: "AAPL", baseMcap: 4.36, betaX: 3.5, betaY: 1.8, baseOffset: 9.0 },
+        { name: "NVIDIA Corp.", ticker: "NVDA", baseMcap: 5.05, betaX: 8.0, betaY: 6.0, baseOffset: 22.0 },
+        { name: "Alphabet Inc.", ticker: "GOOGL", baseMcap: 4.27, betaX: 3.8, betaY: 1.9, baseOffset: 8.0 },
+        { name: "Amazon.com Inc.", ticker: "AMZN", baseMcap: 2.50, betaX: 4.5, betaY: 2.2, baseOffset: 11.0 },
+        { name: "Meta Platforms", ticker: "META", baseMcap: 1.43, betaX: 5.2, betaY: 3.0, baseOffset: 12.0 },
+        { name: "Berkshire Hathaway", ticker: "BRK.B", baseMcap: 1.05, betaX: 1.5, betaY: 0.5, baseOffset: 6.0 },
+        { name: "Eli Lilly & Co.", ticker: "LLY", baseMcap: 0.98, betaX: 2.0, betaY: 1.0, baseOffset: 18.0 },
+        { name: "Broadcom Inc.", ticker: "AVGO", baseMcap: 1.87, betaX: 4.8, betaY: 2.5, baseOffset: 13.0 },
+        { name: "Tesla Inc.", ticker: "TSLA", baseMcap: 1.52, betaX: 7.0, betaY: 5.0, baseOffset: 15.0 }
     ];
 
     // KOSPI Top 10 Companies
     const krTop10Defs = [
-        { name: "삼성전자", ticker: "005930", baseMcap: 415.0, betaX: 5.5, betaY: 3.0, baseOffset: 8.0 },
-        { name: "SK하이닉스", ticker: "000660", baseMcap: 165.0, betaX: 8.5, betaY: 5.0, baseOffset: 24.0 },
-        { name: "LG에너지솔루션", ticker: "373220", baseMcap: 75.0, betaX: 6.0, betaY: 3.5, baseOffset: 5.0 },
-        { name: "삼성바이오로직스", ticker: "207940", baseMcap: 62.0, betaX: 1.8, betaY: 0.8, baseOffset: 7.0 },
-        { name: "현대자동차", ticker: "005380", baseMcap: 56.0, betaX: 3.5, betaY: 1.5, baseOffset: 14.0 },
-        { name: "기아", ticker: "000270", baseMcap: 44.0, betaX: 3.8, betaY: 1.6, baseOffset: 15.0 },
-        { name: "셀트리온", ticker: "068270", baseMcap: 36.0, betaX: 2.0, betaY: 1.0, baseOffset: 9.0 },
-        { name: "KB금융", ticker: "105560", baseMcap: 31.0, betaX: 2.5, betaY: 1.2, baseOffset: 18.0 },
-        { name: "신한지주", ticker: "055550", baseMcap: 26.0, betaX: 2.2, betaY: 1.1, baseOffset: 14.0 },
-        { name: "POSCO홀딩스", ticker: "005490", baseMcap: 24.0, betaX: 5.0, betaY: 2.8, baseOffset: 6.0 }
+        { name: "삼성전자", ticker: "005930", baseMcap: 2035.63, betaX: 5.5, betaY: 3.0, baseOffset: 8.0 },
+        { name: "SK하이닉스", ticker: "000660", baseMcap: 1813.68, betaX: 8.5, betaY: 5.0, baseOffset: 24.0 },
+        { name: "LG에너지솔루션", ticker: "373220", baseMcap: 84.71, betaX: 6.0, betaY: 3.5, baseOffset: 5.0 },
+        { name: "삼성바이오로직스", ticker: "207940", baseMcap: 58.93, betaX: 1.8, betaY: 0.8, baseOffset: 7.0 },
+        { name: "현대자동차", ticker: "005380", baseMcap: 133.80, betaX: 3.5, betaY: 1.5, baseOffset: 14.0 },
+        { name: "기아", ticker: "000270", baseMcap: 53.40, betaX: 3.8, betaY: 1.6, baseOffset: 15.0 },
+        { name: "셀트리온", ticker: "068270", baseMcap: 36.81, betaX: 2.0, betaY: 1.0, baseOffset: 9.0 },
+        { name: "KB금융", ticker: "105560", baseMcap: 54.52, betaX: 2.5, betaY: 1.2, baseOffset: 18.0 },
+        { name: "신한지주", ticker: "055550", baseMcap: 46.00, betaX: 2.2, betaY: 1.1, baseOffset: 14.0 },
+        { name: "POSCO홀딩스", ticker: "005490", baseMcap: 24.35, betaX: 5.0, betaY: 2.8, baseOffset: 6.0 }
     ];
 
     const usTop10 = usTop10Defs.map((item, idx) => {
@@ -1695,7 +1696,7 @@ function calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2
         lowStocks: lowStocks,
         volumeStocks: volumeStocks,
         sectorReturns: sectorReturns,
-        mcapSp500Total: `$${mcapSp500Total.toFixed(2)}T`,
+        mcapSp500Total: `$${mcapSp500Total.toFixed(2)}T (약 ${Math.round(mcapSp500Total * EXCHANGE_RATE).toLocaleString()}조원)`,
         mcapKospiTotal: `${Math.round(mcapKospiTotal).toLocaleString()}조원`,
         mcapKosdaqTotal: `${Math.round(mcapKosdaqTotal).toLocaleString()}조원`,
         usTop10: usTop10,
