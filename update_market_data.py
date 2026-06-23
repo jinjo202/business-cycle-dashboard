@@ -74,6 +74,25 @@ def fetch_top_10(ticker_list, divisor, is_kr=False):
                 
             if eps_1y == 0 and info.get('forwardEps'):
                 eps_1y = info.get('forwardEps')
+                
+            ret_1d, ret_1w, ret_1m = 0.0, 0.0, 0.0
+            last_updated = datetime.datetime.now().strftime('%Y-%m-%d %H:%M')
+            try:
+                hist = t.history(period="1mo")
+                if len(hist) >= 2:
+                    ret_1d = (hist['Close'].iloc[-1] / hist['Close'].iloc[-2] - 1) * 100
+                if len(hist) >= 6:
+                    ret_1w = (hist['Close'].iloc[-1] / hist['Close'].iloc[-6] - 1) * 100
+                if len(hist) >= 15:
+                    ret_1m = (hist['Close'].iloc[-1] / hist['Close'].iloc[0] - 1) * 100
+                elif len(hist) > 0:
+                    ret_1m = (hist['Close'].iloc[-1] / hist['Close'].iloc[0] - 1) * 100
+                    
+                unix_time = info.get('regularMarketTime')
+                if unix_time:
+                    last_updated = datetime.datetime.fromtimestamp(unix_time).strftime('%Y-%m-%d %H:%M')
+            except Exception:
+                pass
             
             app_ticker = ticker.replace("-", ".") if not is_kr else ticker.split(".")[0]
             
@@ -90,7 +109,11 @@ def fetch_top_10(ticker_list, divisor, is_kr=False):
                 "eps_0q": round(eps_0q, 2),
                 "eps_1q": round(eps_1q, 2),
                 "eps_0y": round(eps_0y, 2),
-                "eps_1y": round(eps_1y, 2)
+                "eps_1y": round(eps_1y, 2),
+                "ret_1d": round(ret_1d, 2),
+                "ret_1w": round(ret_1w, 2),
+                "ret_1m": round(ret_1m, 2),
+                "last_updated": last_updated
             })
             print(f"{app_ticker}: Mcap {mcap_trillions:.2f}T, Price {price}, PE {fwd_pe:.1f}, EPS_1Y {eps_1y:.2f}")
         except Exception as e:
@@ -110,7 +133,7 @@ def generate_js_array(var_name, data_list):
     lines = [f"    const {var_name} = ["]
     for i, d in enumerate(data_list):
         comma = "," if i < len(data_list) - 1 else ""
-        s = f'        {{ name: "{d["name"]}", ticker: "{d["ticker"]}", baseMcap: {d["baseMcap"]}, betaX: {d["betaX"]}, betaY: {d["betaY"]}, baseOffset: {d["baseOffset"]}, price: {d["price"]}, fwdPE: {d["fwdPE"]}, eps_trail: {d["eps_trail"]}, eps_0q: {d["eps_0q"]}, eps_1q: {d["eps_1q"]}, eps_0y: {d["eps_0y"]}, eps_1y: {d["eps_1y"]} }}{comma}'
+        s = f'        {{ name: "{d["name"]}", ticker: "{d["ticker"]}", baseMcap: {d["baseMcap"]}, betaX: {d["betaX"]}, betaY: {d["betaY"]}, baseOffset: {d["baseOffset"]}, price: {d["price"]}, fwdPE: {d["fwdPE"]}, eps_trail: {d["eps_trail"]}, eps_0q: {d["eps_0q"]}, eps_1q: {d["eps_1q"]}, eps_0y: {d["eps_0y"]}, eps_1y: {d["eps_1y"]}, ret_1d: {d["ret_1d"]}, ret_1w: {d["ret_1w"]}, ret_1m: {d["ret_1m"]}, last_updated: "{d["last_updated"]}" }}{comma}'
         lines.append(s)
     lines.append("    ];")
     return "\n".join(lines)
@@ -138,8 +161,8 @@ print(f"Market data updated successfully.")
 if os.path.exists(index_html_path):
     with open(index_html_path, 'r', encoding='utf-8') as f:
         html_content = f.read()
-    today_str = datetime.datetime.now().strftime("%Y년 %m월 %d일 기준")
-    html_content = re.sub(r'\([0-9]{4}년\s*[0-9]{1,2}월\s*[0-9]{1,2}일\s*기준\)', f'({today_str})', html_content)
+    today_str = datetime.datetime.now().strftime("%Y년 %m월 %d일 %H:%M 기준")
+    html_content = re.sub(r'\([0-9]{4}년\s*[0-9]{1,2}월\s*[0-9]{1,2}일.*?\)', f'({today_str})', html_content)
     with open(index_html_path, 'w', encoding='utf-8') as f:
         f.write(html_content)
     print("Updated date in index.html")
