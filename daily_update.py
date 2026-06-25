@@ -525,6 +525,32 @@ def main():
         f.write(index_html)
     print("Saved updated index.html successfully.")
     
+    # 6B. Update & Copy KOREA Greed & Fear Index data
+    print("\nUpdating KOREA Greed & Fear Index data...")
+    try:
+        python_exe = "C:\\Python314\\python.exe"
+        gf_script = "c:\\Users\\infomax\\OneDrive\\dev\\GREED-FREAR INDEX\\Scripts\\update_data.py"
+        gf_env = os.environ.copy()
+        gf_env["PYTHONPATH"] = "c:\\Users\\infomax\\OneDrive\\dev\\GREED-FREAR INDEX\\Lib\\site-packages"
+        
+        # Run the update_data.py script
+        subprocess.run([python_exe, gf_script], env=gf_env, check=True)
+        print("[SUCCESS] Greed & Fear Index data updated successfully.")
+        
+        # Copy files
+        import shutil
+        src_data_dir = "c:\\Users\\infomax\\OneDrive\\dev\\GREED-FREAR INDEX\\data"
+        dest_data_dir = os.path.join(WORKSPACE_DIR, "data")
+        os.makedirs(dest_data_dir, exist_ok=True)
+        
+        shutil.copy(os.path.join(src_data_dir, "historical_index.json"), os.path.join(dest_data_dir, "historical_index.json"))
+        shutil.copy(os.path.join(src_data_dir, "analytics.json"), os.path.join(dest_data_dir, "analytics.json"))
+        shutil.copy(os.path.join(src_data_dir, "us_historical_index.json"), os.path.join(dest_data_dir, "us_historical_index.json"))
+        shutil.copy(os.path.join(src_data_dir, "us_analytics.json"), os.path.join(dest_data_dir, "us_analytics.json"))
+        print("[SUCCESS] Greed & Fear Index (KR & US) data copied to business-cycle-dashboard/data/")
+    except Exception as e:
+        print(f"[ERROR] Failed to update/copy Greed & Fear Index data: {e}")
+        
     # 7. Run Verification Script
     print("\nRunning verification script to check for runtime errors...")
     try:
