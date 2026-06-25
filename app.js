@@ -1,6 +1,6 @@
 // MACROECONOMIC ENGINE & STOCK SEASONS INTERACTION WITH M2 LIQUIDITY
 
-const EXCHANGE_RATE = 1534.53;
+const EXCHANGE_RATE = 1543.26;
 // --- GLOBAL INTERACTIVE DATABASE CONFIGURATION ---
 
 const historicalPresets = {
@@ -811,39 +811,39 @@ function updateExportCard() {
 
     const baselinePrices = {
         "US": {
-            "NVDA": { name: "NVIDIA Corp.", ticker: "NVDA", base: 200.04, format: (p) => `$${p.toFixed(2)}` },
-            "AAPL": { name: "Apple Inc.", ticker: "AAPL", base: 294.30, format: (p) => `$${p.toFixed(2)}` },
-            "MSFT": { name: "Microsoft Corp.", ticker: "MSFT", base: 373.94, format: (p) => `$${p.toFixed(2)}` },
-            "AMZN": { name: "Amazon.com Inc.", ticker: "AMZN", base: 234.11, format: (p) => `$${p.toFixed(2)}` },
-            "TSLA": { name: "Tesla Inc.", ticker: "TSLA", base: 381.61, format: (p) => `$${p.toFixed(2)}` },
-            "COST": { name: "Costco Wholesale", ticker: "COST", base: 957.68, format: (p) => `$${p.toFixed(2)}` },
-            "KO": { name: "Coca-Cola Co.", ticker: "KO", base: 80.31, format: (p) => `$${p.toFixed(2)}` },
-            "PG": { name: "Procter & Gamble Co.", ticker: "PG", base: 150.86, format: (p) => `$${p.toFixed(2)}` },
-            "MCD": { name: "McDonald's Corp.", ticker: "MCD", base: 271.66, format: (p) => `$${p.toFixed(2)}` },
+            "NVDA": { name: "NVIDIA Corp.", ticker: "NVDA", base: 199.00, format: (p) => `$${p.toFixed(2)}` },
+            "AAPL": { name: "Apple Inc.", ticker: "AAPL", base: 293.08, format: (p) => `$${p.toFixed(2)}` },
+            "MSFT": { name: "Microsoft Corp.", ticker: "MSFT", base: 365.46, format: (p) => `$${p.toFixed(2)}` },
+            "AMZN": { name: "Amazon.com Inc.", ticker: "AMZN", base: 234.27, format: (p) => `$${p.toFixed(2)}` },
+            "TSLA": { name: "Tesla Inc.", ticker: "TSLA", base: 375.53, format: (p) => `$${p.toFixed(2)}` },
+            "COST": { name: "Costco Wholesale", ticker: "COST", base: 961.09, format: (p) => `$${p.toFixed(2)}` },
+            "KO": { name: "Coca-Cola Co.", ticker: "KO", base: 80.60, format: (p) => `$${p.toFixed(2)}` },
+            "PG": { name: "Procter & Gamble Co.", ticker: "PG", base: 152.04, format: (p) => `$${p.toFixed(2)}` },
+            "MCD": { name: "McDonald's Corp.", ticker: "MCD", base: 273.88, format: (p) => `$${p.toFixed(2)}` },
             "WBA": { name: "Walgreens Boots Alliance", ticker: "WBA", base: 15.40, format: (p) => `$${p.toFixed(2)}` },
             "PARA": { name: "Paramount Global", ticker: "PARA", base: 11.20, format: (p) => `$${p.toFixed(2)}` },
-            "INTC": { name: "Intel Corp.", ticker: "INTC", base: 132.28, format: (p) => `$${p.toFixed(2)}` },
-            "LMT": { name: "Lockheed Martin Corp.", ticker: "LMT", base: 503.67, format: (p) => `$${p.toFixed(2)}` },
-            "GLD": { name: "SPDR Gold Shares", ticker: "GLD", base: 377.32, format: (p) => `$${p.toFixed(2)}` },
-            "WMT": { name: "Walmart Inc.", ticker: "WMT", base: 119.42, format: (p) => `$${p.toFixed(2)}` },
-            "JPM": { name: "JPMorgan Chase & Co.", ticker: "JPM", base: 334.14, format: (p) => `$${p.toFixed(2)}` },
-            "CAT": { name: "Caterpillar Inc.", ticker: "CAT", base: 984.24, format: (p) => `$${p.toFixed(2)}` },
-            "XOM": { name: "Exxon Mobil Corp.", ticker: "XOM", base: 139.73, format: (p) => `$${p.toFixed(2)}` },
-            "GE": { name: "General Electric Co.", ticker: "GE", base: 356.47, format: (p) => `$${p.toFixed(2)}` },
-            "PYPL": { name: "PayPal Holdings Inc.", ticker: "PYPL", base: 41.70, format: (p) => `$${p.toFixed(2)}` },
-            "BA": { name: "Boeing Co.", ticker: "BA", base: 216.71, format: (p) => `$${p.toFixed(2)}` },
-            "PFE": { name: "Pfizer Inc.", ticker: "PFE", base: 24.72, format: (p) => `$${p.toFixed(2)}` },
-            "SQQQ": { name: "ProShares UltraPro Short QQQ", ticker: "SQQQ", base: 40.56, format: (p) => `$${p.toFixed(2)}` },
-            "VIX": { name: "iPath Volatility VIX ETN", ticker: "VIX", base: 18.87, format: (p) => `$${p.toFixed(2)}` },
-            "XLU": { name: "Utilities Select Sector SPDR", ticker: "XLU", base: 45.07, format: (p) => `$${p.toFixed(2)}` },
-            "AMD": { name: "Advanced Micro Devices", ticker: "AMD", base: 519.85, format: (p) => `$${p.toFixed(2)}` },
-            "SMCI": { name: "Super Micro Computer", ticker: "SMCI", base: 33.32, format: (p) => `$${p.toFixed(2)}` },
-            "TLT": { name: "iShares 20+ Yr Treasury Bond", ticker: "TLT", base: 86.20, format: (p) => `$${p.toFixed(2)}` },
-            "BAC": { name: "Bank of America Corp.", ticker: "BAC", base: 57.91, format: (p) => `$${p.toFixed(2)}` },
-            "FCX": { name: "Freeport-McMoRan Inc.", ticker: "FCX", base: 64.40, format: (p) => `$${p.toFixed(2)}` }
+            "INTC": { name: "Intel Corp.", ticker: "INTC", base: 131.65, format: (p) => `$${p.toFixed(2)}` },
+            "LMT": { name: "Lockheed Martin Corp.", ticker: "LMT", base: 491.64, format: (p) => `$${p.toFixed(2)}` },
+            "GLD": { name: "SPDR Gold Shares", ticker: "GLD", base: 365.92, format: (p) => `$${p.toFixed(2)}` },
+            "WMT": { name: "Walmart Inc.", ticker: "WMT", base: 119.00, format: (p) => `$${p.toFixed(2)}` },
+            "JPM": { name: "JPMorgan Chase & Co.", ticker: "JPM", base: 333.45, format: (p) => `$${p.toFixed(2)}` },
+            "CAT": { name: "Caterpillar Inc.", ticker: "CAT", base: 994.45, format: (p) => `$${p.toFixed(2)}` },
+            "XOM": { name: "Exxon Mobil Corp.", ticker: "XOM", base: 136.90, format: (p) => `$${p.toFixed(2)}` },
+            "GE": { name: "General Electric Co.", ticker: "GE", base: 365.88, format: (p) => `$${p.toFixed(2)}` },
+            "PYPL": { name: "PayPal Holdings Inc.", ticker: "PYPL", base: 42.48, format: (p) => `$${p.toFixed(2)}` },
+            "BA": { name: "Boeing Co.", ticker: "BA", base: 220.25, format: (p) => `$${p.toFixed(2)}` },
+            "PFE": { name: "Pfizer Inc.", ticker: "PFE", base: 24.04, format: (p) => `$${p.toFixed(2)}` },
+            "SQQQ": { name: "ProShares UltraPro Short QQQ", ticker: "SQQQ", base: 40.45, format: (p) => `$${p.toFixed(2)}` },
+            "VIX": { name: "iPath Volatility VIX ETN", ticker: "VIX", base: 18.63, format: (p) => `$${p.toFixed(2)}` },
+            "XLU": { name: "Utilities Select Sector SPDR", ticker: "XLU", base: 45.54, format: (p) => `$${p.toFixed(2)}` },
+            "AMD": { name: "Advanced Micro Devices", ticker: "AMD", base: 519.74, format: (p) => `$${p.toFixed(2)}` },
+            "SMCI": { name: "Super Micro Computer", ticker: "SMCI", base: 32.45, format: (p) => `$${p.toFixed(2)}` },
+            "TLT": { name: "iShares 20+ Yr Treasury Bond", ticker: "TLT", base: 87.38, format: (p) => `$${p.toFixed(2)}` },
+            "BAC": { name: "Bank of America Corp.", ticker: "BAC", base: 57.73, format: (p) => `$${p.toFixed(2)}` },
+            "FCX": { name: "Freeport-McMoRan Inc.", ticker: "FCX", base: 61.84, format: (p) => `$${p.toFixed(2)}` }
         },
         "KR": {
-            "SK하이닉스": { name: "SK하이닉스", ticker: "000660", base: 2580000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "SK하이닉스": { name: "SK하이닉스", ticker: "000660", base: 2934000, format: (p) => `${Math.round(p).toLocaleString()}원` },
             "한미반도체": { name: "한미반도체", ticker: "042700", base: 309500, format: (p) => `${Math.round(p).toLocaleString()}원` },
             "현대차": { name: "현대자동차", ticker: "005380", base: 680000, format: (p) => `${Math.round(p).toLocaleString()}원` },
             "기아": { name: "기아", ticker: "000270", base: 167800, format: (p) => `${Math.round(p).toLocaleString()}원` },
@@ -1612,36 +1612,36 @@ function calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2
     const ytdKospi = 5.2 + 6.0 * x + 3.0 * y;
     const ytdKosdaq = 6.8 + 8.2 * x + 4.5 * y;
 
-    const mcapSp500Total = 78.34 * (1 + ytdSp500 / 100);
-    const mcapKospiTotal = 6928.15 * (1 + ytdKospi / 100);
-    const mcapKosdaqTotal = 599.07 * (1 + ytdKosdaq / 100);
+    const mcapSp500Total = 78.26 * (1 + ytdSp500 / 100);
+    const mcapKospiTotal = 7347.77 * (1 + ytdKospi / 100);
+    const mcapKosdaqTotal = 585.48 * (1 + ytdKosdaq / 100);
 
     // US S&P 500 Top 10 Companies
             const usTop10Defs = [
-        { name: "NVIDIA Corp.", ticker: "NVDA", baseMcap: 4.85, betaX: 8.0, betaY: 6.0, baseOffset: 22.0, price: 201.07, fwdPE: 15.8, eps_trail: 6.53, eps_0q: 2.08, eps_1q: 2.35, eps_0y: 8.96, eps_1y: 12.73, ret_1d: -3.62, ret_1w: -5.34, ret_1m: -6.29, last_updated: "2026-06-24 00:16" },
-        { name: "Apple Inc.", ticker: "AAPL", baseMcap: 4.32, betaX: 3.5, betaY: 1.8, baseOffset: 9.0, price: 299.09, fwdPE: 31.15, eps_trail: 8.26, eps_0q: 1.89, eps_1q: 2.01, eps_0y: 8.76, eps_1y: 9.67, ret_1d: 0.7, ret_1w: 0.9, ret_1m: -3.0, last_updated: "2026-06-24 00:16" },
-        { name: "Alphabet Inc.", ticker: "GOOGL", baseMcap: 4.22, betaX: 3.8, betaY: 1.9, baseOffset: 8.0, price: 346.5, fwdPE: 23.81, eps_trail: 13.11, eps_0q: 2.87, eps_1q: 3.0, eps_0y: 14.22, eps_1y: 14.51, ret_1d: -0.89, ret_1w: -6.17, ret_1m: -10.83, last_updated: "2026-06-24 00:16" },
-        { name: "Microsoft Corp.", ticker: "MSFT", baseMcap: 2.78, betaX: 4.0, betaY: 2.0, baseOffset: 10.0, price: 374.87, fwdPE: 19.38, eps_trail: 16.79, eps_0q: 4.24, eps_1q: 4.62, eps_0y: 16.84, eps_1y: 19.35, ret_1d: 2.05, ret_1w: -6.23, ret_1m: -9.89, last_updated: "2026-06-24 00:16" },
+        { name: "NVIDIA Corp.", ticker: "NVDA", baseMcap: 4.82, betaX: 8.0, betaY: 6.0, baseOffset: 22.0, price: 201.07, fwdPE: 15.8, eps_trail: 6.53, eps_0q: 2.08, eps_1q: 2.35, eps_0y: 8.96, eps_1y: 12.73, ret_1d: -3.62, ret_1w: -5.34, ret_1m: -6.29, last_updated: "2026-06-24 00:16" },
+        { name: "Apple Inc.", ticker: "AAPL", baseMcap: 4.30, betaX: 3.5, betaY: 1.8, baseOffset: 9.0, price: 299.09, fwdPE: 31.15, eps_trail: 8.26, eps_0q: 1.89, eps_1q: 2.01, eps_0y: 8.76, eps_1y: 9.67, ret_1d: 0.7, ret_1w: 0.9, ret_1m: -3.0, last_updated: "2026-06-24 00:16" },
+        { name: "Alphabet Inc.", ticker: "GOOGL", baseMcap: 4.21, betaX: 3.8, betaY: 1.9, baseOffset: 8.0, price: 346.5, fwdPE: 23.81, eps_trail: 13.11, eps_0q: 2.87, eps_1q: 3.0, eps_0y: 14.22, eps_1y: 14.51, ret_1d: -0.89, ret_1w: -6.17, ret_1m: -10.83, last_updated: "2026-06-24 00:16" },
+        { name: "Microsoft Corp.", ticker: "MSFT", baseMcap: 2.71, betaX: 4.0, betaY: 2.0, baseOffset: 10.0, price: 374.87, fwdPE: 19.38, eps_trail: 16.79, eps_0q: 4.24, eps_1q: 4.62, eps_0y: 16.84, eps_1y: 19.35, ret_1d: 2.05, ret_1w: -6.23, ret_1m: -9.89, last_updated: "2026-06-24 00:16" },
         { name: "Amazon.com Inc.", ticker: "AMZN", baseMcap: 2.52, betaX: 4.5, betaY: 2.2, baseOffset: 11.0, price: 234.39, fwdPE: 23.72, eps_trail: 7.36, eps_0q: 1.81, eps_1q: 1.91, eps_0y: 8.66, eps_1y: 9.88, ret_1d: 0.69, ret_1w: -4.73, ret_1m: -11.65, last_updated: "2026-06-24 00:16" },
-        { name: "Broadcom Inc.", ticker: "AVGO", baseMcap: 1.81, betaX: 4.8, betaY: 2.5, baseOffset: 13.0, price: 380.28, fwdPE: 19.62, eps_trail: 6.0, eps_0q: 3.24, eps_1q: 3.87, eps_0y: 11.62, eps_1y: 19.39, ret_1d: -3.02, ret_1w: -3.31, ret_1m: -9.75, last_updated: "2026-06-24 00:16" },
-        { name: "Tesla Inc.", ticker: "TSLA", baseMcap: 1.43, betaX: 7.0, betaY: 5.0, baseOffset: 15.0, price: 385.24, fwdPE: 154.1, eps_trail: 1.09, eps_0q: 0.46, eps_1q: 0.54, eps_0y: 2.06, eps_1y: 2.5, ret_1d: -4.9, ret_1w: -6.31, ret_1m: -11.16, last_updated: "2026-06-24 00:16" },
-        { name: "Meta Platforms", ticker: "META", baseMcap: 1.43, betaX: 5.2, betaY: 3.0, baseOffset: 12.0, price: 565.12, fwdPE: 15.59, eps_trail: 27.52, eps_0q: 7.2, eps_1q: 7.04, eps_0y: 32.83, eps_1y: 34.92, ret_1d: 0.24, ret_1w: -4.76, ret_1m: -7.61, last_updated: "2026-06-24 00:16" },
-        { name: "Berkshire Hathaway", ticker: "BRK.B", baseMcap: 1.06, betaX: 1.5, betaY: 0.5, baseOffset: 6.0, price: 493.8, fwdPE: 23.0, eps_trail: 33.57, eps_0q: 5.01, eps_1q: 5.3, eps_0y: 20.75, eps_1y: 21.47, ret_1d: 1.04, ret_1w: -0.35, ret_1m: 2.1, last_updated: "2026-06-24 00:16" },
-        { name: "Eli Lilly & Co.", ticker: "LLY", baseMcap: 0.99, betaX: 2.0, betaY: 1.0, baseOffset: 18.0, price: 1101.72, fwdPE: 24.78, eps_trail: 28.1, eps_0q: 8.81, eps_1q: 9.4, eps_0y: 36.21, eps_1y: 44.46, ret_1d: -0.03, ret_1w: -2.45, ret_1m: 3.47, last_updated: "2026-06-24 00:16" }
+        { name: "Broadcom Inc.", ticker: "AVGO", baseMcap: 1.82, betaX: 4.8, betaY: 2.5, baseOffset: 13.0, price: 380.28, fwdPE: 19.62, eps_trail: 6.0, eps_0q: 3.24, eps_1q: 3.87, eps_0y: 11.62, eps_1y: 19.39, ret_1d: -3.02, ret_1w: -3.31, ret_1m: -9.75, last_updated: "2026-06-24 00:16" },
+        { name: "Tesla Inc.", ticker: "TSLA", baseMcap: 1.41, betaX: 7.0, betaY: 5.0, baseOffset: 15.0, price: 385.24, fwdPE: 154.1, eps_trail: 1.09, eps_0q: 0.46, eps_1q: 0.54, eps_0y: 2.06, eps_1y: 2.5, ret_1d: -4.9, ret_1w: -6.31, ret_1m: -11.16, last_updated: "2026-06-24 00:16" },
+        { name: "Meta Platforms", ticker: "META", baseMcap: 1.42, betaX: 5.2, betaY: 3.0, baseOffset: 12.0, price: 565.12, fwdPE: 15.59, eps_trail: 27.52, eps_0q: 7.2, eps_1q: 7.04, eps_0y: 32.83, eps_1y: 34.92, ret_1d: 0.24, ret_1w: -4.76, ret_1m: -7.61, last_updated: "2026-06-24 00:16" },
+        { name: "Berkshire Hathaway", ticker: "BRK.B", baseMcap: 1.07, betaX: 1.5, betaY: 0.5, baseOffset: 6.0, price: 493.8, fwdPE: 23.0, eps_trail: 33.57, eps_0q: 5.01, eps_1q: 5.3, eps_0y: 20.75, eps_1y: 21.47, ret_1d: 1.04, ret_1w: -0.35, ret_1m: 2.1, last_updated: "2026-06-24 00:16" },
+        { name: "Eli Lilly & Co.", ticker: "LLY", baseMcap: 1.00, betaX: 2.0, betaY: 1.0, baseOffset: 18.0, price: 1101.72, fwdPE: 24.78, eps_trail: 28.1, eps_0q: 8.81, eps_1q: 9.4, eps_0y: 36.21, eps_1y: 44.46, ret_1d: -0.03, ret_1w: -2.45, ret_1m: 3.47, last_updated: "2026-06-24 00:16" }
     ];
 
     // KOSPI Top 10 Companies
             const krTop10Defs = [
-        { name: "삼성전자", ticker: "005930", baseMcap: 2235.91, betaX: 5.5, betaY: 3.0, baseOffset: 8.0, price: 310000.0, fwdPE: 5.34, eps_trail: 0, eps_0q: 11061.49, eps_1q: 13483.35, eps_0y: 45425.67, eps_1y: 58035.6, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "SK하이닉스", ticker: "000660", baseMcap: 1831.43, betaX: 8.5, betaY: 5.0, baseOffset: 24.0, price: 2555000.0, fwdPE: 6.18, eps_trail: 0, eps_0q: 71064.06, eps_1q: 88259.91, eps_0y: 305490.4, eps_1y: 413579.4, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "현대차", ticker: "005380", baseMcap: 133.27, betaX: 3.5, betaY: 1.5, baseOffset: 14.0, price: 511000.0, fwdPE: 10.36, eps_trail: 0, eps_0q: 12370.13, eps_1q: 12614.77, eps_0y: 44708.26, eps_1y: 49327.39, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "LG에너지솔루션", ticker: "373220", baseMcap: 85.53, betaX: 6.0, betaY: 3.5, baseOffset: 5.0, price: 362000.0, fwdPE: 42.11, eps_trail: 0, eps_0q: 878.92, eps_1q: 2508.59, eps_0y: 1979.04, eps_1y: 8596.31, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "삼성물산", ticker: "028260", baseMcap: 78.79, betaX: 2.0, betaY: 1.5, baseOffset: 5.0, price: 455000.0, fwdPE: 25.83, eps_trail: 0, eps_0q: 3136.25, eps_1q: 3472.02, eps_0y: 15864.73, eps_1y: 17613.21, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "삼성바이오로직스", ticker: "207940", baseMcap: 64.11, betaX: 1.8, betaY: 0.8, baseOffset: 7.0, price: 1273000.0, fwdPE: 26.41, eps_trail: 0, eps_0q: 8865.59, eps_1q: 9676.67, eps_0y: 42404.33, eps_1y: 48198.96, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "KB금융", ticker: "105560", baseMcap: 53.84, betaX: 2.5, betaY: 1.2, baseOffset: 18.0, price: 153700.0, fwdPE: 8.13, eps_trail: 0, eps_0q: 4578.9, eps_1q: 4985.44, eps_0y: 17648.36, eps_1y: 18906.17, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "기아", ticker: "000270", baseMcap: 53.98, betaX: 3.8, betaY: 1.6, baseOffset: 15.0, price: 137400.0, fwdPE: 5.82, eps_trail: 0, eps_0q: 6129.74, eps_1q: 5699.84, eps_0y: 21668.62, eps_1y: 23614.46, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "신한지주", ticker: "055550", baseMcap: 45.06, betaX: 2.2, betaY: 1.1, baseOffset: 14.0, price: 97700.0, fwdPE: 7.58, eps_trail: 0, eps_0q: 3301.84, eps_1q: 3203.13, eps_0y: 11800.98, eps_1y: 12897.58, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "현대모비스", ticker: "012330", baseMcap: 45.39, betaX: 2.5, betaY: 1.2, baseOffset: 6.0, price: 510000.0, fwdPE: 9.61, eps_trail: 0, eps_0q: 13246.62, eps_1q: 13516.65, eps_0y: 47320.18, eps_1y: 53062.31, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" }
+        { name: "삼성전자", ticker: "005930", baseMcap: 2360.68, betaX: 5.5, betaY: 3.0, baseOffset: 8.0, price: 310000.0, fwdPE: 5.34, eps_trail: 0, eps_0q: 11061.49, eps_1q: 13483.35, eps_0y: 45425.67, eps_1y: 58035.6, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "SK하이닉스", ticker: "000660", baseMcap: 2083.42, betaX: 8.5, betaY: 5.0, baseOffset: 24.0, price: 2555000.0, fwdPE: 6.18, eps_trail: 0, eps_0q: 71064.06, eps_1q: 88259.91, eps_0y: 305490.4, eps_1y: 413579.4, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "현대차", ticker: "005380", baseMcap: 131.70, betaX: 3.5, betaY: 1.5, baseOffset: 14.0, price: 511000.0, fwdPE: 10.36, eps_trail: 0, eps_0q: 12370.13, eps_1q: 12614.77, eps_0y: 44708.26, eps_1y: 49327.39, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "LG에너지솔루션", ticker: "373220", baseMcap: 82.84, betaX: 6.0, betaY: 3.5, baseOffset: 5.0, price: 362000.0, fwdPE: 42.11, eps_trail: 0, eps_0q: 878.92, eps_1q: 2508.59, eps_0y: 1979.04, eps_1y: 8596.31, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "삼성물산", ticker: "028260", baseMcap: 87.22, betaX: 2.0, betaY: 1.5, baseOffset: 5.0, price: 455000.0, fwdPE: 25.83, eps_trail: 0, eps_0q: 3136.25, eps_1q: 3472.02, eps_0y: 15864.73, eps_1y: 17613.21, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "삼성바이오로직스", ticker: "207940", baseMcap: 65.04, betaX: 1.8, betaY: 0.8, baseOffset: 7.0, price: 1273000.0, fwdPE: 26.41, eps_trail: 0, eps_0q: 8865.59, eps_1q: 9676.67, eps_0y: 42404.33, eps_1y: 48198.96, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "KB금융", ticker: "105560", baseMcap: 54.16, betaX: 2.5, betaY: 1.2, baseOffset: 18.0, price: 153700.0, fwdPE: 8.13, eps_trail: 0, eps_0q: 4578.9, eps_1q: 4985.44, eps_0y: 17648.36, eps_1y: 18906.17, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "기아", ticker: "000270", baseMcap: 54.33, betaX: 3.8, betaY: 1.6, baseOffset: 15.0, price: 137400.0, fwdPE: 5.82, eps_trail: 0, eps_0q: 6129.74, eps_1q: 5699.84, eps_0y: 21668.62, eps_1y: 23614.46, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "신한지주", ticker: "055550", baseMcap: 44.92, betaX: 2.2, betaY: 1.1, baseOffset: 14.0, price: 97700.0, fwdPE: 7.58, eps_trail: 0, eps_0q: 3301.84, eps_1q: 3203.13, eps_0y: 11800.98, eps_1y: 12897.58, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "현대모비스", ticker: "012330", baseMcap: 45.84, betaX: 2.5, betaY: 1.2, baseOffset: 6.0, price: 510000.0, fwdPE: 9.61, eps_trail: 0, eps_0q: 13246.62, eps_1q: 13516.65, eps_0y: 47320.18, eps_1y: 53062.31, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" }
     ];
 
     const usTop10 = usTop10Defs.map((item, idx) => {
@@ -2602,10 +2602,12 @@ function switchMarketTab(tabName) {
     const techBtn = document.getElementById("market-tab-tech");
     const stocksBtn = document.getElementById("market-tab-stocks");
     const mcapBtn = document.getElementById("market-tab-mcap");
+    const feargreedBtn = document.getElementById("market-tab-feargreed");
     const valContent = document.getElementById("market-content-val");
     const techContent = document.getElementById("market-content-tech");
     const stocksContent = document.getElementById("market-content-stocks");
     const mcapContent = document.getElementById("market-content-mcap");
+    const feargreedContent = document.getElementById("market-content-feargreed");
 
     if (!valBtn || !techBtn || !valContent || !techContent) return;
 
@@ -2613,11 +2615,13 @@ function switchMarketTab(tabName) {
     techBtn.classList.remove("active");
     if (stocksBtn) stocksBtn.classList.remove("active");
     if (mcapBtn) mcapBtn.classList.remove("active");
+    if (feargreedBtn) feargreedBtn.classList.remove("active");
 
     valContent.classList.add("hidden");
     techContent.classList.add("hidden");
     if (stocksContent) stocksContent.classList.add("hidden");
     if (mcapContent) mcapContent.classList.add("hidden");
+    if (feargreedContent) feargreedContent.classList.add("hidden");
 
     if (tabName === 'val') {
         valBtn.classList.add("active");
@@ -2631,6 +2635,14 @@ function switchMarketTab(tabName) {
     } else if (tabName === 'mcap') {
         if (mcapBtn) mcapBtn.classList.add("active");
         if (mcapContent) mcapContent.classList.remove("hidden");
+    } else if (tabName === 'feargreed') {
+        if (feargreedBtn) feargreedBtn.classList.add("active");
+        if (feargreedContent) feargreedContent.classList.remove("hidden");
+        
+        // Trigger data load and chart rendering/resizing
+        if (typeof window.loadFearGreedData === 'function') {
+            window.loadFearGreedData();
+        }
     }
 }
 
@@ -3335,6 +3347,416 @@ document.addEventListener("DOMContentLoaded", () => {
         stockModal.addEventListener("click", (e) => {
             if (e.target === stockModal) {
                 stockModal.classList.add("hidden");
+            }
+        });
+    }
+
+    // --- KOREA & US Greed & Fear Index Tab Logic ---
+    let currentFGRegion = 'kr'; // 'kr' or 'us'
+    let krFGData = null;
+    let krFGAnalytics = null;
+    let usFGData = null;
+    let usFGAnalytics = null;
+
+    let fgLineChartInstance = null;
+    let fgCorrChartInstance = null;
+    let fgReturnsChartInstance = null;
+
+    window.switchFGRegion = function(region) {
+        if (currentFGRegion === region) return;
+        currentFGRegion = region;
+        
+        // Toggle active class on region buttons
+        const btnKr = document.getElementById("fg-region-kr");
+        const btnUs = document.getElementById("fg-region-us");
+        if (btnKr && btnUs) {
+            if (region === 'kr') {
+                btnKr.classList.add("active");
+                btnUs.classList.remove("active");
+            } else {
+                btnUs.classList.add("active");
+                btnKr.classList.remove("active");
+            }
+        }
+        
+        // Redraw UI with the selected region's data
+        updateFearGreedUI();
+    };
+
+    window.loadFearGreedData = async function() {
+        if (krFGData && krFGAnalytics && usFGData && usFGAnalytics) {
+            // Already loaded, just resize charts in case container dimensions changed
+            setTimeout(() => {
+                if (fgLineChartInstance) fgLineChartInstance.resize();
+                if (fgCorrChartInstance) fgCorrChartInstance.resize();
+                if (fgReturnsChartInstance) fgReturnsChartInstance.resize();
+            }, 50);
+            return;
+        }
+
+        try {
+            console.log("Fetching KOREA & US Greed & Fear Index data...");
+            const [resKrData, resKrAnalytics, resUsData, resUsAnalytics] = await Promise.all([
+                fetch('./data/historical_index.json'),
+                fetch('./data/analytics.json'),
+                fetch('./data/us_historical_index.json'),
+                fetch('./data/us_analytics.json')
+            ]);
+            
+            if (!resKrData.ok || !resKrAnalytics.ok || !resUsData.ok || !resUsAnalytics.ok) {
+                throw new Error("Failed to load Greed & Fear data files for KR or US.");
+            }
+            
+            krFGData = await resKrData.json();
+            krFGAnalytics = await resKrAnalytics.json();
+            usFGData = await resUsData.json();
+            usFGAnalytics = await resUsAnalytics.json();
+            
+            updateFearGreedUI();
+            
+            // Add change listener to period select if not already added
+            const periodSelect = document.getElementById("fg-period-select");
+            if (periodSelect) {
+                periodSelect.addEventListener("change", function() {
+                    drawFearGreedReturnsChart();
+                });
+            }
+        } catch (err) {
+            console.error("Error loading Greed & Fear data:", err);
+            const compList = document.getElementById("fg-components-list");
+            if (compList) {
+                compList.innerHTML = `<div style="font-size: 0.75rem; color: #ef4444; text-align: center; padding: 2rem 0;">데이터 로드 실패: ${err.message}</div>`;
+            }
+        }
+    };
+
+    function updateFearGreedUI() {
+        const data = currentFGRegion === 'kr' ? krFGData : usFGData;
+        const analytics = currentFGRegion === 'kr' ? krFGAnalytics : usFGAnalytics;
+        
+        if (!data || data.length === 0) return;
+        
+        const currentRecord = data[data.length - 1];
+        const indexVal = currentRecord.index;
+        const state = currentRecord.state;
+        
+        // Update Title labels based on active region
+        const gaugeTitle = document.getElementById("fg-gauge-title");
+        if (gaugeTitle) {
+            gaugeTitle.textContent = currentFGRegion === 'kr' ? "오늘의 한국 시장 심리 지표" : "오늘의 미국 시장 심리 지표";
+        }
+        
+        const lineTitle = document.getElementById("fg-linechart-title");
+        if (lineTitle) {
+            lineTitle.textContent = currentFGRegion === 'kr' ? "KOSPI 지수 vs 공포 & 탐욕 지수 동향" : "S&P 500 지수 vs 공포 & 탐욕 지수 동향";
+        }
+        
+        const legendPrice = document.getElementById("fg-legend-price");
+        if (legendPrice) {
+            legendPrice.textContent = currentFGRegion === 'kr' ? "KOSPI 지수" : "S&P 500 지수";
+        }
+        
+        const corrTitle = document.getElementById("fg-corr-title");
+        if (corrTitle) {
+            corrTitle.textContent = currentFGRegion === 'kr' ? "지수의 선행성 검증 (시차 상관관계)" : "지수의 선행성 검증 (시차 상관관계)";
+        }
+        
+        const corrDesc = document.getElementById("fg-corr-desc");
+        if (corrDesc) {
+            corrDesc.textContent = currentFGRegion === 'kr' 
+                ? "지수(t)와 KOSPI 일일 수익률(t+Lag)의 상관계수 (R). Lag > 0 영역의 양의 상관계수는 지수의 미래 예측력(선행성)을 의미합니다."
+                : "지수(t)와 S&P 500 일일 수익률(t+Lag)의 상관계수 (R). Lag > 0 영역의 양의 상관계수는 지수의 미래 예측력(선행성)을 의미합니다.";
+        }
+        
+        const returnsTitle = document.getElementById("fg-returns-title");
+        if (returnsTitle) {
+            returnsTitle.textContent = currentFGRegion === 'kr' ? "지수 국면별 KOSPI 미래 평균 수익률 (백테스트)" : "지수 국면별 S&P 500 미래 평균 수익률 (백테스트)";
+        }
+        
+        const returnsDesc = document.getElementById("fg-returns-desc");
+        if (returnsDesc) {
+            returnsDesc.textContent = currentFGRegion === 'kr'
+                ? "지수 국면 진입 시점 이후 코스피 지수의 평균 수익률 비교 (10일 후 vs 20일 후)"
+                : "지수 국면 진입 시점 이후 S&P 500 지수의 평균 수익률 비교 (10일 후 vs 20일 후)";
+        }
+
+        // Update index value text
+        const valElem = document.getElementById("fg-index-val");
+        if (valElem) valElem.textContent = indexVal.toFixed(1);
+        
+        // Korean state labels and colors
+        const koreanStates = {
+            "Extreme Fear": "극단적 공포",
+            "Fear": "공포",
+            "Neutral": "중립",
+            "Greed": "탐욕",
+            "Extreme Greed": "극단적 탐욕"
+        };
+        const stateColors = {
+            "Extreme Fear": "#ef4444",
+            "Fear": "#f97316",
+            "Neutral": "#9ca3af",
+            "Greed": "#84cc16",
+            "Extreme Greed": "#10b981"
+        };
+        
+        const stateLbl = document.getElementById("fg-state-lbl");
+        if (stateLbl) {
+            stateLbl.textContent = `${koreanStates[state] || state} (${state})`;
+            stateLbl.style.color = stateColors[state] || "#9ca3af";
+        }
+        
+        // Rotate gauge needle (-90deg for 0, 90deg for 100)
+        const needle = document.getElementById("fg-needle");
+        if (needle) {
+            const angle = -90 + (indexVal / 100) * 180;
+            needle.style.transform = `rotate(${angle}deg)`;
+        }
+        
+        // Render 6 subcomponents
+        const compList = document.getElementById("fg-components-list");
+        if (compList) {
+            compList.innerHTML = "";
+            
+            const krCompMeta = {
+                momentum: { name: "시장 모멘텀", desc: "KOSPI vs 125일 이평선 비율", unit: "" },
+                strength: { name: "주가 강도", desc: "KOSPI 52주 범위 위치 (%)", unit: "%" },
+                breadth: { name: "주가 폭", desc: "OBV vs 125일 이평선 이격도", unit: "" },
+                volatility: { name: "시장 변동성", desc: "20일 연율화 역사적 변동성 (%)", unit: "%" },
+                safe_haven: { name: "안전자산 수요", desc: "주식 - 채권 20일 수익률차 (p.p)", unit: " p.p" },
+                credit_spread: { name: "신용 스프레드", desc: "회사채(AA-) - 국고채 스프레드 (%)", unit: "%" }
+            };
+            
+            const usCompMeta = {
+                momentum: { name: "시장 모멘텀", desc: "S&P 500 vs 125일 이평선 비율", unit: "" },
+                strength: { name: "주가 강도", desc: "S&P 500 52주 범위 위치 (%)", unit: "%" },
+                breadth: { name: "주가 폭", desc: "OBV vs 125일 이평선 이격도", unit: "" },
+                volatility: { name: "시장 변동성 (VIX)", desc: "VIX 지수 수준", unit: "" },
+                safe_haven: { name: "안전자산 수요", desc: "S&P 500 - 10Y 국채 20일 수익률차", unit: " p.p" },
+                credit_spread: { name: "정크본드 수요 (신용 스프레드)", desc: "HYG / IEF ETF 가격 비율", unit: "" }
+            };
+            
+            const compMeta = currentFGRegion === 'kr' ? krCompMeta : usCompMeta;
+            const components = currentRecord.components;
+            
+            Object.keys(compMeta).forEach(k => {
+                if (!components[k]) return;
+                const score = components[k].score;
+                const raw = components[k].raw;
+                const meta = compMeta[k];
+                
+                let barColor = "#9ca3af";
+                if (score <= 25) barColor = "#ef4444";
+                else if (score <= 45) barColor = "#f97316";
+                else if (score <= 55) barColor = "#9ca3af";
+                else if (score <= 75) barColor = "#84cc16";
+                else barColor = "#10b981";
+                
+                const row = document.createElement("div");
+                row.style.cssText = "display: flex; flex-direction: column; gap: 4px; padding-bottom: 0.35rem; border-bottom: 1px solid rgba(255,255,255,0.03);";
+                row.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem;">
+                        <span style="font-weight: 700; color: var(--text-color);">${meta.name} <span style="font-size: 0.65rem; color: var(--text-muted); font-weight: 500;">(${meta.desc})</span></span>
+                        <span style="font-weight: 700;">실측: ${raw.toLocaleString(undefined, {maximumFractionDigits: 2})}${meta.unit} | <span style="color: ${barColor};">점수: ${score.toFixed(0)}</span></span>
+                    </div>
+                    <div style="height: 5px; background: rgba(255,255,255,0.04); border-radius: 3px; overflow: hidden;">
+                        <div style="width: ${score}%; height: 100%; background: ${barColor}; border-radius: 3px; transition: width 0.8s;"></div>
+                    </div>
+                `;
+                compList.appendChild(row);
+            });
+        }
+        
+        // Draw the charts
+        drawFearGreedCharts();
+    }
+
+    function drawFearGreedCharts() {
+        const data = currentFGRegion === 'kr' ? krFGData : usFGData;
+        const analytics = currentFGRegion === 'kr' ? krFGAnalytics : usFGAnalytics;
+        if (!data || !analytics) return;
+        
+        const isDark = document.body.classList.contains("dark-theme") || !document.body.classList.contains("light-theme");
+        const textColor = isDark ? '#94a3b8' : '#475569';
+        const gridColor = isDark ? 'rgba(255, 255, 255, 0.04)' : 'rgba(0, 0, 0, 0.04)';
+        
+        // 1. Line Chart: Price vs G&F Index
+        const ctxLine = document.getElementById("fgLineChart").getContext("2d");
+        const labels = data.map(d => d.date);
+        const priceData = data.map(d => d.kospi);
+        const indexData = data.map(d => d.index);
+        
+        const priceLabel = currentFGRegion === 'kr' ? 'KOSPI 지수 (좌축)' : 'S&P 500 지수 (좌축)';
+        
+        if (fgLineChartInstance) fgLineChartInstance.destroy();
+        fgLineChartInstance = new Chart(ctxLine, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: priceLabel,
+                        data: priceData,
+                        borderColor: '#f59e0b',
+                        borderWidth: 1.5,
+                        pointRadius: 0,
+                        yAxisID: 'y-kospi',
+                        tension: 0.1
+                    },
+                    {
+                        label: '공포탐욕지수',
+                        data: indexData,
+                        borderColor: '#6366f1',
+                        borderWidth: 2.2,
+                        pointRadius: 0,
+                        yAxisID: 'y-index',
+                        tension: 0.1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: { mode: 'index', intersect: false },
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: {
+                        grid: { color: gridColor },
+                        ticks: { color: textColor, font: { family: 'Inter', size: 9 }, maxTicksLimit: 8 }
+                    },
+                    'y-kospi': {
+                        type: 'linear',
+                        position: 'left',
+                        grid: { color: gridColor },
+                        title: {
+                            display: true,
+                            text: priceLabel,
+                            color: '#f59e0b',
+                            font: { family: 'Inter', size: 9, weight: 'bold' }
+                        },
+                        ticks: { color: '#f59e0b', font: { family: 'Inter', size: 9 } }
+                    },
+                    'y-index': {
+                        type: 'linear',
+                        position: 'right',
+                        min: 0,
+                        max: 100,
+                        grid: { drawOnChartArea: false },
+                        title: {
+                            display: true,
+                            text: '공포 & 탐욕 지수 (우축)',
+                            color: '#6366f1',
+                            font: { family: 'Inter', size: 9, weight: 'bold' }
+                        },
+                        ticks: { color: '#6366f1', font: { family: 'Inter', size: 9 } }
+                    }
+                }
+            }
+        });
+        
+        // 2. Correlation Chart
+        const ctxCorr = document.getElementById("fgCorrChart").getContext("2d");
+        const corrLabels = analytics.cross_correlation.map(c => c.lag);
+        const corrData = analytics.cross_correlation.map(c => c.r);
+        
+        const corrLabel = currentFGRegion === 'kr' ? 'KOSPI 상관계수 (R)' : 'S&P 500 상관계수 (R)';
+        
+        if (fgCorrChartInstance) fgCorrChartInstance.destroy();
+        fgCorrChartInstance = new Chart(ctxCorr, {
+            type: 'line',
+            data: {
+                labels: corrLabels,
+                datasets: [{
+                    label: corrLabel,
+                    data: corrData,
+                    borderColor: '#6366f1',
+                    borderWidth: 2,
+                    pointRadius: 1,
+                    tension: 0.2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: {
+                        grid: { color: gridColor },
+                        ticks: { color: textColor, font: { family: 'Inter', size: 8 } }
+                    },
+                    y: {
+                        grid: { color: gridColor },
+                        ticks: { color: textColor, font: { family: 'Inter', size: 8 } }
+                    }
+                }
+            }
+        });
+        
+        // 3. Returns Bar Chart
+        drawFearGreedReturnsChart();
+    }
+
+    function drawFearGreedReturnsChart() {
+        const analytics = currentFGRegion === 'kr' ? krFGAnalytics : usFGAnalytics;
+        if (!analytics || !analytics.subsequent_returns) return;
+        
+        const isDark = document.body.classList.contains("dark-theme") || !document.body.classList.contains("light-theme");
+        const textColor = isDark ? '#94a3b8' : '#475569';
+        const gridColor = isDark ? 'rgba(255, 255, 255, 0.04)' : 'rgba(0, 0, 0, 0.04)';
+        
+        const periodSelect = document.getElementById("fg-period-select");
+        const period = periodSelect ? periodSelect.value : "all";
+        
+        const returnData = analytics.subsequent_returns[period] || analytics.subsequent_returns["all"] || analytics.subsequent_returns;
+        
+        const ctxReturns = document.getElementById("fgReturnsChart").getContext("2d");
+        const statesEng = ["Extreme Fear", "Fear", "Neutral", "Greed", "Extreme Greed"];
+        const statesKo = ["극단적 공포", "공포", "중립", "탐욕", "극단적 탐욕"];
+        
+        const sub10Data = returnData.sub10 || analytics.subsequent_returns.sub10 || {};
+        const sub20Data = returnData.sub20 || analytics.subsequent_returns.sub20 || {};
+        
+        const sub10 = statesEng.map(s => sub10Data[s] || 0);
+        const sub20 = statesEng.map(s => sub20Data[s] || 0);
+        
+        if (fgReturnsChartInstance) fgReturnsChartInstance.destroy();
+        fgReturnsChartInstance = new Chart(ctxReturns, {
+            type: 'bar',
+            data: {
+                labels: statesKo,
+                datasets: [
+                    {
+                        label: '10일 후',
+                        data: sub10,
+                        backgroundColor: '#818cf8',
+                        borderRadius: 3
+                    },
+                    {
+                        label: '20일 후',
+                        data: sub20,
+                        backgroundColor: '#6366f1',
+                        borderRadius: 3
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: textColor, font: { family: 'Inter', size: 8 } }
+                    },
+                    y: {
+                        grid: { color: gridColor },
+                        ticks: { 
+                            color: textColor, 
+                            font: { family: 'Inter', size: 8 },
+                            callback: function(value) { return value.toFixed(1) + '%'; }
+                        }
+                    }
+                }
             }
         });
     }
