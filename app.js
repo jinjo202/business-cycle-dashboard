@@ -3826,3 +3826,217 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    // ==========================================
+    // Event Listeners for Seed Money
+    // ==========================================
+    const inputSeedMoney = document.getElementById("input-seed-money");
+    if (inputSeedMoney) {
+        inputSeedMoney.addEventListener("input", triggerModelUpdate);
+    }
+
+    // ==========================================
+    // API Settings Modal Logic
+    // ==========================================
+    const btnApiSettings = document.getElementById("btn-api-settings");
+    const apiModal = document.getElementById("api-modal");
+    const btnModalCancel = document.getElementById("btn-modal-cancel");
+    const btnModalSave = document.getElementById("btn-modal-save");
+    const inputApiKey = document.getElementById("input-api-key");
+    
+    // Load existing API key
+    const savedKey = localStorage.getItem("macrocycle_gemini_api_key");
+    if (savedKey && inputApiKey) {
+        inputApiKey.value = savedKey;
+    }
+
+    if (btnApiSettings) {
+        btnApiSettings.addEventListener("click", () => {
+            if (apiModal) apiModal.classList.remove("hidden");
+        });
+    }
+    if (btnModalCancel) {
+        btnModalCancel.addEventListener("click", () => {
+            if (apiModal) apiModal.classList.add("hidden");
+        });
+    }
+    if (btnModalSave) {
+        btnModalSave.addEventListener("click", () => {
+            if (inputApiKey) localStorage.setItem("macrocycle_gemini_api_key", inputApiKey.value.trim());
+            if (apiModal) apiModal.classList.add("hidden");
+        });
+    }
+
+    // ==========================================
+    // Chat Logic
+    // ==========================================
+    const btnToggleChat = document.getElementById("btn-toggle-chat");
+    const chatWindow = document.getElementById("chat-window");
+    const btnCloseChat = document.getElementById("btn-close-chat");
+    const chatInput = document.getElementById("chat-input");
+    const btnSendChat = document.getElementById("btn-send-chat");
+    const chatMessages = document.getElementById("chat-messages");
+    
+    let chatHistory = [];
+
+    if (btnToggleChat) {
+        btnToggleChat.addEventListener("click", () => {
+            if (chatWindow) chatWindow.classList.toggle("hidden");
+        });
+    }
+    if (btnCloseChat) {
+        btnCloseChat.addEventListener("click", () => {
+            if (chatWindow) chatWindow.classList.add("hidden");
+        });
+    }
+
+    function appendMessage(role, text) {
+        if (!chatMessages) return;
+        const msgDiv = document.createElement("div");
+        if (role === "user") {
+            msgDiv.className = "chat-message-user";
+        } else {
+            msgDiv.className = "chat-message-bot";
+        }
+        msgDiv.textContent = text;
+        chatMessages.appendChild(msgDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function appendTypingIndicator() {
+        if (!chatMessages) return;
+        const typingDiv = document.createElement("div");
+        typingDiv.className = "typing-indicator";
+        typingDiv.id = "chat-typing-indicator";
+        typingDiv.innerHTML = "<span></span><span></span><span></span>";
+        chatMessages.appendChild(typingDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function removeTypingIndicator() {
+        const typingDiv = document.getElementById("chat-typing-indicator");
+        if (typingDiv) {
+            typingDiv.remove();
+        }
+    }
+
+    async function handleChatSend() {
+        if (!chatInput) return;
+        const text = chatInput.value.trim();
+        if (!text) return;
+
+        const apiKey = localStorage.getItem("macrocycle_gemini_api_key");
+        if (!apiKey) {
+            if (apiModal) apiModal.classList.remove("hidden");
+            alert("Wall Street CIO와 대화하려면 먼저 Gemini API Key를 등록해주세요.");
+            return;
+        }
+
+        appendMessage("user", text);
+        chatInput.value = "";
+        appendTypingIndicator();
+
+        // Build Context
+        const elTitle = document.getElementById("narrative-title");
+        const currentPhase = elTitle ? elTitle.textContent : "Unknown";
+        // fallback if activeRegion is not globally available in this scope, we can pull from UI
+        let currentRegion = "한국 시장";
+        const btnUs = document.getElementById("btn-region-us");
+        if (btnUs && btnUs.classList.contains("active")) {
+            currentRegion = "미국 시장";
+        }
+        
+        const elCli = document.getElementById("val-cli");
+        const elGdp = document.getElementById("val-gdp");
+        const elRate = document.getElementById("val-rate");
+        const cliVal = elCli ? elCli.textContent : "N/A";
+        const gdpVal = elGdp ? elGdp.textContent : "N/A";
+        const rateVal = elRate ? elRate.textContent : "N/A";
+        const seedVal = inputSeedMoney ? inputSeedMoney.value : "100000000";
+
+        const systemPrompt = `You are a legendary Wall Street Fund Manager and CIO. You act as a 'Devil's Advocate'. 
+The user is viewing the MacroCycle dashboard.
+Current context: 
+- Target Market: ${currentRegion}
+- Current Macro Phase: ${currentPhase}
+- CLI: ${cliVal}, GDP Growth: ${gdpVal}, Policy Rate: ${rateVal}
+- User's Seed Money: ${seedVal} KRW
+
+You must:
+1. Provide sharp, contrarian, and logical insights (Devil's advocate).
+2. Answer in Korean.
+3. Keep responses concise (under 150 words) but professional and highly actionable.
+4. Recommend specific ticker ideas with exact investment amounts if appropriate.`;
+
+        if (chatHistory.length === 0) {
+            chatHistory.push({ role: "system", content: systemPrompt });
+        }
+        chatHistory.push({ role: "user", content: text });
+
+        try {
+            // Gemini Format conversion
+            let geminiContents = [];
+            let systemText = "";
+            for (let i = 0; i < chatHistory.length; i++) {
+                if (chatHistory[i].role === "system") {
+                    systemText = chatHistory[i].content;
+                } else {
+                    geminiContents.push({
+                        role: chatHistory[i].role === "assistant" ? "model" : "user",
+                        parts: [{ text: chatHistory[i].content }]
+                    });
+                }
+            }
+
+            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    systemInstruction: {
+                        parts: [{ text: systemText }]
+                    },
+                    contents: geminiContents,
+                    generationConfig: {
+                        temperature: 0.7,
+                        maxOutputTokens: 400
+                    }
+                })
+            });
+
+            removeTypingIndicator();
+
+            if (!response.ok) {
+                const errData = await response.json();
+                console.error("Gemini Error:", errData);
+                appendMessage("bot", `API Error: ${errData.error?.message || "Unknown error occurred"}`);
+                chatHistory.pop(); // Remove failed user message
+                return;
+            }
+
+            const data = await response.json();
+            const botMessage = data.candidates[0].content.parts[0].text;
+            
+            appendMessage("bot", botMessage);
+            chatHistory.push({ role: "assistant", content: botMessage });
+
+        } catch (err) {
+            removeTypingIndicator();
+            appendMessage("bot", "Network Error: Failed to connect to Gemini API.");
+            chatHistory.pop();
+        }
+    }
+
+    if (btnSendChat) {
+        btnSendChat.addEventListener("click", handleChatSend);
+    }
+    if (chatInput) {
+        chatInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                handleChatSend();
+            }
+        });
+    }
+});
