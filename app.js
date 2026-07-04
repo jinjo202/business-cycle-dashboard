@@ -133,7 +133,7 @@ const historicalPresets = {
 
 const exportData = {
     "US": {
-        "2026-06": {
+        "2026-07": {
             growthVal: "+3.4%",
             growthTrend: "▲ AI 관련 기술 라이선스 호조",
             balanceVal: "-618억 달러 적자",
@@ -175,7 +175,7 @@ const exportData = {
                 }
             ]
         },
-        "2026-05": {
+        "2026-07": {
             growthVal: "+3.2%",
             growthTrend: "▲ AI 서비스 및 에너지 견인",
             balanceVal: "-625억 달러 적자",
@@ -387,7 +387,7 @@ const exportData = {
         }
     },
     "KR": {
-        "2026-06": {
+        "2026-07": {
             growthVal: "+60.4%",
             growthTrend: "▲ HBM 및 메모리 반도체 슈퍼사이클 지속",
             balanceVal: "+175.0억 달러 흑자 (1~20일 잠정)",
@@ -429,7 +429,7 @@ const exportData = {
                 }
             ]
         },
-        "2026-05": {
+        "2026-07": {
             growthVal: "+11.7%",
             growthTrend: "▲ HBM/DRAM 반도체 대형 사이클 주도 (잠정치)",
             balanceVal: "+48.5억 달러 흑자",
@@ -644,7 +644,7 @@ const exportData = {
 
 function updateExportCard() {
     const monthSelect = document.getElementById("export-month-select");
-    const activeMonth = monthSelect ? monthSelect.value : "2026-05";
+    const activeMonth = monthSelect ? monthSelect.value : "2026-07";
 
     const data = exportData[activeRegion][activeMonth];
     if (!data) return;
@@ -981,7 +981,7 @@ function updateTransitionPanel(prevMacro, currMacro, prevSeason, currSeason, pre
         prevDateLabel = timeMachineMonths[prevIndex].label;
     } else if (activeMode === "sim") {
         const monthSelectEl = document.getElementById("export-month-select");
-        const selectVal = monthSelectEl ? monthSelectEl.value : "2026-05";
+        const selectVal = monthSelectEl ? monthSelectEl.value : "2026-07";
         const idx = getMonthIndex(selectVal);
         const prevIdx = Math.max(0, idx - 1);
         if (prevIdx >= 0 && prevIdx < timeMachineMonths.length) {
@@ -2800,7 +2800,7 @@ document.addEventListener("DOMContentLoaded", () => {
             citiVal = ind.citi;
             gdpnowVal = ind.gdpnow;
         } else {
-            const selectVal = document.getElementById("export-month-select") ? document.getElementById("export-month-select").value : "2026-06";
+            const selectVal = document.getElementById("export-month-select") ? document.getElementById("export-month-select").value : "2026-07";
             const mIndex = getMonthIndex(selectVal);
             const ind = getIndicatorsForMonth(activeRegion, mIndex);
             citiVal = ind.citi;
@@ -2871,7 +2871,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             // Simulation Mode: Compare against previous month of selected reference month
             const monthSelectEl = document.getElementById("export-month-select");
-            const selectVal = monthSelectEl ? monthSelectEl.value : "2026-05";
+            const selectVal = monthSelectEl ? monthSelectEl.value : "2026-07";
             prevIndex = Math.max(0, getMonthIndex(selectVal) - 1);
             const prevInd = getIndicatorsForMonth(activeRegion, prevIndex);
             prevMacro = calculateMacroMetrics(prevInd.cli, prevInd.pmi, prevInd.gdp, prevInd.m2, prevInd.rate, prevInd.spread);
@@ -3018,25 +3018,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Reset Sliders
     function resetSlidersToBaseline() {
-        if (activeRegion === "US") {
-            inputCli.value = 100.2;
-            inputPmi.value = 51.5;
-            inputGdp.value = 2.2;
-            inputEps.value = 10.5;
-            inputM2.value = 4.5;
-            inputCpi.value = 2.3;
-            inputRate.value = 4.0;
-            inputSpread.value = 0.2;
-        } else {
-            inputCli.value = 100.5;
-            inputPmi.value = 52.0;
-            inputGdp.value = 2.5;
-            inputEps.value = 200.0;
-            inputM2.value = 6.0;
-            inputCpi.value = 2.1;
-            inputRate.value = 3.25;
-            inputSpread.value = 0.4;
-        }
+        const monthSelectEl = document.getElementById("export-month-select");
+        const selectVal = monthSelectEl ? monthSelectEl.value : "2026-07";
+        const idx = getMonthIndex(selectVal);
+        const ind = getIndicatorsForMonth(activeRegion, idx);
+        
+        inputCli.value = ind.cli;
+        inputPmi.value = ind.pmi;
+        inputGdp.value = ind.gdp;
+        inputEps.value = ind.eps;
+        inputM2.value = ind.m2;
+        inputCpi.value = ind.cpi;
+        inputRate.value = ind.rate;
+        inputSpread.value = ind.spread;
+        
         triggerModelUpdate();
     }
 
