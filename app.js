@@ -834,7 +834,7 @@ function updateExportCard() {
             "BA": { name: "Boeing Co.", ticker: "BA", base: 226.49, format: (p) => `$${p.toFixed(2)}` },
             "PFE": { name: "Pfizer Inc.", ticker: "PFE", base: 24.32, format: (p) => `$${p.toFixed(2)}` },
             "SQQQ": { name: "ProShares UltraPro Short QQQ", ticker: "SQQQ", base: 39.95, format: (p) => `$${p.toFixed(2)}` },
-            "VIX": { name: "iPath Volatility VIX ETN", ticker: "VIX", base: 15.81, format: (p) => `$${p.toFixed(2)}` },
+            "VIX": { name: "iPath Volatility VIX ETN", ticker: "VIX", base: 16.15, format: (p) => `$${p.toFixed(2)}` },
             "XLU": { name: "Utilities Select Sector SPDR", ticker: "XLU", base: 45.76, format: (p) => `$${p.toFixed(2)}` },
             "AMD": { name: "Advanced Micro Devices", ticker: "AMD", base: 517.82, format: (p) => `$${p.toFixed(2)}` },
             "SMCI": { name: "Super Micro Computer", ticker: "SMCI", base: 27.22, format: (p) => `$${p.toFixed(2)}` },
