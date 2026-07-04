@@ -910,11 +910,11 @@ const fiveYearMilestones = {
 let activeRegion = "US"; // "US" or "KR"
 let activeMode = "sim"; // "sim" or "hist" or "time"
 let activePreset = "2026_current";
-let activeTimeIndex = 61; // month index from 0 (May 2021) to 60 (May 2026)
+let activeTimeIndex = 62; // month index from 0 (May 2021) to 62 (July 2026)
 const timeMachineMonths = [];
 const startYear = 2021;
 const startMonth = 5; // May
-for (let i = 0; i <= 61; i++) {
+for (let i = 0; i <= 62; i++) {
     let curMonth = startMonth + i;
     let curYear = startYear + Math.floor((curMonth - 1) / 12);
     curMonth = ((curMonth - 1) % 12) + 1;
@@ -3213,7 +3213,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const startYear = 2021;
             const startMonth = 5; // May
 
-            for (let i = 0; i <= 61; i++) {
+            for (let i = 0; i <= 62; i++) {
                 const intervalIndex = Math.min(5, Math.floor(i / 12));
                 const fraction = (i % 12) / 12.0;
 
