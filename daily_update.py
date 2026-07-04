@@ -3,6 +3,7 @@ import sys
 import re
 import urllib.request
 import json
+from datetime import datetime
 import subprocess
 import traceback
 
@@ -472,7 +473,16 @@ def main():
     print("Updating default values in index.html...")
     with open(INDEX_HTML_PATH, "r", encoding="utf-8") as f:
         index_html = f.read()
-        
+
+    # Update timestamp in index.html
+    current_time_str = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    index_html = re.sub(
+        r'<span id="data-updated-at"([^>]*)>(.*?)</span>',
+        f'<span id="data-updated-at"\\1>\\n                    데이터 기준일: {current_time_str}\\n                </span>',
+        index_html,
+        flags=re.DOTALL
+    )
+    print(f"Updated index.html timestamp to {current_time_str}")
     # Update default S&P 500 total cap text in HTML
     if "S&P500" in index_prices:
         sp500_latest = index_prices["S&P500"]
