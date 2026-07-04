@@ -471,6 +471,13 @@ def main():
     
     # 6. Apply Updates to index.html
     print("Updating default values in index.html...")
+
+    # Inject final update date
+    current_time_str = datetime.now().strftime('%Y-%m-%d %H:%M')
+    date_span = f'<div id="data-updated-at" style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">최종 업데이트: {current_time_str}</div>'
+    if 'id="data-updated-at"' in index_html:
+        index_html = re.sub(r'<div id="data-updated-at".*?</div>', date_span, index_html)
+
     with open(INDEX_HTML_PATH, "r", encoding="utf-8") as f:
         index_html = f.read()
 
