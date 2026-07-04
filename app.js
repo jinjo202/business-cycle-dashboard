@@ -3989,22 +3989,40 @@ You must:
                 }
             }
 
-            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    systemInstruction: {
-                        parts: [{ text: systemText }]
+            const modelsToTry = ["gemini-1.5-flash-latest", "gemini-1.5-pro-latest", "gemini-2.0-flash-exp"];
+            let response = null;
+            let lastErrData = null;
+            
+            for (const modelName of modelsToTry) {
+                response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
                     },
-                    contents: geminiContents,
-                    generationConfig: {
-                        temperature: 0.7,
-                        maxOutputTokens: 400
+                    body: JSON.stringify({
+                        systemInstruction: {
+                            parts: [{ text: systemText }]
+                        },
+                        contents: geminiContents,
+                        generationConfig: {
+                            temperature: 0.7,
+                            maxOutputTokens: 400
+                        }
+                    })
+                });
+                
+                if (response.ok) {
+                    break;
+                } else {
+                    lastErrData = await response.clone().json();
+                    if (lastErrData.error?.message?.includes("not found")) {
+                        console.warn(`${modelName} not found, falling back...`);
+                        continue;
+                    } else {
+                        break;
                     }
-                })
-            });
+                }
+            }
 
             removeTypingIndicator();
 
