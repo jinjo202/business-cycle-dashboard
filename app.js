@@ -1,6 +1,6 @@
 // MACROECONOMIC ENGINE & STOCK SEASONS INTERACTION WITH M2 LIQUIDITY
 
-const EXCHANGE_RATE = 1438.20;
+const EXCHANGE_RATE = 1440.53;
 // --- GLOBAL INTERACTIVE DATABASE CONFIGURATION ---
 
 const historicalPresets = {
@@ -834,7 +834,7 @@ function updateExportCard() {
             "BA": { name: "Boeing Co.", ticker: "BA", base: 216.14, format: (p) => `$${p.toFixed(2)}` },
             "PFE": { name: "Pfizer Inc.", ticker: "PFE", base: 25.01, format: (p) => `$${p.toFixed(2)}` },
             "SQQQ": { name: "ProShares UltraPro Short QQQ", ticker: "SQQQ", base: 43.73, format: (p) => `$${p.toFixed(2)}` },
-            "VIX": { name: "iPath Volatility VIX ETN", ticker: "VIX", base: 15.99, format: (p) => `$${p.toFixed(2)}` },
+            "VIX": { name: "iPath Volatility VIX ETN", ticker: "VIX", base: 16.10, format: (p) => `$${p.toFixed(2)}` },
             "XLU": { name: "Utilities Select Sector SPDR", ticker: "XLU", base: 44.35, format: (p) => `$${p.toFixed(2)}` },
             "AMD": { name: "Advanced Micro Devices", ticker: "AMD", base: 476.15, format: (p) => `$${p.toFixed(2)}` },
             "SMCI": { name: "Super Micro Computer", ticker: "SMCI", base: 28.40, format: (p) => `$${p.toFixed(2)}` },
@@ -843,7 +843,7 @@ function updateExportCard() {
             "FCX": { name: "Freeport-McMoRan Inc.", ticker: "FCX", base: 62.63, format: (p) => `$${p.toFixed(2)}` }
         },
         "KR": {
-            "SK하이닉스": { name: "SK하이닉스", ticker: "000660", base: 1718000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "SK하이닉스": { name: "SK하이닉스", ticker: "000660", base: 1567000, format: (p) => `${Math.round(p).toLocaleString()}원` },
             "한미반도체": { name: "한미반도체", ticker: "042700", base: 309500, format: (p) => `${Math.round(p).toLocaleString()}원` },
             "현대차": { name: "현대자동차", ticker: "005380", base: 680000, format: (p) => `${Math.round(p).toLocaleString()}원` },
             "기아": { name: "기아", ticker: "000270", base: 167800, format: (p) => `${Math.round(p).toLocaleString()}원` },
@@ -1613,8 +1613,8 @@ function calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2
     const ytdKosdaq = 6.8 + 8.2 * x + 4.5 * y;
 
     const mcapSp500Total = 79.66 * (1 + ytdSp500 / 100);
-    const mcapKospiTotal = 5394.19 * (1 + ytdKospi / 100);
-    const mcapKosdaqTotal = 474.19 * (1 + ytdKosdaq / 100);
+    const mcapKospiTotal = 5117.75 * (1 + ytdKospi / 100);
+    const mcapKosdaqTotal = 485.78 * (1 + ytdKosdaq / 100);
 
     // US S&P 500 Top 10 Companies
             const usTop10Defs = [
@@ -1632,16 +1632,16 @@ function calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2
 
     // KOSPI Top 10 Companies
             const krTop10Defs = [
-        { name: "삼성전자", ticker: "005930", baseMcap: 1723.72, betaX: 5.5, betaY: 3.0, baseOffset: 8.0, price: 310000.0, fwdPE: 5.34, eps_trail: 0, eps_0q: 11061.49, eps_1q: 13483.35, eps_0y: 45425.67, eps_1y: 58035.6, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "SK하이닉스", ticker: "000660", baseMcap: 1219.53, betaX: 8.5, betaY: 5.0, baseOffset: 24.0, price: 2555000.0, fwdPE: 6.18, eps_trail: 0, eps_0q: 71064.06, eps_1q: 88259.91, eps_0y: 305490.4, eps_1y: 413579.4, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "현대차", ticker: "005380", baseMcap: 101.59, betaX: 3.5, betaY: 1.5, baseOffset: 14.0, price: 511000.0, fwdPE: 10.36, eps_trail: 0, eps_0q: 12370.13, eps_1q: 12614.77, eps_0y: 44708.26, eps_1y: 49327.39, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "LG에너지솔루션", ticker: "373220", baseMcap: 76.75, betaX: 6.0, betaY: 3.5, baseOffset: 5.0, price: 362000.0, fwdPE: 42.11, eps_trail: 0, eps_0q: 878.92, eps_1q: 2508.59, eps_0y: 1979.04, eps_1y: 8596.31, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "삼성물산", ticker: "028260", baseMcap: 57.52, betaX: 2.0, betaY: 1.5, baseOffset: 5.0, price: 455000.0, fwdPE: 25.83, eps_trail: 0, eps_0q: 3136.25, eps_1q: 3472.02, eps_0y: 15864.73, eps_1y: 17613.21, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "삼성바이오로직스", ticker: "207940", baseMcap: 68.74, betaX: 1.8, betaY: 0.8, baseOffset: 7.0, price: 1273000.0, fwdPE: 26.41, eps_trail: 0, eps_0q: 8865.59, eps_1q: 9676.67, eps_0y: 42404.33, eps_1y: 48198.96, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "KB금융", ticker: "105560", baseMcap: 59.16, betaX: 2.5, betaY: 1.2, baseOffset: 18.0, price: 153700.0, fwdPE: 8.13, eps_trail: 0, eps_0q: 4578.9, eps_1q: 4985.44, eps_0y: 17648.36, eps_1y: 18906.17, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "기아", ticker: "000270", baseMcap: 51.26, betaX: 3.8, betaY: 1.6, baseOffset: 15.0, price: 137400.0, fwdPE: 5.82, eps_trail: 0, eps_0q: 6129.74, eps_1q: 5699.84, eps_0y: 21668.62, eps_1y: 23614.46, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "신한지주", ticker: "055550", baseMcap: 47.27, betaX: 2.2, betaY: 1.1, baseOffset: 14.0, price: 97700.0, fwdPE: 7.58, eps_trail: 0, eps_0q: 3301.84, eps_1q: 3203.13, eps_0y: 11800.98, eps_1y: 12897.58, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "현대모비스", ticker: "012330", baseMcap: 42.45, betaX: 2.5, betaY: 1.2, baseOffset: 6.0, price: 510000.0, fwdPE: 9.61, eps_trail: 0, eps_0q: 13246.62, eps_1q: 13516.65, eps_0y: 47320.18, eps_1y: 53062.31, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" }
+        { name: "삼성전자", ticker: "005930", baseMcap: 1572.69, betaX: 5.5, betaY: 3.0, baseOffset: 8.0, price: 310000.0, fwdPE: 5.34, eps_trail: 0, eps_0q: 11061.49, eps_1q: 13483.35, eps_0y: 45425.67, eps_1y: 58035.6, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "SK하이닉스", ticker: "000660", baseMcap: 1112.34, betaX: 8.5, betaY: 5.0, baseOffset: 24.0, price: 2555000.0, fwdPE: 6.18, eps_trail: 0, eps_0q: 71064.06, eps_1q: 88259.91, eps_0y: 305490.4, eps_1y: 413579.4, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "현대차", ticker: "005380", baseMcap: 102.90, betaX: 3.5, betaY: 1.5, baseOffset: 14.0, price: 511000.0, fwdPE: 10.36, eps_trail: 0, eps_0q: 12370.13, eps_1q: 12614.77, eps_0y: 44708.26, eps_1y: 49327.39, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "LG에너지솔루션", ticker: "373220", baseMcap: 73.94, betaX: 6.0, betaY: 3.5, baseOffset: 5.0, price: 362000.0, fwdPE: 42.11, eps_trail: 0, eps_0q: 878.92, eps_1q: 2508.59, eps_0y: 1979.04, eps_1y: 8596.31, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "삼성물산", ticker: "028260", baseMcap: 53.84, betaX: 2.0, betaY: 1.5, baseOffset: 5.0, price: 455000.0, fwdPE: 25.83, eps_trail: 0, eps_0q: 3136.25, eps_1q: 3472.02, eps_0y: 15864.73, eps_1y: 17613.21, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "삼성바이오로직스", ticker: "207940", baseMcap: 65.87, betaX: 1.8, betaY: 0.8, baseOffset: 7.0, price: 1273000.0, fwdPE: 26.41, eps_trail: 0, eps_0q: 8865.59, eps_1q: 9676.67, eps_0y: 42404.33, eps_1y: 48198.96, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "KB금융", ticker: "105560", baseMcap: 59.51, betaX: 2.5, betaY: 1.2, baseOffset: 18.0, price: 153700.0, fwdPE: 8.13, eps_trail: 0, eps_0q: 4578.9, eps_1q: 4985.44, eps_0y: 17648.36, eps_1y: 18906.17, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "기아", ticker: "000270", baseMcap: 50.37, betaX: 3.8, betaY: 1.6, baseOffset: 15.0, price: 137400.0, fwdPE: 5.82, eps_trail: 0, eps_0q: 6129.74, eps_1q: 5699.84, eps_0y: 21668.62, eps_1y: 23614.46, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "신한지주", ticker: "055550", baseMcap: 48.21, betaX: 2.2, betaY: 1.1, baseOffset: 14.0, price: 97700.0, fwdPE: 7.58, eps_trail: 0, eps_0q: 3301.84, eps_1q: 3203.13, eps_0y: 11800.98, eps_1y: 12897.58, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "현대모비스", ticker: "012330", baseMcap: 44.01, betaX: 2.5, betaY: 1.2, baseOffset: 6.0, price: 510000.0, fwdPE: 9.61, eps_trail: 0, eps_0q: 13246.62, eps_1q: 13516.65, eps_0y: 47320.18, eps_1y: 53062.31, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" }
     ];
 
     const usTop10 = usTop10Defs.map((item, idx) => {
