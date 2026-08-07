@@ -161380,5 +161380,1292 @@
       "high": 7511.06982421875,
       "low": 7468.31982421875
     }
+  },
+  {
+    "date": "2026-06-22",
+    "kospi": 7472.7900390625,
+    "index": 57.08,
+    "state": "Greed",
+    "components": {
+      "momentum": {
+        "raw": 1.0645,
+        "score": 66.5
+      },
+      "strength": {
+        "raw": 90.52,
+        "score": 32.3
+      },
+      "breadth": {
+        "raw": 51102123280.0,
+        "score": 74.7
+      },
+      "volatility": {
+        "raw": 17.28,
+        "score": 50.4
+      },
+      "safe_haven": {
+        "raw": -0.21,
+        "score": 28.9
+      },
+      "credit_spread": {
+        "raw": 0.8504,
+        "score": 89.7
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.508999824523926,
+      "corp_yield": 79.94000244140625,
+      "volume": 5976740000.0,
+      "high": 7530.009765625,
+      "low": 7460.009765625
+    }
+  },
+  {
+    "date": "2026-06-23",
+    "kospi": 7365.4599609375,
+    "index": 43.98,
+    "state": "Fear",
+    "components": {
+      "momentum": {
+        "raw": 1.0486,
+        "score": 48.9
+      },
+      "strength": {
+        "raw": 83.42,
+        "score": 18.1
+      },
+      "breadth": {
+        "raw": 45006832480.0,
+        "score": 66.1
+      },
+      "volatility": {
+        "raw": 19.49,
+        "score": 28.4
+      },
+      "safe_haven": {
+        "raw": -1.93,
+        "score": 17.3
+      },
+      "credit_spread": {
+        "raw": 0.8486,
+        "score": 85.1
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.493000030517578,
+      "corp_yield": 79.87000274658203,
+      "volume": 5640530000.0,
+      "high": 7424.169921875,
+      "low": 7347.60009765625
+    }
+  },
+  {
+    "date": "2026-06-24",
+    "kospi": 7358.22021484375,
+    "index": 39.02,
+    "state": "Fear",
+    "components": {
+      "momentum": {
+        "raw": 1.047,
+        "score": 47.7
+      },
+      "strength": {
+        "raw": 82.65,
+        "score": 17.3
+      },
+      "breadth": {
+        "raw": 38640890800.0,
+        "score": 54.5
+      },
+      "volatility": {
+        "raw": 18.63,
+        "score": 35.6
+      },
+      "safe_haven": {
+        "raw": -2.82,
+        "score": 12.5
+      },
+      "credit_spread": {
+        "raw": 0.8429,
+        "score": 66.5
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.4019999504089355,
+      "corp_yield": 79.8499984741211,
+      "volume": 5994860000.0,
+      "high": 7428.06005859375,
+      "low": 7336.81982421875
+    }
+  },
+  {
+    "date": "2026-06-25",
+    "kospi": 7357.490234375,
+    "index": 35.55,
+    "state": "Fear",
+    "components": {
+      "momentum": {
+        "raw": 1.0463,
+        "score": 47.1
+      },
+      "strength": {
+        "raw": 82.3,
+        "score": 16.9
+      },
+      "breadth": {
+        "raw": 32779139680.0,
+        "score": 37.3
+      },
+      "volatility": {
+        "raw": 18.89,
+        "score": 34.3
+      },
+      "safe_haven": {
+        "raw": -2.83,
+        "score": 12.5
+      },
+      "credit_spread": {
+        "raw": 0.8427,
+        "score": 65.2
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.392000198364258,
+      "corp_yield": 79.87999725341797,
+      "volume": 5565760000.0,
+      "high": 7419.080078125,
+      "low": 7323.5
+    }
+  },
+  {
+    "date": "2026-06-26",
+    "kospi": 7354.02001953125,
+    "index": 30.8,
+    "state": "Fear",
+    "components": {
+      "momentum": {
+        "raw": 1.0453,
+        "score": 45.9
+      },
+      "strength": {
+        "raw": 81.54,
+        "score": 15.7
+      },
+      "breadth": {
+        "raw": 23464779520.0,
+        "score": 21.7
+      },
+      "volatility": {
+        "raw": 18.41,
+        "score": 38.1
+      },
+      "safe_haven": {
+        "raw": -3.39,
+        "score": 10.7
+      },
+      "credit_spread": {
+        "raw": 0.8401,
+        "score": 52.7
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.372000217437744,
+      "corp_yield": 79.83000183105469,
+      "volume": 9105600000.0,
+      "high": 7392.9501953125,
+      "low": 7294.18017578125
+    }
+  },
+  {
+    "date": "2026-06-29",
+    "kospi": 7440.43017578125,
+    "index": 39.85,
+    "state": "Fear",
+    "components": {
+      "momentum": {
+        "raw": 1.057,
+        "score": 60.1
+      },
+      "strength": {
+        "raw": 87.49,
+        "score": 26.9
+      },
+      "breadth": {
+        "raw": 28983540400.0,
+        "score": 29.9
+      },
+      "volatility": {
+        "raw": 17.65,
+        "score": 47.0
+      },
+      "safe_haven": {
+        "raw": -2.43,
+        "score": 14.3
+      },
+      "credit_spread": {
+        "raw": 0.8417,
+        "score": 60.9
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.374000072479248,
+      "corp_yield": 80.01000213623047,
+      "volume": 5794570000.0,
+      "high": 7444.31982421875,
+      "low": 7348.8798828125
+    }
+  },
+  {
+    "date": "2026-06-30",
+    "kospi": 7499.35986328125,
+    "index": 51.0,
+    "state": "Neutral",
+    "components": {
+      "momentum": {
+        "raw": 1.0646,
+        "score": 67.7
+      },
+      "strength": {
+        "raw": 91.52,
+        "score": 36.7
+      },
+      "breadth": {
+        "raw": 34668636960.0,
+        "score": 43.1
+      },
+      "volatility": {
+        "raw": 16.45,
+        "score": 64.5
+      },
+      "safe_haven": {
+        "raw": -1.75,
+        "score": 18.9
+      },
+      "credit_spread": {
+        "raw": 0.8456,
+        "score": 75.1
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.418000221252441,
+      "corp_yield": 79.97000122070312,
+      "volume": 6037540000.0,
+      "high": 7508.2900390625,
+      "low": 7438.0400390625
+    }
+  },
+  {
+    "date": "2026-07-01",
+    "kospi": 7483.22998046875,
+    "index": 47.83,
+    "state": "Neutral",
+    "components": {
+      "momentum": {
+        "raw": 1.0616,
+        "score": 64.7
+      },
+      "strength": {
+        "raw": 90.3,
+        "score": 32.3
+      },
+      "breadth": {
+        "raw": 28553245920.0,
+        "score": 29.3
+      },
+      "volatility": {
+        "raw": 16.59,
+        "score": 62.5
+      },
+      "safe_haven": {
+        "raw": -1.51,
+        "score": 20.7
+      },
+      "credit_spread": {
+        "raw": 0.8464,
+        "score": 77.5
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.474999904632568,
+      "corp_yield": 79.58999633789062,
+      "volume": 5782730000.0,
+      "high": 7521.81005859375,
+      "low": 7449.6298828125
+    }
+  },
+  {
+    "date": "2026-07-02",
+    "kospi": 7483.240234375,
+    "index": 51.62,
+    "state": "Neutral",
+    "components": {
+      "momentum": {
+        "raw": 1.0609,
+        "score": 63.9
+      },
+      "strength": {
+        "raw": 90.3,
+        "score": 32.5
+      },
+      "breadth": {
+        "raw": 33614302080.0,
+        "score": 39.7
+      },
+      "volatility": {
+        "raw": 16.15,
+        "score": 71.6
+      },
+      "safe_haven": {
+        "raw": -0.98,
+        "score": 23.7
+      },
+      "credit_spread": {
+        "raw": 0.8469,
+        "score": 78.3
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.485000133514404,
+      "corp_yield": 79.70999908447266,
+      "volume": 5463520000.0,
+      "high": 7540.75,
+      "low": 7427.5498046875
+    }
+  },
+  {
+    "date": "2026-07-06",
+    "kospi": 7537.43017578125,
+    "index": 59.92,
+    "state": "Greed",
+    "components": {
+      "momentum": {
+        "raw": 1.0677,
+        "score": 71.9
+      },
+      "strength": {
+        "raw": 94.12,
+        "score": 45.3
+      },
+      "breadth": {
+        "raw": 38176652320.0,
+        "score": 52.7
+      },
+      "volatility": {
+        "raw": 15.57,
+        "score": 80.6
+      },
+      "safe_haven": {
+        "raw": -0.6,
+        "score": 26.7
+      },
+      "credit_spread": {
+        "raw": 0.8481,
+        "score": 82.3
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.479000091552734,
+      "corp_yield": 79.87000274658203,
+      "volume": 4971110000.0,
+      "high": 7551.31005859375,
+      "low": 7500.97021484375
+    }
+  },
+  {
+    "date": "2026-07-07",
+    "kospi": 7503.85009765625,
+    "index": 59.92,
+    "state": "Greed",
+    "components": {
+      "momentum": {
+        "raw": 1.0623,
+        "score": 65.9
+      },
+      "strength": {
+        "raw": 91.75,
+        "score": 37.9
+      },
+      "breadth": {
+        "raw": 32804874720.0,
+        "score": 37.1
+      },
+      "volatility": {
+        "raw": 16.13,
+        "score": 72.4
+      },
+      "safe_haven": {
+        "raw": 1.57,
+        "score": 54.3
+      },
+      "credit_spread": {
+        "raw": 0.8512,
+        "score": 91.9
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.5289998054504395,
+      "corp_yield": 79.76000213623047,
+      "volume": 5049590000.0,
+      "high": 7536.06005859375,
+      "low": 7478.6298828125
+    }
+  },
+  {
+    "date": "2026-07-08",
+    "kospi": 7482.7099609375,
+    "index": 53.08,
+    "state": "Neutral",
+    "components": {
+      "momentum": {
+        "raw": 1.0586,
+        "score": 62.1
+      },
+      "strength": {
+        "raw": 90.26,
+        "score": 32.1
+      },
+      "breadth": {
+        "raw": 27465560720.0,
+        "score": 26.9
+      },
+      "volatility": {
+        "raw": 16.9,
+        "score": 57.0
+      },
+      "safe_haven": {
+        "raw": 1.17,
+        "score": 47.9
+      },
+      "credit_spread": {
+        "raw": 0.8519,
+        "score": 92.5
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.568999767303467,
+      "corp_yield": 79.66000366210938,
+      "volume": 5102020000.0,
+      "high": 7488.509765625,
+      "low": 7421.81982421875
+    }
+  },
+  {
+    "date": "2026-07-09",
+    "kospi": 7543.64013671875,
+    "index": 64.0,
+    "state": "Greed",
+    "components": {
+      "momentum": {
+        "raw": 1.0665,
+        "score": 71.1
+      },
+      "strength": {
+        "raw": 94.56,
+        "score": 47.9
+      },
+      "breadth": {
+        "raw": 31593957280.0,
+        "score": 34.9
+      },
+      "volatility": {
+        "raw": 15.84,
+        "score": 77.3
+      },
+      "safe_haven": {
+        "raw": 2.21,
+        "score": 62.1
+      },
+      "credit_spread": {
+        "raw": 0.851,
+        "score": 90.7
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.539000034332275,
+      "corp_yield": 79.75,
+      "volume": 4442950000.0,
+      "high": 7546.89013671875,
+      "low": 7481.72998046875
+    }
+  },
+  {
+    "date": "2026-07-10",
+    "kospi": 7575.39013671875,
+    "index": 74.02,
+    "state": "Greed",
+    "components": {
+      "momentum": {
+        "raw": 1.0702,
+        "score": 75.9
+      },
+      "strength": {
+        "raw": 96.79,
+        "score": 63.7
+      },
+      "breadth": {
+        "raw": 35296388480.0,
+        "score": 45.1
+      },
+      "volatility": {
+        "raw": 15.03,
+        "score": 88.0
+      },
+      "safe_haven": {
+        "raw": 4.45,
+        "score": 79.5
+      },
+      "credit_spread": {
+        "raw": 0.8513,
+        "score": 91.9
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.568999767303467,
+      "corp_yield": 79.70999908447266,
+      "volume": 4006370000.0,
+      "high": 7579.93017578125,
+      "low": 7508.16015625
+    }
+  },
+  {
+    "date": "2026-07-13",
+    "kospi": 7515.33984375,
+    "index": 58.88,
+    "state": "Greed",
+    "components": {
+      "momentum": {
+        "raw": 1.061,
+        "score": 64.5
+      },
+      "strength": {
+        "raw": 92.56,
+        "score": 40.3
+      },
+      "breadth": {
+        "raw": 30341610800.0,
+        "score": 32.5
+      },
+      "volatility": {
+        "raw": 17.16,
+        "score": 54.2
+      },
+      "safe_haven": {
+        "raw": 2.73,
+        "score": 68.1
+      },
+      "credit_spread": {
+        "raw": 0.8524,
+        "score": 93.7
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.609000205993652,
+      "corp_yield": 79.5199966430664,
+      "volume": 4729990000.0,
+      "high": 7565.3701171875,
+      "low": 7506.41015625
+    }
+  },
+  {
+    "date": "2026-07-14",
+    "kospi": 7543.58984375,
+    "index": 63.33,
+    "state": "Greed",
+    "components": {
+      "momentum": {
+        "raw": 1.0644,
+        "score": 68.5
+      },
+      "strength": {
+        "raw": 94.55,
+        "score": 48.1
+      },
+      "breadth": {
+        "raw": 34955229840.0,
+        "score": 44.5
+      },
+      "volatility": {
+        "raw": 16.5,
+        "score": 64.7
+      },
+      "safe_haven": {
+        "raw": 2.24,
+        "score": 62.5
+      },
+      "credit_spread": {
+        "raw": 0.8517,
+        "score": 91.7
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.585000038146973,
+      "corp_yield": 79.68000030517578,
+      "volume": 4836950000.0,
+      "high": 7557.43994140625,
+      "low": 7513.22998046875
+    }
+  },
+  {
+    "date": "2026-07-15",
+    "kospi": 7572.39990234375,
+    "index": 67.6,
+    "state": "Greed",
+    "components": {
+      "momentum": {
+        "raw": 1.0677,
+        "score": 72.9
+      },
+      "strength": {
+        "raw": 96.56,
+        "score": 61.5
+      },
+      "breadth": {
+        "raw": 39885822640.0,
+        "score": 57.5
+      },
+      "volatility": {
+        "raw": 15.67,
+        "score": 80.7
+      },
+      "safe_haven": {
+        "raw": 0.81,
+        "score": 42.9
+      },
+      "credit_spread": {
+        "raw": 0.851,
+        "score": 90.1
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.545000076293945,
+      "corp_yield": 79.80999755859375,
+      "volume": 5236550000.0,
+      "high": 7581.5,
+      "low": 7526.9501953125
+    }
+  },
+  {
+    "date": "2026-07-16",
+    "kospi": 7533.77001953125,
+    "index": 59.1,
+    "state": "Greed",
+    "components": {
+      "momentum": {
+        "raw": 1.0615,
+        "score": 64.9
+      },
+      "strength": {
+        "raw": 93.81,
+        "score": 45.1
+      },
+      "breadth": {
+        "raw": 34213241200.0,
+        "score": 42.3
+      },
+      "volatility": {
+        "raw": 16.73,
+        "score": 60.3
+      },
+      "safe_haven": {
+        "raw": 1.36,
+        "score": 50.5
+      },
+      "credit_spread": {
+        "raw": 0.8515,
+        "score": 91.5
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.568999767303467,
+      "corp_yield": 79.80000305175781,
+      "volume": 5365300000.0,
+      "high": 7570.740234375,
+      "low": 7504.02001953125
+    }
+  },
+  {
+    "date": "2026-07-17",
+    "kospi": 7457.68994140625,
+    "index": 45.87,
+    "state": "Neutral",
+    "components": {
+      "momentum": {
+        "raw": 1.0502,
+        "score": 51.5
+      },
+      "strength": {
+        "raw": 88.41,
+        "score": 28.3
+      },
+      "breadth": {
+        "raw": 28686008480.0,
+        "score": 29.9
+      },
+      "volatility": {
+        "raw": 18.77,
+        "score": 34.9
+      },
+      "safe_haven": {
+        "raw": 1.09,
+        "score": 46.7
+      },
+      "credit_spread": {
+        "raw": 0.8488,
+        "score": 83.9
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.540999889373779,
+      "corp_yield": 79.6500015258789,
+      "volume": 5303290000.0,
+      "high": 7498.47021484375,
+      "low": 7431.259765625
+    }
+  },
+  {
+    "date": "2026-07-20",
+    "kospi": 7443.27978515625,
+    "index": 43.63,
+    "state": "Fear",
+    "components": {
+      "momentum": {
+        "raw": 1.0476,
+        "score": 48.7
+      },
+      "strength": {
+        "raw": 87.39,
+        "score": 26.7
+      },
+      "breadth": {
+        "raw": 23307526640.0,
+        "score": 21.5
+      },
+      "volatility": {
+        "raw": 18.65,
+        "score": 35.7
+      },
+      "safe_haven": {
+        "raw": 0.34,
+        "score": 37.1
+      },
+      "credit_spread": {
+        "raw": 0.8518,
+        "score": 92.1
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.5980000495910645,
+      "corp_yield": 79.68000030517578,
+      "volume": 5152910000.0,
+      "high": 7513.22998046875,
+      "low": 7440.52978515625
+    }
+  },
+  {
+    "date": "2026-07-21",
+    "kospi": 7509.2001953125,
+    "index": 54.73,
+    "state": "Neutral",
+    "components": {
+      "momentum": {
+        "raw": 1.056,
+        "score": 58.9
+      },
+      "strength": {
+        "raw": 92.07,
+        "score": 39.1
+      },
+      "breadth": {
+        "raw": 28143636560.0,
+        "score": 28.7
+      },
+      "volatility": {
+        "raw": 17.05,
+        "score": 56.1
+      },
+      "safe_haven": {
+        "raw": 1.38,
+        "score": 51.7
+      },
+      "credit_spread": {
+        "raw": 0.8536,
+        "score": 93.9
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.627999782562256,
+      "corp_yield": 79.6500015258789,
+      "volume": 5149030000.0,
+      "high": 7515.31005859375,
+      "low": 7467.85986328125
+    }
+  },
+  {
+    "date": "2026-07-22",
+    "kospi": 7498.9599609375,
+    "index": 56.93,
+    "state": "Greed",
+    "components": {
+      "momentum": {
+        "raw": 1.0538,
+        "score": 56.1
+      },
+      "strength": {
+        "raw": 91.34,
+        "score": 37.3
+      },
+      "breadth": {
+        "raw": 23026133760.0,
+        "score": 21.3
+      },
+      "volatility": {
+        "raw": 16.64,
+        "score": 62.5
+      },
+      "safe_haven": {
+        "raw": 3.04,
+        "score": 70.1
+      },
+      "credit_spread": {
+        "raw": 0.8541,
+        "score": 94.3
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.6570000648498535,
+      "corp_yield": 79.5199966430664,
+      "volume": 4890390000.0,
+      "high": 7525.93994140625,
+      "low": 7485.85009765625
+    }
+  },
+  {
+    "date": "2026-07-23",
+    "kospi": 7408.2998046875,
+    "index": 45.73,
+    "state": "Neutral",
+    "components": {
+      "momentum": {
+        "raw": 1.0405,
+        "score": 40.1
+      },
+      "strength": {
+        "raw": 84.9,
+        "score": 21.3
+      },
+      "breadth": {
+        "raw": 17370393280.0,
+        "score": 14.9
+      },
+      "volatility": {
+        "raw": 18.7,
+        "score": 35.5
+      },
+      "safe_haven": {
+        "raw": 2.94,
+        "score": 69.1
+      },
+      "credit_spread": {
+        "raw": 0.8533,
+        "score": 93.5
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.703000068664551,
+      "corp_yield": 79.2300033569336,
+      "volume": 5515210000.0,
+      "high": 7450.1201171875,
+      "low": 7376.0
+    }
+  },
+  {
+    "date": "2026-07-24",
+    "kospi": 7411.97998046875,
+    "index": 46.43,
+    "state": "Neutral",
+    "components": {
+      "momentum": {
+        "raw": 1.0404,
+        "score": 39.7
+      },
+      "strength": {
+        "raw": 85.16,
+        "score": 21.7
+      },
+      "breadth": {
+        "raw": 22090573280.0,
+        "score": 20.1
+      },
+      "volatility": {
+        "raw": 18.58,
+        "score": 37.5
+      },
+      "safe_haven": {
+        "raw": 2.89,
+        "score": 68.9
+      },
+      "credit_spread": {
+        "raw": 0.8517,
+        "score": 90.7
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.678999900817871,
+      "corp_yield": 79.2300033569336,
+      "volume": 4860620000.0,
+      "high": 7460.97998046875,
+      "low": 7396.52978515625
+    }
+  },
+  {
+    "date": "2026-07-27",
+    "kospi": 7413.18017578125,
+    "index": 46.4,
+    "state": "Neutral",
+    "components": {
+      "momentum": {
+        "raw": 1.0401,
+        "score": 39.7
+      },
+      "strength": {
+        "raw": 85.25,
+        "score": 21.9
+      },
+      "breadth": {
+        "raw": 26987861360.0,
+        "score": 26.9
+      },
+      "volatility": {
+        "raw": 18.67,
+        "score": 35.9
+      },
+      "safe_haven": {
+        "raw": 2.82,
+        "score": 68.3
+      },
+      "credit_spread": {
+        "raw": 0.8498,
+        "score": 85.7
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.640999794006348,
+      "corp_yield": 79.2699966430664,
+      "volume": 5038290000.0,
+      "high": 7480.56982421875,
+      "low": 7382.740234375
+    }
+  },
+  {
+    "date": "2026-07-28",
+    "kospi": 7428.77978515625,
+    "index": 46.85,
+    "state": "Neutral",
+    "components": {
+      "momentum": {
+        "raw": 1.0417,
+        "score": 42.1
+      },
+      "strength": {
+        "raw": 86.36,
+        "score": 24.3
+      },
+      "breadth": {
+        "raw": 32435676080.0,
+        "score": 36.7
+      },
+      "volatility": {
+        "raw": 18.21,
+        "score": 41.4
+      },
+      "safe_haven": {
+        "raw": 1.57,
+        "score": 53.7
+      },
+      "credit_spread": {
+        "raw": 0.8489,
+        "score": 82.9
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.604000091552734,
+      "corp_yield": 79.41999816894531,
+      "volume": 5590890000.0,
+      "high": 7452.08984375,
+      "low": 7382.9501953125
+    }
+  },
+  {
+    "date": "2026-07-29",
+    "kospi": 7316.14990234375,
+    "index": 32.87,
+    "state": "Fear",
+    "components": {
+      "momentum": {
+        "raw": 1.0255,
+        "score": 26.5
+      },
+      "strength": {
+        "raw": 78.36,
+        "score": 12.7
+      },
+      "breadth": {
+        "raw": 26458880240.0,
+        "score": 25.9
+      },
+      "volatility": {
+        "raw": 20.66,
+        "score": 21.1
+      },
+      "safe_haven": {
+        "raw": -0.91,
+        "score": 23.5
+      },
+      "credit_spread": {
+        "raw": 0.8505,
+        "score": 87.5
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.622000217437744,
+      "corp_yield": 79.23999786376953,
+      "volume": 5836350000.0,
+      "high": 7450.83984375,
+      "low": 7313.919921875
+    }
+  },
+  {
+    "date": "2026-07-30",
+    "kospi": 7437.6298828125,
+    "index": 49.27,
+    "state": "Neutral",
+    "components": {
+      "momentum": {
+        "raw": 1.042,
+        "score": 42.9
+      },
+      "strength": {
+        "raw": 86.99,
+        "score": 25.9
+      },
+      "breadth": {
+        "raw": 31813086720.0,
+        "score": 35.9
+      },
+      "volatility": {
+        "raw": 17.09,
+        "score": 56.1
+      },
+      "safe_haven": {
+        "raw": 0.8,
+        "score": 41.7
+      },
+      "credit_spread": {
+        "raw": 0.8526,
+        "score": 93.1
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.663000106811523,
+      "corp_yield": 79.47000122070312,
+      "volume": 5594430000.0,
+      "high": 7448.75,
+      "low": 7370.97998046875
+    }
+  },
+  {
+    "date": "2026-07-31",
+    "kospi": 7489.72021484375,
+    "index": 60.4,
+    "state": "Greed",
+    "components": {
+      "momentum": {
+        "raw": 1.0487,
+        "score": 50.3
+      },
+      "strength": {
+        "raw": 90.28,
+        "score": 32.7
+      },
+      "breadth": {
+        "raw": 36867176320.0,
+        "score": 48.5
+      },
+      "volatility": {
+        "raw": 15.99,
+        "score": 75.7
+      },
+      "safe_haven": {
+        "raw": 2.04,
+        "score": 60.1
+      },
+      "credit_spread": {
+        "raw": 0.8551,
+        "score": 95.1
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.744999885559082,
+      "corp_yield": 79.4800033569336,
+      "volume": 5391020000.0,
+      "high": 7512.0400390625,
+      "low": 7399.830078125
+    }
+  },
+  {
+    "date": "2026-08-03",
+    "kospi": 7600.5,
+    "index": 73.57,
+    "state": "Greed",
+    "components": {
+      "momentum": {
+        "raw": 1.0634,
+        "score": 67.7
+      },
+      "strength": {
+        "raw": 98.47,
+        "score": 78.1
+      },
+      "breadth": {
+        "raw": 41736280560.0,
+        "score": 59.9
+      },
+      "volatility": {
+        "raw": 15.86,
+        "score": 77.7
+      },
+      "safe_haven": {
+        "raw": 2.39,
+        "score": 63.7
+      },
+      "credit_spread": {
+        "raw": 0.8544,
+        "score": 94.3
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.685999870300293,
+      "corp_yield": 79.30999755859375,
+      "volume": 5201470000.0,
+      "high": 7610.0400390625,
+      "low": 7504.77978515625
+    }
+  },
+  {
+    "date": "2026-08-04",
+    "kospi": 7736.52001953125,
+    "index": 78.18,
+    "state": "Extreme Greed",
+    "components": {
+      "momentum": {
+        "raw": 1.0815,
+        "score": 87.7
+      },
+      "strength": {
+        "raw": 98.51,
+        "score": 78.7
+      },
+      "breadth": {
+        "raw": 47207458000.0,
+        "score": 69.3
+      },
+      "volatility": {
+        "raw": 16.5,
+        "score": 65.4
+      },
+      "safe_haven": {
+        "raw": 3.84,
+        "score": 75.1
+      },
+      "credit_spread": {
+        "raw": 0.8531,
+        "score": 92.9
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.626999855041504,
+      "corp_yield": 79.55000305175781,
+      "volume": 5906940000.0,
+      "high": 7758.2099609375,
+      "low": 7629.10009765625
+    }
+  },
+  {
+    "date": "2026-08-05",
+    "kospi": 7723.5498046875,
+    "index": 73.25,
+    "state": "Greed",
+    "components": {
+      "momentum": {
+        "raw": 1.0786,
+        "score": 85.5
+      },
+      "strength": {
+        "raw": 95.27,
+        "score": 51.3
+      },
+      "breadth": {
+        "raw": 41141174560.0,
+        "score": 58.7
+      },
+      "volatility": {
+        "raw": 15.81,
+        "score": 78.6
+      },
+      "safe_haven": {
+        "raw": 3.58,
+        "score": 73.9
+      },
+      "credit_spread": {
+        "raw": 0.8522,
+        "score": 91.5
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.617000102996826,
+      "corp_yield": 79.5199966430664,
+      "volume": 5615640000.0,
+      "high": 7793.68017578125,
+      "low": 7720.169921875
+    }
+  },
+  {
+    "date": "2026-08-06",
+    "kospi": 7709.9599609375,
+    "index": 71.68,
+    "state": "Greed",
+    "components": {
+      "momentum": {
+        "raw": 1.0757,
+        "score": 81.1
+      },
+      "strength": {
+        "raw": 94.33,
+        "score": 46.1
+      },
+      "breadth": {
+        "raw": 37611209488.0,
+        "score": 50.5
+      },
+      "volatility": {
+        "raw": 15.15,
+        "score": 87.4
+      },
+      "safe_haven": {
+        "raw": 3.19,
+        "score": 70.3
+      },
+      "credit_spread": {
+        "raw": 0.8549,
+        "score": 94.7
+      }
+    },
+    "raw_values": {
+      "gov_yield": 4.670000076293945,
+      "corp_yield": 79.45999908447266,
+      "volume": 3047791000.0,
+      "high": 7742.85009765625,
+      "low": 7698.14990234375
+    }
   }
 ]
