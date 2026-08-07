@@ -1292,7 +1292,9 @@ function calculateMacroMetrics(region, monthKey, cli, pmi, gdp, m2, rate, spread
 }
 
 // 3B. Uragami Kunio Stock Market 4 Seasons Model (utilizing Fwd EPS, M2 Liquidity, Rate & Spread)
-function calculateStockSeasonMetrics(region, monthKey, fwdEPS, m2, rate, spread) {
+function calculateStockSeasonMetrics(region, monthKey, fwdEPS, m2, rate, spread, flowScore) {
+    if (flowScore === undefined) flowScore = 0.0;
+
     const epsGrowthThreshold = region === "US" ? 5.0 : 3.0; 
     const policyRateNeutral = region === "US" ? 3.5 : 3.0;
 
@@ -1379,6 +1381,24 @@ function calculateStockSeasonMetrics(region, monthKey, fwdEPS, m2, rate, spread)
     let summerBlended = (baseSectors.spring.summerWeight * wSpr + baseSectors.summer.summerWeight * wSum + baseSectors.autumn.summerWeight * wAut + baseSectors.winter.summerWeight * wWin) / sumW;
     let autumnBlended = (baseSectors.spring.autumnWeight * wSpr + baseSectors.summer.autumnWeight * wSum + baseSectors.autumn.autumnWeight * wAut + baseSectors.winter.autumnWeight * wWin) / sumW;
     let winterBlended = (baseSectors.spring.winterWeight * wSpr + baseSectors.summer.winterWeight * wSum + baseSectors.autumn.winterWeight * wAut + baseSectors.winter.winterWeight * wWin) / sumW;
+
+    // Apply Net Capital Flow (수급) Adjustments to Sector Weights
+    if (flowScore > 0) {
+        summerBlended += flowScore * 2.0;
+        springBlended += flowScore * 1.0;
+        winterBlended -= flowScore * 1.5;
+        autumnBlended -= flowScore * 1.5;
+    } else if (flowScore < 0) {
+        summerBlended += flowScore * 2.0; // decreases
+        springBlended += flowScore * 1.0; // decreases
+        winterBlended -= flowScore * 2.0; // increases
+        autumnBlended -= flowScore * 1.0; // increases
+    }
+
+    springBlended = Math.max(5, springBlended);
+    summerBlended = Math.max(5, summerBlended);
+    autumnBlended = Math.max(5, autumnBlended);
+    winterBlended = Math.max(5, winterBlended);
 
     const totalBlended = springBlended + summerBlended + autumnBlended + winterBlended;
     springBlended = Math.round((springBlended / totalBlended) * 100);
@@ -1964,8 +1984,10 @@ function calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2
     };
 }
 
-// 3C. Dynamic Portfolio Blending with M2 Feedback
-function calculateBlendedPortfolio(macroX, macroY, seasonAngle, m2) {
+// 3C. Dynamic Portfolio Blending with M2 Feedback & Net Flow (수급)
+function calculateBlendedPortfolio(macroX, macroY, seasonAngle, m2, flowScore) {
+    if (flowScore === undefined) flowScore = 0.0;
+
     const distToExpansion = Math.hypot(Math.max(0, 3 - macroX), Math.max(0, 3 - macroY));
     const distToSlowdown = Math.hypot(Math.max(0, 3 - macroX), Math.max(0, macroY + 3));
     const distToContraction = Math.hypot(Math.max(0, macroX + 3), Math.max(0, macroY + 3));
@@ -2007,6 +2029,17 @@ function calculateBlendedPortfolio(macroX, macroY, seasonAngle, m2) {
         eqBlended -= 5;
     }
 
+    // Net Capital Flow (수급) Adjustments for Asset Allocation
+    let eqAdjust = flowScore * 3.0;     // Max +15% / -15%
+    let boAdjust = -flowScore * 1.5;    // Max -7.5% / +7.5%
+    let coAdjust = flowScore * 0.5;     // Max +2.5% / -2.5%
+    let caAdjust = -flowScore * 2.0;    // Max -10% / +10%
+
+    eqBlended += eqAdjust;
+    boBlended += boAdjust;
+    coBlended += coAdjust;
+    caBlended += caAdjust;
+
     eqBlended = Math.max(10, Math.min(85, eqBlended));
     boBlended = Math.max(10, Math.min(75, boBlended));
     coBlended = Math.max(5, Math.min(25, coBlended));
@@ -2019,13 +2052,35 @@ function calculateBlendedPortfolio(macroX, macroY, seasonAngle, m2) {
     coBlended = Math.round((coBlended / totalBlended) * 100);
     caBlended = 100 - (eqBlended + boBlended + coBlended);
 
+    // Country Equity Allocation Calculations
+    let usEqWeight = activeRegion === "US" ? 70 : 50;
+    let krEqWeight = activeRegion === "US" ? 30 : 50;
+    
+    if (activeRegion === "KR") {
+        krEqWeight += flowScore * 5.0; // Max +25% / -25%
+        usEqWeight -= flowScore * 5.0;
+    } else {
+        usEqWeight += flowScore * 4.0;
+        krEqWeight -= flowScore * 4.0;
+    }
+    usEqWeight = Math.max(15, Math.min(85, usEqWeight));
+    krEqWeight = 100 - usEqWeight;
+
     let riskText = "";
     if (eqBlended >= 60) riskText = activeRegion === "US" ? "적극 투자 선호" : "고수익 주식 집중";
     else if (eqBlended >= 48) riskText = "주식 온화 선호";
     else if (eqBlended >= 35) riskText = "자산 배분 균형";
     else riskText = activeRegion === "US" ? "보수적 방어" : "채권/안전 집중";
 
-    return { eq: eqBlended, bo: boBlended, co: coBlended, ca: caBlended, risk: riskText };
+    return { 
+        eq: eqBlended, 
+        bo: boBlended, 
+        co: coBlended, 
+        ca: caBlended, 
+        usEq: usEqWeight,
+        krEq: krEqWeight,
+        risk: riskText 
+    };
 }
 
 // 4. SYNCHRONIZE DATA TO UI
@@ -2090,6 +2145,12 @@ function updateUI(macro, season, portfolio, cli, pmi, gdp, eps, m2, cpi, rate, s
     // 4. Asset Progress Bars
     document.getElementById("pct-equities").textContent = `${portfolio.eq}%`;
     document.getElementById("bar-equities").style.width = `${portfolio.eq}%`;
+
+    // Country Equity Allocation update
+    document.getElementById("pct-country-us").textContent = `${portfolio.usEq}%`;
+    document.getElementById("pct-country-kr").textContent = `${portfolio.krEq}%`;
+    document.getElementById("bar-country-us").style.width = `${portfolio.usEq}%`;
+    document.getElementById("bar-country-kr").style.width = `${portfolio.krEq}%`;
     
     document.getElementById("pct-bonds").textContent = `${portfolio.bo}%`;
     document.getElementById("bar-bonds").style.width = `${portfolio.bo}%`;
@@ -2958,6 +3019,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const inputCpi = document.getElementById("input-cpi");
     const inputRate = document.getElementById("input-rate");
     const inputSpread = document.getElementById("input-spread");
+    const inputFlow = document.getElementById("input-flow");
     
     const valCli = document.getElementById("val-cli");
     const valPmi = document.getElementById("val-pmi");
@@ -2967,6 +3029,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const valCpi = document.getElementById("val-cpi");
     const valRate = document.getElementById("val-rate");
     const valSpread = document.getElementById("val-spread");
+    const valFlow = document.getElementById("val-flow");
 
     const btnResetSliders = document.getElementById("btn-reset-sliders");
     const themeCheckbox = document.getElementById("theme-checkbox");
@@ -3121,6 +3184,20 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    function getFlowScoreForMonth(region, monthIndex) {
+        if (!marketFeedbackDataLoaded || monthIndex === undefined || monthIndex < 0 || monthIndex >= timeMachineMonths.length) {
+            return 0.0;
+        }
+        const monthKey = timeMachineMonths[monthIndex].value;
+        if (monthlyMarketData[region] && monthlyMarketData[region][monthKey]) {
+            const stats = monthlyMarketData[region][monthKey];
+            let flow = (stats.avgGf - 50.0) * 0.15 + stats.momentum3m * 4.0;
+            return Math.max(-5.0, Math.min(5.0, flow));
+        }
+        return 0.0;
+    }
+    window.getFlowScoreForMonth = getFlowScoreForMonth;
+
     // Unified model trigger update
     window.triggerModelUpdate = function() {
         if (activeMode === "time") {
@@ -3168,6 +3245,21 @@ document.addEventListener("DOMContentLoaded", () => {
             gdpnowVal = ind.gdpnow;
         }
         
+        // Extract flowVal based on mode
+        let flowVal = 0.0;
+        if (activeMode === "time") {
+            flowVal = getFlowScoreForMonth(activeRegion, activeTimeIndex);
+            inputFlow.value = flowVal.toFixed(1);
+        } else if (activeMode === "hist") {
+            const preset = historicalPresets[activeRegion][activePreset];
+            const presetMonth = preset && preset.monthKey ? preset.monthKey : "2026-08";
+            const presetMonthIdx = getMonthIndex(presetMonth);
+            flowVal = getFlowScoreForMonth(activeRegion, presetMonthIdx);
+            inputFlow.value = flowVal.toFixed(1);
+        } else {
+            flowVal = parseFloat(inputFlow.value);
+        }
+
         // Sync sliding text labels
         valCli.textContent = cliVal.toFixed(1);
         valPmi.textContent = pmiVal.toFixed(1);
@@ -3177,6 +3269,7 @@ document.addEventListener("DOMContentLoaded", () => {
         valCpi.textContent = `${cpiVal.toFixed(1)}%`;
         valRate.textContent = `${rateVal.toFixed(2)}%`;
         valSpread.textContent = `${spreadVal.toFixed(1)}%`;
+        valFlow.textContent = flowVal.toFixed(1);
 
         // Find monthKey for current active state
         let monthKey = "2026-08";
@@ -3192,8 +3285,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Calculate Models
         const macroMetrics = calculateMacroMetrics(activeRegion, monthKey, cliVal, pmiVal, gdpVal, m2Val, rateVal, spreadVal);
-        const seasonMetrics = calculateStockSeasonMetrics(activeRegion, monthKey, epsVal, m2Val, rateVal, spreadVal);
-        const portfolioMetrics = calculateBlendedPortfolio(macroMetrics.x, macroMetrics.y, seasonMetrics.angle, m2Val);
+        const seasonMetrics = calculateStockSeasonMetrics(activeRegion, monthKey, epsVal, m2Val, rateVal, spreadVal, flowVal);
+        const portfolioMetrics = calculateBlendedPortfolio(macroMetrics.x, macroMetrics.y, seasonMetrics.angle, m2Val, flowVal);
 
         // Custom override for coordinates if defined specifically in presets during history mode
         if (activeMode === "hist") {
@@ -3213,8 +3306,9 @@ document.addEventListener("DOMContentLoaded", () => {
             prevIndex = Math.max(0, activeTimeIndex - 1);
             const prevMonthKey = timeMachineMonths[prevIndex].value;
             const prevInd = getIndicatorsForMonth(activeRegion, prevIndex);
+            const prevFlow = getFlowScoreForMonth(activeRegion, prevIndex);
             prevMacro = calculateMacroMetrics(activeRegion, prevMonthKey, prevInd.cli, prevInd.pmi, prevInd.gdp, prevInd.m2, prevInd.rate, prevInd.spread);
-            prevSeason = calculateStockSeasonMetrics(activeRegion, prevMonthKey, prevInd.eps, prevInd.m2, prevInd.rate, prevInd.spread);
+            prevSeason = calculateStockSeasonMetrics(activeRegion, prevMonthKey, prevInd.eps, prevInd.m2, prevInd.rate, prevInd.spread, prevFlow);
         } else if (activeMode === "hist") {
             // Historical Epoch Mode: Use the first point of the historical trail as previous state
             const presetData = historicalPresets[activeRegion][activePreset];
@@ -3240,8 +3334,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 prevIndex = 59;
                 const prevMonthKey = timeMachineMonths[prevIndex].value;
                 const prevInd = getIndicatorsForMonth(activeRegion, prevIndex);
+                const prevFlow = getFlowScoreForMonth(activeRegion, prevIndex);
                 prevMacro = calculateMacroMetrics(activeRegion, prevMonthKey, prevInd.cli, prevInd.pmi, prevInd.gdp, prevInd.m2, prevInd.rate, prevInd.spread);
-                prevSeason = calculateStockSeasonMetrics(activeRegion, prevMonthKey, prevInd.eps, prevInd.m2, prevInd.rate, prevInd.spread);
+                prevSeason = calculateStockSeasonMetrics(activeRegion, prevMonthKey, prevInd.eps, prevInd.m2, prevInd.rate, prevInd.spread, prevFlow);
             }
         } else {
             // Simulation Mode: Compare against previous month of selected reference month
@@ -3250,8 +3345,9 @@ document.addEventListener("DOMContentLoaded", () => {
             prevIndex = Math.max(0, getMonthIndex(selectVal) - 1);
             const prevMonthKey = timeMachineMonths[prevIndex].value;
             const prevInd = getIndicatorsForMonth(activeRegion, prevIndex);
+            const prevFlow = getFlowScoreForMonth(activeRegion, prevIndex);
             prevMacro = calculateMacroMetrics(activeRegion, prevMonthKey, prevInd.cli, prevInd.pmi, prevInd.gdp, prevInd.m2, prevInd.rate, prevInd.spread);
-            prevSeason = calculateStockSeasonMetrics(activeRegion, prevMonthKey, prevInd.eps, prevInd.m2, prevInd.rate, prevInd.spread);
+            prevSeason = calculateStockSeasonMetrics(activeRegion, prevMonthKey, prevInd.eps, prevInd.m2, prevInd.rate, prevInd.spread, prevFlow);
         }
 
         // Update Sidebar Market Feedback Card UI
@@ -3278,7 +3374,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     // B. Slider listeners
-    const sliderInputs = [inputCli, inputPmi, inputGdp, inputEps, inputM2, inputCpi, inputRate, inputSpread];
+    const sliderInputs = [inputCli, inputPmi, inputGdp, inputEps, inputM2, inputCpi, inputRate, inputSpread, inputFlow];
     sliderInputs.forEach(input => {
         input.addEventListener("input", triggerModelUpdate);
     });
@@ -3410,6 +3506,7 @@ document.addEventListener("DOMContentLoaded", () => {
         inputCpi.value = ind.cpi;
         inputRate.value = ind.rate;
         inputSpread.value = ind.spread;
+        inputFlow.value = getFlowScoreForMonth(activeRegion, idx).toFixed(1);
         
         triggerModelUpdate();
     }
