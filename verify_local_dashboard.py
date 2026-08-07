@@ -84,10 +84,17 @@ try:
         const monthKey = timeMachineMonths[63].value;
         const usMonthData = getIndicatorsForMonth("US", 63);
         const krMonthData = getIndicatorsForMonth("KR", 63);
+        
+        const usFlow = getFlowScoreForMonth("US", 63);
+        const krFlow = getFlowScoreForMonth("KR", 63);
+
         const usMacroM = calculateMacroMetrics("US", monthKey, usMonthData.cli, usMonthData.pmi, usMonthData.gdp, usMonthData.m2, usMonthData.rate, usMonthData.spread);
-        const usSeasonM = calculateStockSeasonMetrics("US", monthKey, usMonthData.eps, usMonthData.m2, usMonthData.rate, usMonthData.spread);
+        const usSeasonM = calculateStockSeasonMetrics("US", monthKey, usMonthData.eps, usMonthData.m2, usMonthData.rate, usMonthData.spread, usFlow);
+        const usPort = calculateBlendedPortfolio(usMacroM.x, usMacroM.y, usSeasonM.angle, usMonthData.m2, usFlow);
+
         const krMacroM = calculateMacroMetrics("KR", monthKey, krMonthData.cli, krMonthData.pmi, krMonthData.gdp, krMonthData.m2, krMonthData.rate, krMonthData.spread);
-        const krSeasonM = calculateStockSeasonMetrics("KR", monthKey, krMonthData.eps, krMonthData.m2, krMonthData.rate, krMonthData.spread);
+        const krSeasonM = calculateStockSeasonMetrics("KR", monthKey, krMonthData.eps, krMonthData.m2, krMonthData.rate, krMonthData.spread, krFlow);
+        const krPort = calculateBlendedPortfolio(krMacroM.x, krMacroM.y, krSeasonM.angle, krMonthData.m2, krFlow);
         return {
             krLoaded: (typeof krFGData !== 'undefined' && krFGData && krFGData.length > 0),
             usLoaded: (typeof usFGData !== 'undefined' && usFGData && usFGData.length > 0),
@@ -95,9 +102,20 @@ try:
             usX: usMacroM.x,
             usY: usMacroM.y,
             usSeason: usSeasonM.seasonKor,
+            usFlow: usFlow,
+            usPortEq: usPort.eq,
+            usPortBo: usPort.bo,
+            usPortUsEq: usPort.usEq,
+            usPortKrEq: usPort.krEq,
+            
             krX: krMacroM.x,
             krY: krMacroM.y,
-            krSeason: krSeasonM.seasonKor
+            krSeason: krSeasonM.seasonKor,
+            krFlow: krFlow,
+            krPortEq: krPort.eq,
+            krPortBo: krPort.bo,
+            krPortUsEq: krPort.usEq,
+            krPortKrEq: krPort.krEq
         };
     """)
     
@@ -111,8 +129,14 @@ try:
     print(f"  Sidebar Feedback Status Widget text: '{feedback_state['feedbackText']}'")
     print(f"  US August 2026 Macro Coordinates: X={feedback_state['usX']:.4f}, Y={feedback_state['usY']:.4f}")
     print(f"  US August 2026 Stock Season: {feedback_state['usSeason']}")
+    print(f"  US Flow Score: {feedback_state['usFlow']:.4f}")
+    print(f"  US Port Eq: {feedback_state['usPortEq']}%, Bonds: {feedback_state['usPortBo']}%")
+    print(f"  US US-EQ Weight: {feedback_state['usPortUsEq']}%, KR-EQ Weight: {feedback_state['usPortKrEq']}%")
     print(f"  KR August 2026 Macro Coordinates: X={feedback_state['krX']:.4f}, Y={feedback_state['krY']:.4f}")
     print(f"  KR August 2026 Stock Season: {feedback_state['krSeason']}")
+    print(f"  KR Flow Score: {feedback_state['krFlow']:.4f}")
+    print(f"  KR Port Eq: {feedback_state['krPortEq']}%, Bonds: {feedback_state['krPortBo']}%")
+    print(f"  KR US-EQ Weight: {feedback_state['krPortUsEq']}%, KR-EQ Weight: {feedback_state['krPortKrEq']}%")
     
     conditions_met = (
         active_index_val == 63 and 
