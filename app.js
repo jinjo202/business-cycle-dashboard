@@ -7,6 +7,7 @@ const historicalPresets = {
     "US": {
         "2000_dotcom": {
             title: "2000년 IT 버블 붕괴 및 침체기",
+            monthKey: "2000-03",
             cli: 98.2, pmi: 43.5, gdp: 0.5, eps: -12.0, m2: 6.2, cpi: 3.4, rate: 6.5, spread: -0.4, citi: 20.0, gdpnow: 2.5,
             phase: "contraction", season: "winter",
             summary: "닷컴 버블 붕괴와 9/11 테러 여파로 실물 경제와 기업 이익이 급격히 위축되었습니다. 연준은 기준금리를 6.5%에서 인하하기 시작했으나 장단기 금리차가 역전된 후 주식시장 역실적장세(겨울)가 본격화되었습니다.",
@@ -15,6 +16,7 @@ const historicalPresets = {
         },
         "2004_expansion": {
             title: "2004년 글로벌 동반 성장기",
+            monthKey: "2004-06",
             cli: 101.8, pmi: 58.5, gdp: 4.2, eps: 18.0, m2: 5.0, cpi: 2.7, rate: 1.5, spread: 1.8, citi: 20.0, gdpnow: 2.5,
             phase: "expansion", season: "summer",
             summary: "IT 버블을 완벽히 극복하고 저금리 기조 속에서 부동산 및 글로벌 제조업 활성화로 경제가 동반 확장(Expansion)에 진입, 전형적인 주식시장 실적장세(여름)를 보였습니다.",
@@ -23,6 +25,7 @@ const historicalPresets = {
         },
         "2008_crisis": {
             title: "2008년 글로벌 금융위기 (리먼 사태)",
+            monthKey: "2008-10",
             cli: 96.2, pmi: 34.0, gdp: -3.5, eps: -24.5, m2: 8.5, cpi: 1.1, rate: 1.5, spread: 0.8, citi: 20.0, gdpnow: 2.5,
             phase: "contraction", season: "winter",
             summary: "서브프라임 모기지 사태와 리먼 브라더스 파산으로 신용 자금줄이 마비되었습니다. 기업 실적 전망이 급격한 역성장으로 곤두박질치며 가혹한 역실적장세(겨울)가 몰아쳤습니다. 연준은 긴급 유동성 수혈을 시작하여 M2 증가율은 상승세였습니다.",
@@ -31,6 +34,7 @@ const historicalPresets = {
         },
         "2010_recovery": {
             title: "2010년 위기 극복 및 조기 회복기",
+            monthKey: "2010-04",
             cli: 100.8, pmi: 55.2, gdp: 2.8, eps: 15.0, m2: 3.5, cpi: 1.6, rate: 0.25, spread: 2.5, citi: 20.0, gdpnow: 2.5,
             phase: "recovery", season: "spring",
             summary: "미 연준의 역사적인 제로금리 및 양적완화(QE) 도입과 함께 실물 경기는 바닥이나 제조업 서베이가 먼저 반등하며 강한 유동성 효과에 기반한 금융장세(봄)를 촉진했습니다.",
@@ -39,6 +43,7 @@ const historicalPresets = {
         },
         "2018_late": {
             title: "2018년 연준 긴축 & 미·중 무역 분쟁기",
+            monthKey: "2018-12",
             cli: 99.5, pmi: 49.8, gdp: 1.9, eps: 5.0, m2: 3.8, cpi: 2.2, rate: 2.25, spread: 0.15, citi: 20.0, gdpnow: 2.5,
             phase: "slowdown", season: "autumn",
             summary: "누적된 연준의 금리 인상 및 대차대조표 축소(QT)와 무역전쟁 격화로 투자 심리가 급격히 냉각되었습니다. 실적 성장이 피크아웃하고 유동성이 극도로 축소되며 전형적인 역금융장세(가을) 성격을 보였습니다.",
@@ -47,6 +52,7 @@ const historicalPresets = {
         },
         "2021_boom": {
             title: "2021년 초과 유동성 & 보복 소비 붐",
+            monthKey: "2021-05",
             cli: 102.5, pmi: 62.1, gdp: 5.7, eps: 29.5, m2: 18.5, cpi: 6.8, rate: 0.25, spread: 1.2, citi: 20.0, gdpnow: 2.5,
             phase: "expansion", season: "summer",
             summary: "전 세계적인 유동성 살포(M2 증가율 역사상 최고 18.5%)와 보복 소비로 실물 성장과 기업의 Forward EPS가 폭발적으로 증가했습니다. 저금리 하에서 이익 탄력이 극대화된 최고조의 실적장세(여름)가 연출되었습니다.",
@@ -55,6 +61,7 @@ const historicalPresets = {
         },
         "2026_current": {
             title: "2026년 미국 연착륙 성공 & AI 확장기",
+            monthKey: "2026-08",
             cli: 100.2, pmi: 51.5, gdp: 2.2, eps: 10.5, m2: 4.5, cpi: 2.3, rate: 4.0, spread: 0.2, citi: 20.0, gdpnow: 2.5,
             phase: "expansion", season: "summer",
             summary: "안정적인 인플레이션 통제와 함께 중앙은행이 중립 금리 수준으로 질서 있게 인하하는 구간입니다. 시중 유동성이 정상 궤도를 회복(M2 증가율 4.5%)하며 AI 생산성 혁신이 실적(Forward EPS)을 주도하는 골디락스 실적장세(여름)입니다.",
@@ -65,6 +72,7 @@ const historicalPresets = {
     "KR": {
         "2000_dotcom": {
             title: "2000년 코스닥 닷컴 버블 붕괴",
+            monthKey: "2000-10",
             cli: 97.8, pmi: 42.0, gdp: -1.0, eps: -25.0, m2: 15.0, cpi: 2.8, rate: 5.25, spread: -0.2, citi: 20.0, gdpnow: 2.5,
             phase: "contraction", season: "winter",
             summary: "코스닥 중심의 극단적 투기 붐 붕괴와 대기업 구조조정이 겹쳤습니다. 외환위기 복구 유동성 살포(M2: 15%)에도 불구하고 이익 전망이 참혹하게 무너지며 지수가 수직 급락하는 혹독한 역실적장세(겨울)를 보였습니다.",
@@ -73,6 +81,7 @@ const historicalPresets = {
         },
         "2004_expansion": {
             title: "2004년 중국 특수 & 코스피 대도약기",
+            monthKey: "2004-06",
             cli: 101.5, pmi: 56.0, gdp: 4.0, eps: 22.0, m2: 6.5, cpi: 3.6, rate: 3.75, spread: 1.2, citi: 20.0, gdpnow: 2.5,
             phase: "expansion", season: "summer",
             summary: "중국의 고속 성장에 따른 원자재/조선/해운 특수(브릭스 붐)로 한국 수출 기업들의 Forward EPS가 폭발하며 코스피가 역사적 상승세를 탄 실적장세(여름)입니다. 시중 유동성 공급도 안정적이었습니다.",
@@ -81,6 +90,7 @@ const historicalPresets = {
         },
         "2008_crisis": {
             title: "2008년 금융위기 & 고환율·신용 경색",
+            monthKey: "2008-10",
             cli: 95.5, pmi: 32.5, gdp: -4.5, eps: -35.0, m2: 12.0, cpi: 4.7, rate: 3.0, spread: 0.4, citi: 20.0, gdpnow: 2.5,
             phase: "contraction", season: "winter",
             summary: "글로벌 불황과 원·달러 환율 폭등, 자본 이탈이 겹쳐 코스피가 900선 이하로 밀렸습니다. 한은의 긴급 금융 수혈로 M2 유동성은 12% 늘었으나, 실물 제조업 가동률이 붕괴된 최악의 역실적장세(겨울)였습니다.",
@@ -89,6 +99,7 @@ const historicalPresets = {
         },
         "2011_chawajung": {
             title: "2011년 코스피 '차·화·정' 주도 강세장",
+            monthKey: "2011-04",
             cli: 102.2, pmi: 57.5, gdp: 3.7, eps: 26.0, m2: 7.5, cpi: 4.0, rate: 3.25, spread: 1.0, citi: 20.0, gdpnow: 2.5,
             phase: "expansion", season: "summer",
             summary: "위기 후 글로벌 경기 회복 속에 자동차, 화학, 정유(차화정) 업종의 실적이 압도적으로 아웃퍼폼하며 코스피 지수를 사상 최초로 2,200선 위로 견인했던 실적장세(여름)입니다. 시중 유동성도 양호했습니다.",
@@ -97,6 +108,7 @@ const historicalPresets = {
         },
         "2018_semicon": {
             title: "2018년 반도체 슈퍼사이클 & 미·중 무역 쇼크",
+            monthKey: "2018-09",
             cli: 99.0, pmi: 48.5, gdp: 2.4, eps: 12.0, m2: 6.2, cpi: 1.5, rate: 1.75, spread: 0.3, citi: 20.0, gdpnow: 2.5,
             phase: "slowdown", season: "autumn",
             summary: "삼성전자/하이닉스의 사상 최대 이익에도 불구하고 글로벌 유동성 축소(M2 둔화)와 미중 무역 갈등으로 코스피 주가는 선행하여 하락한 역금융장세(가을) 국면입니다.",
@@ -105,6 +117,7 @@ const historicalPresets = {
         },
         "2020_donghak": {
             title: "2020년 팬데믹 급락 후 '동학개미' 유동성 붐",
+            monthKey: "2020-05",
             cli: 100.8, pmi: 54.0, gdp: -1.0, eps: 8.0, m2: 9.8, cpi: 0.5, rate: 0.50, spread: 1.1, citi: 20.0, gdpnow: 2.5,
             phase: "recovery", season: "spring",
             summary: "코로나 충격 후 사상 초유의 기준금리 인하(0.5%)와 개인 투자자들의 유동성 유입(M2 증가율 9.8%)이 맞물리며 코스피가 폭발적으로 선행 반등했던 금융장세(봄)입니다.",
@@ -113,6 +126,7 @@ const historicalPresets = {
         },
         "2022_winter": {
             title: "2022년 금리 급상승 & 메모리 반도체 빙하기",
+            monthKey: "2022-10",
             cli: 98.2, pmi: 46.0, gdp: 1.5, eps: -18.0, m2: 5.4, cpi: 5.1, rate: 3.25, spread: -0.5, citi: 20.0, gdpnow: 2.5,
             phase: "contraction", season: "winter",
             summary: "글로벌 긴축 속 반도체 재고 과잉으로 삼성전자 등 수출 대기업들의 실적 전망이 처참히 박살났습니다. 시중 통화량(M2) 증가세가 5.4%로 위축된 가운데 역실적장세(겨울)가 찾아왔습니다.",
@@ -121,6 +135,7 @@ const historicalPresets = {
         },
         "2026_current": {
             title: "2026년 반도체 HBM 부활 & 주주환원 성장기",
+            monthKey: "2026-08",
             cli: 100.5, pmi: 52.0, gdp: 6.77, eps: 200.0, m2: 6.0, cpi: 3.20, rate: 0.00, spread: 0.4, citi: 20.0, gdpnow: 2.5,
             phase: "expansion", season: "summer",
             summary: "AI 고대역폭메모리(HBM) 수출 호조와 기업 밸류업 프로그램 가동으로 선행 이익 성장이 두드러집니다. 통화량 공급도 정상 궤도(M2 6.0%)에 복귀한 안정적 실적장세(여름)입니다.",
@@ -1096,6 +1111,14 @@ for (let i = 0; i <= MAX_TIME_INDEX; i++) {
 let cycleClockChartInstance = null;
 let portfolioChartInstance = null;
 
+// Global Greed & Fear variables for Model Feedback
+let krFGData = null;
+let krFGAnalytics = null;
+let usFGData = null;
+let usFGAnalytics = null;
+let monthlyMarketData = { "KR": {}, "US": {} };
+let marketFeedbackDataLoaded = false;
+
 // 3. CORE ANALYTICAL MATHEMATICAL MODELS
 
 // Helper to interpolate indicator values for a specific month index (0 to 60)
@@ -1198,11 +1221,11 @@ function updateTransitionPanel(prevMacro, currMacro, prevSeason, currSeason, pre
     }
 }
 
-// 3A. Business Cycle Model (Fidelity Framework - now with M2 Liquidity Impact)
-function calculateMacroMetrics(cli, pmi, gdp, m2, rate, spread) {
+// 3A. Business Cycle Model (Fidelity Framework - now with M2 Liquidity Impact & Sentiment Drag)
+function calculateMacroMetrics(region, monthKey, cli, pmi, gdp, m2, rate, spread) {
     const cliCenter = 100.0;
     const pmiCenter = 50.0;
-    const gdpCenter = activeRegion === "US" ? 2.0 : 2.2;
+    const gdpCenter = region === "US" ? 2.0 : 2.2;
     
     const x_cli = (cli - cliCenter) * 1.5;
     const x_pmi = (pmi - pmiCenter) * 0.35;
@@ -1213,17 +1236,40 @@ function calculateMacroMetrics(cli, pmi, gdp, m2, rate, spread) {
     growthScore = Math.max(-4.5, Math.min(4.5, growthScore));
 
     const spreadCenter = 0.2;
-    const rateCenter = activeRegion === "US" ? 3.5 : 3.0;
+    const rateCenter = region === "US" ? 3.5 : 3.0;
 
     const y_spread = (spread - spreadCenter) * 1.2;
     const y_rate = - (rate - rateCenter) * 0.35;
     const y_pmi = (pmi - pmiCenter) * 0.1;
-    // M2 Money Supply Growth (Neutral around 6.0%). Expanding M2 pushes momentum UP.
     const y_m2 = (m2 - 6.0) * 0.25;
     
     // Momentum Score (Y-Axis)
     let momentumScore = y_spread + y_rate + y_pmi + y_m2;
     momentumScore = Math.max(-4.5, Math.min(4.5, momentumScore));
+
+    // Dynamic Market Feedback Sentiment Drag
+    let sentimentDrag = 0.0;
+    if (marketFeedbackDataLoaded && monthlyMarketData[region] && monthlyMarketData[region][monthKey]) {
+        const stats = monthlyMarketData[region][monthKey];
+        if (stats.avgGf < 45) {
+            sentimentDrag += (stats.avgGf - 45) * 0.035;
+        }
+        if (stats.momentum3m < 0) {
+            sentimentDrag += stats.momentum3m * 4.0;
+        }
+        if (stats.drawdown12m < -0.05) {
+            sentimentDrag += (stats.drawdown12m + 0.05) * 3.0;
+        }
+        sentimentDrag = Math.max(-2.5, Math.min(2.5, sentimentDrag));
+        
+        // Apply Drag
+        growthScore += sentimentDrag * 0.45;
+        momentumScore += sentimentDrag * 0.70;
+        
+        // Re-clip
+        growthScore = Math.max(-4.5, Math.min(4.5, growthScore));
+        momentumScore = Math.max(-4.5, Math.min(4.5, momentumScore));
+    }
 
     // Cartesian Classification
     let phase = "";
@@ -1246,16 +1292,35 @@ function calculateMacroMetrics(cli, pmi, gdp, m2, rate, spread) {
 }
 
 // 3B. Uragami Kunio Stock Market 4 Seasons Model (utilizing Fwd EPS, M2 Liquidity, Rate & Spread)
-function calculateStockSeasonMetrics(fwdEPS, m2, rate, spread) {
-    const epsGrowthThreshold = activeRegion === "US" ? 5.0 : 3.0; 
-    const policyRateNeutral = activeRegion === "US" ? 3.5 : 3.0;
+function calculateStockSeasonMetrics(region, monthKey, fwdEPS, m2, rate, spread) {
+    const epsGrowthThreshold = region === "US" ? 5.0 : 3.0; 
+    const policyRateNeutral = region === "US" ? 3.5 : 3.0;
 
     // 1. Earnings Direction Axis (Fwd EPS Growth Benchmark)
-    const epsScore = (fwdEPS - epsGrowthThreshold) / 10.0; 
+    let epsScore = (fwdEPS - epsGrowthThreshold) / 10.0; 
     
     // 2. Liquidity / Easing Environment Axis (Rate Stress cushioned by M2 money supply)
-    // Rate stress is mitigated by rapid M2 expansion (liquidity buffer!)
-    const rateStress = (rate - policyRateNeutral) / 4.0 - (spread - 0.2) / 2.0 - (m2 - 6.0) / 12.0;
+    let rateStress = (rate - policyRateNeutral) / 4.0 - (spread - 0.2) / 2.0 - (m2 - 6.0) / 12.0;
+
+    // Dynamic Market Feedback adjustments
+    let sentimentDrag = 0.0;
+    if (marketFeedbackDataLoaded && monthlyMarketData[region] && monthlyMarketData[region][monthKey]) {
+        const stats = monthlyMarketData[region][monthKey];
+        if (stats.avgGf < 45) {
+            sentimentDrag += (stats.avgGf - 45) * 0.035;
+        }
+        if (stats.momentum3m < 0) {
+            sentimentDrag += stats.momentum3m * 4.0;
+        }
+        if (stats.drawdown12m < -0.05) {
+            sentimentDrag += (stats.drawdown12m + 0.05) * 3.0;
+        }
+        sentimentDrag = Math.max(-2.5, Math.min(2.5, sentimentDrag));
+        
+        // Drag reduces the EPS score and increases rate stress (representing tightening risk premium / liquidity block)
+        epsScore += sentimentDrag * 2.0;
+        rateStress -= sentimentDrag * 0.2; // subtracting negative adds to rateStress
+    }
 
     // Classification boundaries (Uragami's 4 Seasons)
     let season = "";
@@ -2502,7 +2567,8 @@ function initCharts(macro, portfolio) {
         const startIdx = Math.max(0, activeTimeIndex - 5);
         for (let i = startIdx; i <= activeTimeIndex; i++) {
             const ind = getIndicatorsForMonth(activeRegion, i);
-            const macroM = calculateMacroMetrics(ind.cli, ind.pmi, ind.gdp, ind.m2, ind.rate, ind.spread);
+            const mKey = timeMachineMonths[i].value;
+            const macroM = calculateMacroMetrics(activeRegion, mKey, ind.cli, ind.pmi, ind.gdp, ind.m2, ind.rate, ind.spread);
             trailPoints.push({ x: macroM.x, y: macroM.y });
         }
     } else {
@@ -2662,7 +2728,8 @@ function updateCharts(macro, portfolio) {
         const startIdx = Math.max(0, activeTimeIndex - 5);
         for (let i = startIdx; i <= activeTimeIndex; i++) {
             const ind = getIndicatorsForMonth(activeRegion, i);
-            const macroM = calculateMacroMetrics(ind.cli, ind.pmi, ind.gdp, ind.m2, ind.rate, ind.spread);
+            const mKey = timeMachineMonths[i].value;
+            const macroM = calculateMacroMetrics(activeRegion, mKey, ind.cli, ind.pmi, ind.gdp, ind.m2, ind.rate, ind.spread);
             trailPoints.push({ x: macroM.x, y: macroM.y });
         }
     } else {
@@ -2927,6 +2994,133 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    // --- DYNAMIC MARKET FEEDBACK PRELOADER & AGGREGATOR ---
+    function aggregateMonthlyStats(region, rawData) {
+        if (!rawData || rawData.length === 0) return;
+        const monthlyGroups = {};
+        rawData.forEach(row => {
+            const monthKey = row.date.substring(0, 7);
+            if (!monthlyGroups[monthKey]) {
+                monthlyGroups[monthKey] = [];
+            }
+            monthlyGroups[monthKey].push(row);
+        });
+        const monthKeys = Object.keys(monthlyGroups).sort();
+        const tempStats = {};
+        monthKeys.forEach((monthKey, idx) => {
+            const group = monthlyGroups[monthKey];
+            const indexField = (region === "US") ? "sp500" : "kospi";
+            const validGF = group.filter(r => r.index !== undefined && r.index !== null);
+            const validPrice = group.filter(r => r[indexField] !== undefined && r[indexField] !== null);
+            const avgGf = validGF.length > 0 ? validGF.reduce((sum, r) => sum + r.index, 0) / validGF.length : 50.0;
+            const avgPrice = validPrice.length > 0 ? validPrice.reduce((sum, r) => sum + r[indexField], 0) / validPrice.length : 0.0;
+            const lastPrice = validPrice.length > 0 ? validPrice[validPrice.length - 1][indexField] : 0.0;
+            tempStats[monthKey] = {
+                avgGf: avgGf,
+                avgPrice: avgPrice,
+                lastPrice: lastPrice,
+                momentum3m: 0.0,
+                drawdown12m: 0.0
+            };
+        });
+        monthKeys.forEach((monthKey, idx) => {
+            const stats = tempStats[monthKey];
+            if (idx >= 3) {
+                const prevMonthKey = monthKeys[idx - 3];
+                const prevLastPrice = tempStats[prevMonthKey].lastPrice;
+                if (prevLastPrice > 0) {
+                    stats.momentum3m = (stats.lastPrice / prevLastPrice) - 1.0;
+                }
+            }
+            const startIdx = Math.max(0, idx - 11);
+            let maxPrice = 0.0;
+            for (let j = startIdx; j <= idx; j++) {
+                const p = tempStats[monthKeys[j]].lastPrice;
+                if (p > maxPrice) maxPrice = p;
+            }
+            if (maxPrice > 0) {
+                stats.drawdown12m = (stats.lastPrice / maxPrice) - 1.0;
+            }
+            monthlyMarketData[region][monthKey] = stats;
+        });
+    }
+
+    function updateMarketFeedbackCard() {
+        const cardVal = document.getElementById("market-feedback-val");
+        const cardDetails = document.getElementById("market-feedback-details");
+        if (!cardVal || !cardDetails) return;
+        if (!marketFeedbackDataLoaded) {
+            cardVal.textContent = "대기 중...";
+            cardDetails.textContent = "데이터를 불러오는 중입니다...";
+            return;
+        }
+        let monthKey = "2026-08";
+        if (activeMode === "time") {
+            monthKey = timeMachineMonths[activeTimeIndex].value;
+        } else if (activeMode === "sim") {
+            const monthSelectEl = document.getElementById("export-month-select");
+            monthKey = monthSelectEl ? monthSelectEl.value : "2026-08";
+        } else if (activeMode === "hist") {
+            const preset = historicalPresets[activeRegion][activePreset];
+            if (preset && preset.monthKey) {
+                monthKey = preset.monthKey;
+            } else {
+                monthKey = (activePreset === "2020_donghak") ? "2020-05" : 
+                           (activePreset === "2022_winter") ? "2022-10" : "2026-07";
+            }
+        }
+        const stats = monthlyMarketData[activeRegion][monthKey];
+        if (stats) {
+            let drag = 0.0;
+            if (stats.avgGf < 45) drag += (stats.avgGf - 45) * 0.035;
+            if (stats.momentum3m < 0) drag += stats.momentum3m * 4.0;
+            if (stats.drawdown12m < -0.05) drag += (stats.drawdown12m + 0.05) * 3.0;
+            drag = Math.max(-2.5, Math.min(2.5, drag));
+            const dragText = drag.toFixed(2);
+            const indexName = (activeRegion === "US") ? "S&P500" : "KOSPI";
+            cardVal.textContent = "활성";
+            cardVal.style.color = "#10b981";
+            cardDetails.innerHTML = `
+                • <b>${indexName} 평균:</b> ${Math.round(stats.avgPrice).toLocaleString()} pt<br>
+                • <b>탐욕&공포 지수:</b> ${Math.round(stats.avgGf)} (평균)<br>
+                • <b>3개월 모멘텀:</b> ${(stats.momentum3m * 100).toFixed(1)}%<br>
+                • <b>12개월 고점 대비:</b> ${(stats.drawdown12m * 100).toFixed(1)}%<br>
+                • <b>모델 보정치(Drag):</b> <span style="color: ${drag < 0 ? '#ef4444' : '#10b981'}; font-weight: bold;">${drag >= 0 ? '+' : ''}${dragText}</span>
+            `;
+        } else {
+            cardVal.textContent = "미정";
+            cardVal.style.color = "#a3a3a3";
+            cardDetails.textContent = `해당 월(${monthKey})의 시장 피드백 데이터가 존재하지 않습니다.`;
+        }
+    }
+
+    async function preloadMarketData() {
+        try {
+            const [resKr, resUs] = await Promise.all([
+                fetch('./data/historical_index.json'),
+                fetch('./data/us_historical_index.json')
+            ]);
+            if (!resKr.ok || !resUs.ok) {
+                throw new Error("Failed to load historical index files");
+            }
+            krFGData = await resKr.json();
+            usFGData = await resUs.json();
+            aggregateMonthlyStats("KR", krFGData);
+            aggregateMonthlyStats("US", usFGData);
+            marketFeedbackDataLoaded = true;
+            updateMarketFeedbackCard();
+            if (typeof window.triggerModelUpdate === 'function') {
+                window.triggerModelUpdate();
+            }
+        } catch (e) {
+            console.error("Error preloading market feedback data:", e);
+            const cardDetails = document.getElementById("market-feedback-details");
+            if (cardDetails) {
+                cardDetails.textContent = "시장 피드백 로딩 실패: 데이터 파일을 찾을 수 없습니다.";
+            }
+        }
+    }
+
     // Unified model trigger update
     window.triggerModelUpdate = function() {
         if (activeMode === "time") {
@@ -2984,9 +3178,21 @@ document.addEventListener("DOMContentLoaded", () => {
         valRate.textContent = `${rateVal.toFixed(2)}%`;
         valSpread.textContent = `${spreadVal.toFixed(1)}%`;
 
+        // Find monthKey for current active state
+        let monthKey = "2026-08";
+        if (activeMode === "time") {
+            monthKey = timeMachineMonths[activeTimeIndex].value;
+        } else if (activeMode === "sim") {
+            const monthSelectEl = document.getElementById("export-month-select");
+            monthKey = monthSelectEl ? monthSelectEl.value : "2026-08";
+        } else if (activeMode === "hist") {
+            const preset = historicalPresets[activeRegion][activePreset];
+            monthKey = (preset && preset.monthKey) ? preset.monthKey : "2026-08";
+        }
+
         // Calculate Models
-        const macroMetrics = calculateMacroMetrics(cliVal, pmiVal, gdpVal, m2Val, rateVal, spreadVal);
-        const seasonMetrics = calculateStockSeasonMetrics(epsVal, m2Val, rateVal, spreadVal);
+        const macroMetrics = calculateMacroMetrics(activeRegion, monthKey, cliVal, pmiVal, gdpVal, m2Val, rateVal, spreadVal);
+        const seasonMetrics = calculateStockSeasonMetrics(activeRegion, monthKey, epsVal, m2Val, rateVal, spreadVal);
         const portfolioMetrics = calculateBlendedPortfolio(macroMetrics.x, macroMetrics.y, seasonMetrics.angle, m2Val);
 
         // Custom override for coordinates if defined specifically in presets during history mode
@@ -3005,9 +3211,10 @@ document.addEventListener("DOMContentLoaded", () => {
         
         if (activeMode === "time") {
             prevIndex = Math.max(0, activeTimeIndex - 1);
+            const prevMonthKey = timeMachineMonths[prevIndex].value;
             const prevInd = getIndicatorsForMonth(activeRegion, prevIndex);
-            prevMacro = calculateMacroMetrics(prevInd.cli, prevInd.pmi, prevInd.gdp, prevInd.m2, prevInd.rate, prevInd.spread);
-            prevSeason = calculateStockSeasonMetrics(prevInd.eps, prevInd.m2, prevInd.rate, prevInd.spread);
+            prevMacro = calculateMacroMetrics(activeRegion, prevMonthKey, prevInd.cli, prevInd.pmi, prevInd.gdp, prevInd.m2, prevInd.rate, prevInd.spread);
+            prevSeason = calculateStockSeasonMetrics(activeRegion, prevMonthKey, prevInd.eps, prevInd.m2, prevInd.rate, prevInd.spread);
         } else if (activeMode === "hist") {
             // Historical Epoch Mode: Use the first point of the historical trail as previous state
             const presetData = historicalPresets[activeRegion][activePreset];
@@ -3031,19 +3238,24 @@ document.addEventListener("DOMContentLoaded", () => {
                 prevSeason = { season: prevSeasonStr, seasonKor: prevSeasonKor, angle: prevSeasonStr === "summer" ? 90 : prevSeasonStr === "autumn" ? 180 : prevSeasonStr === "winter" ? 270 : 0 };
             } else {
                 prevIndex = 59;
+                const prevMonthKey = timeMachineMonths[prevIndex].value;
                 const prevInd = getIndicatorsForMonth(activeRegion, prevIndex);
-                prevMacro = calculateMacroMetrics(prevInd.cli, prevInd.pmi, prevInd.gdp, prevInd.m2, prevInd.rate, prevInd.spread);
-                prevSeason = calculateStockSeasonMetrics(prevInd.eps, prevInd.m2, prevInd.rate, prevInd.spread);
+                prevMacro = calculateMacroMetrics(activeRegion, prevMonthKey, prevInd.cli, prevInd.pmi, prevInd.gdp, prevInd.m2, prevInd.rate, prevInd.spread);
+                prevSeason = calculateStockSeasonMetrics(activeRegion, prevMonthKey, prevInd.eps, prevInd.m2, prevInd.rate, prevInd.spread);
             }
         } else {
             // Simulation Mode: Compare against previous month of selected reference month
             const monthSelectEl = document.getElementById("export-month-select");
             const selectVal = monthSelectEl ? monthSelectEl.value : "2026-07";
             prevIndex = Math.max(0, getMonthIndex(selectVal) - 1);
+            const prevMonthKey = timeMachineMonths[prevIndex].value;
             const prevInd = getIndicatorsForMonth(activeRegion, prevIndex);
-            prevMacro = calculateMacroMetrics(prevInd.cli, prevInd.pmi, prevInd.gdp, prevInd.m2, prevInd.rate, prevInd.spread);
-            prevSeason = calculateStockSeasonMetrics(prevInd.eps, prevInd.m2, prevInd.rate, prevInd.spread);
+            prevMacro = calculateMacroMetrics(activeRegion, prevMonthKey, prevInd.cli, prevInd.pmi, prevInd.gdp, prevInd.m2, prevInd.rate, prevInd.spread);
+            prevSeason = calculateStockSeasonMetrics(activeRegion, prevMonthKey, prevInd.eps, prevInd.m2, prevInd.rate, prevInd.spread);
         }
+
+        // Update Sidebar Market Feedback Card UI
+        updateMarketFeedbackCard();
         
         // Pass previous season angle to seasonMetrics for the ghost needle
         seasonMetrics.prevAngle = prevSeason.angle;
@@ -3276,8 +3488,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const startRate = parseFloat(inputRate.value);
     const startSpread = parseFloat(inputSpread.value);
 
-    const initMacro = calculateMacroMetrics(startCli, startPmi, startGdp, startM2, startRate, startSpread);
-    const initSeason = calculateStockSeasonMetrics(startEps, startM2, startRate, startSpread);
+    const startMonthKey = timeMachineMonths[activeTimeIndex].value;
+    const initMacro = calculateMacroMetrics(activeRegion, startMonthKey, startCli, startPmi, startGdp, startM2, startRate, startSpread);
+    const initSeason = calculateStockSeasonMetrics(activeRegion, startMonthKey, startEps, startM2, startRate, startSpread);
     const initPortfolio = calculateBlendedPortfolio(initMacro.x, initMacro.y, initSeason.angle, startM2);
 
     // Render Charts
@@ -3286,6 +3499,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // First render update
     const initData = getIndicatorsForMonth(activeRegion, activeTimeIndex);
     updateUI(initMacro, initSeason, initPortfolio, startCli, startPmi, startGdp, startEps, startM2, startCpi, startRate, startSpread, initData.citi, initData.gdpnow);
+
+    // Preload market sentiment feedback data
+    preloadMarketData();
 
     // ==========================================
     // PREMIUM MODAL HISTORICAL POPUP LOGIC
@@ -3586,13 +3802,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+
     // --- KOREA & US Greed & Fear Index Tab Logic ---
     let currentFGRegion = 'kr'; // 'kr' or 'us'
-    let krFGData = null;
-    let krFGAnalytics = null;
-    let usFGData = null;
-    let usFGAnalytics = null;
-
     let fgLineChartInstance = null;
     let fgCorrChartInstance = null;
     let fgReturnsChartInstance = null;
