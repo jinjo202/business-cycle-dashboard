@@ -80,12 +80,12 @@ try:
     erp_val = driver.execute_script("return document.getElementById('table-erp-val').textContent;")
     
     print(f"\nDashboard State:")
-    print(f"  activeTimeIndex: {active_index_val} (expected 61)")
-    print(f"  timeMachineMonths length: {timeline_len} (expected 62)")
+    print(f"  activeTimeIndex: {active_index_val} (expected 63)")
+    print(f"  timeMachineMonths length: {timeline_len} (expected 64)")
     print(f"  Real Interest Rate cell value: {realrate_val}")
     print(f"  Equity Risk Premium (ERP) cell value: {erp_val}")
     
-    if active_index_val == 61 and timeline_len == 62 and realrate_val and erp_val:
+    if active_index_val == 63 and timeline_len == 64 and realrate_val and erp_val:
         print("[SUCCESS] Timeline extended and RealRate/ERP indicators loaded successfully!")
     else:
         print("[FAIL] Dashboard state parameters do not match expected values!")
