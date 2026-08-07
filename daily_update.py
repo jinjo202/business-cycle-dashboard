@@ -571,7 +571,7 @@ def main():
     # 7. Run Verification Script
     print("\nRunning verification script to check for runtime errors...")
     try:
-        res = subprocess.run([sys.executable, "verify_local_dashboard.py"], capture_output=True, text=True)
+        res = subprocess.run([sys.executable, "-X", "utf8", "verify_local_dashboard.py"], capture_output=True, text=True, errors="replace")
         print("verify_local_dashboard.py output:")
         print(res.stdout)
         if res.returncode == 0:
@@ -589,7 +589,7 @@ def main():
 
     print("\nDeploying updated dashboard to GitHub Pages...")
     try:
-        res = subprocess.run([sys.executable, "deploy_to_github.py"], input="\n", capture_output=True, text=True)
+        res = subprocess.run([sys.executable, "-X", "utf8", "deploy_to_github.py"], input="\n", capture_output=True, text=True, errors="replace")
         print(res.stdout)
         if "★ 대시보드 배포 프로세스 완료 ★" in res.stdout:
             print("[SUCCESS] Auto-deployed successfully to GitHub Pages!")
