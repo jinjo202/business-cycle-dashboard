@@ -79,16 +79,55 @@ try:
     realrate_val = driver.execute_script("return document.getElementById('table-realrate-val').textContent;")
     erp_val = driver.execute_script("return document.getElementById('table-erp-val').textContent;")
     
+    # Retrieve Market Feedback State via JS
+    feedback_state = driver.execute_script("""
+        const monthKey = timeMachineMonths[63].value;
+        const usMonthData = getIndicatorsForMonth("US", 63);
+        const krMonthData = getIndicatorsForMonth("KR", 63);
+        const usMacroM = calculateMacroMetrics("US", monthKey, usMonthData.cli, usMonthData.pmi, usMonthData.gdp, usMonthData.m2, usMonthData.rate, usMonthData.spread);
+        const usSeasonM = calculateStockSeasonMetrics("US", monthKey, usMonthData.eps, usMonthData.m2, usMonthData.rate, usMonthData.spread);
+        const krMacroM = calculateMacroMetrics("KR", monthKey, krMonthData.cli, krMonthData.pmi, krMonthData.gdp, krMonthData.m2, krMonthData.rate, krMonthData.spread);
+        const krSeasonM = calculateStockSeasonMetrics("KR", monthKey, krMonthData.eps, krMonthData.m2, krMonthData.rate, krMonthData.spread);
+        return {
+            krLoaded: (typeof krFGData !== 'undefined' && krFGData && krFGData.length > 0),
+            usLoaded: (typeof usFGData !== 'undefined' && usFGData && usFGData.length > 0),
+            feedbackText: document.getElementById('market-feedback-val') ? document.getElementById('market-feedback-val').textContent : '',
+            usX: usMacroM.x,
+            usY: usMacroM.y,
+            usSeason: usSeasonM.seasonKor,
+            krX: krMacroM.x,
+            krY: krMacroM.y,
+            krSeason: krSeasonM.seasonKor
+        };
+    """)
+    
     print(f"\nDashboard State:")
     print(f"  activeTimeIndex: {active_index_val} (expected 63)")
     print(f"  timeMachineMonths length: {timeline_len} (expected 64)")
     print(f"  Real Interest Rate cell value: {realrate_val}")
     print(f"  Equity Risk Premium (ERP) cell value: {erp_val}")
+    print(f"  KOSPI / G&F Data Loaded: {feedback_state['krLoaded']}")
+    print(f"  S&P500 / G&F Data Loaded: {feedback_state['usLoaded']}")
+    print(f"  Sidebar Feedback Status Widget text: '{feedback_state['feedbackText']}'")
+    print(f"  US August 2026 Macro Coordinates: X={feedback_state['usX']:.4f}, Y={feedback_state['usY']:.4f}")
+    print(f"  US August 2026 Stock Season: {feedback_state['usSeason']}")
+    print(f"  KR August 2026 Macro Coordinates: X={feedback_state['krX']:.4f}, Y={feedback_state['krY']:.4f}")
+    print(f"  KR August 2026 Stock Season: {feedback_state['krSeason']}")
     
-    if active_index_val == 63 and timeline_len == 64 and realrate_val and erp_val:
-        print("[SUCCESS] Timeline extended and RealRate/ERP indicators loaded successfully!")
+    conditions_met = (
+        active_index_val == 63 and 
+        timeline_len == 64 and 
+        realrate_val and 
+        erp_val and 
+        feedback_state['krLoaded'] and 
+        feedback_state['usLoaded'] and 
+        "활성" in feedback_state['feedbackText']
+    )
+    
+    if conditions_met:
+        print("[SUCCESS] Timeline extended, RealRate/ERP indicators, and Dynamic Market Feedback Loop are fully active and working!")
     else:
-        print("[FAIL] Dashboard state parameters do not match expected values!")
+        print("[FAIL] Dashboard state parameters or Market Feedback parameters do not match expected values!")
 
 finally:
     if driver:
