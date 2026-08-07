@@ -189,6 +189,20 @@
                         <span>3.0%</span>
                     </div>
                 </div>
+
+                <!-- Market Capital Flow Slider -->
+                <div class="slider-group">
+                    <div class="slider-label">
+                        <span class="label-text">외국인/기관 순수급 강도</span>
+                        <span class="slider-value" id="val-flow">0.0</span>
+                    </div>
+                    <input type="range" id="input-flow" min="-5" max="5" step="0.1" value="0.0">
+                    <div class="slider-meta">
+                        <span>-5.0 (순매도)</span>
+                        <span>0.0 (중립)</span>
+                        <span>5.0 (순매수)</span>
+                    </div>
+                </div>
             </div>
 
             <!-- Time Machine Section -->
@@ -728,6 +742,19 @@
                                         <div class="progress-bar equities-bar" id="bar-equities" style="width: 55%"></div>
                                     </div>
                                 </div>
+                                
+                                <!-- Country Equity Allocation Subbox -->
+                                <div class="country-allocation-subbox" style="margin-left: 1rem; margin-top: 0.25rem; margin-bottom: 0.75rem; padding: 0.5rem; background: rgba(255,255,255,0.03); border-radius: 6px; border: 1px solid rgba(255,255,255,0.05);">
+                                    <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-muted); margin-bottom:0.25rem;">
+                                        <span>주식 내 국가 배분:</span>
+                                        <span>미국 <span id="pct-country-us" style="color:#3b82f6; font-weight:700;">60%</span> | 한국 <span id="pct-country-kr" style="color:#10b981; font-weight:700;">40%</span></span>
+                                    </div>
+                                    <div class="progress-track" style="height:6px; display:flex; background: rgba(255,255,255,0.05); overflow:hidden;">
+                                        <div id="bar-country-us" style="width:60%; background:#3b82f6; height:100%; transition: width 0.3s ease;"></div>
+                                        <div id="bar-country-kr" style="width:40%; background:#10b981; height:100%; transition: width 0.3s ease;"></div>
+                                    </div>
+                                </div>
+
                                 <!-- Bonds -->
                                 <div class="progress-item">
                                     <div class="progress-info">
