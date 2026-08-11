@@ -1,6 +1,6 @@
 // MACROECONOMIC ENGINE & STOCK SEASONS INTERACTION WITH M2 LIQUIDITY
 
-const EXCHANGE_RATE = 1409.64;
+const EXCHANGE_RATE = 1423.62;
 // --- GLOBAL INTERACTIVE DATABASE CONFIGURATION ---
 
 const historicalPresets = {
@@ -994,39 +994,39 @@ function updateExportCard() {
 
     const baselinePrices = {
         "US": {
-            "NVDA": { name: "NVIDIA Corp.", ticker: "NVDA", base: 223.96, format: (p) => `$${p.toFixed(2)}` },
-            "AAPL": { name: "Apple Inc.", ticker: "AAPL", base: 313.33, format: (p) => `$${p.toFixed(2)}` },
-            "MSFT": { name: "Microsoft Corp.", ticker: "MSFT", base: 499.99, format: (p) => `$${p.toFixed(2)}` },
-            "AMZN": { name: "Amazon.com Inc.", ticker: "AMZN", base: 274.48, format: (p) => `$${p.toFixed(2)}` },
-            "TSLA": { name: "Tesla Inc.", ticker: "TSLA", base: 328.58, format: (p) => `$${p.toFixed(2)}` },
-            "COST": { name: "Costco Wholesale", ticker: "COST", base: 947.82, format: (p) => `$${p.toFixed(2)}` },
-            "KO": { name: "Coca-Cola Co.", ticker: "KO", base: 87.05, format: (p) => `$${p.toFixed(2)}` },
-            "PG": { name: "Procter & Gamble Co.", ticker: "PG", base: 145.79, format: (p) => `$${p.toFixed(2)}` },
-            "MCD": { name: "McDonald's Corp.", ticker: "MCD", base: 274.48, format: (p) => `$${p.toFixed(2)}` },
+            "NVDA": { name: "NVIDIA Corp.", ticker: "NVDA", base: 218.99, format: (p) => `$${p.toFixed(2)}` },
+            "AAPL": { name: "Apple Inc.", ticker: "AAPL", base: 312.41, format: (p) => `$${p.toFixed(2)}` },
+            "MSFT": { name: "Microsoft Corp.", ticker: "MSFT", base: 499.86, format: (p) => `$${p.toFixed(2)}` },
+            "AMZN": { name: "Amazon.com Inc.", ticker: "AMZN", base: 272.26, format: (p) => `$${p.toFixed(2)}` },
+            "TSLA": { name: "Tesla Inc.", ticker: "TSLA", base: 319.53, format: (p) => `$${p.toFixed(2)}` },
+            "COST": { name: "Costco Wholesale", ticker: "COST", base: 949.15, format: (p) => `$${p.toFixed(2)}` },
+            "KO": { name: "Coca-Cola Co.", ticker: "KO", base: 86.85, format: (p) => `$${p.toFixed(2)}` },
+            "PG": { name: "Procter & Gamble Co.", ticker: "PG", base: 146.97, format: (p) => `$${p.toFixed(2)}` },
+            "MCD": { name: "McDonald's Corp.", ticker: "MCD", base: 276.26, format: (p) => `$${p.toFixed(2)}` },
             "WBA": { name: "Walgreens Boots Alliance", ticker: "WBA", base: 15.40, format: (p) => `$${p.toFixed(2)}` },
-            "PARA": { name: "Paramount Global", ticker: "PARA", base: 1.76, format: (p) => `$${p.toFixed(2)}` },
-            "INTC": { name: "Intel Corp.", ticker: "INTC", base: 101.65, format: (p) => `$${p.toFixed(2)}` },
-            "LMT": { name: "Lockheed Martin Corp.", ticker: "LMT", base: 587.95, format: (p) => `$${p.toFixed(2)}` },
-            "GLD": { name: "SPDR Gold Shares", ticker: "GLD", base: 398.47, format: (p) => `$${p.toFixed(2)}` },
-            "WMT": { name: "Walmart Inc.", ticker: "WMT", base: 111.85, format: (p) => `$${p.toFixed(2)}` },
-            "JPM": { name: "JPMorgan Chase & Co.", ticker: "JPM", base: 357.52, format: (p) => `$${p.toFixed(2)}` },
-            "CAT": { name: "Caterpillar Inc.", ticker: "CAT", base: 842.19, format: (p) => `$${p.toFixed(2)}` },
-            "XOM": { name: "Exxon Mobil Corp.", ticker: "XOM", base: 153.04, format: (p) => `$${p.toFixed(2)}` },
-            "GE": { name: "General Electric Co.", ticker: "GE", base: 370.08, format: (p) => `$${p.toFixed(2)}` },
-            "PYPL": { name: "PayPal Holdings Inc.", ticker: "PYPL", base: 59.07, format: (p) => `$${p.toFixed(2)}` },
-            "BA": { name: "Boeing Co.", ticker: "BA", base: 234.42, format: (p) => `$${p.toFixed(2)}` },
-            "PFE": { name: "Pfizer Inc.", ticker: "PFE", base: 26.76, format: (p) => `$${p.toFixed(2)}` },
-            "SQQQ": { name: "ProShares UltraPro Short QQQ", ticker: "SQQQ", base: 37.40, format: (p) => `$${p.toFixed(2)}` },
-            "VIX": { name: "iPath Volatility VIX ETN", ticker: "VIX", base: 15.45, format: (p) => `$${p.toFixed(2)}` },
-            "XLU": { name: "Utilities Select Sector SPDR", ticker: "XLU", base: 43.61, format: (p) => `$${p.toFixed(2)}` },
-            "AMD": { name: "Advanced Micro Devices", ticker: "AMD", base: 483.36, format: (p) => `$${p.toFixed(2)}` },
-            "SMCI": { name: "Super Micro Computer", ticker: "SMCI", base: 31.13, format: (p) => `$${p.toFixed(2)}` },
-            "TLT": { name: "iShares 20+ Yr Treasury Bond", ticker: "TLT", base: 82.76, format: (p) => `$${p.toFixed(2)}` },
-            "BAC": { name: "Bank of America Corp.", ticker: "BAC", base: 63.17, format: (p) => `$${p.toFixed(2)}` },
-            "FCX": { name: "Freeport-McMoRan Inc.", ticker: "FCX", base: 69.62, format: (p) => `$${p.toFixed(2)}` }
+            "PARA": { name: "Paramount Global", ticker: "PARA", base: 11.20, format: (p) => `$${p.toFixed(2)}` },
+            "INTC": { name: "Intel Corp.", ticker: "INTC", base: 99.81, format: (p) => `$${p.toFixed(2)}` },
+            "LMT": { name: "Lockheed Martin Corp.", ticker: "LMT", base: 582.85, format: (p) => `$${p.toFixed(2)}` },
+            "GLD": { name: "SPDR Gold Shares", ticker: "GLD", base: 389.67, format: (p) => `$${p.toFixed(2)}` },
+            "WMT": { name: "Walmart Inc.", ticker: "WMT", base: 112.07, format: (p) => `$${p.toFixed(2)}` },
+            "JPM": { name: "JPMorgan Chase & Co.", ticker: "JPM", base: 356.30, format: (p) => `$${p.toFixed(2)}` },
+            "CAT": { name: "Caterpillar Inc.", ticker: "CAT", base: 856.96, format: (p) => `$${p.toFixed(2)}` },
+            "XOM": { name: "Exxon Mobil Corp.", ticker: "XOM", base: 154.84, format: (p) => `$${p.toFixed(2)}` },
+            "GE": { name: "General Electric Co.", ticker: "GE", base: 374.55, format: (p) => `$${p.toFixed(2)}` },
+            "PYPL": { name: "PayPal Holdings Inc.", ticker: "PYPL", base: 59.78, format: (p) => `$${p.toFixed(2)}` },
+            "BA": { name: "Boeing Co.", ticker: "BA", base: 232.19, format: (p) => `$${p.toFixed(2)}` },
+            "PFE": { name: "Pfizer Inc.", ticker: "PFE", base: 26.20, format: (p) => `$${p.toFixed(2)}` },
+            "SQQQ": { name: "ProShares UltraPro Short QQQ", ticker: "SQQQ", base: 38.70, format: (p) => `$${p.toFixed(2)}` },
+            "VIX": { name: "iPath Volatility VIX ETN", ticker: "VIX", base: 15.15, format: (p) => `$${p.toFixed(2)}` },
+            "XLU": { name: "Utilities Select Sector SPDR", ticker: "XLU", base: 43.38, format: (p) => `$${p.toFixed(2)}` },
+            "AMD": { name: "Advanced Micro Devices", ticker: "AMD", base: 489.28, format: (p) => `$${p.toFixed(2)}` },
+            "SMCI": { name: "Super Micro Computer", ticker: "SMCI", base: 29.38, format: (p) => `$${p.toFixed(2)}` },
+            "TLT": { name: "iShares 20+ Yr Treasury Bond", ticker: "TLT", base: 82.52, format: (p) => `$${p.toFixed(2)}` },
+            "BAC": { name: "Bank of America Corp.", ticker: "BAC", base: 63.00, format: (p) => `$${p.toFixed(2)}` },
+            "FCX": { name: "Freeport-McMoRan Inc.", ticker: "FCX", base: 68.18, format: (p) => `$${p.toFixed(2)}` }
         },
         "KR": {
-            "SK하이닉스": { name: "SK하이닉스", ticker: "000660", base: 1420000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "SK하이닉스": { name: "SK하이닉스", ticker: "000660", base: 1514000, format: (p) => `${Math.round(p).toLocaleString()}원` },
             "한미반도체": { name: "한미반도체", ticker: "042700", base: 309500, format: (p) => `${Math.round(p).toLocaleString()}원` },
             "현대차": { name: "현대자동차", ticker: "005380", base: 680000, format: (p) => `${Math.round(p).toLocaleString()}원` },
             "기아": { name: "기아", ticker: "000270", base: 167800, format: (p) => `${Math.round(p).toLocaleString()}원` },
@@ -1164,8 +1164,8 @@ function getMonthIndex(yearMonthStr) {
     return (year - 2021) * 12 + (month - 5);
 }
 
-// Update MoM Transition Panel in the DOM
-function updateTransitionPanel(prevMacro, currMacro, prevSeason, currSeason, prevIndex) {
+// Update MoM Transition Panel in the DOM with detailed indicator and coordinate comparisons
+function updateTransitionPanel(prevMacro, currMacro, prevSeason, currSeason, prevIndex, prevInds, prevFlow, currInds) {
     let prevDateLabel = "직전 상태";
     if (activeMode === "time") {
         prevDateLabel = timeMachineMonths[prevIndex].label;
@@ -1219,9 +1219,142 @@ function updateTransitionPanel(prevMacro, currMacro, prevSeason, currSeason, pre
         transSeasonCurr.className = `season-badge-mini active ${currSeason.season}`;
         transSeasonCurr.textContent = currSeason.seasonKor.split(" (")[0];
     }
+
+    // Default indicators if null
+    if (!prevInds) {
+        prevInds = { cli: 100, pmi: 50, gdp: 2.0, eps: 5.0, m2: 6.0, cpi: 2.0, rate: 3.5, spread: 0.2 };
+    }
+    const prevIndsFull = Object.assign({}, prevInds, { flow: prevFlow !== undefined ? prevFlow : 0.0 });
+
+    // Generate narrative explanation
+    let explanationText = "";
+    const phaseChanged = prevMacro.phase !== currMacro.phase;
+    const seasonChanged = prevSeason.season !== currSeason.season;
+
+    let growthDiff = (currMacro.x !== undefined && prevMacro.x !== undefined) ? (currMacro.x - prevMacro.x) : 0;
+    let momentumDiff = (currMacro.y !== undefined && prevMacro.y !== undefined) ? (currMacro.y - prevMacro.y) : 0;
+
+    let majorFactorText = [];
+    if (currInds && prevIndsFull) {
+        if (Math.abs(currInds.pmi - prevIndsFull.pmi) >= 0.1) {
+            majorFactorText.push(`PMI 변동(${ (currInds.pmi - prevIndsFull.pmi) >= 0 ? '+' : '' }${(currInds.pmi - prevIndsFull.pmi).toFixed(1)}p)`);
+        }
+        if (Math.abs(currInds.cli - prevIndsFull.cli) >= 0.1) {
+            majorFactorText.push(`선행지수(CLI) 변동(${ (currInds.cli - prevIndsFull.cli) >= 0 ? '+' : '' }${(currInds.cli - prevIndsFull.cli).toFixed(1)}p)`);
+        }
+        if (Math.abs(currInds.m2 - prevIndsFull.m2) >= 0.1) {
+            majorFactorText.push(`M2증가율 변동(${ (currInds.m2 - prevIndsFull.m2) >= 0 ? '+' : '' }${(currInds.m2 - prevIndsFull.m2).toFixed(1)}%p)`);
+        }
+        if (Math.abs(currInds.rate - prevIndsFull.rate) >= 0.01) {
+            majorFactorText.push(`기준금리 변동(${ (currInds.rate - prevIndsFull.rate) >= 0 ? '+' : '' }${(currInds.rate - prevIndsFull.rate).toFixed(2)}%p)`);
+        }
+        if (Math.abs(currInds.flow - prevIndsFull.flow) >= 0.1) {
+            majorFactorText.push(`시장수급 변동(${ (currInds.flow - prevIndsFull.flow) >= 0 ? '+' : '' }${(currInds.flow - prevIndsFull.flow).toFixed(1)}p)`);
+        }
+    }
+
+    let factorsSummary = majorFactorText.length > 0 ? majorFactorText.join(", ") : "지표들의 미세 조정";
+
+    if (phaseChanged || seasonChanged) {
+        explanationText = `⚠️ <strong>국면 전환 감지:</strong> `;
+        if (phaseChanged) {
+            explanationText += `경기 순환 국면이 <strong>${prevMacro.phaseKor}</strong>에서 <strong>${currMacro.phaseKor}</strong>로 전환되었습니다. `;
+        }
+        if (seasonChanged) {
+            explanationText += `주식시장 계절이 <strong>${prevSeason.seasonKor}</strong>에서 <strong>${currSeason.seasonKor}</strong>로 전환되었습니다. `;
+        }
+        explanationText += `<br>변동의 주된 원인은 <strong>${factorsSummary}</strong> 입니다. (성장축 변동: ${growthDiff >= 0 ? '+' : ''}${growthDiff.toFixed(2)}, 모멘텀축 변동: ${momentumDiff >= 0 ? '+' : ''}${momentumDiff.toFixed(2)})`;
+    } else {
+        explanationText = `ℹ️ <strong>국면 유지:</strong> 경기 국면(<strong>${currMacro.phaseKor}</strong>) 및 주식 계절(<strong>${currSeason.seasonKor}</strong>)이 유지되고 있습니다. (변동 영향: <strong>${factorsSummary}</strong>, 성장축 변동: ${growthDiff >= 0 ? '+' : ''}${growthDiff.toFixed(2)}, 모멘텀축 변동: ${momentumDiff >= 0 ? '+' : ''}${momentumDiff.toFixed(2)})`;
+    }
+
+    const explanationEl = document.getElementById("transition-phase-explanation");
+    if (explanationEl) {
+        explanationEl.innerHTML = explanationText;
+    }
+
+    const gridEl = document.getElementById("transition-indicator-grid");
+    if (gridEl && currInds && prevIndsFull) {
+        gridEl.innerHTML = "";
+        const indicatorsDef = [
+            { label: "선행지수 (CLI)", prev: prevIndsFull.cli, curr: currInds.cli, unit: "", dp: 1 },
+            { label: "제조업 PMI", prev: prevIndsFull.pmi, curr: currInds.pmi, unit: "", dp: 1 },
+            { label: "선행 EPS증가율", prev: prevIndsFull.eps, curr: currInds.eps, unit: "%", dp: 1 },
+            { label: "M2 증가율", prev: prevIndsFull.m2, curr: currInds.m2, unit: "%", dp: 1 },
+            { label: "GDP 성장률", prev: prevIndsFull.gdp, curr: currInds.gdp, unit: "%", dp: 1 },
+            { label: "소비자물가 (CPI)", prev: prevIndsFull.cpi, curr: currInds.cpi, unit: "%", dp: 1 },
+            { label: "기준 금리", prev: prevIndsFull.rate, curr: currInds.rate, unit: "%", dp: 2 },
+            { label: "장단기 금리차", prev: prevIndsFull.spread, curr: currInds.spread, unit: "%", dp: 1 },
+            { label: "수급 강도", prev: prevIndsFull.flow, curr: currInds.flow, unit: "", dp: 1 }
+        ];
+
+        indicatorsDef.forEach(ind => {
+            const diff = ind.curr - ind.prev;
+            let diffClass = "neutral";
+            let diffSign = "";
+            if (diff > 0.001) {
+                diffClass = "up";
+                diffSign = "+";
+            } else if (diff < -0.001) {
+                diffClass = "down";
+            }
+            
+            let diffColor = "var(--text-muted)";
+            if (diffClass === "up") {
+                diffColor = "#3b82f6";
+            } else if (diffClass === "down") {
+                diffColor = "#ef4444";
+            }
+
+            const itemHtml = `
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); border-radius: 6px; padding: 0.4rem 0.5rem; display: flex; flex-direction: column; gap: 0.15rem;">
+                    <span style="font-size: 0.65rem; color: var(--text-muted); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${ind.label}</span>
+                    <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 0.25rem;">
+                        <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-color);">${ind.curr.toFixed(ind.dp)}${ind.unit}</span>
+                        <span style="font-size: 0.65rem; font-weight: 700; color: ${diffColor};">${diffSign}${diff.toFixed(ind.dp)}${ind.unit}</span>
+                    </div>
+                </div>
+            `;
+            gridEl.insertAdjacentHTML("beforeend", itemHtml);
+        });
+    }
 }
 
-// 3A. Business Cycle Model (Fidelity Framework - now with M2 Liquidity Impact & Sentiment Drag)
+/**
+ * 3A. Fidelity Framework 기반 매크로 경기 사이클 모델 계산
+ * 
+ * [모델 산출 방식 설명]
+ * 이 모델은 실물 경기 지표와 유동성(금융 시장) 지표를 직교하는 두 개의 축으로 계량화하여
+ * 현재의 경기 상태를 4대 국면(확장, 둔화, 수축, 회복)으로 분류합니다.
+ * 
+ * 1. 성장 축 (X-Axis: Growth Score) - 경제의 실물 성장 속도와 강도를 측정합니다.
+ *    - CLI (OECD 경기선행지수): 장기 추세선(100.0)을 기준으로 상하 변동 폭에 가중치 1.5배 부여.
+ *    - PMI (제조업 구매관리자지수): 경기 확장의 기준선(50.0)을 기준으로 상하 변동 폭에 가중치 0.35배 부여.
+ *    - GDP 성장률: 각국의 잠재성장률(미국 2.0%, 한국 2.2%)을 중심선으로 초과 성장 폭에 가중치 0.45배 부여.
+ *    - 수식: growthScore = (CLI - 100) * 1.5 + (PMI - 50) * 0.35 + (GDP - 잠재성장률) * 0.45
+ *    
+ * 2. 모멘텀 축 (Y-Axis: Momentum Score) - 금융 시장 유동성과 신용 주기 속도를 측정합니다.
+ *    - 장단기 금리차 (10Y-2Y Spread): 경기 선행력이 높으므로 중립선(0.2%) 기준 변동에 가중치 1.2배 부여.
+ *    - 정책 금리 스트레스 (Policy Rate Stress): 중립 금리 수준(미국 3.5%, 한국 3.0%)을 기준으로 금리가 높아질수록 모멘텀을 감산(-0.35배).
+ *    - PMI 모멘텀: 실물 경기의 확장이 신용 창출로 전이되는 속도(+0.1배).
+ *    - M2 통화량 증가율: 금융 시장 유동성의 원천이므로 중립선(6.0%) 기준 초과 증가 폭에 가중치 0.25배 부여.
+ *    - 수식: momentumScore = (Spread - 0.2) * 1.2 - (Rate - 중립금리) * 0.35 + (PMI - 50) * 0.1 + (M2 - 6.0) * 0.25
+ * 
+ * 3. 시장 피드백 보정 (Dynamic Market Feedback Sentiment Drag)
+ *    - 실물 지표 발표의 후행성을 극복하기 위해, 탐욕&공포 지수(G&F), 주가 3개월 모멘텀, 12개월 낙폭(Drawdown)을 가중 집계하여
+ *      시장이 과열되거나 공포에 빠질 때 성장/모멘텀 좌표를 각각 좌측/하단으로 끌어당겨 선행적인 국면 전환을 모사합니다.
+ *    - 수식:
+ *      * G&F 공포 드래그: G&F가 45 미만일 때 (G&F - 45) * 0.035 적용
+ *      * 3M 모멘텀 드래그: 3M 수익률이 음수일 때 momentum3d * 4.0 적용
+ *      * 12M 낙폭 드래그: 고점 대비 낙폭이 -5%를 초과하여 커질 때 (Drawdown + 0.05) * 3.0 적용
+ *      * 최종 보정치(sentimentDrag)를 Growth에 0.45배, Momentum에 0.70배 가산(드래그가 음수이므로 감소 효과)하여 최종 위치 결정.
+ * 
+ * 4. 국면 사분면 분류 (Cartesian Classification)
+ *    - 확장기 (Expansion): X >= 0, Y >= 0 (성장과 유동성 모두 팽창하는 황금기)
+ *    - 둔화기 (Slowdown): X >= 0, Y < 0 (성장은 유지되나 유동성 수축/금리인상으로 모멘텀 둔화)
+ *    - 수축기 (Contraction): X < 0, Y < 0 (실물 경기 침체와 금융 유동성 경색이 겹치는 위기)
+ *    - 회복기 (Recovery): X < 0, Y >= 0 (성장은 정체이나 정책 완화/금리인하로 금융 모멘텀 먼저 상승)
+ */
 function calculateMacroMetrics(region, monthKey, cli, pmi, gdp, m2, rate, spread) {
     const cliCenter = 100.0;
     const pmiCenter = 50.0;
@@ -1291,7 +1424,37 @@ function calculateMacroMetrics(region, monthKey, cli, pmi, gdp, m2, rate, spread
     return { x: growthScore, y: momentumScore, phase: phase, phaseKor: phaseKor };
 }
 
-// 3B. Uragami Kunio Stock Market 4 Seasons Model (utilizing Fwd EPS, M2 Liquidity, Rate & Spread)
+/**
+ * 3B. 우라가미 구니오(Uragami Kunio)의 주식시장 사계절 모델 계산
+ * 
+ * [모델 산출 방식 설명]
+ * 이 모델은 기업의 실적(이익 성장) 방향과 금융 시장의 긴축/완화 강도(금리 스트레스)를 비교하여
+ * 주식시장의 4가지 국면(금융장세, 실적장세, 역금융장세, 역실적장세)을 정의합니다.
+ * 
+ * 1. 이익 방향 축 (EPS Score) - 기업 선행 EPS 증가율의 방향성 측정
+ *    - 선행 EPS 성장률을 중립선(미국 5.0%, 한국 3.0%) 대비 차이로 계량화.
+ *    - 수식: epsScore = (FwdEPS - 이익임계치) / 10.0
+ * 
+ * 2. 금리 스트레스 축 (Rate Stress) - 유동성 할인율 환경 측정
+ *    - 기준금리에서 중립금리(미국 3.5%, 한국 3.0%) 초과분을 기본 스트레스로 잡고,
+ *      장단기 금리차가 클수록(커브 스티프닝: 완화 우호) 및 M2 증가율이 높을수록(시중 통화 팽창) 스트레스를 경감.
+ *    - 수식: rateStress = (Rate - 중립금리) / 4.0 - (Spread - 0.2) / 2.0 - (M2 - 6.0) / 12.0
+ * 
+ * 3. 시장 피드백 보정 (Sentiment Drag)
+ *    - 매크로 드래그와 동일하게 시장의 패닉(G&F 폭락 및 주가 폭락) 발생 시 EPS 성장을 하향 조정하고 
+ *      금리 스트레스를 강제로 상향 보정(tightening risk premium)하여 선행적으로 겨울/가을 국면 진입을 가속화합니다.
+ * 
+ * 4. 우라가미 4대 계절 분류
+ *    - 여름 (실적장세 / Summer): 이익 성장 활발 & 금리 스트레스 낮음 (실적 개선이 장세를 견인)
+ *    - 가을 (역금융장세 / Autumn): 이익 성장 유지되나 고금리/긴축 돌입 (할인율 타격으로 밸류에이션 축소)
+ *    - 겨울 (역실적장세 / Winter): 이익 붕괴 & 금리 스트레스 높음 (경기 침체와 기업 실적 악화 악순환)
+ *    - 봄 (금융장세 / Spring): 이익 부진하나 금리인하/완화 돌입 (돈의 힘으로 주가가 선행 반등)
+ * 
+ * 5. 업종 가중치 블렌딩 (Proximity Weight Blending) 및 시장 수급 보정
+ *    - 결정된 사계절 각도(needleAngle)와 각 계절의 중심 각도 사이의 거리를 계산하여 4개 계절 업종 가중치를 선형 블렌딩합니다.
+ *    - 순수급 강도(flowScore)가 양수일 때: 성장 및 IT 성격의 여름/봄 업종 비중 확대 보정
+ *    - 순수급 강도(flowScore)가 음수일 때: 경기방어주 성격의 겨울/가을 업종 비중 확대 보정
+ */
 function calculateStockSeasonMetrics(region, monthKey, fwdEPS, m2, rate, spread, flowScore) {
     if (flowScore === undefined) flowScore = 0.0;
 
@@ -1864,36 +2027,36 @@ function calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2
     const ytdKospi = 5.2 + 6.0 * x + 3.0 * y;
     const ytdKosdaq = 6.8 + 8.2 * x + 4.5 * y;
 
-    const mcapSp500Total = 82.51 * (1 + ytdSp500 / 100);
-    const mcapKospiTotal = 5152.27 * (1 + ytdKospi / 100);
-    const mcapKosdaqTotal = 562.94 * (1 + ytdKosdaq / 100);
+    const mcapSp500Total = 82.01 * (1 + ytdSp500 / 100);
+    const mcapKospiTotal = 5223.23 * (1 + ytdKospi / 100);
+    const mcapKosdaqTotal = 534.94 * (1 + ytdKosdaq / 100);
 
     // US S&P 500 Top 10 Companies
             const usTop10Defs = [
-        { name: "NVIDIA Corp.", ticker: "NVDA", baseMcap: 5.42, betaX: 8.0, betaY: 6.0, baseOffset: 22.0, price: 201.07, fwdPE: 15.8, eps_trail: 6.53, eps_0q: 2.08, eps_1q: 2.35, eps_0y: 8.96, eps_1y: 12.73, ret_1d: -3.62, ret_1w: -5.34, ret_1m: -6.29, last_updated: "2026-06-24 00:16" },
-        { name: "Apple Inc.", ticker: "AAPL", baseMcap: 4.57, betaX: 3.5, betaY: 1.8, baseOffset: 9.0, price: 299.09, fwdPE: 31.15, eps_trail: 8.26, eps_0q: 1.89, eps_1q: 2.01, eps_0y: 8.76, eps_1y: 9.67, ret_1d: 0.7, ret_1w: 0.9, ret_1m: -3.0, last_updated: "2026-06-24 00:16" },
-        { name: "Alphabet Inc.", ticker: "GOOGL", baseMcap: 4.33, betaX: 3.8, betaY: 1.9, baseOffset: 8.0, price: 346.5, fwdPE: 23.81, eps_trail: 13.11, eps_0q: 2.87, eps_1q: 3.0, eps_0y: 14.22, eps_1y: 14.51, ret_1d: -0.89, ret_1w: -6.17, ret_1m: -10.83, last_updated: "2026-06-24 00:16" },
+        { name: "NVIDIA Corp.", ticker: "NVDA", baseMcap: 5.30, betaX: 8.0, betaY: 6.0, baseOffset: 22.0, price: 201.07, fwdPE: 15.8, eps_trail: 6.53, eps_0q: 2.08, eps_1q: 2.35, eps_0y: 8.96, eps_1y: 12.73, ret_1d: -3.62, ret_1w: -5.34, ret_1m: -6.29, last_updated: "2026-06-24 00:16" },
+        { name: "Apple Inc.", ticker: "AAPL", baseMcap: 4.56, betaX: 3.5, betaY: 1.8, baseOffset: 9.0, price: 299.09, fwdPE: 31.15, eps_trail: 8.26, eps_0q: 1.89, eps_1q: 2.01, eps_0y: 8.76, eps_1y: 9.67, ret_1d: 0.7, ret_1w: 0.9, ret_1m: -3.0, last_updated: "2026-06-24 00:16" },
+        { name: "Alphabet Inc.", ticker: "GOOGL", baseMcap: 4.38, betaX: 3.8, betaY: 1.9, baseOffset: 8.0, price: 346.5, fwdPE: 23.81, eps_trail: 13.11, eps_0q: 2.87, eps_1q: 3.0, eps_0y: 14.22, eps_1y: 14.51, ret_1d: -0.89, ret_1w: -6.17, ret_1m: -10.83, last_updated: "2026-06-24 00:16" },
         { name: "Microsoft Corp.", ticker: "MSFT", baseMcap: 3.71, betaX: 4.0, betaY: 2.0, baseOffset: 10.0, price: 374.87, fwdPE: 19.38, eps_trail: 16.79, eps_0q: 4.24, eps_1q: 4.62, eps_0y: 16.84, eps_1y: 19.35, ret_1d: 2.05, ret_1w: -6.23, ret_1m: -9.89, last_updated: "2026-06-24 00:16" },
-        { name: "Amazon.com Inc.", ticker: "AMZN", baseMcap: 2.96, betaX: 4.5, betaY: 2.2, baseOffset: 11.0, price: 234.39, fwdPE: 23.72, eps_trail: 7.36, eps_0q: 1.81, eps_1q: 1.91, eps_0y: 8.66, eps_1y: 9.88, ret_1d: 0.69, ret_1w: -4.73, ret_1m: -11.65, last_updated: "2026-06-24 00:16" },
-        { name: "Broadcom Inc.", ticker: "AVGO", baseMcap: 2.04, betaX: 4.8, betaY: 2.5, baseOffset: 13.0, price: 380.28, fwdPE: 19.62, eps_trail: 6.0, eps_0q: 3.24, eps_1q: 3.87, eps_0y: 11.62, eps_1y: 19.39, ret_1d: -3.02, ret_1w: -3.31, ret_1m: -9.75, last_updated: "2026-06-24 00:16" },
-        { name: "Tesla Inc.", ticker: "TSLA", baseMcap: 1.30, betaX: 7.0, betaY: 5.0, baseOffset: 15.0, price: 385.24, fwdPE: 154.1, eps_trail: 1.09, eps_0q: 0.46, eps_1q: 0.54, eps_0y: 2.06, eps_1y: 2.5, ret_1d: -4.9, ret_1w: -6.31, ret_1m: -11.16, last_updated: "2026-06-24 00:16" },
-        { name: "Meta Platforms", ticker: "META", baseMcap: 1.51, betaX: 5.2, betaY: 3.0, baseOffset: 12.0, price: 565.12, fwdPE: 15.59, eps_trail: 27.52, eps_0q: 7.2, eps_1q: 7.04, eps_0y: 32.83, eps_1y: 34.92, ret_1d: 0.24, ret_1w: -4.76, ret_1m: -7.61, last_updated: "2026-06-24 00:16" },
+        { name: "Amazon.com Inc.", ticker: "AMZN", baseMcap: 2.94, betaX: 4.5, betaY: 2.2, baseOffset: 11.0, price: 234.39, fwdPE: 23.72, eps_trail: 7.36, eps_0q: 1.81, eps_1q: 1.91, eps_0y: 8.66, eps_1y: 9.88, ret_1d: 0.69, ret_1w: -4.73, ret_1m: -11.65, last_updated: "2026-06-24 00:16" },
+        { name: "Broadcom Inc.", ticker: "AVGO", baseMcap: 2.00, betaX: 4.8, betaY: 2.5, baseOffset: 13.0, price: 380.28, fwdPE: 19.62, eps_trail: 6.0, eps_0q: 3.24, eps_1q: 3.87, eps_0y: 11.62, eps_1y: 19.39, ret_1d: -3.02, ret_1w: -3.31, ret_1m: -9.75, last_updated: "2026-06-24 00:16" },
+        { name: "Tesla Inc.", ticker: "TSLA", baseMcap: 1.26, betaX: 7.0, betaY: 5.0, baseOffset: 15.0, price: 385.24, fwdPE: 154.1, eps_trail: 1.09, eps_0q: 0.46, eps_1q: 0.54, eps_0y: 2.06, eps_1y: 2.5, ret_1d: -4.9, ret_1w: -6.31, ret_1m: -11.16, last_updated: "2026-06-24 00:16" },
+        { name: "Meta Platforms", ticker: "META", baseMcap: 1.50, betaX: 5.2, betaY: 3.0, baseOffset: 12.0, price: 565.12, fwdPE: 15.59, eps_trail: 27.52, eps_0q: 7.2, eps_1q: 7.04, eps_0y: 32.83, eps_1y: 34.92, ret_1d: 0.24, ret_1w: -4.76, ret_1m: -7.61, last_updated: "2026-06-24 00:16" },
         { name: "Berkshire Hathaway", ticker: "BRK.B", baseMcap: 1.13, betaX: 1.5, betaY: 0.5, baseOffset: 6.0, price: 493.8, fwdPE: 23.0, eps_trail: 33.57, eps_0q: 5.01, eps_1q: 5.3, eps_0y: 20.75, eps_1y: 21.47, ret_1d: 1.04, ret_1w: -0.35, ret_1m: 2.1, last_updated: "2026-06-24 00:16" },
         { name: "Eli Lilly & Co.", ticker: "LLY", baseMcap: 1.06, betaX: 2.0, betaY: 1.0, baseOffset: 18.0, price: 1101.72, fwdPE: 24.78, eps_trail: 28.1, eps_0q: 8.81, eps_1q: 9.4, eps_0y: 36.21, eps_1y: 44.46, ret_1d: -0.03, ret_1w: -2.45, ret_1m: 3.47, last_updated: "2026-06-24 00:16" }
     ];
 
     // KOSPI Top 10 Companies
             const krTop10Defs = [
-        { name: "삼성전자", ticker: "005930", baseMcap: 1510.31, betaX: 5.5, betaY: 3.0, baseOffset: 8.0, price: 310000.0, fwdPE: 5.34, eps_trail: 0, eps_0q: 11061.49, eps_1q: 13483.35, eps_0y: 45425.67, eps_1y: 58035.6, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "SK하이닉스", ticker: "000660", baseMcap: 1007.99, betaX: 8.5, betaY: 5.0, baseOffset: 24.0, price: 2555000.0, fwdPE: 6.18, eps_trail: 0, eps_0q: 71064.06, eps_1q: 88259.91, eps_0y: 305490.4, eps_1y: 413579.4, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "현대차", ticker: "005380", baseMcap: 106.83, betaX: 3.5, betaY: 1.5, baseOffset: 14.0, price: 511000.0, fwdPE: 10.36, eps_trail: 0, eps_0q: 12370.13, eps_1q: 12614.77, eps_0y: 44708.26, eps_1y: 49327.39, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "LG에너지솔루션", ticker: "373220", baseMcap: 86.00, betaX: 6.0, betaY: 3.5, baseOffset: 5.0, price: 362000.0, fwdPE: 42.11, eps_trail: 0, eps_0q: 878.92, eps_1q: 2508.59, eps_0y: 1979.04, eps_1y: 8596.31, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "삼성물산", ticker: "028260", baseMcap: 54.98, betaX: 2.0, betaY: 1.5, baseOffset: 5.0, price: 455000.0, fwdPE: 25.83, eps_trail: 0, eps_0q: 3136.25, eps_1q: 3472.02, eps_0y: 15864.73, eps_1y: 17613.21, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "삼성바이오로직스", ticker: "207940", baseMcap: 72.63, betaX: 1.8, betaY: 0.8, baseOffset: 7.0, price: 1273000.0, fwdPE: 26.41, eps_trail: 0, eps_0q: 8865.59, eps_1q: 9676.67, eps_0y: 42404.33, eps_1y: 48198.96, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "KB금융", ticker: "105560", baseMcap: 60.28, betaX: 2.5, betaY: 1.2, baseOffset: 18.0, price: 153700.0, fwdPE: 8.13, eps_trail: 0, eps_0q: 4578.9, eps_1q: 4985.44, eps_0y: 17648.36, eps_1y: 18906.17, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "기아", ticker: "000270", baseMcap: 52.66, betaX: 3.8, betaY: 1.6, baseOffset: 15.0, price: 137400.0, fwdPE: 5.82, eps_trail: 0, eps_0q: 6129.74, eps_1q: 5699.84, eps_0y: 21668.62, eps_1y: 23614.46, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "신한지주", ticker: "055550", baseMcap: 49.95, betaX: 2.2, betaY: 1.1, baseOffset: 14.0, price: 97700.0, fwdPE: 7.58, eps_trail: 0, eps_0q: 3301.84, eps_1q: 3203.13, eps_0y: 11800.98, eps_1y: 12897.58, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "현대모비스", ticker: "012330", baseMcap: 45.04, betaX: 2.5, betaY: 1.2, baseOffset: 6.0, price: 510000.0, fwdPE: 9.61, eps_trail: 0, eps_0q: 13246.62, eps_1q: 13516.65, eps_0y: 47320.18, eps_1y: 53062.31, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" }
+        { name: "삼성전자", ticker: "005930", baseMcap: 1552.99, betaX: 5.5, betaY: 3.0, baseOffset: 8.0, price: 310000.0, fwdPE: 5.34, eps_trail: 0, eps_0q: 11061.49, eps_1q: 13483.35, eps_0y: 45425.67, eps_1y: 58035.6, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "SK하이닉스", ticker: "000660", baseMcap: 1074.72, betaX: 8.5, betaY: 5.0, baseOffset: 24.0, price: 2555000.0, fwdPE: 6.18, eps_trail: 0, eps_0q: 71064.06, eps_1q: 88259.91, eps_0y: 305490.4, eps_1y: 413579.4, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "현대차", ticker: "005380", baseMcap: 104.47, betaX: 3.5, betaY: 1.5, baseOffset: 14.0, price: 511000.0, fwdPE: 10.36, eps_trail: 0, eps_0q: 12370.13, eps_1q: 12614.77, eps_0y: 44708.26, eps_1y: 49327.39, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "LG에너지솔루션", ticker: "373220", baseMcap: 83.77, betaX: 6.0, betaY: 3.5, baseOffset: 5.0, price: 362000.0, fwdPE: 42.11, eps_trail: 0, eps_0q: 878.92, eps_1q: 2508.59, eps_0y: 1979.04, eps_1y: 8596.31, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "삼성물산", ticker: "028260", baseMcap: 55.06, betaX: 2.0, betaY: 1.5, baseOffset: 5.0, price: 455000.0, fwdPE: 25.83, eps_trail: 0, eps_0q: 3136.25, eps_1q: 3472.02, eps_0y: 15864.73, eps_1y: 17613.21, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "삼성바이오로직스", ticker: "207940", baseMcap: 69.71, betaX: 1.8, betaY: 0.8, baseOffset: 7.0, price: 1273000.0, fwdPE: 26.41, eps_trail: 0, eps_0q: 8865.59, eps_1q: 9676.67, eps_0y: 42404.33, eps_1y: 48198.96, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "KB금융", ticker: "105560", baseMcap: 60.78, betaX: 2.5, betaY: 1.2, baseOffset: 18.0, price: 153700.0, fwdPE: 8.13, eps_trail: 0, eps_0q: 4578.9, eps_1q: 4985.44, eps_0y: 17648.36, eps_1y: 18906.17, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "기아", ticker: "000270", baseMcap: 52.08, betaX: 3.8, betaY: 1.6, baseOffset: 15.0, price: 137400.0, fwdPE: 5.82, eps_trail: 0, eps_0q: 6129.74, eps_1q: 5699.84, eps_0y: 21668.62, eps_1y: 23614.46, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "신한지주", ticker: "055550", baseMcap: 50.65, betaX: 2.2, betaY: 1.1, baseOffset: 14.0, price: 97700.0, fwdPE: 7.58, eps_trail: 0, eps_0q: 3301.84, eps_1q: 3203.13, eps_0y: 11800.98, eps_1y: 12897.58, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "현대모비스", ticker: "012330", baseMcap: 44.46, betaX: 2.5, betaY: 1.2, baseOffset: 6.0, price: 510000.0, fwdPE: 9.61, eps_trail: 0, eps_0q: 13246.62, eps_1q: 13516.65, eps_0y: 47320.18, eps_1y: 53062.31, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" }
     ];
 
     const usTop10 = usTop10Defs.map((item, idx) => {
@@ -1984,7 +2147,45 @@ function calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2
     };
 }
 
-// 3C. Dynamic Portfolio Blending with M2 Feedback & Net Flow (수급)
+/**
+ * 3C. 자산배분 최적 포트폴리오 산출 (Fidelity 4대 국면 + 우라가미 사계절 + M2 유동성 + 순수급)
+ * 
+ * [모델 산출 방식 설명]
+ * 이 모델은 거시경제 국면 좌표(macroX, macroY)와의 거리를 기준으로 4대 기본 포트폴리오를
+ * 선형 블렌딩한 후, 주식시장 사계절, M2 유동성 환경, 수급 상태에 따라 자산별 비중을 가감하고
+ * 최종 주식 자산 내에서 국가별(미국/한국) 가중치를 조절합니다.
+ * 
+ * 1. 거리 기반 블렌딩 (Distance-based Inverse Square Weighting)
+ *    - 경기 순환 좌표와 각 국면의 가상 중심점(확장: (3,3), 둔화: (3,-3), 수축: (-3,-3), 회복: (-3,3)) 사이의 거리를 구합니다.
+ *    - 거리의 역제곱(1 / (distance + 0.1)^2)을 가중치로 삼아, 가까운 국면의 비중이 비선형적으로 매우 커지게 만듭니다.
+ *    - 기본 포트폴리오 비중:
+ *      * 확장기: 주식 65%, 채권 15%, 원자재 15%, 현금 5%
+ *      * 둔화기: 주식 40%, 채권 35%, 원자재 10%, 현금 15%
+ *      * 수축기: 주식 15%, 채권 55%, 원자재 12%, 현금 18%
+ *      * 회복기: 주식 55%, 채권 25%, 원자재 10%, 현금 10%
+ * 
+ * 2. 사계절 프리미엄 (Seasonal Premiums)
+ *    - 주식시장 계절 각도가 겨울(180도 ~ 270도)이면 채권 비중 +5%, 주식 비중 -5%
+ *    - 주식시장 계절 각도가 여름(0도 ~ 90도)이면 주식 비중 +5%, 채권 비중 -5%
+ * 
+ * 3. M2 유동성 보정 (M2 Liquidity Bid)
+ *    - M2 증가율이 10% 초과인 유동성 과잉 국면이면 주식 비중 +4%, 현금 비중 -4%
+ *    - M2 증가율이 3% 미만인 유동성 수축 국면이면 현금 비중 +5%, 주식 비중 -5%
+ * 
+ * 4. 순수급 강도 보정 (Net Capital Flow Adjustments)
+ *    - 수급 점수(flowScore, -5.0 ~ 5.0)를 반영하여 시장 방향성에 자산군 가중치를 크게 연동합니다.
+ *      * 주식 보정: flowScore * 3.0 (최대 +15% / -15% 변동)
+ *      * 채권 보정: -flowScore * 1.5 (최대 -7.5% / +7.5% 변동)
+ *      * 원자재 보정: flowScore * 0.5 (최대 +2.5% / -2.5% 변동)
+ *      * 현금 보정: -flowScore * 2.0 (최대 -10.0% / +10.0% 변동)
+ * 
+ * 5. 국가별 주식 자산배분 (Country-level Equity Allocation)
+ *    - 주식 자산 내에서 미국과 한국의 비율을 결정합니다.
+ *    - 베이스 비율: 한국 모드 시 US 50% : KR 50%, 미국 모드 시 US 70% : KR 30%
+ *    - 한국 모드 기준: 외국인/기관 순수급 강도(flowScore)에 비례하여 한국 주식 비중 `+= flowScore * 5.0%` 조정
+ *    - 미국 모드 기준: 미국 주식 비중 `+= flowScore * 4.0%` 조정
+ *    - 특정 국가 비중이 과도하게 쏠리는 것을 방지하기 위해 최소 15% ~ 최대 85% 범위로 제어(Clip)합니다.
+ */
 function calculateBlendedPortfolio(macroX, macroY, seasonAngle, m2, flowScore) {
     if (flowScore === undefined) flowScore = 0.0;
 
@@ -3301,17 +3502,25 @@ document.addEventListener("DOMContentLoaded", () => {
         // Calculate Previous State for MoM Transitions
         let prevIndex = MAX_TIME_INDEX - 1;
         let prevMacro, prevSeason;
+        let prevInd = null;
+        let prevFlow = 0.0;
         
         if (activeMode === "time") {
             prevIndex = Math.max(0, activeTimeIndex - 1);
             const prevMonthKey = timeMachineMonths[prevIndex].value;
-            const prevInd = getIndicatorsForMonth(activeRegion, prevIndex);
-            const prevFlow = getFlowScoreForMonth(activeRegion, prevIndex);
+            prevInd = getIndicatorsForMonth(activeRegion, prevIndex);
+            prevFlow = getFlowScoreForMonth(activeRegion, prevIndex);
             prevMacro = calculateMacroMetrics(activeRegion, prevMonthKey, prevInd.cli, prevInd.pmi, prevInd.gdp, prevInd.m2, prevInd.rate, prevInd.spread);
             prevSeason = calculateStockSeasonMetrics(activeRegion, prevMonthKey, prevInd.eps, prevInd.m2, prevInd.rate, prevInd.spread, prevFlow);
         } else if (activeMode === "hist") {
-            // Historical Epoch Mode: Use the first point of the historical trail as previous state
             const presetData = historicalPresets[activeRegion][activePreset];
+            const presetMonth = presetData && presetData.monthKey ? presetData.monthKey : "2026-08";
+            const presetMonthIdx = getMonthIndex(presetMonth);
+            prevIndex = Math.max(0, presetMonthIdx - 1);
+            const prevMonthKey = timeMachineMonths[prevIndex].value;
+            prevInd = getIndicatorsForMonth(activeRegion, prevIndex);
+            prevFlow = getFlowScoreForMonth(activeRegion, prevIndex);
+            
             if (presetData && presetData.trail && presetData.trail.length > 0) {
                 const prevPt = presetData.trail[0];
                 const prevPhase = (prevPt.x >= 0 && prevPt.y >= 0) ? "expansion" :
@@ -3328,13 +3537,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                       prevSeasonStr === "autumn" ? "역금융장세 (가을)" :
                                       prevSeasonStr === "winter" ? "역실적장세 (겨울)" : "금융장세 (봄)";
                 
-                prevMacro = { phase: prevPhase, phaseKor: prevPhaseKor };
+                prevMacro = { phase: prevPhase, phaseKor: prevPhaseKor, x: prevPt.x, y: prevPt.y };
                 prevSeason = { season: prevSeasonStr, seasonKor: prevSeasonKor, angle: prevSeasonStr === "summer" ? 90 : prevSeasonStr === "autumn" ? 180 : prevSeasonStr === "winter" ? 270 : 0 };
             } else {
-                prevIndex = 59;
-                const prevMonthKey = timeMachineMonths[prevIndex].value;
-                const prevInd = getIndicatorsForMonth(activeRegion, prevIndex);
-                const prevFlow = getFlowScoreForMonth(activeRegion, prevIndex);
                 prevMacro = calculateMacroMetrics(activeRegion, prevMonthKey, prevInd.cli, prevInd.pmi, prevInd.gdp, prevInd.m2, prevInd.rate, prevInd.spread);
                 prevSeason = calculateStockSeasonMetrics(activeRegion, prevMonthKey, prevInd.eps, prevInd.m2, prevInd.rate, prevInd.spread, prevFlow);
             }
@@ -3344,8 +3549,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const selectVal = monthSelectEl ? monthSelectEl.value : "2026-07";
             prevIndex = Math.max(0, getMonthIndex(selectVal) - 1);
             const prevMonthKey = timeMachineMonths[prevIndex].value;
-            const prevInd = getIndicatorsForMonth(activeRegion, prevIndex);
-            const prevFlow = getFlowScoreForMonth(activeRegion, prevIndex);
+            prevInd = getIndicatorsForMonth(activeRegion, prevIndex);
+            prevFlow = getFlowScoreForMonth(activeRegion, prevIndex);
             prevMacro = calculateMacroMetrics(activeRegion, prevMonthKey, prevInd.cli, prevInd.pmi, prevInd.gdp, prevInd.m2, prevInd.rate, prevInd.spread);
             prevSeason = calculateStockSeasonMetrics(activeRegion, prevMonthKey, prevInd.eps, prevInd.m2, prevInd.rate, prevInd.spread, prevFlow);
         }
@@ -3357,7 +3562,7 @@ document.addEventListener("DOMContentLoaded", () => {
         seasonMetrics.prevAngle = prevSeason.angle;
 
         // Update MoM Transition Panel
-        updateTransitionPanel(prevMacro, macroMetrics, prevSeason, seasonMetrics, prevIndex);
+        updateTransitionPanel(prevMacro, macroMetrics, prevSeason, seasonMetrics, prevIndex, prevInd, prevFlow, { cli: cliVal, pmi: pmiVal, gdp: gdpVal, eps: epsVal, m2: m2Val, cpi: cpiVal, rate: rateVal, spread: spreadVal, flow: flowVal });
 
         // Sync UI
         updateUI(macroMetrics, seasonMetrics, portfolioMetrics, cliVal, pmiVal, gdpVal, epsVal, m2Val, cpiVal, rateVal, spreadVal, citiVal, gdpnowVal);
