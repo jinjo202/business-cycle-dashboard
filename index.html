@@ -238,7 +238,7 @@
             
             <div class="sidebar-footer">
                 <p>Created for <span class="highlight">jinjo202</span></p>
-                <p style="font-size: 0.65rem; color: var(--text-muted); margin-top: 0.2rem; margin-bottom: 0;">적용 환율: 1 USD = <span id="ui-exchange-rate" style="font-weight:600; color:var(--primary-color);">1409.64</span>원</p>
+                <p style="font-size: 0.65rem; color: var(--text-muted); margin-top: 0.2rem; margin-bottom: 0;">적용 환율: 1 USD = <span id="ui-exchange-rate" style="font-weight:600; color:var(--primary-color);">1423.62</span>원</p>
                 <div class="theme-toggle">
                     <span class="theme-label">다크 모드</span>
                     <label class="switch">
@@ -276,30 +276,47 @@
             </header>
 
             <!-- MoM Cycle Transition Card -->
-            <div class="card transition-card" id="transition-card" style="margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; gap: 1rem; flex-wrap: wrap;">
-                <div style="display: flex; align-items: center; gap: 0.75rem;">
-                    <span style="font-size: 1.5rem; display: inline-flex; align-items: center;">📈</span>
-                    <div>
-                        <h4 style="margin: 0; font-size: 0.95rem; font-family: 'Outfit', sans-serif; font-weight: 700; letter-spacing: -0.01em;">전월 대비 사이클 변화 분석 (MoM Trajectory)</h4>
-                        <p style="margin: 2px 0 0 0; font-size: 0.75rem; color: var(--text-muted); font-weight: 500;" id="transition-date-label">2026년 7월 vs 2026년 6월 기준</p>
+            <div class="card transition-card" id="transition-card" style="margin-bottom: 1.5rem; padding: 1.25rem 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; width: 100%;">
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                        <span style="font-size: 1.5rem; display: inline-flex; align-items: center;">📈</span>
+                        <div>
+                            <h4 style="margin: 0; font-size: 0.95rem; font-family: 'Outfit', sans-serif; font-weight: 700; letter-spacing: -0.01em;">전월 대비 사이클 변화 분석 (MoM Trajectory)</h4>
+                            <p style="margin: 2px 0 0 0; font-size: 0.75rem; color: var(--text-muted); font-weight: 500;" id="transition-date-label">2026년 7월 vs 2026년 6월 기준</p>
+                        </div>
+                    </div>
+                    <div class="transition-badges-container" style="display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap;">
+                        <!-- Business Cycle MoM -->
+                        <div class="trans-item" style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">경기 순환:</span>
+                            <span class="cycle-badge-mini" id="trans-macro-prev">직전월 국면</span>
+                            <span style="color: var(--text-muted); font-weight: bold; font-size: 0.8rem;">➔</span>
+                            <span class="cycle-badge-mini active" id="trans-macro-curr">현재 국면</span>
+                        </div>
+                        <!-- Divider line -->
+                        <div class="trans-divider" style="width: 1px; height: 18px; background: var(--border-color); display: inline-block;"></div>
+                        <!-- Stock Season MoM -->
+                        <div class="trans-item" style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">주식시장 사계절:</span>
+                            <span class="season-badge-mini" id="trans-season-prev">직전월 계절</span>
+                            <span style="color: var(--text-muted); font-weight: bold; font-size: 0.8rem;">➔</span>
+                            <span class="season-badge-mini active" id="trans-season-curr">현재 계절</span>
+                        </div>
                     </div>
                 </div>
-                <div class="transition-badges-container" style="display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap;">
-                    <!-- Business Cycle MoM -->
-                    <div class="trans-item" style="display: flex; align-items: center; gap: 0.5rem;">
-                        <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">경기 순환:</span>
-                        <span class="cycle-badge-mini" id="trans-macro-prev">직전월 국면</span>
-                        <span style="color: var(--text-muted); font-weight: bold; font-size: 0.8rem;">➔</span>
-                        <span class="cycle-badge-mini active" id="trans-macro-curr">현재 국면</span>
+                
+                <!-- Divider line -->
+                <div style="height: 1px; background: rgba(255,255,255,0.06); width: 100%;"></div>
+
+                <!-- Bottom Narrative Section -->
+                <div id="transition-narrative-container" style="width: 100%; display: flex; flex-direction: column; gap: 0.75rem;">
+                    <!-- Phase Change Explanation Alert -->
+                    <div id="transition-phase-explanation" style="font-size: 0.825rem; line-height: 1.45; color: var(--text-color);">
+                        로딩 중...
                     </div>
-                    <!-- Divider line -->
-                    <div class="trans-divider" style="width: 1px; height: 18px; background: var(--border-color); display: inline-block;"></div>
-                    <!-- Stock Season MoM -->
-                    <div class="trans-item" style="display: flex; align-items: center; gap: 0.5rem;">
-                        <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">주식시장 사계절:</span>
-                        <span class="season-badge-mini" id="trans-season-prev">직전월 계절</span>
-                        <span style="color: var(--text-muted); font-weight: bold; font-size: 0.8rem;">➔</span>
-                        <span class="season-badge-mini active" id="trans-season-curr">현재 계절</span>
+                    <!-- Indicator MoM Comparison Grid -->
+                    <div id="transition-indicator-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.5rem; margin-top: 0.25rem;">
+                        <!-- Dynamic indicator comparison elements -->
                     </div>
                 </div>
             </div>
@@ -541,7 +558,7 @@
                                     </h4>
                                     <div style="text-align: right;">
                                         <span style="font-size: 0.625rem; color: var(--text-muted); font-weight: 500; display: block; line-height: 1.2;">S&P 500 합계 시총</span>
-                                        <span id="mcap-sp500-total" style="font-size: 0.85rem; font-weight: 700; color: #3b82f6; line-height: 1.2;">$82.51T (약 116,313조원)</span>
+                                        <span id="mcap-sp500-total" style="font-size: 0.85rem; font-weight: 700; color: #3b82f6; line-height: 1.2;">$82.01T (약 116,745조원)</span>
                                     </div>
                                 </div>
                                 <div style="width: 100%; overflow-x: auto;">
@@ -572,11 +589,11 @@
                                     <div style="display: flex; gap: 0.75rem; text-align: right;">
                                         <div>
                                             <span style="font-size: 0.625rem; color: var(--text-muted); font-weight: 500; display: block; line-height: 1.2;">코스피 합계 시총</span>
-                                            <span id="mcap-kospi-total" style="font-size: 0.85rem; font-weight: 700; color: #10b981; line-height: 1.2;">5,152조원</span>
+                                            <span id="mcap-kospi-total" style="font-size: 0.85rem; font-weight: 700; color: #10b981; line-height: 1.2;">5,223조원</span>
                                         </div>
                                         <div style="border-left: 1px solid rgba(255, 255, 255, 0.08); padding-left: 0.75rem;">
                                             <span style="font-size: 0.625rem; color: var(--text-muted); font-weight: 500; display: block; line-height: 1.2;">코스닥 합계 시총</span>
-                                            <span id="mcap-kosdaq-total" style="font-size: 0.85rem; font-weight: 700; color: #10b981; line-height: 1.2;">562조원</span>
+                                            <span id="mcap-kosdaq-total" style="font-size: 0.85rem; font-weight: 700; color: #10b981; line-height: 1.2;">534조원</span>
                                         </div>
                                     </div>
                                 </div>
