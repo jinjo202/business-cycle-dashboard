@@ -78,6 +78,8 @@ try:
     timeline_len = driver.execute_script("return timeMachineMonths.length;")
     realrate_val = driver.execute_script("return document.getElementById('table-realrate-val').textContent;")
     erp_val = driver.execute_script("return document.getElementById('table-erp-val').textContent;")
+    explanation_text = driver.execute_script("return document.getElementById('transition-phase-explanation').textContent;")
+    indicator_grid_child_count = driver.execute_script("return document.getElementById('transition-indicator-grid').children.length;")
     
     # Retrieve Market Feedback State via JS
     feedback_state = driver.execute_script("""
@@ -138,6 +140,9 @@ try:
     print(f"  KR Port Eq: {feedback_state['krPortEq']}%, Bonds: {feedback_state['krPortBo']}%")
     print(f"  KR US-EQ Weight: {feedback_state['krPortUsEq']}%, KR-EQ Weight: {feedback_state['krPortKrEq']}%")
     
+    print(f"  MoM Transition Narrative: '{explanation_text.strip()}'")
+    print(f"  MoM Comparison Grid Child Count: {indicator_grid_child_count} (expected 9)")
+    
     conditions_met = (
         active_index_val == 63 and 
         timeline_len == 64 and 
@@ -145,13 +150,15 @@ try:
         erp_val and 
         feedback_state['krLoaded'] and 
         feedback_state['usLoaded'] and 
-        "활성" in feedback_state['feedbackText']
+        "활성" in feedback_state['feedbackText'] and
+        len(explanation_text.strip()) > 0 and
+        indicator_grid_child_count == 9
     )
     
     if conditions_met:
-        print("[SUCCESS] Timeline extended, RealRate/ERP indicators, and Dynamic Market Feedback Loop are fully active and working!")
+        print("[SUCCESS] Timeline extended, RealRate/ERP indicators, Dynamic Market Feedback, and MoM Transition Narrative explanations are active and fully working!")
     else:
-        print("[FAIL] Dashboard state parameters or Market Feedback parameters do not match expected values!")
+        print("[FAIL] Dashboard state parameters or Market Feedback/Narrative parameters do not match expected values!")
 
 finally:
     if driver:
