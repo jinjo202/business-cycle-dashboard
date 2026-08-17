@@ -1,6 +1,6 @@
 // MACROECONOMIC ENGINE & STOCK SEASONS INTERACTION WITH M2 LIQUIDITY
 
-const EXCHANGE_RATE = 1414.86;
+const EXCHANGE_RATE = 1415.10;
 // --- GLOBAL INTERACTIVE DATABASE CONFIGURATION ---
 
 const historicalPresets = {
@@ -1017,7 +1017,7 @@ function updateExportCard() {
             "BA": { name: "Boeing Co.", ticker: "BA", base: 231.67, format: (p) => `$${p.toFixed(2)}` },
             "PFE": { name: "Pfizer Inc.", ticker: "PFE", base: 26.79, format: (p) => `$${p.toFixed(2)}` },
             "SQQQ": { name: "ProShares UltraPro Short QQQ", ticker: "SQQQ", base: 36.24, format: (p) => `$${p.toFixed(2)}` },
-            "VIX": { name: "iPath Volatility VIX ETN", ticker: "VIX", base: 14.25, format: (p) => `$${p.toFixed(2)}` },
+            "VIX": { name: "iPath Volatility VIX ETN", ticker: "VIX", base: 14.97, format: (p) => `$${p.toFixed(2)}` },
             "XLU": { name: "Utilities Select Sector SPDR", ticker: "XLU", base: 44.31, format: (p) => `$${p.toFixed(2)}` },
             "AMD": { name: "Advanced Micro Devices", ticker: "AMD", base: 514.39, format: (p) => `$${p.toFixed(2)}` },
             "SMCI": { name: "Super Micro Computer", ticker: "SMCI", base: 39.84, format: (p) => `$${p.toFixed(2)}` },
