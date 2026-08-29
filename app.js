@@ -1,6 +1,6 @@
 // MACROECONOMIC ENGINE & STOCK SEASONS INTERACTION WITH M2 LIQUIDITY
 
-const EXCHANGE_RATE = 1381.57;
+const EXCHANGE_RATE = 1377.94;
 // --- GLOBAL INTERACTIVE DATABASE CONFIGURATION ---
 
 const historicalPresets = {
@@ -1026,7 +1026,7 @@ function updateExportCard() {
             "FCX": { name: "Freeport-McMoRan Inc.", ticker: "FCX", base: 76.45, format: (p) => `$${p.toFixed(2)}` }
         },
         "KR": {
-            "SK하이닉스": { name: "SK하이닉스", ticker: "000660", base: 1729625, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "SK하이닉스": { name: "SK하이닉스", ticker: "000660", base: 1653000, format: (p) => `${Math.round(p).toLocaleString()}원` },
             "한미반도체": { name: "한미반도체", ticker: "042700", base: 309500, format: (p) => `${Math.round(p).toLocaleString()}원` },
             "현대차": { name: "현대자동차", ticker: "005380", base: 680000, format: (p) => `${Math.round(p).toLocaleString()}원` },
             "기아": { name: "기아", ticker: "000270", base: 167800, format: (p) => `${Math.round(p).toLocaleString()}원` },
