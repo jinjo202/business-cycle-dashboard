@@ -1,6 +1,6 @@
 // MACROECONOMIC ENGINE & STOCK SEASONS INTERACTION WITH M2 LIQUIDITY
 
-const EXCHANGE_RATE = 1373.78;
+const EXCHANGE_RATE = 1361.14;
 // --- GLOBAL INTERACTIVE DATABASE CONFIGURATION ---
 
 const historicalPresets = {
@@ -994,39 +994,39 @@ function updateExportCard() {
 
     const baselinePrices = {
         "US": {
-            "NVDA": { name: "NVIDIA Corp.", ticker: "NVDA", base: 219.70, format: (p) => `$${p.toFixed(2)}` },
-            "AAPL": { name: "Apple Inc.", ticker: "AAPL", base: 325.30, format: (p) => `$${p.toFixed(2)}` },
-            "MSFT": { name: "Microsoft Corp.", ticker: "MSFT", base: 497.97, format: (p) => `$${p.toFixed(2)}` },
-            "AMZN": { name: "Amazon.com Inc.", ticker: "AMZN", base: 255.00, format: (p) => `$${p.toFixed(2)}` },
-            "TSLA": { name: "Tesla Inc.", ticker: "TSLA", base: 351.90, format: (p) => `$${p.toFixed(2)}` },
-            "COST": { name: "Costco Wholesale", ticker: "COST", base: 934.15, format: (p) => `$${p.toFixed(2)}` },
-            "KO": { name: "Coca-Cola Co.", ticker: "KO", base: 87.93, format: (p) => `$${p.toFixed(2)}` },
-            "PG": { name: "Procter & Gamble Co.", ticker: "PG", base: 146.40, format: (p) => `$${p.toFixed(2)}` },
-            "MCD": { name: "McDonald's Corp.", ticker: "MCD", base: 261.62, format: (p) => `$${p.toFixed(2)}` },
+            "NVDA": { name: "NVIDIA Corp.", ticker: "NVDA", base: 228.27, format: (p) => `$${p.toFixed(2)}` },
+            "AAPL": { name: "Apple Inc.", ticker: "AAPL", base: 326.82, format: (p) => `$${p.toFixed(2)}` },
+            "MSFT": { name: "Microsoft Corp.", ticker: "MSFT", base: 512.25, format: (p) => `$${p.toFixed(2)}` },
+            "AMZN": { name: "Amazon.com Inc.", ticker: "AMZN", base: 258.84, format: (p) => `$${p.toFixed(2)}` },
+            "TSLA": { name: "Tesla Inc.", ticker: "TSLA", base: 376.29, format: (p) => `$${p.toFixed(2)}` },
+            "COST": { name: "Costco Wholesale", ticker: "COST", base: 919.34, format: (p) => `$${p.toFixed(2)}` },
+            "KO": { name: "Coca-Cola Co.", ticker: "KO", base: 88.24, format: (p) => `$${p.toFixed(2)}` },
+            "PG": { name: "Procter & Gamble Co.", ticker: "PG", base: 146.79, format: (p) => `$${p.toFixed(2)}` },
+            "MCD": { name: "McDonald's Corp.", ticker: "MCD", base: 258.86, format: (p) => `$${p.toFixed(2)}` },
             "WBA": { name: "Walgreens Boots Alliance", ticker: "WBA", base: 15.40, format: (p) => `$${p.toFixed(2)}` },
-            "PARA": { name: "Paramount Global", ticker: "PARA", base: 1.08, format: (p) => `$${p.toFixed(2)}` },
-            "INTC": { name: "Intel Corp.", ticker: "INTC", base: 88.41, format: (p) => `$${p.toFixed(2)}` },
-            "LMT": { name: "Lockheed Martin Corp.", ticker: "LMT", base: 537.93, format: (p) => `$${p.toFixed(2)}` },
-            "GLD": { name: "SPDR Gold Shares", ticker: "GLD", base: 401.24, format: (p) => `$${p.toFixed(2)}` },
-            "WMT": { name: "Walmart Inc.", ticker: "WMT", base: 105.86, format: (p) => `$${p.toFixed(2)}` },
-            "JPM": { name: "JPMorgan Chase & Co.", ticker: "JPM", base: 356.80, format: (p) => `$${p.toFixed(2)}` },
-            "CAT": { name: "Caterpillar Inc.", ticker: "CAT", base: 774.05, format: (p) => `$${p.toFixed(2)}` },
-            "XOM": { name: "Exxon Mobil Corp.", ticker: "XOM", base: 163.03, format: (p) => `$${p.toFixed(2)}` },
-            "GE": { name: "General Electric Co.", ticker: "GE", base: 331.03, format: (p) => `$${p.toFixed(2)}` },
-            "PYPL": { name: "PayPal Holdings Inc.", ticker: "PYPL", base: 52.91, format: (p) => `$${p.toFixed(2)}` },
-            "BA": { name: "Boeing Co.", ticker: "BA", base: 208.38, format: (p) => `$${p.toFixed(2)}` },
-            "PFE": { name: "Pfizer Inc.", ticker: "PFE", base: 28.88, format: (p) => `$${p.toFixed(2)}` },
-            "SQQQ": { name: "ProShares UltraPro Short QQQ", ticker: "SQQQ", base: 40.19, format: (p) => `$${p.toFixed(2)}` },
-            "VIX": { name: "iPath Volatility VIX ETN", ticker: "VIX", base: 16.08, format: (p) => `$${p.toFixed(2)}` },
-            "XLU": { name: "Utilities Select Sector SPDR", ticker: "XLU", base: 42.10, format: (p) => `$${p.toFixed(2)}` },
-            "AMD": { name: "Advanced Micro Devices", ticker: "AMD", base: 458.48, format: (p) => `$${p.toFixed(2)}` },
-            "SMCI": { name: "Super Micro Computer", ticker: "SMCI", base: 37.48, format: (p) => `$${p.toFixed(2)}` },
-            "TLT": { name: "iShares 20+ Yr Treasury Bond", ticker: "TLT", base: 81.93, format: (p) => `$${p.toFixed(2)}` },
-            "BAC": { name: "Bank of America Corp.", ticker: "BAC", base: 62.24, format: (p) => `$${p.toFixed(2)}` },
-            "FCX": { name: "Freeport-McMoRan Inc.", ticker: "FCX", base: 74.96, format: (p) => `$${p.toFixed(2)}` }
+            "PARA": { name: "Paramount Global", ticker: "PARA", base: 1.09, format: (p) => `$${p.toFixed(2)}` },
+            "INTC": { name: "Intel Corp.", ticker: "INTC", base: 89.64, format: (p) => `$${p.toFixed(2)}` },
+            "LMT": { name: "Lockheed Martin Corp.", ticker: "LMT", base: 532.60, format: (p) => `$${p.toFixed(2)}` },
+            "GLD": { name: "SPDR Gold Shares", ticker: "GLD", base: 409.06, format: (p) => `$${p.toFixed(2)}` },
+            "WMT": { name: "Walmart Inc.", ticker: "WMT", base: 106.60, format: (p) => `$${p.toFixed(2)}` },
+            "JPM": { name: "JPMorgan Chase & Co.", ticker: "JPM", base: 359.94, format: (p) => `$${p.toFixed(2)}` },
+            "CAT": { name: "Caterpillar Inc.", ticker: "CAT", base: 789.43, format: (p) => `$${p.toFixed(2)}` },
+            "XOM": { name: "Exxon Mobil Corp.", ticker: "XOM", base: 164.85, format: (p) => `$${p.toFixed(2)}` },
+            "GE": { name: "General Electric Co.", ticker: "GE", base: 333.21, format: (p) => `$${p.toFixed(2)}` },
+            "PYPL": { name: "PayPal Holdings Inc.", ticker: "PYPL", base: 54.68, format: (p) => `$${p.toFixed(2)}` },
+            "BA": { name: "Boeing Co.", ticker: "BA", base: 209.29, format: (p) => `$${p.toFixed(2)}` },
+            "PFE": { name: "Pfizer Inc.", ticker: "PFE", base: 28.58, format: (p) => `$${p.toFixed(2)}` },
+            "SQQQ": { name: "ProShares UltraPro Short QQQ", ticker: "SQQQ", base: 39.08, format: (p) => `$${p.toFixed(2)}` },
+            "VIX": { name: "iPath Volatility VIX ETN", ticker: "VIX", base: 14.96, format: (p) => `$${p.toFixed(2)}` },
+            "XLU": { name: "Utilities Select Sector SPDR", ticker: "XLU", base: 42.96, format: (p) => `$${p.toFixed(2)}` },
+            "AMD": { name: "Advanced Micro Devices", ticker: "AMD", base: 448.25, format: (p) => `$${p.toFixed(2)}` },
+            "SMCI": { name: "Super Micro Computer", ticker: "SMCI", base: 36.24, format: (p) => `$${p.toFixed(2)}` },
+            "TLT": { name: "iShares 20+ Yr Treasury Bond", ticker: "TLT", base: 82.29, format: (p) => `$${p.toFixed(2)}` },
+            "BAC": { name: "Bank of America Corp.", ticker: "BAC", base: 62.87, format: (p) => `$${p.toFixed(2)}` },
+            "FCX": { name: "Freeport-McMoRan Inc.", ticker: "FCX", base: 72.61, format: (p) => `$${p.toFixed(2)}` }
         },
         "KR": {
-            "SK하이닉스": { name: "SK하이닉스", ticker: "000660", base: 1613000, format: (p) => `${Math.round(p).toLocaleString()}원` },
+            "SK하이닉스": { name: "SK하이닉스", ticker: "000660", base: 1596000, format: (p) => `${Math.round(p).toLocaleString()}원` },
             "한미반도체": { name: "한미반도체", ticker: "042700", base: 309500, format: (p) => `${Math.round(p).toLocaleString()}원` },
             "현대차": { name: "현대자동차", ticker: "005380", base: 680000, format: (p) => `${Math.round(p).toLocaleString()}원` },
             "기아": { name: "기아", ticker: "000270", base: 167800, format: (p) => `${Math.round(p).toLocaleString()}원` },
@@ -2027,36 +2027,36 @@ function calculateSecondaryIndicators(macro, season, activeRegion, rate, eps, m2
     const ytdKospi = 5.2 + 6.0 * x + 3.0 * y;
     const ytdKosdaq = 6.8 + 8.2 * x + 4.5 * y;
 
-    const mcapSp500Total = 81.25 * (1 + ytdSp500 / 100);
-    const mcapKospiTotal = 5367.42 * (1 + ytdKospi / 100);
-    const mcapKosdaqTotal = 529.68 * (1 + ytdKosdaq / 100);
+    const mcapSp500Total = 82.05 * (1 + ytdSp500 / 100);
+    const mcapKospiTotal = 5381.13 * (1 + ytdKospi / 100);
+    const mcapKosdaqTotal = 520.61 * (1 + ytdKosdaq / 100);
 
     // US S&P 500 Top 10 Companies
             const usTop10Defs = [
-        { name: "NVIDIA Corp.", ticker: "NVDA", baseMcap: 5.30, betaX: 8.0, betaY: 6.0, baseOffset: 22.0, price: 201.07, fwdPE: 15.8, eps_trail: 6.53, eps_0q: 2.08, eps_1q: 2.35, eps_0y: 8.96, eps_1y: 12.73, ret_1d: -3.62, ret_1w: -5.34, ret_1m: -6.29, last_updated: "2026-06-24 00:16" },
-        { name: "Apple Inc.", ticker: "AAPL", baseMcap: 4.75, betaX: 3.5, betaY: 1.8, baseOffset: 9.0, price: 299.09, fwdPE: 31.15, eps_trail: 8.26, eps_0q: 1.89, eps_1q: 2.01, eps_0y: 8.76, eps_1y: 9.67, ret_1d: 0.7, ret_1w: 0.9, ret_1m: -3.0, last_updated: "2026-06-24 00:16" },
-        { name: "Alphabet Inc.", ticker: "GOOGL", baseMcap: 4.09, betaX: 3.8, betaY: 1.9, baseOffset: 8.0, price: 346.5, fwdPE: 23.81, eps_trail: 13.11, eps_0q: 2.87, eps_1q: 3.0, eps_0y: 14.22, eps_1y: 14.51, ret_1d: -0.89, ret_1w: -6.17, ret_1m: -10.83, last_updated: "2026-06-24 00:16" },
-        { name: "Microsoft Corp.", ticker: "MSFT", baseMcap: 3.70, betaX: 4.0, betaY: 2.0, baseOffset: 10.0, price: 374.87, fwdPE: 19.38, eps_trail: 16.79, eps_0q: 4.24, eps_1q: 4.62, eps_0y: 16.84, eps_1y: 19.35, ret_1d: 2.05, ret_1w: -6.23, ret_1m: -9.89, last_updated: "2026-06-24 00:16" },
-        { name: "Amazon.com Inc.", ticker: "AMZN", baseMcap: 2.75, betaX: 4.5, betaY: 2.2, baseOffset: 11.0, price: 234.39, fwdPE: 23.72, eps_trail: 7.36, eps_0q: 1.81, eps_1q: 1.91, eps_0y: 8.66, eps_1y: 9.88, ret_1d: 0.69, ret_1w: -4.73, ret_1m: -11.65, last_updated: "2026-06-24 00:16" },
-        { name: "Broadcom Inc.", ticker: "AVGO", baseMcap: 1.75, betaX: 4.8, betaY: 2.5, baseOffset: 13.0, price: 380.28, fwdPE: 19.62, eps_trail: 6.0, eps_0q: 3.24, eps_1q: 3.87, eps_0y: 11.62, eps_1y: 19.39, ret_1d: -3.02, ret_1w: -3.31, ret_1m: -9.75, last_updated: "2026-06-24 00:16" },
-        { name: "Tesla Inc.", ticker: "TSLA", baseMcap: 1.39, betaX: 7.0, betaY: 5.0, baseOffset: 15.0, price: 385.24, fwdPE: 154.1, eps_trail: 1.09, eps_0q: 0.46, eps_1q: 0.54, eps_0y: 2.06, eps_1y: 2.5, ret_1d: -4.9, ret_1w: -6.31, ret_1m: -11.16, last_updated: "2026-06-24 00:16" },
-        { name: "Meta Platforms", ticker: "META", baseMcap: 1.50, betaX: 5.2, betaY: 3.0, baseOffset: 12.0, price: 565.12, fwdPE: 15.59, eps_trail: 27.52, eps_0q: 7.2, eps_1q: 7.04, eps_0y: 32.83, eps_1y: 34.92, ret_1d: 0.24, ret_1w: -4.76, ret_1m: -7.61, last_updated: "2026-06-24 00:16" },
-        { name: "Berkshire Hathaway", ticker: "BRK.B", baseMcap: 1.08, betaX: 1.5, betaY: 0.5, baseOffset: 6.0, price: 493.8, fwdPE: 23.0, eps_trail: 33.57, eps_0q: 5.01, eps_1q: 5.3, eps_0y: 20.75, eps_1y: 21.47, ret_1d: 1.04, ret_1w: -0.35, ret_1m: 2.1, last_updated: "2026-06-24 00:16" },
-        { name: "Eli Lilly & Co.", ticker: "LLY", baseMcap: 1.06, betaX: 2.0, betaY: 1.0, baseOffset: 18.0, price: 1101.72, fwdPE: 24.78, eps_trail: 28.1, eps_0q: 8.81, eps_1q: 9.4, eps_0y: 36.21, eps_1y: 44.46, ret_1d: -0.03, ret_1w: -2.45, ret_1m: 3.47, last_updated: "2026-06-24 00:16" }
+        { name: "NVIDIA Corp.", ticker: "NVDA", baseMcap: 5.51, betaX: 8.0, betaY: 6.0, baseOffset: 22.0, price: 201.07, fwdPE: 15.8, eps_trail: 6.53, eps_0q: 2.08, eps_1q: 2.35, eps_0y: 8.96, eps_1y: 12.73, ret_1d: -3.62, ret_1w: -5.34, ret_1m: -6.29, last_updated: "2026-06-24 00:16" },
+        { name: "Apple Inc.", ticker: "AAPL", baseMcap: 4.77, betaX: 3.5, betaY: 1.8, baseOffset: 9.0, price: 299.09, fwdPE: 31.15, eps_trail: 8.26, eps_0q: 1.89, eps_1q: 2.01, eps_0y: 8.76, eps_1y: 9.67, ret_1d: 0.7, ret_1w: 0.9, ret_1m: -3.0, last_updated: "2026-06-24 00:16" },
+        { name: "Alphabet Inc.", ticker: "GOOGL", baseMcap: 4.21, betaX: 3.8, betaY: 1.9, baseOffset: 8.0, price: 346.5, fwdPE: 23.81, eps_trail: 13.11, eps_0q: 2.87, eps_1q: 3.0, eps_0y: 14.22, eps_1y: 14.51, ret_1d: -0.89, ret_1w: -6.17, ret_1m: -10.83, last_updated: "2026-06-24 00:16" },
+        { name: "Microsoft Corp.", ticker: "MSFT", baseMcap: 3.80, betaX: 4.0, betaY: 2.0, baseOffset: 10.0, price: 374.87, fwdPE: 19.38, eps_trail: 16.79, eps_0q: 4.24, eps_1q: 4.62, eps_0y: 16.84, eps_1y: 19.35, ret_1d: 2.05, ret_1w: -6.23, ret_1m: -9.89, last_updated: "2026-06-24 00:16" },
+        { name: "Amazon.com Inc.", ticker: "AMZN", baseMcap: 2.79, betaX: 4.5, betaY: 2.2, baseOffset: 11.0, price: 234.39, fwdPE: 23.72, eps_trail: 7.36, eps_0q: 1.81, eps_1q: 1.91, eps_0y: 8.66, eps_1y: 9.88, ret_1d: 0.69, ret_1w: -4.73, ret_1m: -11.65, last_updated: "2026-06-24 00:16" },
+        { name: "Broadcom Inc.", ticker: "AVGO", baseMcap: 1.65, betaX: 4.8, betaY: 2.5, baseOffset: 13.0, price: 380.28, fwdPE: 19.62, eps_trail: 6.0, eps_0q: 3.24, eps_1q: 3.87, eps_0y: 11.62, eps_1y: 19.39, ret_1d: -3.02, ret_1w: -3.31, ret_1m: -9.75, last_updated: "2026-06-24 00:16" },
+        { name: "Tesla Inc.", ticker: "TSLA", baseMcap: 1.49, betaX: 7.0, betaY: 5.0, baseOffset: 15.0, price: 385.24, fwdPE: 154.1, eps_trail: 1.09, eps_0q: 0.46, eps_1q: 0.54, eps_0y: 2.06, eps_1y: 2.5, ret_1d: -4.9, ret_1w: -6.31, ret_1m: -11.16, last_updated: "2026-06-24 00:16" },
+        { name: "Meta Platforms", ticker: "META", baseMcap: 1.57, betaX: 5.2, betaY: 3.0, baseOffset: 12.0, price: 565.12, fwdPE: 15.59, eps_trail: 27.52, eps_0q: 7.2, eps_1q: 7.04, eps_0y: 32.83, eps_1y: 34.92, ret_1d: 0.24, ret_1w: -4.76, ret_1m: -7.61, last_updated: "2026-06-24 00:16" },
+        { name: "Berkshire Hathaway", ticker: "BRK.B", baseMcap: 1.09, betaX: 1.5, betaY: 0.5, baseOffset: 6.0, price: 493.8, fwdPE: 23.0, eps_trail: 33.57, eps_0q: 5.01, eps_1q: 5.3, eps_0y: 20.75, eps_1y: 21.47, ret_1d: 1.04, ret_1w: -0.35, ret_1m: 2.1, last_updated: "2026-06-24 00:16" },
+        { name: "Eli Lilly & Co.", ticker: "LLY", baseMcap: 1.01, betaX: 2.0, betaY: 1.0, baseOffset: 18.0, price: 1101.72, fwdPE: 24.78, eps_trail: 28.1, eps_0q: 8.81, eps_1q: 9.4, eps_0y: 36.21, eps_1y: 44.46, ret_1d: -0.03, ret_1w: -2.45, ret_1m: 3.47, last_updated: "2026-06-24 00:16" }
     ];
 
     // KOSPI Top 10 Companies
             const krTop10Defs = [
-        { name: "삼성전자", ticker: "005930", baseMcap: 1644.92, betaX: 5.5, betaY: 3.0, baseOffset: 8.0, price: 310000.0, fwdPE: 5.34, eps_trail: 0, eps_0q: 11061.49, eps_1q: 13483.35, eps_0y: 45425.67, eps_1y: 58035.6, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "SK하이닉스", ticker: "000660", baseMcap: 1145.00, betaX: 8.5, betaY: 5.0, baseOffset: 24.0, price: 2555000.0, fwdPE: 6.18, eps_trail: 0, eps_0q: 71064.06, eps_1q: 88259.91, eps_0y: 305490.4, eps_1y: 413579.4, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "현대차", ticker: "005380", baseMcap: 98.97, betaX: 3.5, betaY: 1.5, baseOffset: 14.0, price: 511000.0, fwdPE: 10.36, eps_trail: 0, eps_0q: 12370.13, eps_1q: 12614.77, eps_0y: 44708.26, eps_1y: 49327.39, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "LG에너지솔루션", ticker: "373220", baseMcap: 81.31, betaX: 6.0, betaY: 3.5, baseOffset: 5.0, price: 362000.0, fwdPE: 42.11, eps_trail: 0, eps_0q: 878.92, eps_1q: 2508.59, eps_0y: 1979.04, eps_1y: 8596.31, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "삼성물산", ticker: "028260", baseMcap: 61.04, betaX: 2.0, betaY: 1.5, baseOffset: 5.0, price: 455000.0, fwdPE: 25.83, eps_trail: 0, eps_0q: 3136.25, eps_1q: 3472.02, eps_0y: 15864.73, eps_1y: 17613.21, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "삼성바이오로직스", ticker: "207940", baseMcap: 69.48, betaX: 1.8, betaY: 0.8, baseOffset: 7.0, price: 1273000.0, fwdPE: 26.41, eps_trail: 0, eps_0q: 8865.59, eps_1q: 9676.67, eps_0y: 42404.33, eps_1y: 48198.96, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "KB금융", ticker: "105560", baseMcap: 59.37, betaX: 2.5, betaY: 1.2, baseOffset: 18.0, price: 153700.0, fwdPE: 8.13, eps_trail: 0, eps_0q: 4578.9, eps_1q: 4985.44, eps_0y: 17648.36, eps_1y: 18906.17, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "기아", ticker: "000270", baseMcap: 48.35, betaX: 3.8, betaY: 1.6, baseOffset: 15.0, price: 137400.0, fwdPE: 5.82, eps_trail: 0, eps_0q: 6129.74, eps_1q: 5699.84, eps_0y: 21668.62, eps_1y: 23614.46, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "신한지주", ticker: "055550", baseMcap: 51.87, betaX: 2.2, betaY: 1.1, baseOffset: 14.0, price: 97700.0, fwdPE: 7.58, eps_trail: 0, eps_0q: 3301.84, eps_1q: 3203.13, eps_0y: 11800.98, eps_1y: 12897.58, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
-        { name: "현대모비스", ticker: "012330", baseMcap: 37.05, betaX: 2.5, betaY: 1.2, baseOffset: 6.0, price: 510000.0, fwdPE: 9.61, eps_trail: 0, eps_0q: 13246.62, eps_1q: 13516.65, eps_0y: 47320.18, eps_1y: 53062.31, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" }
+        { name: "삼성전자", ticker: "005930", baseMcap: 1641.64, betaX: 5.5, betaY: 3.0, baseOffset: 8.0, price: 310000.0, fwdPE: 5.34, eps_trail: 0, eps_0q: 11061.49, eps_1q: 13483.35, eps_0y: 45425.67, eps_1y: 58035.6, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "SK하이닉스", ticker: "000660", baseMcap: 1132.93, betaX: 8.5, betaY: 5.0, baseOffset: 24.0, price: 2555000.0, fwdPE: 6.18, eps_trail: 0, eps_0q: 71064.06, eps_1q: 88259.91, eps_0y: 305490.4, eps_1y: 413579.4, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "현대차", ticker: "005380", baseMcap: 100.41, betaX: 3.5, betaY: 1.5, baseOffset: 14.0, price: 511000.0, fwdPE: 10.36, eps_trail: 0, eps_0q: 12370.13, eps_1q: 12614.77, eps_0y: 44708.26, eps_1y: 49327.39, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "LG에너지솔루션", ticker: "373220", baseMcap: 85.53, betaX: 6.0, betaY: 3.5, baseOffset: 5.0, price: 362000.0, fwdPE: 42.11, eps_trail: 0, eps_0q: 878.92, eps_1q: 2508.59, eps_0y: 1979.04, eps_1y: 8596.31, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "삼성물산", ticker: "028260", baseMcap: 60.87, betaX: 2.0, betaY: 1.5, baseOffset: 5.0, price: 455000.0, fwdPE: 25.83, eps_trail: 0, eps_0q: 3136.25, eps_1q: 3472.02, eps_0y: 15864.73, eps_1y: 17613.21, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "삼성바이오로직스", ticker: "207940", baseMcap: 68.37, betaX: 1.8, betaY: 0.8, baseOffset: 7.0, price: 1273000.0, fwdPE: 26.41, eps_trail: 0, eps_0q: 8865.59, eps_1q: 9676.67, eps_0y: 42404.33, eps_1y: 48198.96, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "KB금융", ticker: "105560", baseMcap: 62.46, betaX: 2.5, betaY: 1.2, baseOffset: 18.0, price: 153700.0, fwdPE: 8.13, eps_trail: 0, eps_0q: 4578.9, eps_1q: 4985.44, eps_0y: 17648.36, eps_1y: 18906.17, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "기아", ticker: "000270", baseMcap: 49.51, betaX: 3.8, betaY: 1.6, baseOffset: 15.0, price: 137400.0, fwdPE: 5.82, eps_trail: 0, eps_0q: 6129.74, eps_1q: 5699.84, eps_0y: 21668.62, eps_1y: 23614.46, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "신한지주", ticker: "055550", baseMcap: 53.75, betaX: 2.2, betaY: 1.1, baseOffset: 14.0, price: 97700.0, fwdPE: 7.58, eps_trail: 0, eps_0q: 3301.84, eps_1q: 3203.13, eps_0y: 11800.98, eps_1y: 12897.58, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" },
+        { name: "현대모비스", ticker: "012330", baseMcap: 37.77, betaX: 2.5, betaY: 1.2, baseOffset: 6.0, price: 510000.0, fwdPE: 9.61, eps_trail: 0, eps_0q: 13246.62, eps_1q: 13516.65, eps_0y: 47320.18, eps_1y: 53062.31, ret_1d: 0.0, ret_1w: 0.0, ret_1m: 0.0, last_updated: "2026-06-23 15:30" }
     ];
 
     const usTop10 = usTop10Defs.map((item, idx) => {
